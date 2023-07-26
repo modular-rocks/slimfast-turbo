@@ -1,0 +1,8 @@
+{
+  "name": "jest-config",
+  "version": "0.0.1",
+  "private": true,
+  "files": [
+    "jest.config.js"
+  ]
+}

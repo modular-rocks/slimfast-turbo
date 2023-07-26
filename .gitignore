@@ -37,6 +37,9 @@ jspm_packages
 # Optional npm cache directory
 .npm
 
+# pnpm cache directory
+.pnpm-store
+
 # Optional REPL history
 .node_repl_history
 
@@ -50,3 +53,6 @@ package
 # Other
 .DS_Store
 .env
+
+# turbo
+.turbo

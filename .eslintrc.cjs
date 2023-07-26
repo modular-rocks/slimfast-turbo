@@ -38,6 +38,6 @@ module.exports = {
     'no-await-in-loop': 'off',
     'no-async-promise-executor': 'off',
     '@typescript-eslint/no-useless-constructor': 'off',
-    'import/no-cycle': 'off'
+    'import/no-cycle': 'off',
   },
 };

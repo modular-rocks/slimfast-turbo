@@ -1,0 +1,11 @@
+{
+  "include": ["src"],
+  "extends": "tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2016",
+    // TODO: CHECK THIS (allowJs)
+    "allowJs": true,
+    "outDir": "dist",
+    "declarationDir": "dist/types"
+  }
+}
