@@ -14,7 +14,8 @@ const findBlockStatement = (path: NodePath | RandomObject) => {
 };
 
 export default (path: NodePath, data: RandomObject) => {
-  const toInject = unique(data.toInject);
+  // TODO: Verify and ensure 'data.toInject' contains valid elements of type 'RandomObject[]'.
+  const toInject = unique(data.toInject) as RandomObject[];
   return exportDefaultDeclaration(
     functionDeclaration(
       null, // can also be BabelTypes.identifier(name), null makes it anonymous

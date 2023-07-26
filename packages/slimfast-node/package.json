@@ -1,0 +1,56 @@
+{
+  "name": "@modular-rocks/slimfast-node",
+  "version": "0.1.3-development",
+  "description": "Slimfast puts your code base on a diet with automatic modularisation. This is Slimfast for NodeJS",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/declarations.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/declarations.d.ts",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm lint",
+    "build": "tsc -p tsconfig.prod.json",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once",
+    "lint": "pnpm eslint src --ext .ts --fix"
+  },
+  "dependencies": {
+    "@babel/parser": "7.22.7",
+    "@babel/traverse": "7.22.8",
+    "@babel/types": "7.22.5",
+    "@modular-rocks/slimfast": "workspace:*",
+    "@modular-rocks/traverse-files": "workspace:*",
+    "@modular-rocks/workspace-node": "workspace:*",
+    "array-unique": "0.3.2"
+  },
+  "devDependencies": {
+    "@babel/types": "7.22.4",
+    "@types/babel__traverse": "7.20.1",
+    "@types/array-unique": "0.3.0",
+    "jest-config": "workspace:*",
+    "tsconfig": "workspace:*"
+  },
+  "author": "Alex Dollery (DolNpm/DolGit)",
+  "homepage": "",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modular-rocks/slimfast-node.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}

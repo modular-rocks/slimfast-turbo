@@ -1,0 +1,54 @@
+{
+  "name": "@modular-rocks/workspace-node",
+  "version": "0.1.1-development",
+  "description": "This is the Workspace for Typescript/Javascript, extending @modular-rocks/workspace specifically for NodeJS.",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/types"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/types",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm lint",
+    "build": "tsc -p tsconfig.prod.json",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once",
+    "lint": "pnpm eslint src --ext .ts --fix"
+  },
+  "dependencies": {
+    "@babel/parser": "7.22.7",
+    "@babel/traverse": "7.22.8",
+    "@babel/types": "7.22.5",
+    "@modular-rocks/metrics-ts-js": "0.2.3-development",
+    "@modular-rocks/traverse-files": "workspace:*",
+    "@modular-rocks/workspace": "workspace:*",
+    "recast": "0.23.2"
+  },
+  "devDependencies": {
+    "@types/babel__traverse": "7.20.1",
+    "jest-config": "workspace:*",
+    "tsconfig": "workspace:*"
+  },
+  "author": "Alex Dollery (DolNpm/DolGit)",
+  "homepage": "",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modular-rocks/workspace-node.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}

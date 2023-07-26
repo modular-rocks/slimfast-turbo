@@ -1,0 +1,44 @@
+{
+  "name": "@modular-rocks/traverse-files",
+  "version": "0.2.5-development",
+  "description": "Simply traversing files",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/types",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.prod.json",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {
+    "jest-config": "workspace:*",
+    "tsconfig": "workspace:*"
+  },
+  "author": "Alex Dollery (DolNpm/DolGit)",
+  "homepage": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modular-rocks/traverse-files.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}

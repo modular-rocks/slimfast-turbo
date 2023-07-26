@@ -18,7 +18,7 @@ interface WorkspaceOpts extends Options {
 }
 
 interface CodebaseOpts extends Options {
-  files: [string, string][];
+  files?: [string, string][];
 }
 
 interface WorkspaceType {
@@ -60,7 +60,7 @@ interface FileContainerType {
   codeToAST: Function;
   spawn: Function;
   tooSimple: Function;
-  addImport: Function;
+  addImport: (importStatement?: t.Statement) => boolean;
   save: Function;
 }
 

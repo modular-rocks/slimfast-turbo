@@ -13,6 +13,7 @@ interface Options {
   custom?: Custom;
 }
 
+// TODO: Rename to avoid overwriting existing ts type
 type Extract = [RandomObject, Data];
 
 interface Data {
@@ -29,7 +30,7 @@ interface ProvisionalFile {
 }
 
 interface WorkspaceOpts extends Options {
-  files?: [string, string][];
+  files: [string, string][];
 }
 
 interface CodebaseOpts extends Options {

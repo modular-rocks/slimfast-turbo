@@ -1,0 +1,9 @@
+{
+  "include": ["src"],
+  "extends": "tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2016",
+    "outDir": "dist",
+    "declarationDir": "dist/types"
+  }
+}

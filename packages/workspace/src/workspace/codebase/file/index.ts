@@ -67,7 +67,10 @@ export default class FileContainer {
     return new FileContainer(file.pathname, this.print(file.ast), this.codebase);
   }
 
-  addImport() {}
+  // TODO: Double check this
+  addImport(importStatement?: any) {
+    return false;
+  }
 
   updateCode() {
     this.code = this.print();
