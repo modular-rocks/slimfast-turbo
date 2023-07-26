@@ -11,7 +11,8 @@ import {
 
 export default (name: string, data: RandomObject) => {
   name = name.charAt(0).toUpperCase() + name.slice(1);
-  const toInject = unique(data.toInject);
+  // TODO: Refactor to use a more specific type than 'any' for the toInject array
+  const toInject: any[] = unique(data.toInject);
   const props = toInject.map((x: RandomObject) =>
     jsxAttribute(
       jsxIdentifier(x.identifier.name),

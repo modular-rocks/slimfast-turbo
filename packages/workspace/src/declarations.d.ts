@@ -45,6 +45,7 @@ interface CodebaseType {
   makeDirectory: Function;
 }
 
+// TODO: Use more explicit types (avoid the use of Function)
 interface FileContainerType {
   pathname: string;
   fullPath: string;
@@ -62,7 +63,7 @@ interface FileContainerType {
   codeToAST: Function;
   spawn: Function;
   tooSimple: Function;
-  addImport: Function;
+  addImport: (importStatement?: t.Statement) => boolean;
   save: Function;
 }
 

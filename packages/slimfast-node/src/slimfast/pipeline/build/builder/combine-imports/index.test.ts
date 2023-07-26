@@ -1,6 +1,6 @@
 import unique from 'array-unique';
 import { program } from '@babel/types';
-import traverse, { NodePath } from '@babel/traverse';
+import traverse, { Binding, NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import combineImports from '.';
 import parser from '../../../../visitors/utils/parser';
@@ -39,7 +39,8 @@ describe('Combine imports', () => {
     if (rootPath !== null) {
       const data: RandomObject = {};
       extractIdentifiers(rootPath, data);
-      const imports = unique(data.toImport);
+      // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
+      const imports = unique(data.toImport) as Binding[];
       const combined = combineImports('/path/to', '/path/to/folder', imports);
       const combinedAst = program(combined);
       expect(file.print(combinedAst)).toBe('import c, { k, v, y, o } from ".././c-module";');
@@ -68,7 +69,8 @@ describe('Combine imports', () => {
     if (rootPath !== null) {
       const data: RandomObject = {};
       extractIdentifiers(rootPath, data);
-      const imports = unique(data.toImport);
+      // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
+      const imports = unique(data.toImport) as Binding[];
       const combined = combineImports('/src/path/to', '/src/path/to/folder', imports);
       const combinedAst = program(combined);
       expect(file.print(combinedAst)).toBe(

@@ -15,7 +15,8 @@ import {
 import hasAwait from '../has-await';
 
 export default (path: NodePath, data: RandomObject) => {
-  const toInject = unique(data.toInject);
+  // TODO: Verify and ensure 'data.toInject' contains valid elements of type 'RandomObject[]'.
+  const toInject = unique(data.toInject) as RandomObject[];
 
   const nodes: Statement[] = [];
   if (toInject.length) {
