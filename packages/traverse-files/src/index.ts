@@ -1,40 +1,40 @@
-import path from "path";
+import path from 'path';
 
-import { read, resolve, readFilesInDirectory, isDirectory } from './convenience'
+import { read, resolve, readFilesInDirectory, isDirectory } from './convenience';
+
+import type { Directory, Options, RandomObject } from './types';
 
 const removeExtensions = (extensions: string[]) => (fullpath: string) => {
-  return extensions.includes(path.extname(fullpath).replace('.', ''))
-}
-const removeIgnoredExtensions = (ignoredExtensions: string[]) => (fullpath: string) => {
-  return !ignoredExtensions.map((ex: string) => fullpath.includes(ex)).filter(Boolean)[0]
-}
+  return extensions.includes(path.extname(fullpath).replace('.', ''));
+};
 
-const removeTests = (fullpath: string) => !path.basename(fullpath).match(/test/)
+const removeIgnoredExtensions = (ignoredExtensions: string[]) => (fullpath: string) => {
+  return !ignoredExtensions.map((ex: string) => fullpath.includes(ex)).filter(Boolean)[0];
+};
+
+const removeTests = (fullpath: string) => !path.basename(fullpath).match(/test/);
 
 function traverse(directory: string, files: string[]) {
-  readFilesInDirectory(directory).forEach((filePath: string) => {    
-      const absolutePath: string = path.join(directory, filePath);    
-      return isDirectory(absolutePath) ? 
-                traverse(absolutePath, files) : files.push(absolutePath)
+  readFilesInDirectory(directory).forEach((filePath: string) => {
+    const absolutePath: string = path.join(directory, filePath);
+    return isDirectory(absolutePath) ? traverse(absolutePath, files) : files.push(absolutePath);
   });
-  return files
+  return files;
 }
 
 const collect = (path: string, extensions: string[], ignoredExtensions: string[], ignoreTests: Boolean) => {
   let files: string[] = [];
   traverse(path, files);
-  let output = files
-                .filter(removeExtensions(extensions))
-                .filter(removeIgnoredExtensions(ignoredExtensions))
-      
+  let output = files.filter(removeExtensions(extensions)).filter(removeIgnoredExtensions(ignoredExtensions));
+
   if (ignoreTests) {
-    output = output.filter(removeTests)
+    output = output.filter(removeTests);
   }
 
-  return output
-}
+  return output;
+};
 
-const readDirectory = (opts: Options) => {
+const readDirectory = (opts: Options): Directory => {
   const { src, extensions, ignoredFiles } = opts;
 
   const files: [string, string][] = [];
@@ -44,21 +44,21 @@ const readDirectory = (opts: Options) => {
     files.push([path, read(path)]);
   });
 
-  return files
+  return files;
 };
 
-const readJSONFile = (packagePath: string) => {
+const readJSONFile = (packagePath: string): RandomObject => {
   return JSON.parse(read(packagePath));
 };
 
-export { 
-  read, 
-  resolve, 
-  collect, 
-  traverse, 
+export {
+  read,
+  resolve,
+  collect,
+  traverse,
   removeTests,
-  readJSONFile, 
+  readJSONFile,
   readDirectory,
   removeExtensions,
-  removeIgnoredExtensions 
-}
+  removeIgnoredExtensions,
+};
