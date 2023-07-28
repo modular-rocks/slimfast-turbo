@@ -1,3 +1,5 @@
+import mockFs from 'mock-fs';
+
 import {
   resolve,
   collect,
@@ -10,6 +12,28 @@ import {
 } from '../index';
 
 import type { Directory, Options, RandomObject } from '../types';
+
+beforeEach(() => {
+  mockFs({
+    './src/tests/test-directory': {
+      nested: {
+        'one.js': '',
+        'three.js': '',
+        'two.js': '',
+      },
+      'one-declaration.d.ts': '',
+      'one.js': '',
+      'one-test.test.js': '',
+      'three.js': '',
+      'two.js': '',
+    },
+    './src/tests/test-package.json': JSON.stringify({}),
+  });
+});
+
+afterEach(() => {
+  mockFs.restore();
+});
 
 describe('removeExtensions works as intended', () => {
   test('', () => {
