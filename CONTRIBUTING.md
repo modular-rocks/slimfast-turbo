@@ -68,7 +68,7 @@ To make changes to a package, navigate to the package directory and make your ch
 
 ### Testing only one package
 
-Sometimes it's useful to test only the package you are working on before running tests for all package.To test one package run the following command from the root of the project:
+Sometimes it's useful to test only the package you are working on before running tests for all package. To test one package run the following command from the root of the project:
 
 ```
 pnpm test --filter <package-name> <optional-file-name>
