@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/slimfast",
-  "version": "0.1.1-development",
+  "version": "0.1.1",
   "description": "Slimfast puts your code base on a diet with automatic modularisation. This is the Slimfast base that all language versions can extend from.",
   "main": "./dist/index.js",
   "exports": {
@@ -18,13 +18,9 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "pnpm lint",
     "build": "tsc -p tsconfig.prod.json",
-    "prepublishOnly": "npm run build",
     "test": "jest",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once",
-    "lint": "pnpm eslint src --ext .ts --fix"
+    "lint": "eslint src --ext .ts --fix"
   },
   "dependencies": {
     "@modular-rocks/workspace": "workspace:*"
@@ -36,13 +32,5 @@
   },
   "author": "Alex Dollery (DolNpm/DolGit)",
   "homepage": "",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/modular-rocks/slimfast.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  }
+  "license": "Apache-2.0"
 }

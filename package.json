@@ -1,6 +1,5 @@
 {
   "name": "@modular-rocks/slimfast-turbo",
-  "version": "0.1.1-development",
   "description": "Slimfast super-repo",
   "private": true,
   "engines": {
@@ -14,9 +13,12 @@
     "test:f": "turbo run test --force",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "release": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "0.4.8",
+    "@changesets/cli": "2.26.2",
     "@types/jest": "29.4.0",
     "@types/mock-fs": "4.13.1",
     "@typescript-eslint/eslint-plugin": "5.59.9",

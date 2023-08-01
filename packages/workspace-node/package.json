@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/workspace-node",
-  "version": "0.1.1-development",
+  "version": "0.1.1",
   "description": "This is the Workspace for Typescript/Javascript, extending @modular-rocks/workspace specifically for NodeJS.",
   "main": "./dist/index.js",
   "exports": {
@@ -18,13 +18,9 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "pnpm lint",
     "build": "tsc -p tsconfig.prod.json",
-    "prepublishOnly": "npm run build",
     "test": "jest",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once",
-    "lint": "pnpm eslint src --ext .ts --fix"
+    "lint": "eslint src --ext .ts --fix"
   },
   "dependencies": {
     "@babel/parser": "7.22.7",
@@ -42,13 +38,5 @@
   },
   "author": "Alex Dollery (DolNpm/DolGit)",
   "homepage": "",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/modular-rocks/workspace-node.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  }
+  "license": "Apache-2.0"
 }
