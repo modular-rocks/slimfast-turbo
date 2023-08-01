@@ -1,8 +1,7 @@
 import mockFs from 'mock-fs';
 
-import { normalizePathToPosix } from '../convenience';
+import { normalizePathToPosix, resolve } from '../convenience';
 import {
-  resolve,
   collect,
   traverse,
   removeTests,
