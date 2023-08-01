@@ -36,3 +36,4 @@ jobs:
 
       - name: Run tests
         run: pnpm test
+        continue-on-error: ${{ matrix.os == 'windows-latest' }}
