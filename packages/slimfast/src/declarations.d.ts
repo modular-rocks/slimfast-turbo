@@ -18,7 +18,7 @@ interface WorkspaceOpts extends Options {
 }
 
 interface CodebaseOpts extends Options {
-  files?: [string, string][];
+  files: [string, string][];
 }
 
 interface WorkspaceType {
