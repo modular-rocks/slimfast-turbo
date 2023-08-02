@@ -14,7 +14,7 @@ import type { Directory, Options, RandomObject } from './types';
  * removeExtensions(['js', 'ts'])('hello-world.ts'); // false
  */
 export const removeExtensions = (extensions: string[]) => (fullpath: string) => {
-  return !extensions.includes(extname(fullpath).replace('.', ''));
+  return extensions.includes(extname(fullpath).replace('.', ''));
 };
 
 /**
