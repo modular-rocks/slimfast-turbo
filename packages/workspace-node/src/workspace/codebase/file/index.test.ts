@@ -1,4 +1,4 @@
-import { importDeclaration, identifier, importDefaultSpecifier, stringLiteral } from '@babel/types';
+import { identifier, importDeclaration, importDefaultSpecifier, stringLiteral } from '@babel/types';
 import Codebase from '..';
 
 const str = JSON.stringify;
@@ -22,7 +22,7 @@ describe('FileContainer', () => {
 
     const codebase = new Codebase(opts);
     const filesContainer = codebase.extractFiles();
-    const file: FileContainerType = filesContainer[0];
+    const file = filesContainer[0];
 
     expect(file.pathname).toBe('/project/path1');
     expect(file.fullPath).toBe('/home/projects/project/path1');
