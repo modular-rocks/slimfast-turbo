@@ -1,5 +1,13 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies [[`0b02cee`](https://github.com/modular-rocks/slimfast-turbo/commit/0b02cee72088fff05f69c6907a987ddc79d2398e)]:
+  - @modular-rocks/slimfast@0.1.3
+  - @modular-rocks/workspace-node@0.1.3
+
 ## 0.1.4
 
 ### Patch Changes
