@@ -1,5 +1,7 @@
 import { dirname } from 'path';
 
+import type { CodebaseType, FileStore } from '../../../types';
+
 interface ProvisionalFile {
   pathname: string;
   ast: any;

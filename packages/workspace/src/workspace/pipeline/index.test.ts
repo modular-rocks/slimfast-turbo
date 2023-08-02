@@ -3,21 +3,21 @@ import Codebase from '../codebase';
 import runPipeline from '.';
 import Workspace from '..';
 
-type OutPutIteration = [number, number];
+import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../../types';
 
-const normalFunction = (i: number, time: number, output: OutPutIteration[]) => {
+const normalFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {
-    const result: OutPutIteration = [i, time];
+    const result: OutputIteration = [i, time];
     output.push(result);
     return result;
   };
 };
 
-const asyncFunction = (i: number, time: number, output: OutPutIteration[]) => {
+const asyncFunction = (i: number, time: number, output: OutputIteration[]) => {
   return async () => {
     await new Promise((resolve) => {
       setTimeout(() => {
-        const result: OutPutIteration = [i, time];
+        const result: OutputIteration = [i, time];
         output.push(result);
         resolve(result);
       }, time);
@@ -27,7 +27,7 @@ const asyncFunction = (i: number, time: number, output: OutPutIteration[]) => {
 
 describe('Pipeline', () => {
   test('Is invoked in order', async () => {
-    const output: OutPutIteration[] = [];
+    const output: OutputIteration[] = [];
 
     const pipeline = [
       asyncFunction(1, 500, output),

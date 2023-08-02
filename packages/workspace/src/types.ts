@@ -1,8 +1,7 @@
-declare module '@modular-rocks/workspace';
-interface RandomObject extends Record<string, any> {}
-interface FilesContainer extends Record<string, FileContainerType> {}
+export interface RandomObject extends Record<string, any> {}
+export interface FilesContainer extends Record<string, FileContainerType> {}
 
-interface Options {
+export type Options = {
   pipeline?: Function[];
   src: string;
   extensions: string[];
@@ -11,21 +10,21 @@ interface Options {
   packagePath?: string;
   ignoredImports: string[];
   custom?: Custom;
-}
+};
 
-interface WorkspaceOpts extends Options {
+export interface WorkspaceOpts extends Options {
   files?: [string, string][];
 }
 
-interface CodebaseOpts extends Options {
+export interface CodebaseOpts extends Options {
   files: [string, string][];
 }
 
-interface WorkspaceType {
+export type WorkspaceType = {
   opts: WorkspaceOpts;
-}
+};
 
-interface CodebaseType {
+export type CodebaseType = {
   src: string;
   extensions: string[];
   ignoredFiles: string[];
@@ -43,10 +42,10 @@ interface CodebaseType {
   save: Function;
   addFile: Function;
   makeDirectory: Function;
-}
+};
 
 // TODO: Use more explicit types (avoid the use of Function)
-interface FileContainerType {
+export type FileContainerType = {
   pathname: string;
   fullPath: string;
   type?: string;
@@ -63,26 +62,28 @@ interface FileContainerType {
   codeToAST: Function;
   spawn: Function;
   tooSimple: Function;
-  addImport: (importStatement?: t.Statement) => boolean;
+  addImport: (importStatement?: any) => boolean;
   save: Function;
-}
+};
 
-interface Custom {
+export type Custom = {
   [propter: string]: any;
-}
+};
 
-interface State {
+export type State = {
   [property: string]: string;
-}
+};
 
-type ExtractedNodePath = [RandomObject, RandomObject];
+export type ExtractedNodePath = [RandomObject, RandomObject];
 
-interface FileStore {
+export type FileStore = {
   [property: string]: any;
-}
+};
 
 // Can take any shape, generately has to be an Object like Node packages
 // Ports to any other languages can be formatted
-interface PackageContents {
+export type PackageContents = {
   [property: string]: any;
-}
+};
+
+export type OutputIteration = [number, number];

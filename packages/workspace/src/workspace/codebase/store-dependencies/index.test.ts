@@ -1,6 +1,8 @@
 import storeDependencies from '.';
 import Codebase from '..';
 
+import type { CodebaseOpts } from '../../../types';
+
 const str = JSON.stringify;
 
 describe('Store dependencie', () => {

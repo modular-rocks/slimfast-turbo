@@ -1,3 +1,5 @@
+import type { FileContainerType, State, WorkspaceOpts, WorkspaceType } from '../../types';
+
 function wait(func: Function, file: FileContainerType, state: State, opts: WorkspaceOpts, workspace: WorkspaceType) {
   return new Promise(async (resolve, reject) => {
     try {

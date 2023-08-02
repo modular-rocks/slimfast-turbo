@@ -1,6 +1,8 @@
 import makeDirectory from '.';
 import Codebase from '..';
 
+import type { CodebaseOpts } from '../../../types';
+
 describe('Make Directory', () => {
   test('Everything works', async () => {
     const files: [string, string][] = [1, 2, 3].map((x: number) => [`/home/projects/project/path${x}.ts`, '']);

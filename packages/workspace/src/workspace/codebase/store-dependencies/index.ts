@@ -1,3 +1,5 @@
+import type { CodebaseType } from '../../../types';
+
 export default (codebase: CodebaseType, dependencyKeys: string[]) => {
   const dependencies: Map<string, string> = new Map();
   dependencyKeys.forEach((key: string) => {
