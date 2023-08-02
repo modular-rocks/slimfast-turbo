@@ -36,7 +36,7 @@ describe('Slimfast base', () => {
     ];
 
     const files: [string, string][] = [1, 2, 3].map((x: number) => [`/path${x}`, '']);
-    const opts: WorkspaceOpts = {
+    const opts: CodebaseOpts = {
       pipeline,
       files,
       src: '/',
@@ -80,7 +80,7 @@ describe('Slimfast base', () => {
   test('Default options adds an empty array for pipeline', async () => {
     const output: OutPutIteration[] = [];
     const files: [string, string][] = [1, 2, 3].map((x: number) => [`/path${x}`, '']);
-    const opts: WorkspaceOpts = {
+    const opts: CodebaseOpts = {
       files,
       src: '/',
       extensions: [],

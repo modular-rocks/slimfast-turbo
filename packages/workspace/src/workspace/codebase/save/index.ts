@@ -1,6 +1,8 @@
 import fs from 'fs';
 import { dirname } from 'path';
 
+import type { CodebaseType, FileContainerType, RandomObject } from '../../../types';
+
 const createFile = (pathname: string, contents: string) => {
   fs.createWriteStream(pathname).write(contents);
 };

@@ -5,13 +5,13 @@ export default class SlimFast extends Workspace {
 
   refactored: CodebaseType;
 
-  constructor(opts: Options) {
+  constructor(opts: CodebaseOpts) {
     super(opts);
     this.original = this.newCodeBase(opts);
     this.refactored = this.newCodeBase(opts);
   }
 
-  newCodeBase(opts: Options) {
+  newCodeBase(opts: CodebaseOpts) {
     return new Codebase(opts);
   }
 

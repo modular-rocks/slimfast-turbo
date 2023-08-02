@@ -1,21 +1,21 @@
 import Workspace from '.';
 import Codebase from './codebase';
 
-type OutPutIteration = [number, number];
+import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../types';
 
-const normalFunction = (i: number, time: number, output: OutPutIteration[]) => {
+const normalFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {
-    const result: OutPutIteration = [i, time];
+    const result: OutputIteration = [i, time];
     output.push(result);
     return result;
   };
 };
 
-const asyncFunction = (i: number, time: number, output: OutPutIteration[]) => {
+const asyncFunction = (i: number, time: number, output: OutputIteration[]) => {
   return async () => {
     await new Promise((resolve) => {
       setTimeout(() => {
-        const result: OutPutIteration = [i, time];
+        const result: OutputIteration = [i, time];
         output.push(result);
         resolve(result);
       }, time);
@@ -25,7 +25,7 @@ const asyncFunction = (i: number, time: number, output: OutPutIteration[]) => {
 
 describe('Workspace base', () => {
   test('Is invoked in order', async () => {
-    const output: OutPutIteration[] = [];
+    const output: OutputIteration[] = [];
 
     const pipeline = [
       asyncFunction(1, 500, output),
@@ -84,7 +84,7 @@ describe('Workspace base', () => {
     expect(JSON.stringify(output)).toBe(JSON.stringify(result));
   }, 8000);
   test('Default options adds an empty array for files', async () => {
-    const output: OutPutIteration[] = [];
+    const output: OutputIteration[] = [];
     const opts: WorkspaceOpts = {
       src: __dirname,
       extensions: [],

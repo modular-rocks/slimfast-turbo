@@ -1,5 +1,7 @@
 import { basename, dirname, join } from 'path';
 
+import type { CodebaseType, FileContainerType } from '../../../types';
+
 export default (codebase: CodebaseType, file: FileContainerType) => {
   const filename = basename(file.pathname);
 
