@@ -1,5 +1,5 @@
 import mockFs from 'mock-fs';
-import path from 'path';
+import { posix } from 'path';
 
 import { read, resolve, readFilesInDirectory, isDirectory } from '../convenience';
 
@@ -40,11 +40,16 @@ describe('convenience functions', () => {
     it('should resolve the path correctly', () => {
       const dirname = './tests/test-directory';
       const filename = 'file.txt';
-      const expectedPath = path.resolve(dirname, filename);
-
+      const expectedPath = posix.resolve(dirname, filename);
       const resolvedPath = resolve(dirname, filename);
 
-      expect(resolvedPath).toBe(expectedPath);
+      if (process.platform === 'win32') {
+        // On Windows it should start with a drive letter
+        const regexPattern = new RegExp(`^[A-Za-z]:${expectedPath}$`);
+        expect(resolvedPath).toMatch(regexPattern);
+      } else {
+        expect(resolvedPath).toBe(expectedPath);
+      }
     });
   });
 

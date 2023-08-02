@@ -1,7 +1,7 @@
 import mockFs from 'mock-fs';
 
+import { normalizePathToPosix, resolve } from '../convenience';
 import {
-  resolve,
   collect,
   traverse,
   removeTests,
@@ -68,7 +68,8 @@ describe('collect works as intended', () => {
     const ignoreTests = true;
 
     let collected: string[] = collect(fullpath, extensions, ignoredExtensions, ignoreTests);
-    collected = collected.map((path: string) => path.replace(process.cwd(), ''));
+    const root = normalizePathToPosix(process.cwd());
+    collected = collected.map((path: string) => path.replace(root, ''));
 
     const expected = [
       '/src/tests/test-directory/nested/one.js',
@@ -88,7 +89,8 @@ describe('traverse works as intended', () => {
     const fullpath: string = resolve(__dirname, './test-directory');
 
     let collected: string[] = traverse(fullpath, []);
-    collected = collected.map((path) => path.replace(process.cwd(), ''));
+    const root = normalizePathToPosix(process.cwd());
+    collected = collected.map((path: string) => path.replace(root, ''));
 
     const expected = [
       '/src/tests/test-directory/nested/one.js',
@@ -104,6 +106,7 @@ describe('traverse works as intended', () => {
     expect(collected).toEqual(expected);
   });
 });
+
 describe('readDirectory works as intended', () => {
   test('', () => {
     const src: string = resolve(__dirname, './test-directory');
@@ -117,7 +120,8 @@ describe('readDirectory works as intended', () => {
     };
 
     let collected: Directory = readDirectory(opts);
-    collected.forEach((file) => (file[0] = file[0].replace(process.cwd(), '')));
+    const root = normalizePathToPosix(process.cwd());
+    collected.forEach((file) => (file[0] = file[0].replace(root, '')));
 
     const expected = [
       ['/src/tests/test-directory/nested/one.js', ''],
