@@ -27,7 +27,6 @@ jobs:
       - name: Setup Node.js 16
         uses: actions/setup-node@v3
         with:
-          registry-url: https://npm.pkg.github.com/
           node-version: 16
           cache: pnpm
 
