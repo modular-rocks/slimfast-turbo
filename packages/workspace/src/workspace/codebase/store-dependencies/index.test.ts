@@ -1,3 +1,5 @@
+import { describe, expect, test } from 'vitest';
+
 import storeDependencies from '.';
 import Codebase from '..';
 

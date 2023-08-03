@@ -18,9 +18,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
-    "test": "jest",
-    "lint": "eslint src --ext .ts --fix"
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint src --ext .ts --fix",
+    "test": "vitest run",
+    "coverage": "vitest --coverage run"
   },
   "dependencies": {
     "@modular-rocks/traverse-files": "workspace:*"

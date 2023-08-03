@@ -1,5 +1,6 @@
 {
   "include": ["src"],
+  "exclude": ["**/*.test.ts", "**/tests", "**/*.mock.ts"],
   "extends": "tsconfig/tsconfig.json",
   "compilerOptions": {
     "target": "es2016",
