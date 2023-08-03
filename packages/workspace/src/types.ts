@@ -1,5 +1,7 @@
+import type FileContainer from './workspace/codebase/file';
+
 export interface RandomObject extends Record<string, any> {}
-export interface FilesContainer extends Record<string, FileContainerType> {}
+export interface FilesContainer extends Record<string, FileContainer> {}
 
 export type Options = {
   pipeline?: Function[];
@@ -22,48 +24,6 @@ export interface CodebaseOpts extends Options {
 
 export type WorkspaceType = {
   opts: WorkspaceOpts;
-};
-
-export type CodebaseType = {
-  src: string;
-  extensions: string[];
-  ignoredFiles: string[];
-  ignoredImports: string[];
-  files: FilesContainer;
-  rootName: string;
-  srcWithoutRoot: string;
-  package: PackageContents;
-  dependencies: string[];
-  opts: Options;
-  replaceRoot: Function;
-  saveFile: Function;
-  fromJson: Function;
-  extractFiles: Function;
-  save: Function;
-  addFile: Function;
-  makeDirectory: Function;
-};
-
-// TODO: Use more explicit types (avoid the use of Function)
-export type FileContainerType = {
-  pathname: string;
-  fullPath: string;
-  type?: string;
-  code: string;
-  simple: Boolean;
-  hasParent: Boolean;
-  codebase: CodebaseType;
-  store: FileStore;
-  ast?: any;
-  parse: Function;
-  updateCode: Function;
-  print: Function;
-  astToCode: Function;
-  codeToAST: Function;
-  spawn: Function;
-  tooSimple: Function;
-  addImport: (importStatement?: any) => boolean;
-  save: Function;
 };
 
 export type Custom = {

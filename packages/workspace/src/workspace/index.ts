@@ -1,7 +1,8 @@
 import { readDirectory } from '@modular-rocks/traverse-files';
 import runPipeline from './pipeline';
 
-import type { FileContainerType, WorkspaceOpts } from '../types';
+import type { WorkspaceOpts } from '../types';
+import type FileContainer from './codebase/file';
 
 export default class Workspace {
   opts: WorkspaceOpts;
@@ -17,7 +18,7 @@ export default class Workspace {
     }
   }
 
-  async pipeline(files: FileContainerType[], pipeline: Function[] | undefined, opts: WorkspaceOpts) {
+  async pipeline(files: FileContainer[], pipeline: Function[] | undefined, opts: WorkspaceOpts) {
     return runPipeline(files, pipeline, opts, this);
   }
 }

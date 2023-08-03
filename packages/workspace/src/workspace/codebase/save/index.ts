@@ -1,7 +1,9 @@
 import fs from 'fs';
 import { dirname } from 'path';
 
-import type { CodebaseType, FileContainerType, RandomObject } from '../../../types';
+import type Codebase from '..';
+import type { RandomObject } from '../../../types';
+import FileContainer from '../file';
 
 const createFile = (pathname: string, contents: string) => {
   fs.createWriteStream(pathname).write(contents);
@@ -30,7 +32,7 @@ export const saveToJSON = (pathname: string, data: RandomObject) => {
   createDir(pathname, toJson(data));
 };
 
-export const fromFile = (pathname: string, codebase: CodebaseType) => {
+export const fromFile = (pathname: string, codebase: Codebase) => {
   fs.readFile(pathname, { encoding: 'utf-8' }, function (err: NodeJS.ErrnoException | null, data: string) {
     if (err) {
       console.error(err);
@@ -45,7 +47,7 @@ export const fromFile = (pathname: string, codebase: CodebaseType) => {
   });
 };
 
-export const toFile = (file: FileContainerType) => {
+export const toFile = (file: FileContainer) => {
   const { pathname: path, code } = file;
   createDir(path, code);
 };
