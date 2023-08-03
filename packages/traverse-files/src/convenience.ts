@@ -1,5 +1,5 @@
+import { readFileSync, readdirSync, statSync } from 'fs';
 import { resolve as pathResolve, posix, sep } from 'path';
-import { readFileSync, statSync, readdirSync } from 'fs';
 
 /**
  * Reads the content of a file and returns it as a string.

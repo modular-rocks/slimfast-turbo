@@ -1,14 +1,15 @@
 import mockFs from 'mock-fs';
+import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
 import { normalizePathToPosix, resolve } from '../convenience';
 import {
   collect,
-  traverse,
-  removeTests,
-  removeExtensions,
-  removeIgnoredExtensions,
   readDirectory,
   readJSONFile,
+  removeExtensions,
+  removeIgnoredExtensions,
+  removeTests,
+  traverse,
 } from '../index';
 
 import type { Directory, Options, RandomObject } from '../types';

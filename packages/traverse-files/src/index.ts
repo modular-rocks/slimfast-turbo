@@ -1,6 +1,6 @@
-import { extname, basename, posix } from 'path';
+import { basename, extname, posix } from 'path';
 
-import { read, readFilesInDirectory, isDirectory } from './convenience';
+import { isDirectory, read, readFilesInDirectory } from './convenience';
 
 import type { Directory, Options, RandomObject } from './types';
 

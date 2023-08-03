@@ -18,8 +18,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
-    "test": "jest"
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "coverage": "vitest --coverage run"
   },
   "peerDependencies": {},
   "dependencies": {},
