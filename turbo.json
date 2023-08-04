@@ -4,23 +4,34 @@
     "build": {
       "cache": false,
       "dependsOn": ["^build"],
-      "outputs": [".dist/**"]
+      "outputs": ["dist/**"]
     },
-    "deploy": {
-      "cache": false
+    "build:prod": {
+      "cache": false,
+      "dependsOn": ["^build:prod"],
+      "outputs": ["dist/**"]
+    },
+    "build:w": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "persistent": true
     },
     "test": {
       "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "test:w": {
+      "cache": false,
       "dependsOn": ["^build"],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+      "persistent": true
     },
     "coverage": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
     },
     "lint": {},
-    "dev": {
-      "cache": false,
-      "persistent": true
-    }
+    "dev": {}
   }
 }

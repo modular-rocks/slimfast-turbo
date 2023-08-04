@@ -18,8 +18,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
+    "build": "tsc -p tsconfig.json",
+    "build:w": "tsc -p tsconfig.json -w",
+    "build:prod": "tsc -p tsconfig.prod.json",
     "test": "jest",
+    "test:w": "jest --watch",
     "lint": "eslint src --ext .ts --fix"
   },
   "dependencies": {

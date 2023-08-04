@@ -19,8 +19,11 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "build:w": "tsc -p tsconfig.json -w",
+    "build:prod": "tsc -p tsconfig.prod.json",
     "lint": "eslint src --ext .ts --fix",
     "test": "vitest run",
+    "test:w": "vitest",
     "coverage": "vitest --coverage run"
   },
   "dependencies": {
