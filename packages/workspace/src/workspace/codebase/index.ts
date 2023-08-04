@@ -1,12 +1,13 @@
 import { basename, dirname } from 'path';
 
 import copy from './copy';
+import type { default as FileContainerType } from './file';
 import FileContainer from './file';
 import makeDirectory from './make-directory';
 import { fromFile, fromJson, saveFile, saveToJSON, toFile } from './save';
 import storeDependencies from './store-dependencies';
 
-import type { CodebaseOpts, FileContainerType, FilesContainer, PackageContents, RandomObject } from '../../types';
+import type { CodebaseOpts, FilesContainer, PackageContents, RandomObject } from '../../types';
 
 export default class Codebase {
   src: string;

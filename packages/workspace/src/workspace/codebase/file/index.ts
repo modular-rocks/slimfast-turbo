@@ -1,6 +1,7 @@
 import { dirname } from 'path';
 
-import type { CodebaseType, FileStore } from '../../../types';
+import type Codebase from '..';
+import type { FileStore } from '../../../types';
 
 interface ProvisionalFile {
   pathname: string;
@@ -21,13 +22,13 @@ export default class FileContainer {
 
   hasParent: Boolean;
 
-  codebase: CodebaseType;
+  codebase: Codebase;
 
   store: FileStore;
 
   ast?: any;
 
-  constructor(path: string, code: string, codebase: CodebaseType) {
+  constructor(path: string, code: string, codebase: Codebase) {
     this.codebase = codebase;
     this.pathname = codebase.replaceRoot(path);
     this.fullPath = path;
@@ -47,7 +48,7 @@ export default class FileContainer {
     return {};
   }
 
-  astToCode(ast: any) {
+  astToCode(ast?: any) {
     return '';
   }
 

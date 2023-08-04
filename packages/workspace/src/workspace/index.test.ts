@@ -85,6 +85,7 @@ describe('Workspace base', () => {
     ];
     expect(JSON.stringify(output)).toBe(JSON.stringify(result));
   }, 8000);
+
   test('Default options adds an empty array for files', async () => {
     const output: OutputIteration[] = [];
     const opts: WorkspaceOpts = {

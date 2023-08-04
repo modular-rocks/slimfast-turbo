@@ -1,6 +1,6 @@
-import type { CodebaseType } from '../../../types';
+import type Codebase from '..';
 
-export default (codebase: CodebaseType, dependencyKeys: string[]) => {
+export default (codebase: Codebase, dependencyKeys: string[]) => {
   const dependencies: Map<string, string> = new Map();
   dependencyKeys.forEach((key: string) => {
     if (codebase.package[key]) {
