@@ -7,10 +7,10 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "clean": "turbo daemon clean",
-    "build:f": "turbo run build --force",
+    "build:w": "turbo run build:w",
+    "build:prod": "turbo run build:prod",
     "test": "turbo run test",
-    "test:f": "turbo run test --force",
+    "test:w": "turbo run test:w",
     "coverage": "turbo run coverage",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
