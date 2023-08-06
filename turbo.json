@@ -31,7 +31,9 @@
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"]
     },
-    "lint": {},
+    "lint": {
+      "cache": false
+    },
     "dev": {}
   }
 }

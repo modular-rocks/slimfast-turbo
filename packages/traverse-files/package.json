@@ -23,7 +23,8 @@
     "build:prod": "tsc -p tsconfig.prod.json",
     "test": "vitest run",
     "test:w": "vitest",
-    "coverage": "vitest --coverage run"
+    "coverage": "vitest --coverage run",
+    "lint": "echo \"ESLint configuration pending...\""
   },
   "peerDependencies": {},
   "dependencies": {},

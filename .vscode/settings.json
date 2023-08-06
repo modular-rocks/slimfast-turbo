@@ -1,0 +1,10 @@
+{
+  // ESLint configuration for monorepo packages
+  "eslint.workingDirectories": [
+    "./packages/traverse-files",
+    "./packages/workspace",
+    "./packages/workspace-node",
+    "./packages/slimfast",
+    "./packages/slimfast-node"
+  ]
+}

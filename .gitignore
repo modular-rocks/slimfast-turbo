@@ -44,7 +44,6 @@ jspm_packages
 .node_repl_history
 
 # Editors (any Editor generated settings)
-.vscode
 .idea
 
 # Package - Generated after running npm pack or yarn pack.
