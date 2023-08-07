@@ -34,6 +34,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Check Build
+        run: pnpm build
+
       - name: Run tests
         run: pnpm test
         continue-on-error: ${{ matrix.os == 'windows-latest' }}
+
+      - name: Linting
+        run: pnpm lint

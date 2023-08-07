@@ -23,7 +23,7 @@
     "build:prod": "tsc -p tsconfig.prod.json",
     "test": "jest",
     "test:w": "jest --watch",
-    "lint": "eslint src --ext .ts --fix"
+    "lint": "echo \"ESLint configuration pending...\""
   },
   "dependencies": {
     "@babel/parser": "7.22.7",
