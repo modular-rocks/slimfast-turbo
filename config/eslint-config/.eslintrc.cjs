@@ -16,9 +16,9 @@ module.exports = {
     '@typescript-eslint/no-require-imports': 'error',
     'prettier/prettier': [
       'error',
-      {},
       {
         usePrettierrc: true,
+        endOfLine: 'auto',
       },
     ],
     'import/extensions': [
