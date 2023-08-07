@@ -96,6 +96,9 @@ importers:
       '@babel/types':
         specifier: 7.22.4
         version: 7.22.4
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../../config/eslint-config
       jest-config:
         specifier: workspace:*
         version: link:../../config/jest-config
@@ -133,6 +136,9 @@ importers:
       '@types/babel__traverse':
         specifier: 7.20.1
         version: 7.20.1
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../../config/eslint-config
       jest-config:
         specifier: workspace:*
         version: link:../../config/jest-config
@@ -142,6 +148,9 @@ importers:
 
   packages/traverse-files:
     devDependencies:
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../../config/eslint-config
       jest-config:
         specifier: workspace:*
         version: link:../../config/jest-config
@@ -155,6 +164,9 @@ importers:
         specifier: workspace:*
         version: link:../traverse-files
     devDependencies:
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../../config/eslint-config
       jest-config:
         specifier: workspace:*
         version: link:../../config/jest-config
@@ -189,6 +201,9 @@ importers:
       '@types/babel__traverse':
         specifier: 7.20.1
         version: 7.20.1
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../../config/eslint-config
       jest-config:
         specifier: workspace:*
         version: link:../../config/jest-config

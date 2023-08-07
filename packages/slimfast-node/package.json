@@ -23,7 +23,7 @@
     "build:prod": "tsc -p tsconfig.prod.json",
     "test": "jest",
     "test:w": "jest --watch",
-    "lint": "echo \"ESLint configuration pending...\""
+    "lint": "eslint ."
   },
   "dependencies": {
     "@babel/parser": "7.22.7",
@@ -38,6 +38,7 @@
     "@babel/types": "7.22.4",
     "@types/babel__traverse": "7.20.1",
     "@types/array-unique": "0.3.0",
+    "eslint-config-custom": "workspace:*",
     "jest-config": "workspace:*",
     "tsconfig": "workspace:*"
   },

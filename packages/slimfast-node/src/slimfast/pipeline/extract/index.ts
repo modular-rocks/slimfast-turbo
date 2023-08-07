@@ -1,7 +1,7 @@
-import t from '@babel/types';
 import { NodePath } from '@babel/traverse';
+import t from '@babel/types';
 
-import Visitor from '../../visitors/visitor';
+import type Visitor from '../../visitors/visitor';
 
 interface Data {
   [property: string]: string;
@@ -33,8 +33,10 @@ export default (visitors: Visitor[]) =>
 
     const extracted: Map<NodePath, any> = new Map();
 
-    visitors.forEach((visitor: any) => {
-      new visitor(file.ast, options, state, extracted);
+    visitors.forEach((Visitor: any) => {
+      // TODO: fix ESLint error
+      // eslint-disable-next-line no-new
+      new Visitor(file.ast, options, state, extracted);
     });
 
     file.store.extractions = Array.from(extracted);

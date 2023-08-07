@@ -1,12 +1,13 @@
-import unique from 'array-unique';
-import { resolve, dirname, extname } from 'path';
-import { program } from '@babel/types';
-import { NodePath } from '@babel/traverse';
+import { dirname, extname, resolve } from 'path';
 
-import wrap from './wrap';
-import replaceInOriginalFile from './replace';
-import importStatement from './import-statement';
+import { NodePath } from '@babel/traverse';
+import { program } from '@babel/types';
+import unique from 'array-unique';
+
 import combineImports from './combine-imports';
+import importStatement from './import-statement';
+import replaceInOriginalFile from './replace';
+import wrap from './wrap';
 
 export default (path: NodePath, data: RandomObject, parentPath: string, options: SlimFastOpts) => {
   const { name, folder, toImport } = data;

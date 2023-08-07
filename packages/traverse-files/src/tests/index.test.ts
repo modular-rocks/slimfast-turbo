@@ -120,9 +120,11 @@ describe('readDirectory works as intended', () => {
       ignoredFiles,
     };
 
-    let collected: Directory = readDirectory(opts);
+    const collected: Directory = readDirectory(opts);
     const root = normalizePathToPosix(process.cwd());
-    collected.forEach((file) => (file[0] = file[0].replace(root, '')));
+    collected.forEach((file) => {
+      file[0] = file[0].replace(root, '');
+    });
 
     const expected = [
       ['/src/tests/test-directory/nested/one.js', ''],

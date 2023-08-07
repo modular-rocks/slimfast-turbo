@@ -24,11 +24,12 @@
     "test": "vitest run",
     "test:w": "vitest",
     "coverage": "vitest --coverage run",
-    "lint": "echo \"ESLint configuration pending...\""
+    "lint": "eslint ."
   },
   "peerDependencies": {},
   "dependencies": {},
   "devDependencies": {
+    "eslint-config-custom": "workspace:*",
     "jest-config": "workspace:*",
     "tsconfig": "workspace:*"
   },
