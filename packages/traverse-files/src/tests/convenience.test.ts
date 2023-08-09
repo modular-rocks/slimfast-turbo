@@ -1,5 +1,7 @@
-import mockFs from 'mock-fs';
 import { posix } from 'path';
+
+import mockFs from 'mock-fs';
+
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { isDirectory, read, readFilesInDirectory, resolve } from '../convenience';

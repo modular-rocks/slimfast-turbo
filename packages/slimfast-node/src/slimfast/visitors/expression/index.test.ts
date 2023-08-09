@@ -32,6 +32,8 @@ describe('Slimfast Node', () => {
     const ast = parser(code);
     const extracted: Map<NodePath, any> = new Map();
 
+    // TODO: fix ESLint error
+    // eslint-disable-next-line no-new
     new Visitor(ast, opts, {}, extracted);
 
     expect(extracted.size).toBe(2);

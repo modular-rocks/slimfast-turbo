@@ -23,13 +23,14 @@
     "build:prod": "tsc -p tsconfig.prod.json",
     "test": "jest",
     "test:w": "jest --watch",
-    "lint": "echo \"ESLint configuration pending...\""
+    "lint": "eslint ."
   },
   "dependencies": {
     "@modular-rocks/workspace": "workspace:*"
   },
   "devDependencies": {
     "@babel/types": "7.22.4",
+    "eslint-config-custom": "workspace:*",
     "jest-config": "workspace:*",
     "tsconfig": "workspace:*"
   },

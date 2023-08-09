@@ -1,18 +1,18 @@
+import { dirname, relative, resolve } from 'path';
+
+import { Binding } from '@babel/traverse';
 import {
-  importSpecifier,
+  ImportDefaultSpecifier,
+  ImportNamespaceSpecifier,
+  ImportSpecifier,
   identifier,
   importDeclaration,
-  stringLiteral,
   importDefaultSpecifier,
+  importSpecifier,
   isImportDefaultSpecifier,
-  ImportDefaultSpecifier,
-  ImportSpecifier,
-  ImportNamespaceSpecifier,
+  stringLiteral,
 } from '@babel/types';
 import unique from 'array-unique';
-import { Binding } from '@babel/traverse';
-
-import { resolve, dirname, relative } from 'path';
 
 interface Entry {
   default?: string | null;

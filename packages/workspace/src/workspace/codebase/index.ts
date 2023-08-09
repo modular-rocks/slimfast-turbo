@@ -1,7 +1,7 @@
 import { basename, dirname } from 'path';
 
 import copy from './copy';
-import type { default as FileContainerType } from './file';
+import type FileContainerType from './file';
 import FileContainer from './file';
 import makeDirectory from './make-directory';
 import { fromFile, fromJson, saveFile, saveToJSON, toFile } from './save';
