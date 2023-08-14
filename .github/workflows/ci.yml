@@ -6,6 +6,7 @@ on:
       - main
       - next
   pull_request:
+  merge_group:
 
 jobs:
   build-and-test:
