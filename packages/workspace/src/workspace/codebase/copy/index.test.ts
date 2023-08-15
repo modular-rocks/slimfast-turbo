@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import copy from '.';
+import { copy } from '.';
 
 const str = JSON.stringify;
 

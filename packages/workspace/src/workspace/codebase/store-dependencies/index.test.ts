@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
-import storeDependencies from '.';
-import Codebase from '..';
+import { storeDependencies } from '.';
+import { Codebase } from '..';
 
 import type { CodebaseOpts } from '../../../types';
 

@@ -1,9 +1,9 @@
 import fs from 'fs';
 import { dirname } from 'path';
 
-import type Codebase from '..';
+import type { Codebase } from '..';
 import type { RandomObject } from '../../../types';
-import FileContainer from '../file';
+import type { FileContainer } from '../file';
 
 const createFile = (pathname: string, contents: string) => {
   fs.createWriteStream(pathname).write(contents);
