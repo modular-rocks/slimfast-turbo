@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
-import runPipeline from '.';
-import Workspace from '..';
-import Codebase from '../codebase';
+import { pipeline as runPipeline } from '.';
+import { Workspace } from '..';
+import { Codebase } from '../codebase';
 
 import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../../types';
 

@@ -1,5 +1,5 @@
 import type { State, WorkspaceOpts, WorkspaceType } from '../../types';
-import type FileContainer from '../codebase/file';
+import type { FileContainer } from '../codebase/file';
 
 function wait(func: Function, file: FileContainer, state: State, opts: WorkspaceOpts, workspace: WorkspaceType) {
   return new Promise(async (resolve, reject) => {
@@ -41,15 +41,15 @@ const promise = async (
   resolve();
 };
 
-export default async (
+export const pipeline = async (
   files: FileContainer[],
-  pipeline: Function[] | undefined,
+  pipelineFunctions: Function[] | undefined,
   opts: WorkspaceOpts,
   workspace: WorkspaceType
 ) => {
-  if (!pipeline) return false;
+  if (!pipelineFunctions) return false;
 
   return new Promise((resolve) => {
-    promise(files, pipeline, opts, workspace, resolve);
+    promise(files, pipelineFunctions, opts, workspace, resolve);
   });
 };

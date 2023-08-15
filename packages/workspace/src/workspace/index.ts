@@ -1,10 +1,10 @@
 import { readDirectory } from '@modular-rocks/traverse-files';
-import runPipeline from './pipeline';
+import { pipeline as runPipeline } from './pipeline';
 
 import type { WorkspaceOpts } from '../types';
-import type FileContainer from './codebase/file';
+import type { FileContainer } from './codebase/file';
 
-export default class Workspace {
+export class Workspace {
   opts: WorkspaceOpts;
 
   constructor(opts: WorkspaceOpts) {

@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
-import Workspace from '.';
-import Codebase from './codebase';
+import { Workspace } from '.';
+import { Codebase } from './codebase';
 
 import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../types';
 

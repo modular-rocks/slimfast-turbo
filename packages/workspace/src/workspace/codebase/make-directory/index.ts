@@ -1,9 +1,9 @@
 import { basename, dirname, join } from 'path';
 
-import type Codebase from '..';
-import type FileContainer from '../file';
+import type { Codebase } from '..';
+import type { FileContainer } from '../file';
 
-export default (codebase: Codebase, file: FileContainer) => {
+export const makeDirectory = (codebase: Codebase, file: FileContainer) => {
   const filename = basename(file.pathname);
 
   const filenamePieces = filename.split('.');

@@ -1,15 +1,15 @@
 import { dirname } from 'path';
 
-import type Codebase from '..';
+import type { Codebase } from '..';
 import type { FileStore } from '../../../types';
 
-interface ProvisionalFile {
+export type ProvisionalFile = {
   pathname: string;
   ast: any;
   import: any;
-}
+};
 
-export default class FileContainer {
+export class FileContainer {
   pathname: string;
 
   fullPath: string;

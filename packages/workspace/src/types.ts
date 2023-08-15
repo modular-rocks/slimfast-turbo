@@ -1,7 +1,7 @@
-import type FileContainer from './workspace/codebase/file';
+import type { FileContainer } from './workspace/codebase/file';
 
-export interface RandomObject extends Record<string, any> {}
-export interface FilesContainer extends Record<string, FileContainer> {}
+export type RandomObject = Record<string, any>;
+export type FilesContainer = Record<string, FileContainer>;
 
 export type Options = {
   pipeline?: Function[];
@@ -27,7 +27,7 @@ export type WorkspaceType = {
 };
 
 export type Custom = {
-  [propter: string]: any;
+  [property: string]: any;
 };
 
 export type State = {
@@ -40,7 +40,7 @@ export type FileStore = {
   [property: string]: any;
 };
 
-// Can take any shape, generately has to be an Object like Node packages
+// Can take any shape, generally has to be an Object like Node packages
 // Ports to any other languages can be formatted
 export type PackageContents = {
   [property: string]: any;

@@ -1,8 +1,8 @@
 import { normalize } from 'path';
 import { describe, expect, test } from 'vitest';
 
-import makeDirectory from '.';
-import Codebase from '..';
+import { makeDirectory } from '.';
+import { Codebase } from '..';
 
 import type { CodebaseOpts } from '../../../types';
 

@@ -39,8 +39,8 @@ module.exports = {
     'no-async-promise-executor': 'off',
     '@typescript-eslint/no-useless-constructor': 'off',
     'import/no-cycle': 'off',
-    // needed for the monorepo
-    'import/no-extraneous-dependencies': 'off',
+    'import/no-extraneous-dependencies': 'off', // needed for the monorepo
+    'import/prefer-default-export': 'off',
   },
 
   ignorePatterns: ['.eslintrc.cjs', 'jest.config.js', 'dist', 'turbo', 'coverage'],
