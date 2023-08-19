@@ -14,13 +14,13 @@ export type Options = {
   custom?: Custom;
 };
 
-export interface WorkspaceOpts extends Options {
+export type WorkspaceOpts = Options & {
   files?: [string, string][];
-}
+};
 
-export interface CodebaseOpts extends Options {
+export type CodebaseOpts = Options & {
   files: [string, string][];
-}
+};
 
 export type WorkspaceType = {
   opts: WorkspaceOpts;
