@@ -26,13 +26,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@babel/parser": "7.22.7",
-    "@babel/traverse": "7.22.8",
-    "@babel/types": "7.22.5",
+    "@babel/parser": "7.22.10",
+    "@babel/traverse": "7.22.10",
+    "@babel/types": "7.22.10",
     "@modular-rocks/metrics-ts-js": "0.2.3-development",
     "@modular-rocks/traverse-files": "workspace:*",
     "@modular-rocks/workspace": "workspace:*",
-    "recast": "0.23.2"
+    "recast": "0.23.4"
   },
   "devDependencies": {
     "@types/babel__traverse": "7.20.1",
