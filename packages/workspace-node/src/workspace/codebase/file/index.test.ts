@@ -1,4 +1,7 @@
 import { identifier, importDeclaration, importDefaultSpecifier, stringLiteral } from '@babel/types';
+
+import type { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
+
 import Codebase from '..';
 
 const str = JSON.stringify;

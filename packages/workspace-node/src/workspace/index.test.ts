@@ -1,3 +1,5 @@
+import type { CodebaseOpts, WorkspaceOpts } from '@modular-rocks/workspace/dist/types/types';
+
 import Workspace from '.';
 import Codebase from './codebase';
 
