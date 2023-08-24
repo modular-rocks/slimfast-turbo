@@ -1,6 +1,6 @@
-import type { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
-
 import Codebase from '.';
+
+import { CodebaseOpts } from '../../types';
 
 const str = JSON.stringify;
 

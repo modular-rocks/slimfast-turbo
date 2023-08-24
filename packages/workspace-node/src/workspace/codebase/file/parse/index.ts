@@ -1,6 +1,6 @@
 import { parse } from '@babel/parser';
 
-import type { RandomObject } from '@modular-rocks/traverse-files/dist/types/types';
+import { RandomObject } from '../../../../types';
 
 const babelConfig: RandomObject = {
   sourceType: 'module',

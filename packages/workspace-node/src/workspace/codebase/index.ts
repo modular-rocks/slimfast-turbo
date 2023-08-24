@@ -1,8 +1,8 @@
 import { Codebase as CodebaseBase } from '@modular-rocks/workspace';
 
-import type { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
-
 import FileContainer from './file';
+
+import { CodebaseOpts } from '../../types';
 
 export default class Codebase extends CodebaseBase {
   constructor(opts: CodebaseOpts) {
