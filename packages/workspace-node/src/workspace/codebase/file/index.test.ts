@@ -2,6 +2,7 @@ import { identifier, importDeclaration, importDefaultSpecifier, stringLiteral } 
 
 import { Codebase } from '..';
 
+import { FileContainer } from '.';
 import type { CodebaseOpts } from '../../../types';
 
 const str = JSON.stringify;
@@ -43,4 +44,64 @@ describe('FileContainer', () => {
 
     expect(file.print()).toBe('import myModule from "my-module";\nexport default x => x * x;');
   }, 7000);
+});
+
+describe('FileContainer - getDominantEOL', () => {
+  const opts: CodebaseOpts = {
+    pipeline: [],
+    files: [],
+    src: '/home/projects/project/',
+    extensions: [],
+    ignoredFiles: [],
+    ignoredImports: [],
+    packageContents: {},
+  };
+
+  test('Should identify Windows (CRLF) EOL', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = "'Hello\r\nWorld\r\n'";
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+    expect(fileContainer.getDominantEOL()).toBe('\r\n');
+  });
+
+  test('Should identify Unix (LF) EOL', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = "'Hello\nWorld\n'";
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+    expect(fileContainer.getDominantEOL()).toBe('\n');
+  });
+
+  test('Should identify old Mac (CR) EOL', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = "'Hello\rWorld\r'";
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+    expect(fileContainer.getDominantEOL()).toBe('\r');
+  });
+
+  test('Should default to LF for mixed EOLs with a tie', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = "'Hello\r\nWorld\n'";
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+    expect(fileContainer.getDominantEOL()).toBe('\n');
+  });
+
+  test('Should default to given EOL for mixed EOLs with a tie', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = "'Hello\r\nWorld\r'";
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+    expect(fileContainer.getDominantEOL('\r')).toBe('\r');
+  });
+
+  test('Should default to LF for no newlines', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = "'HelloWorld'";
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+    expect(fileContainer.getDominantEOL()).toBe('\n');
+  });
 });
