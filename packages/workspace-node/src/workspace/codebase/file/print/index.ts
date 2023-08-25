@@ -1,4 +1,4 @@
-import { print } from 'recast';
 import type { Options, types } from 'recast';
+import { print as recastPrinter } from 'recast';
 
-export default (ast: types.ASTNode, opts?: Options) => print(ast, opts);
+export const print = (ast: types.ASTNode, opts?: Options) => recastPrinter(ast, opts);

@@ -1,6 +1,5 @@
-import Workspace from './workspace';
-import FileContainer from './workspace/codebase/file';
-import Codebase from './workspace/codebase';
+import { Workspace } from './workspace';
+import { Codebase } from './workspace/codebase';
+import { FileContainer } from './workspace/codebase/file';
 
-export { Workspace, FileContainer, Codebase };
-export default Workspace;
+export { Codebase, FileContainer, Workspace };

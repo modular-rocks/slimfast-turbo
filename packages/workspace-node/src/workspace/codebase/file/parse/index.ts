@@ -1,11 +1,12 @@
-import { parse } from '@babel/parser';
+import { parse as babelParser } from '@babel/parser';
 
 import { RandomObject } from '../../../../types';
 
+// TODO: check type
 const babelConfig: RandomObject = {
   sourceType: 'module',
   createParenthesizedExpressions: true,
   plugins: ['jsx', ['typescript', { isTSX: true }], 'babel-plugin-recast'],
 };
 
-export default (code: string) => parse(code, babelConfig);
+export const parse = (code: string) => babelParser(code, babelConfig);
