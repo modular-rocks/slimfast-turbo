@@ -1,5 +1,5 @@
-import Workspace from '.';
-import Codebase from './codebase';
+import { Workspace } from '.';
+import { Codebase } from './codebase';
 
 import type { CodebaseOpts, WorkspaceOpts } from '../types';
 

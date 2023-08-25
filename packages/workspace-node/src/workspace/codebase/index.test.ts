@@ -1,4 +1,4 @@
-import Codebase from '.';
+import { Codebase } from '.';
 
 import { CodebaseOpts } from '../../types';
 
