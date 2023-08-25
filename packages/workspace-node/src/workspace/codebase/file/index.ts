@@ -21,7 +21,7 @@ export class FileContainer extends FileContainerBase {
   }
 
   /**
-   * Determines the dominant end-of-line (EOL) sequence in the given code.
+   * Determines the dominant end-of-line (EOL) sequence in the current code.
    *
    * There are three primary EOL sequences across different operating systems:
    * - \r\n (CRLF) - Mainly used on Windows
