@@ -1,4 +1,5 @@
 import { identifier, importDeclaration, importDefaultSpecifier, stringLiteral } from '@babel/types';
+import { describe, expect, test } from 'vitest';
 
 import { Codebase } from '..';
 
