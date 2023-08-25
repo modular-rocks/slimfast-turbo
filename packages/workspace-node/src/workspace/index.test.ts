@@ -1,6 +1,8 @@
 import Workspace from '.';
 import Codebase from './codebase';
 
+import type { CodebaseOpts, WorkspaceOpts } from '../types';
+
 type OutPutIteration = [number, number];
 
 const normalFunction = (i: number, time: number, output: OutPutIteration[]) => {

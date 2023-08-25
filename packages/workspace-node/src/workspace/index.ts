@@ -1,6 +1,8 @@
 import { readJSONFile } from '@modular-rocks/traverse-files';
 import { Workspace as WorkspaceBase } from '@modular-rocks/workspace';
 
+import type { WorkspaceOpts } from '../types';
+
 export default class Workspace extends WorkspaceBase {
   constructor(opts: WorkspaceOpts) {
     super(opts);

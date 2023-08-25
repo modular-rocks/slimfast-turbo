@@ -1,5 +1,7 @@
 import { parse } from '@babel/parser';
 
+import { RandomObject } from '../../../../types';
+
 const babelConfig: RandomObject = {
   sourceType: 'module',
   createParenthesizedExpressions: true,

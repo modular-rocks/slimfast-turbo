@@ -1,5 +1,7 @@
 import Codebase from '.';
 
+import { CodebaseOpts } from '../../types';
+
 const str = JSON.stringify;
 
 describe('Codebase', () => {

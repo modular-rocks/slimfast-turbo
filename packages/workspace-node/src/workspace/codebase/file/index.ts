@@ -1,18 +1,11 @@
-import { Node } from '@babel/traverse';
 import t from '@babel/types';
 import { FileContainer as FileContainerBase } from '@modular-rocks/workspace';
 
 import Codebase from '..';
 
-import print from './print';
 import parse from './parse';
+import print from './print';
 import tooSimple from './too-simple';
-
-interface ProvisionalFile {
-  pathname: string;
-  ast: Node;
-  import: t.Statement;
-}
 
 export default class FileContainer extends FileContainerBase {
   ast?: t.File;
