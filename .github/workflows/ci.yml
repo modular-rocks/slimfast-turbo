@@ -40,7 +40,6 @@ jobs:
 
       - name: Run tests
         run: pnpm test
-        continue-on-error: ${{ matrix.os == 'windows-latest' }}
 
       - name: Linting
         run: pnpm lint
