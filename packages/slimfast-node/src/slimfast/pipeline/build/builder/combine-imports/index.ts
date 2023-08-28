@@ -1,4 +1,4 @@
-import { dirname, relative, resolve } from 'path';
+import { dirname, relative, resolve } from 'path/posix';
 
 import { Binding } from '@babel/traverse';
 import {

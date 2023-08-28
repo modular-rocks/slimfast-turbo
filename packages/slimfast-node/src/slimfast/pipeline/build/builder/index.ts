@@ -1,4 +1,4 @@
-import { dirname, extname, resolve } from 'path';
+import { dirname, extname, resolve } from 'path/posix';
 
 import { NodePath } from '@babel/traverse';
 import { program } from '@babel/types';
