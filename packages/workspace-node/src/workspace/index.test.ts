@@ -40,7 +40,10 @@ describe('Workspace base', () => {
       asyncFunction(6, 800, output),
     ];
 
-    const files: [string, string][] = [1, 2, 3].map((x: number) => [`/path${x}`, '']);
+    const files: [string, string][] = [1, 2, 3].map((x: number) => [
+      `/path${x}`,
+      '',
+    ]);
     const opts: WorkspaceOpts = {
       pipeline,
       files,

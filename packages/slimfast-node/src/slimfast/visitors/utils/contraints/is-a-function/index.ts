@@ -1,6 +1,11 @@
 import { NodePath, Node } from '@babel/traverse';
 
-export default (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
+export default (
+  path: NodePath,
+  data: RandomObject,
+  opts: RandomObject,
+  ast: Node
+) => {
   return [
     'FunctionDeclaration',
     'FunctionExpression',

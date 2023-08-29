@@ -1,6 +1,11 @@
 import Traverse, { NodePath, Node } from '@babel/traverse';
 
-export default function shouldIgnore(path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) {
+export default function shouldIgnore(
+  path: NodePath,
+  data: RandomObject,
+  opts: RandomObject,
+  ast: Node
+) {
   let shouldNot = false;
 
   const visitor = {

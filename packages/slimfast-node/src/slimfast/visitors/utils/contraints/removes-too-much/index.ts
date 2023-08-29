@@ -1,6 +1,7 @@
 import { NodePath, Node } from '@babel/traverse';
 
-const notANumber = (num: number | null | undefined): boolean => num === null || num === undefined || Number.isNaN(num);
+const notANumber = (num: number | null | undefined): boolean =>
+  num === null || num === undefined || Number.isNaN(num);
 
 const getSize = (node: Node): number => {
   const start = node.start as number;
@@ -9,9 +10,10 @@ const getSize = (node: Node): number => {
   return notANumber(start) || notANumber(end) ? 0 : end - start;
 };
 
-export default (multiplier: number) => (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
-  const astSize = getSize(ast);
-  const size = getSize(path.node);
+export default (multiplier: number) =>
+  (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
+    const astSize = getSize(ast);
+    const size = getSize(path.node);
 
-  return size * multiplier > astSize;
-};
+    return size * multiplier > astSize;
+  };

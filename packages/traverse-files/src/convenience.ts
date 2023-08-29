@@ -7,7 +7,8 @@ import { resolve as pathResolve, posix, sep } from 'path';
  * @returns The content of the file as a string.
  * @throws {Error} If the file does not exist or cannot be read.
  */
-export const read = (filePath: string): string => readFileSync(filePath).toString();
+export const read = (filePath: string): string =>
+  readFileSync(filePath).toString();
 
 /**
  * Converts a directory path to a POSIX-style path by replacing backslashes with forward slashes.
@@ -15,7 +16,8 @@ export const read = (filePath: string): string => readFileSync(filePath).toStrin
  * @param path - The directory path to be converted.
  * @returns The directory path with POSIX-style separators.
  */
-export const normalizePathToPosix = (path: string): string => path.split(sep).join(posix.sep);
+export const normalizePathToPosix = (path: string): string =>
+  path.split(sep).join(posix.sep);
 
 /**
  * Resolves a filename relative to a directory to get the absolute path.
@@ -49,4 +51,5 @@ export const readFilesInDirectory = (directoryPath: string): string[] => {
  * @returns `true` if the path is a directory, `false` otherwise.
  * @throws {Error} If the path does not exist or an error occurs during the check.
  */
-export const isDirectory = (absolutePath: string): boolean => statSync(absolutePath).isDirectory();
+export const isDirectory = (absolutePath: string): boolean =>
+  statSync(absolutePath).isDirectory();

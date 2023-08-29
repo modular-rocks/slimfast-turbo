@@ -84,7 +84,11 @@ export class Workspace {
    * // This would log the name of each file in the filesToProcess array.
    *
    */
-  async pipeline(files: FileContainer[], pipeline: Function[] | undefined, opts: WorkspaceOpts) {
+  async pipeline(
+    files: FileContainer[],
+    pipeline: Function[] | undefined,
+    opts: WorkspaceOpts
+  ) {
     return runPipeline(files, pipeline, opts, this);
   }
 }

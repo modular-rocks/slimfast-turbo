@@ -8,9 +8,9 @@ This is the base, designed for framework specific versions to extend from. The f
 
 `npm install @modular-rocks/slimfast`
 
-or 
+or
 
-`yarn add @modular-rocks/slimfast` 
+`yarn add @modular-rocks/slimfast`
 
 ## Usage
 

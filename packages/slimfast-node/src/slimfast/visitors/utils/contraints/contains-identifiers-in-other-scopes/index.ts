@@ -13,7 +13,12 @@ function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
   return false;
 }
 
-export default (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
+export default (
+  path: NodePath,
+  data: RandomObject,
+  opts: RandomObject,
+  ast: Node
+) => {
   let usedInOtherScopes = false;
 
   if (path.isVariableDeclaration()) {
@@ -24,8 +29,15 @@ export default (path: NodePath, data: RandomObject, opts: RandomObject, ast: Nod
   path.traverse({
     VariableDeclaration(variableDeclarationPath: NodePath | RandomObject) {
       variableDeclarationPath.node.declarations.forEach((declarator: any) => {
-        const binding = variableDeclarationPath.scope.getBinding(declarator.id.name);
-        if (binding && binding.referencePaths.filter((ref: NodePath) => !isInsidePath(ref, path))[0]) {
+        const binding = variableDeclarationPath.scope.getBinding(
+          declarator.id.name
+        );
+        if (
+          binding &&
+          binding.referencePaths.filter(
+            (ref: NodePath) => !isInsidePath(ref, path)
+          )[0]
+        ) {
           usedInOtherScopes = true;
         }
       });

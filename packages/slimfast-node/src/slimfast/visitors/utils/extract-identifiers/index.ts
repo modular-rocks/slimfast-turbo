@@ -2,10 +2,12 @@ import unique from 'array-unique';
 import { NodePath, Node, Binding } from '@babel/traverse';
 
 const importTypes = ['ImportDefaultSpecifier', 'ImportSpecifier'];
-const isImportStatement = (x: Binding) => importTypes.includes(x.path.type) || x.kind === 'module';
+const isImportStatement = (x: Binding) =>
+  importTypes.includes(x.path.type) || x.kind === 'module';
 
 const variableTypes = ['VariableDeclarator'];
-const isVariableDeclaration = (x: Binding) => variableTypes.includes(x.path.type) || x.kind === 'param';
+const isVariableDeclaration = (x: Binding) =>
+  variableTypes.includes(x.path.type) || x.kind === 'param';
 
 const buildBinding = (name: string, binding: Binding): Binding => {
   // need to only return binding
@@ -19,7 +21,12 @@ const buildBinding = (name: string, binding: Binding): Binding => {
   // }
 };
 
-export default (path: NodePath, data: RandomObject, opts?: RandomObject, ast?: Node) => {
+export default (
+  path: NodePath,
+  data: RandomObject,
+  opts?: RandomObject,
+  ast?: Node
+) => {
   const identifiers: Binding[] = [];
 
   path.traverse({

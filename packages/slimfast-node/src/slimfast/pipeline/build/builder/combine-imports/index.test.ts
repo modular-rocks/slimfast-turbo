@@ -45,7 +45,9 @@ describe('Combine imports', () => {
       const imports = unique(data.toImport) as Binding[];
       const combined = combineImports('/path/to', '/path/to/folder', imports);
       const combinedAst = program(combined);
-      expect(file.print(combinedAst)).toBe('import c, { k, v, y, o } from ".././c-module";');
+      expect(file.print(combinedAst)).toBe(
+        'import c, { k, v, y, o } from ".././c-module";'
+      );
       expect(combined.length).toBe(1);
     }
   });
@@ -73,7 +75,11 @@ describe('Combine imports', () => {
       extractIdentifiers(rootPath, data);
       // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
       const imports = unique(data.toImport) as Binding[];
-      const combined = combineImports('/src/path/to', '/src/path/to/folder', imports);
+      const combined = combineImports(
+        '/src/path/to',
+        '/src/path/to/folder',
+        imports
+      );
       const combinedAst = program(combined);
       expect(file.print(combinedAst)).toBe(
         `import c, { k, v, y, o } from ".././c-module";

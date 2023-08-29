@@ -1,6 +1,11 @@
 import unique from 'array-unique';
 import { NodePath } from '@babel/traverse';
-import { exportDefaultDeclaration, functionDeclaration, blockStatement, returnStatement } from '@babel/types';
+import {
+  exportDefaultDeclaration,
+  functionDeclaration,
+  blockStatement,
+  returnStatement,
+} from '@babel/types';
 import hasAwait from '../has-await';
 
 const findBlockStatement = (path: NodePath | RandomObject) => {
@@ -10,7 +15,9 @@ const findBlockStatement = (path: NodePath | RandomObject) => {
   //   return node;
   // }
 
-  return blockStatement([returnStatement(node.expression ? node.expression : node)]);
+  return blockStatement([
+    returnStatement(node.expression ? node.expression : node),
+  ]);
 };
 
 export default (path: NodePath, data: RandomObject) => {

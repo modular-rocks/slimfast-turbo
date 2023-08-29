@@ -23,7 +23,11 @@ export default (path: NodePath, data: RandomObject) => {
     nodes.push(
       variableDeclaration('const', [
         variableDeclarator(
-          objectPattern(toInject.map((x: RandomObject) => objectProperty(x.identifier, x.identifier, false, true))),
+          objectPattern(
+            toInject.map((x: RandomObject) =>
+              objectProperty(x.identifier, x.identifier, false, true)
+            )
+          ),
           identifier('props')
         ),
       ])

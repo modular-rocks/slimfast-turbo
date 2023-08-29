@@ -1,6 +1,7 @@
 import { NodePath, Node } from '@babel/traverse';
 
-const notANumber = (num: number | null | undefined): boolean => num === null || num === undefined || Number.isNaN(num);
+const notANumber = (num: number | null | undefined): boolean =>
+  num === null || num === undefined || Number.isNaN(num);
 
 const getSize = (node: Node): number => {
   const start = node.start as number;
@@ -9,7 +10,11 @@ const getSize = (node: Node): number => {
   return notANumber(start) || notANumber(end) ? 0 : end - start;
 };
 
-export default (multiplier: number, minLength: number, measureIdentifiers?: Boolean) =>
+export default (
+    multiplier: number,
+    minLength: number,
+    measureIdentifiers?: Boolean
+  ) =>
   (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
     multiplier = multiplier || 1.5;
     minLength = minLength || 50;

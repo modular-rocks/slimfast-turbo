@@ -48,9 +48,15 @@ describe('removeExtensions works as intended', () => {
 describe('removeIgnoredExtensions works as intended', () => {
   test('', () => {
     const ignoredExtensions = ['.d.ts', '.d.tsx'];
-    expect(removeIgnoredExtensions(ignoredExtensions)('hello-world.d.ts')).toEqual(false);
-    expect(removeIgnoredExtensions(ignoredExtensions)('hello-world.d.gs')).toEqual(true);
-    expect(removeIgnoredExtensions(ignoredExtensions)('hello-world.ts')).toEqual(true);
+    expect(
+      removeIgnoredExtensions(ignoredExtensions)('hello-world.d.ts')
+    ).toEqual(false);
+    expect(
+      removeIgnoredExtensions(ignoredExtensions)('hello-world.d.gs')
+    ).toEqual(true);
+    expect(
+      removeIgnoredExtensions(ignoredExtensions)('hello-world.ts')
+    ).toEqual(true);
   });
 });
 
@@ -68,7 +74,12 @@ describe('collect works as intended', () => {
     const ignoredExtensions = ['.d.ts', '.d.tsx'];
     const ignoreTests = true;
 
-    let collected: string[] = collect(fullpath, extensions, ignoredExtensions, ignoreTests);
+    let collected: string[] = collect(
+      fullpath,
+      extensions,
+      ignoredExtensions,
+      ignoreTests
+    );
     const root = normalizePathToPosix(process.cwd());
     collected = collected.map((path: string) => path.replace(root, ''));
 

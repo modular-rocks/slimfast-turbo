@@ -16,7 +16,12 @@ export default class Visitor {
 
   state: State;
 
-  constructor(ast: Node | undefined, opts: RandomObject, state: State, extracted: Map<NodePath, any>) {
+  constructor(
+    ast: Node | undefined,
+    opts: RandomObject,
+    state: State,
+    extracted: Map<NodePath, any>
+  ) {
     this.ast = ast;
     this.extracted = extracted;
     this.state = state;
@@ -29,11 +34,20 @@ export default class Visitor {
   }
 
   blocklistedParents(): string[] {
-    return this.opts.blocklistedParents || ['ImportDeclaration', 'TypeParameterDeclaration'];
+    return (
+      this.opts.blocklistedParents || [
+        'ImportDeclaration',
+        'TypeParameterDeclaration',
+      ]
+    );
   }
 
   passesContraints(path: NodePath, data: RandomObject): Boolean {
-    if (this.constraints().some((constraint: Function) => constraint(path, data, this.opts, this.ast))) {
+    if (
+      this.constraints().some((constraint: Function) =>
+        constraint(path, data, this.opts, this.ast)
+      )
+    ) {
       return false;
     }
 

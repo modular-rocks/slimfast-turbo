@@ -10,7 +10,13 @@ export class Codebase extends CodebaseBase {
   }
 
   dependencyKeys(): string[] {
-    return ['dependencies', 'devDependencies', 'peerDependencies', 'bundledDependencies', 'optionalDependencies'];
+    return [
+      'dependencies',
+      'devDependencies',
+      'peerDependencies',
+      'bundledDependencies',
+      'optionalDependencies',
+    ];
   }
 
   newFile(path: string, code: string): FileContainer {

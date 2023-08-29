@@ -90,18 +90,22 @@ export const saveToJSON = async (pathname: string, data: RandomObject) => {
  * // the codebase object will be updated using that data.
  */
 export const fromFile = (pathname: string, codebase: Codebase) => {
-  readFile(pathname, { encoding: 'utf-8' }, function (err: NodeJS.ErrnoException | null, data: string) {
-    if (err) {
-      console.error(err);
-      return;
+  readFile(
+    pathname,
+    { encoding: 'utf-8' },
+    function (err: NodeJS.ErrnoException | null, data: string) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      try {
+        const jsonData: Record<string, unknown> = JSON.parse(data);
+        codebase.fromJson(jsonData);
+      } catch (parseError) {
+        console.error('Could not parse data:', parseError);
+      }
     }
-    try {
-      const jsonData: Record<string, unknown> = JSON.parse(data);
-      codebase.fromJson(jsonData);
-    } catch (parseError) {
-      console.error('Could not parse data:', parseError);
-    }
-  });
+  );
 };
 
 /**

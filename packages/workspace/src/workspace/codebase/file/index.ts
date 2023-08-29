@@ -234,7 +234,11 @@ export class FileContainer {
    * console.log(newFile.pathname); // Outputs: '/path/to/new/file.js'
    */
   spawn(file: ProvisionalFile) {
-    return new FileContainer(file.pathname, this.print(file.ast), this.codebase);
+    return new FileContainer(
+      file.pathname,
+      this.print(file.ast),
+      this.codebase
+    );
   }
 
   /**
