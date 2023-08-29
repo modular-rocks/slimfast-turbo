@@ -2,6 +2,8 @@ import unique from 'array-unique';
 import { program } from '@babel/types';
 import traverse, { NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
+import { describe, expect, test } from 'vitest';
+
 import importStatement from '.';
 import parser from '../../../../visitors/utils/parser';
 

@@ -1,4 +1,6 @@
 import { NodePath } from '@babel/traverse';
+import { describe, expect, test } from 'vitest';
+
 import Visitor from '.';
 import parser from '../utils/parser';
 

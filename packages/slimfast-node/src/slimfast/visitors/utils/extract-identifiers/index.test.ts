@@ -1,4 +1,6 @@
 import traverse, { NodePath, Node, Binding } from '@babel/traverse';
+import { describe, expect, test } from 'vitest';
+
 import extractIdentifiers from './index';
 import parser from '../parser';
 

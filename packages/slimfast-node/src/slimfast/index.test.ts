@@ -1,3 +1,5 @@
+import { describe, expect, test } from 'vitest';
+
 import Slimfast from '.';
 import before from '../../test-results/basic/before';
 import after from '../../test-results/basic/after';

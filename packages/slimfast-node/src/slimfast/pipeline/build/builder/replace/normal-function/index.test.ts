@@ -1,5 +1,7 @@
 import traverse, { NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
+import { describe, expect, test } from 'vitest';
+
 import generate from '.';
 import parser from '../../../../../visitors/utils/parser';
 import extractIdentifiers from '../../../../../visitors/utils/extract-identifiers';

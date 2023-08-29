@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
-    "jest-config": "workspace:*",
     "tsconfig": "workspace:*"
   },
   "author": "Alex Dollery (DolNpm/DolGit)",
