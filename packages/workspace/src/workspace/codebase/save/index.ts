@@ -28,7 +28,6 @@ export const createDir = async (pathname: string, contents: string) => {
   }
 };
 
-// TODO: do we need this?
 /**
  * Converts a given object into its JSON string representation.
  *
@@ -98,7 +97,6 @@ export const fromFile = (pathname: string, codebase: Codebase) => {
     }
     try {
       const jsonData: Record<string, unknown> = JSON.parse(data);
-      // TODO: should it run on the codebase instance or just using utility functions?
       codebase.fromJson(jsonData);
     } catch (parseError) {
       console.error('Could not parse data:', parseError);
@@ -123,7 +121,7 @@ export const toFile = async (file: FileContainer) => {
 };
 
 // TODO: add jsdocs
-// TODO: ensure implementation (used in a method of the Codebase class), I'm not sure about the desired behavior
+// TODO: ensure implementation
 export const fromJson = (data: RandomObject, codebase: Codebase) => {
   Object.keys(data).forEach((key: string) => {
     Object.defineProperty(codebase, key, {

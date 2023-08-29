@@ -30,7 +30,7 @@ export class FileContainer {
    */
   fullPath: string;
 
-  // TODO: write example
+  // TODO: add example
   /**
    * Can be used to store the semantic type of module for your system; if you're defining modules semantically differently to one another, then you can group files by semantic type and store the module type here.
    */
@@ -46,7 +46,6 @@ export class FileContainer {
    */
   code: string;
 
-  // TODO: double check example
   /**
    * Stores information about the simplicity of the AST in the file. Using another function, the quality of the AST can be measured using metrics and determined to be a simple piece of code or a complex piece of code.
    *
@@ -83,7 +82,7 @@ export class FileContainer {
    */
   codebase: Codebase;
 
-  // TODO: double check example
+  // TODO: add example
   /**
    * General store for storing any type of data associated to the file. Mostly used during the pipeline enumeration where you may wish to store data scoped to the specific file that is retrievable later.
    */
@@ -234,12 +233,10 @@ export class FileContainer {
    * const newFile = existingFileContainer.spawn(provisionalFile);
    * console.log(newFile.pathname); // Outputs: '/path/to/new/file.js'
    */
-  // TODO: is the type of `file` correct? FileContainer expects `codebase` to be a Codebase instance
   spawn(file: ProvisionalFile) {
     return new FileContainer(file.pathname, this.print(file.ast), this.codebase);
   }
 
-  // TODO: I'm not sure what this method is supposed to do
   /**
    * Should add an import statement to the file?
    *
