@@ -11,6 +11,9 @@ import type { RandomObject } from '../../../types';
  * copy(target, source);
  * console.log(target); // Outputs: { sample: 'text', text: 'hello world' }
  */
-export const copy = (localObject: RandomObject, foreignObject: RandomObject) => {
+export const copy = (
+  localObject: RandomObject,
+  foreignObject: RandomObject
+) => {
   Object.assign(localObject, foreignObject);
 };

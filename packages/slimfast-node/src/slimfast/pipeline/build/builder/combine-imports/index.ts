@@ -19,9 +19,16 @@ interface Entry {
   named: string[];
 }
 
-type ImportSpecifierType = ImportDefaultSpecifier | ImportNamespaceSpecifier | ImportSpecifier;
+type ImportSpecifierType =
+  | ImportDefaultSpecifier
+  | ImportNamespaceSpecifier
+  | ImportSpecifier;
 
-export default function combineImports(pathname: string, folder: string, imports: Binding[]) {
+export default function combineImports(
+  pathname: string,
+  folder: string,
+  imports: Binding[]
+) {
   const importsBySource: Map<string, Entry> = new Map();
 
   imports.forEach((binding: Binding) => {
@@ -55,10 +62,16 @@ export default function combineImports(pathname: string, folder: string, imports
     }
 
     unique(entry.named).forEach((specifier: string) => {
-      const node: ImportSpecifierType = importSpecifier(identifier(specifier), identifier(specifier));
+      const node: ImportSpecifierType = importSpecifier(
+        identifier(specifier),
+        identifier(specifier)
+      );
       specifiers.push(node);
     });
 
-    return importDeclaration(specifiers, stringLiteral(source.replace(/(\.\.\/)([^.])/g, './$2')));
+    return importDeclaration(
+      specifiers,
+      stringLiteral(source.replace(/(\.\.\/)([^.])/g, './$2'))
+    );
   });
 }

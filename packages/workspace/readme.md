@@ -4,33 +4,32 @@
 
 `npm install @modular-rocks/workspace`
 
-or 
+or
 
-`yarn add @modular-rocks/workspace` 
-
+`yarn add @modular-rocks/workspace`
 
 ## Usage
 
 A Workspace can contain multiple Codebases, a Codebase will contain FileContainers. It is designed to be highly configurable, allowing you to extend the Workspace, Codebase or FileContainer classes, allowing you to build anything you want on top.
 
-Each Workspace and Codebase accepts an `Options` argument containing configuration options. 
+Each Workspace and Codebase accepts an `Options` argument containing configuration options.
 
-| Option | Description | Type |  Example | 
-| -------- | -------- | -------- | -------- |
-| pipeline | Array of functions | Function[] | [functionA, functionB] | 
-| files | Array of arrays consisting of pathname and code | [pathname:string, code:string][] | [['/path', 'hello world']] |
-| src | source of the project | string | '/path/to/project' | 
-| extensions | Array of extensions to filter the files by | string[] | ['ts', 'js'] | 
-| ignoredFiles | Array of files to filter the files by | string[] | ['.d.ts'] | 
-| ignoredImports | Array of import statements | string[] | ['$GlobalVariable'] | 
-| packageContents | JSON Object like in `package.json` | Object | ['$GlobalVariable'] | 
+| Option          | Description                                     | Type                             | Example                    |
+| --------------- | ----------------------------------------------- | -------------------------------- | -------------------------- |
+| pipeline        | Array of functions                              | Function[]                       | [functionA, functionB]     |
+| files           | Array of arrays consisting of pathname and code | [pathname:string, code:string][] | [['/path', 'hello world']] |
+| src             | source of the project                           | string                           | '/path/to/project'         |
+| extensions      | Array of extensions to filter the files by      | string[]                         | ['ts', 'js']               |
+| ignoredFiles    | Array of files to filter the files by           | string[]                         | ['.d.ts']                  |
+| ignoredImports  | Array of import statements                      | string[]                         | ['$GlobalVariable']        |
+| packageContents | JSON Object like in `package.json`              | Object                           | ['$GlobalVariable']        |
 
     const opts: Options = {
-      pipeline, 
-      files, 
-      src: '/', 
-      extensions: [], 
-      ignoredFiles: [], 
+      pipeline,
+      files,
+      src: '/',
+      extensions: [],
+      ignoredFiles: [],
       ignoredImports: [],
       packageContents: {}
     }

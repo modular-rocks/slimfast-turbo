@@ -15,7 +15,13 @@ import type { FileContainer } from '../codebase/file';
  * @param workspace The current workspace context.
  * @returns A promise that resolves with the result of the function or rejects with an error.
  */
-function wait(func: Function, file: FileContainer, state: State, opts: WorkspaceOpts, workspace: WorkspaceType) {
+function wait(
+  func: Function,
+  file: FileContainer,
+  state: State,
+  opts: WorkspaceOpts,
+  workspace: WorkspaceType
+) {
   return new Promise(async (resolve, reject) => {
     try {
       const result = await func(file, state, opts, workspace);
@@ -44,7 +50,9 @@ const invoke = async (
   opts: WorkspaceOpts,
   workspace: WorkspaceType
 ) => {
-  const promises = files.map((file: FileContainer) => wait(func, file, state, opts, workspace));
+  const promises = files.map((file: FileContainer) =>
+    wait(func, file, state, opts, workspace)
+  );
   return Promise.all(promises);
 };
 

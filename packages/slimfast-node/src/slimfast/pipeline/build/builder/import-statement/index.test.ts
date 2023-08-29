@@ -31,7 +31,12 @@ traverse(ast, {
 describe('Combine imports', () => {
   test('It modularises', async () => {
     if (nodePath) {
-      const statement = importStatement('module', '/path/to/folder', '/path/to', nodePath);
+      const statement = importStatement(
+        'module',
+        '/path/to/folder',
+        '/path/to',
+        nodePath
+      );
       expect(file.print(statement)).toBe('import module from "./to/folder";');
     }
   });

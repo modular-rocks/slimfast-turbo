@@ -1,6 +1,9 @@
 import { NodePath, Node } from '@babel/traverse';
 
-function isInsidePath(innerPath: NodePath, outerPath: NodePath | RandomObject): boolean {
+function isInsidePath(
+  innerPath: NodePath,
+  outerPath: NodePath | RandomObject
+): boolean {
   let currentPath: NodePath | null = innerPath;
 
   while (currentPath !== null) {
@@ -22,13 +25,20 @@ const isUsedInPath = (
   if (type === 'Identifier') {
     const binding = variablePath.scope.getBinding(name);
     if (binding) {
-      return binding.referencePaths.filter((ref: NodePath) => !isInsidePath(ref, path))[0];
+      return binding.referencePaths.filter(
+        (ref: NodePath) => !isInsidePath(ref, path)
+      )[0];
     }
   }
   return false;
 };
 
-export default (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
+export default (
+  path: NodePath,
+  data: RandomObject,
+  opts: RandomObject,
+  ast: Node
+) => {
   let usedInOtherScopes = false;
 
   if (path.isAssignmentExpression()) {
@@ -46,7 +56,14 @@ export default (path: NodePath, data: RandomObject, opts: RandomObject, ast: Nod
 
       if (left.type === 'ObjectPattern') {
         left.properties.forEach((property: any) => {
-          if (isUsedInPath(property.value.name, property.value.type, variablePath, path)) {
+          if (
+            isUsedInPath(
+              property.value.name,
+              property.value.type,
+              variablePath,
+              path
+            )
+          ) {
             usedInOtherScopes = true;
           }
         });

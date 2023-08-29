@@ -21,7 +21,11 @@ interface Data {
 }
 
 type Namer = (path: RandomObject, data: RandomObject, options: Option) => void;
-type Builder = (path: RandomObject, data: RandomObject, file: FileContainerType) => ProvisionalFile;
+type Builder = (
+  path: RandomObject,
+  data: RandomObject,
+  file: FileContainerType
+) => ProvisionalFile;
 
 interface ProvisionalFile {
   pathname: string;

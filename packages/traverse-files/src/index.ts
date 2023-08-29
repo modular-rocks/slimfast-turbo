@@ -13,9 +13,10 @@ import type { Directory, Options, RandomObject } from './types';
  * removeExtensions(['js', 'ts'])('hello-world.gs'); // true
  * removeExtensions(['js', 'ts'])('hello-world.ts'); // false
  */
-export const removeExtensions = (extensions: string[]) => (fullpath: string) => {
-  return extensions.includes(extname(fullpath).replace('.', ''));
-};
+export const removeExtensions =
+  (extensions: string[]) => (fullpath: string) => {
+    return extensions.includes(extname(fullpath).replace('.', ''));
+  };
 
 /**
  * Returns a function that checks if a file extension is not in the provided list of ignored extensions.
@@ -26,9 +27,12 @@ export const removeExtensions = (extensions: string[]) => (fullpath: string) => 
  * removeIgnoredExtensions(['.d.ts', '.d.tsx'])('hello-world.d.gs'); // true
  * removeIgnoredExtensions(['.d.ts', '.d.tsx'])('hello-world.ts'); // true
  */
-export const removeIgnoredExtensions = (ignoredExtensions: string[]) => (fullpath: string) => {
-  return !ignoredExtensions.map((ex: string) => fullpath.includes(ex)).filter(Boolean)[0];
-};
+export const removeIgnoredExtensions =
+  (ignoredExtensions: string[]) => (fullpath: string) => {
+    return !ignoredExtensions
+      .map((ex: string) => fullpath.includes(ex))
+      .filter(Boolean)[0];
+  };
 
 /**
  * Checks if a given file is a test file.
@@ -38,7 +42,8 @@ export const removeIgnoredExtensions = (ignoredExtensions: string[]) => (fullpat
  * removeTests('hello-world.test.ts'); // false
  * removeTests('hello-world.ts'); // true
  */
-export const removeTests = (fullpath: string) => !basename(fullpath).match(/test/);
+export const removeTests = (fullpath: string) =>
+  !basename(fullpath).match(/test/);
 
 /**
  * Recursively traverse a directory and returns all file paths within it.
@@ -69,10 +74,17 @@ export function traverse(directory: string, files: string[]): string[] {
  * @param ignoreTests - If true, exclude test files from the collection.
  * @returns An array of file paths.
  */
-export const collect = (path: string, extensions: string[], ignoredExtensions: string[], ignoreTests: Boolean) => {
+export const collect = (
+  path: string,
+  extensions: string[],
+  ignoredExtensions: string[],
+  ignoreTests: Boolean
+) => {
   const files: string[] = traverse(path, []);
 
-  let output = files.filter(removeExtensions(extensions)).filter(removeIgnoredExtensions(ignoredExtensions));
+  let output = files
+    .filter(removeExtensions(extensions))
+    .filter(removeIgnoredExtensions(ignoredExtensions));
 
   if (ignoreTests) {
     output = output.filter(removeTests);

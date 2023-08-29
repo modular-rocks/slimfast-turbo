@@ -1,4 +1,9 @@
-import { identifier, importDeclaration, importDefaultSpecifier, stringLiteral } from '@babel/types';
+import {
+  identifier,
+  importDeclaration,
+  importDefaultSpecifier,
+  stringLiteral,
+} from '@babel/types';
 import { describe, expect, test } from 'vitest';
 
 import { Codebase } from '..';
@@ -39,11 +44,16 @@ describe('FileContainer', () => {
     expect(file.astToCode(file.ast)).toBe('export default x => x * x;');
     expect(file.print()).toBe('export default x => x * x;');
 
-    const declaration = importDeclaration([importDefaultSpecifier(identifier('myModule'))], stringLiteral('my-module'));
+    const declaration = importDeclaration(
+      [importDefaultSpecifier(identifier('myModule'))],
+      stringLiteral('my-module')
+    );
 
     file.addImport(declaration);
 
-    expect(file.print()).toBe('import myModule from "my-module";\nexport default x => x * x;');
+    expect(file.print()).toBe(
+      'import myModule from "my-module";\nexport default x => x * x;'
+    );
   }, 7000);
 });
 

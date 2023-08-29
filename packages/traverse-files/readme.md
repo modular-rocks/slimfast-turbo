@@ -4,12 +4,11 @@
 
 `npm install @modular-rocks/traverse-files`
 
-or 
+or
 
-`yarn add @modular-rocks/traverse-files` 
+`yarn add @modular-rocks/traverse-files`
 
-
-# Usage 
+# Usage
 
 This package gives you an array of files in a directory. Its designed to be used across the ModularRocks modules, so its been extracted into its own package.
 

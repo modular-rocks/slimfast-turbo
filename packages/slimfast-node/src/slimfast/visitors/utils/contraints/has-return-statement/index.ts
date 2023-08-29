@@ -1,7 +1,12 @@
 import { NodePath, Node } from '@babel/traverse';
 import isAFunction from '../is-a-function';
 
-export default (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
+export default (
+  path: NodePath,
+  data: RandomObject,
+  opts: RandomObject,
+  ast: Node
+) => {
   let problematic = false;
 
   if (path.isReturnStatement()) {

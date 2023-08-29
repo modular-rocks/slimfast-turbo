@@ -18,11 +18,16 @@ import type { Codebase } from '..';
  * console.log(dependencies);
  * // Outputs: ['lodash', 'express', ...]
  */
-export const storeDependencies = (codebase: Codebase, dependencyKeys: string[]) => {
+export const storeDependencies = (
+  codebase: Codebase,
+  dependencyKeys: string[]
+) => {
   const dependencies: Map<string, string> = new Map();
   dependencyKeys.forEach((key: string) => {
     if (codebase.package[key]) {
-      Object.keys(codebase.package[key]).forEach((name: string) => dependencies.set(name, name));
+      Object.keys(codebase.package[key]).forEach((name: string) =>
+        dependencies.set(name, name)
+      );
     }
   });
   return [...dependencies.keys()];

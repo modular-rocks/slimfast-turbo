@@ -8,7 +8,11 @@ interface Data {
 }
 
 type Namer = (path: NodePath, data: RandomObject, options: Option) => void;
-type Builder = (path: NodePath, data: RandomObject, file: FileContainerType) => ProvisionalFile;
+type Builder = (
+  path: NodePath,
+  data: RandomObject,
+  file: FileContainerType
+) => ProvisionalFile;
 
 interface Option {
   iterator: Function;
@@ -24,7 +28,12 @@ interface ProvisionalFile {
 }
 
 export default (visitors: Visitor[]) =>
-  (file: FileContainerType, options: Option, state: State, workspace: SlimFastType) => {
+  (
+    file: FileContainerType,
+    options: Option,
+    state: State,
+    workspace: SlimFastType
+  ) => {
     file.parse();
     if (file.simple) {
       file.store.extractions = [];

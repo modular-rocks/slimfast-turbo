@@ -7,7 +7,12 @@ import { makeDirectory } from './make-directory';
 import { fromFile, fromJson, saveFile, saveToJSON } from './save';
 import { storeDependencies } from './store-dependencies';
 
-import type { CodebaseOpts, FilesContainer, PackageContents, RandomObject } from '../../types';
+import type {
+  CodebaseOpts,
+  FilesContainer,
+  PackageContents,
+  RandomObject,
+} from '../../types';
 
 export class Codebase {
   /**

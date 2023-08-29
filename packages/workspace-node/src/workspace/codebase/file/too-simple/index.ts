@@ -1,5 +1,9 @@
 import { File } from '@babel/types';
-import { loc, maintainability, totalCyclomaticComplexity } from '@modular-rocks/metrics-ts-js';
+import {
+  loc,
+  maintainability,
+  totalCyclomaticComplexity,
+} from '@modular-rocks/metrics-ts-js';
 
 interface MetricOpts {
   code?: string;
@@ -25,8 +29,10 @@ export const measure = (opts: Opts) => {
   const scores: Scores = {};
 
   if (opts.loc) scores.loc = loc(opts.metricOpts);
-  if (opts.complexity) scores.complexity = totalCyclomaticComplexity(opts.metricOpts);
-  if (opts.maintainability) scores.maintainability = maintainability(opts.metricOpts);
+  if (opts.complexity)
+    scores.complexity = totalCyclomaticComplexity(opts.metricOpts);
+  if (opts.maintainability)
+    scores.maintainability = maintainability(opts.metricOpts);
 
   return scores;
 };
@@ -36,6 +42,7 @@ export const tooSimple = (metricOpts: MetricOpts) => {
   const minLoc = metricOpts.minLoc || 50;
   const minMaintainability = metricOpts.minMaintainability || 95;
   return Boolean(
-    (scores.loc && scores.loc < minLoc) || (scores.maintainability && scores.maintainability > minMaintainability)
+    (scores.loc && scores.loc < minLoc) ||
+      (scores.maintainability && scores.maintainability > minMaintainability)
   );
 };

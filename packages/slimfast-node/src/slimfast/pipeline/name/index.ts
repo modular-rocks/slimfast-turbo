@@ -14,7 +14,11 @@ interface Data {
 }
 
 type Namer = (path: NodePath, data: RandomObject, options: Option) => void;
-type Builder = (path: NodePath, data: RandomObject, file: FileContainerType) => ProvisionalFile;
+type Builder = (
+  path: NodePath,
+  data: RandomObject,
+  file: FileContainerType
+) => ProvisionalFile;
 
 interface Option {
   visitors: VisitorType[];
@@ -23,7 +27,12 @@ interface Option {
 }
 
 export default (namer: Function) =>
-  (file: FileContainerType, options: Option, state: State, workspace: SlimFastType) => {
+  (
+    file: FileContainerType,
+    options: Option,
+    state: State,
+    workspace: SlimFastType
+  ) => {
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 
