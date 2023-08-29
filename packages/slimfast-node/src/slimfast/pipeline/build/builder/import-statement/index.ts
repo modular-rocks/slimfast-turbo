@@ -1,5 +1,6 @@
-import { join, relative, dirname, basename } from 'path';
-import { importDeclaration, importDefaultSpecifier, identifier, stringLiteral } from '@babel/types';
+import { basename, dirname, join, relative } from 'path/posix';
+
+import { identifier, importDeclaration, importDefaultSpecifier, stringLiteral } from '@babel/types';
 
 export default (name: string, pathname: string, parentPath: string, path: RandomObject) => {
   name = path.isJSXElement() ? name.charAt(0).toUpperCase() + name.slice(1) : name;
