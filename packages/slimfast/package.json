@@ -21,8 +21,9 @@
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
     "build:prod": "tsc -p tsconfig.prod.json",
-    "test": "jest",
-    "test:w": "jest --watch",
+    "test": "vitest run",
+    "test:w": "vitest",
+    "coverage": "vitest --coverage run",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -31,7 +32,6 @@
   "devDependencies": {
     "@babel/types": "7.22.10",
     "eslint-config-custom": "workspace:*",
-    "jest-config": "workspace:*",
     "tsconfig": "workspace:*"
   },
   "author": "Alex Dollery (DolNpm/DolGit)",
