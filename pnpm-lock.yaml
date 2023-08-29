@@ -94,9 +94,6 @@ importers:
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../config/eslint-config
-      jest-config:
-        specifier: workspace:*
-        version: link:../../config/jest-config
       tsconfig:
         specifier: workspace:*
         version: link:../../config/tsconfig
