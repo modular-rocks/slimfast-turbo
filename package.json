@@ -10,6 +10,7 @@
     "build:w": "turbo run build:w",
     "build:prod": "turbo run build:prod",
     "test": "turbo run test",
+    "test:only": "turbo run test --only",
     "test:w": "turbo run test:w",
     "coverage": "turbo run coverage",
     "dev": "turbo run dev --parallel",
