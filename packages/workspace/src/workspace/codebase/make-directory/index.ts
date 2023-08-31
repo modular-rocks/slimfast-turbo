@@ -1,4 +1,4 @@
-import { basename, dirname, join } from 'path';
+import { basename, dirname, extname, join } from 'path';
 
 import type { Codebase } from '..';
 import type { FileContainer } from '../file';
@@ -18,23 +18,23 @@ import type { FileContainer } from '../file';
  * @example
  * // Consider a file at './path1.ts'
  * const codebase = new Codebase(...opts, { files: ['./path1.ts'] });
- * const file = new FileContainer('./path1.ts', '', anotherCodebase);
+ * const file = new FileContainer('./path1.ts', '', codebase);
  * makeDirectory(codebase, file);
  * // Now, file.pathname will be './path1/index.ts'
  */
 export const makeDirectory = (codebase: Codebase, file: FileContainer) => {
   const filename = basename(file.pathname);
 
-  const filenamePieces = filename.split('.');
-  const subfolder = filenamePieces[0];
+  const baseFileName = basename(filename, extname(filename));
+  const extension = extname(filename);
 
-  if (subfolder === 'index') {
+  if (baseFileName === 'index') {
     return file.pathname;
   }
 
   const directory = dirname(file.pathname);
-  const newExtension = filenamePieces.slice(1).join('.');
-  const newSrc = join(directory, subfolder, `index.${newExtension}`);
+  const newSrc = join(directory, baseFileName, `index${extension}`);
+
   codebase.files[newSrc] = codebase.files[file.pathname];
   delete codebase.files[file.pathname];
   file.pathname = newSrc;
