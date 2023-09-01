@@ -1,5 +1,4 @@
-import { readFile } from 'fs';
-import { mkdir, writeFile } from 'fs/promises';
+import { mkdir, readFile, writeFile } from 'fs/promises';
 import { dirname } from 'path';
 
 import type { Codebase } from '..';
@@ -58,7 +57,6 @@ export const saveFile = (pathname: string, code: string) => {
   return createDir(pathname, code);
 };
 
-// TODO: check if this is needed
 // TODO: maybe validate that the path contains a json file extension
 /**
  * Saves the provided data as a JSON string to a file on the file system at the specified pathname.
@@ -85,27 +83,18 @@ export const saveToJSON = async (pathname: string, data: RandomObject) => {
  *
  * @example
  * const codebase = new Codebase();
- * fromFile('/path/to/data.json', codebase);
+ * await fromFile('/path/to/data.json', codebase);
  * // If the file '/path/to/data.json' contains valid JSON,
  * // the codebase object will be updated using that data.
  */
-export const fromFile = (pathname: string, codebase: Codebase) => {
-  readFile(
-    pathname,
-    { encoding: 'utf-8' },
-    function (err: NodeJS.ErrnoException | null, data: string) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      try {
-        const jsonData: Record<string, unknown> = JSON.parse(data);
-        codebase.fromJson(jsonData);
-      } catch (parseError) {
-        console.error('Could not parse data:', parseError);
-      }
-    }
-  );
+export const fromFile = async (pathname: string, codebase: Codebase) => {
+  try {
+    const data = await readFile(pathname, { encoding: 'utf-8' });
+    const jsonData: Record<string, unknown> = JSON.parse(data);
+    codebase.fromJson(jsonData);
+  } catch (error) {
+    console.error('Could not parse data:', error);
+  }
 };
 
 /**
@@ -116,23 +105,10 @@ export const fromFile = (pathname: string, codebase: Codebase) => {
  * @param file - The `FileContainer` instance containing the data to be saved.
  * @example
  * const fileContainer = new FileContainer('/path/to/file.js', 'console.log("Hello");', codebase);
- * toFile(fileContainer);
+ * await toFile(fileContainer);
  * // This will save the content of `fileContainer` to a file named 'file.js' at '/path/to'
  */
 export const toFile = async (file: FileContainer) => {
   const { pathname: path, code } = file;
   return createDir(path, code);
-};
-
-// TODO: add jsdocs
-// TODO: ensure implementation
-export const fromJson = (data: RandomObject, codebase: Codebase) => {
-  Object.keys(data).forEach((key: string) => {
-    Object.defineProperty(codebase, key, {
-      value: data[key],
-      writable: true,
-      enumerable: true,
-      configurable: true,
-    });
-  });
 };
