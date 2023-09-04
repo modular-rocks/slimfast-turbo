@@ -78,8 +78,8 @@ const promise = async (
   const state: State = {};
 
   for (const func of pipeline) {
-    const isNotFunction = typeof func === 'function';
-    if (isNotFunction) {
+    const isFunction = typeof func === 'function';
+    if (isFunction) {
       await invoke(func, files, state, opts, workspace);
     }
   }
@@ -105,9 +105,13 @@ export const pipeline = async (
   opts: WorkspaceOpts,
   workspace: WorkspaceType
 ) => {
-  if (!pipelineFunctions) return false;
+  if (!pipelineFunctions || pipelineFunctions.length === 0) return false;
 
-  return new Promise(async (resolve) => {
-    await promise(files, pipelineFunctions, opts, workspace, resolve);
+  return new Promise(async (resolve, reject) => {
+    try {
+      await promise(files, pipelineFunctions, opts, workspace, resolve);
+    } catch (error) {
+      reject(error);
+    }
   });
 };
