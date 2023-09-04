@@ -242,7 +242,7 @@ export class FileContainer {
   }
 
   /**
-   * Should add an import statement to the file?
+   * Should add an import statement to the file
    *
    * This method is currently a placeholder and always returns `false`, indicating that the import was not added.
    * In a more complete implementation, it might modify the file's content to include the provided import statement.
