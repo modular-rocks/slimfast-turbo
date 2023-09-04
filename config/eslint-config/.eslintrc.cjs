@@ -4,7 +4,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb-base', 'airbnb-typescript/base', 'plugin:prettier/recommended'],
+  extends: [
+    'airbnb-base',
+    'airbnb-typescript/base',
+    'plugin:prettier/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021,
@@ -44,5 +48,5 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'error',
   },
 
-  ignorePatterns: ['.eslintrc.cjs', 'jest.config.js', 'dist', 'turbo', 'coverage'],
+  ignorePatterns: ['.eslintrc.cjs', 'dist', 'turbo', 'coverage'],
 };
