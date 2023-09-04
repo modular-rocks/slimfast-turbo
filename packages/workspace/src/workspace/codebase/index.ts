@@ -4,7 +4,7 @@ import { copy } from './copy';
 import type { FileContainer as FileContainerType } from './file';
 import { FileContainer } from './file';
 import { makeDirectory } from './make-directory';
-import { fromFile, fromJson, saveFile, saveToJSON } from './save';
+import { fromFile, saveFile, saveToJSON } from './save';
 import { storeDependencies } from './store-dependencies';
 
 import type {
@@ -417,7 +417,7 @@ export class Codebase {
   /**
    * Merges the properties from the given codebase to the current codebase instance.
    *
-   * @param version - The Codebase to copy of files.
+   * @param codebase - The Codebase to copy of files.
    *
    * @example
    * const codebase = new Codebase(opts);
@@ -427,7 +427,6 @@ export class Codebase {
    * // Outputs: true
    */
   copy(codebase: Codebase) {
-    this.files = {};
     copy(this, codebase);
   }
 
@@ -572,7 +571,7 @@ export class Codebase {
    * // Outputs: true;
    */
   fromJson(data: RandomObject) {
-    fromJson(data, this);
+    copy(this, data);
   }
 
   /**
@@ -588,8 +587,8 @@ export class Codebase {
    * console.log(codebase.project == "Sample");
    * // Outputs: true;
    */
-  fromFile(path: string) {
-    fromFile(path, this);
+  async fromFile(path: string) {
+    await fromFile(path, this);
   }
 
   /**
