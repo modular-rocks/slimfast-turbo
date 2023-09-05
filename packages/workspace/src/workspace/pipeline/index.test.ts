@@ -6,7 +6,7 @@ import { Codebase } from '../codebase';
 
 import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../../types';
 
-const normalFunction = (i: number, time: number, output: OutputIteration[]) => {
+const syncFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {
     const result: OutputIteration = [i, time];
     output.push(result);
@@ -27,46 +27,46 @@ const asyncFunction = (i: number, time: number, output: OutputIteration[]) => {
 };
 
 describe('Pipeline', () => {
-  test('Is invoked in order', async () => {
-    const output: OutputIteration[] = [];
+  const output: OutputIteration[] = [];
 
-    const pipeline = [
-      asyncFunction(1, 500, output),
-      asyncFunction(2, 20, output),
-      normalFunction(3, 600, output),
-      normalFunction(4, 30, output),
-      asyncFunction(5, 200, output),
-      asyncFunction(6, 800, output),
-    ];
+  const pipeline = [
+    asyncFunction(1, 500, output),
+    asyncFunction(2, 20, output),
+    syncFunction(3, 600, output),
+    syncFunction(4, 30, output),
+    asyncFunction(5, 200, output),
+    asyncFunction(6, 800, output),
+  ];
 
-    const files: [string, string][] = [1, 2, 3].map((x: number) => [
-      `/path${x}`,
-      '',
-    ]);
-    const opts: WorkspaceOpts = {
-      pipeline,
-      files,
-      src: '/',
-      extensions: [],
-      ignoredFiles: [],
-      ignoredImports: [],
-      packageContents: {},
-    };
+  const files: [string, string][] = [1, 2, 3].map((x: number) => [
+    `/path${x}`,
+    '',
+  ]);
+  const opts: WorkspaceOpts = {
+    pipeline,
+    files,
+    src: '/',
+    extensions: [],
+    ignoredFiles: [],
+    ignoredImports: [],
+    packageContents: {},
+  };
 
-    const codebaseOpts: CodebaseOpts = {
-      pipeline,
-      files,
-      src: '/',
-      extensions: [],
-      ignoredFiles: [],
-      ignoredImports: [],
-      packageContents: {},
-    };
+  const codebaseOpts: CodebaseOpts = {
+    pipeline,
+    files,
+    src: '/',
+    extensions: [],
+    ignoredFiles: [],
+    ignoredImports: [],
+    packageContents: {},
+  };
 
-    const workspace = new Workspace(opts);
-    const codebase = new Codebase(codebaseOpts);
-    const filesContainer = Object.values(codebase.files);
+  const workspace = new Workspace(opts);
+  const codebase = new Codebase(codebaseOpts);
+  const filesContainer = Object.values(codebase.files);
 
+  test('should invoke the pipeline in order', async () => {
     await runPipeline(filesContainer, pipeline, opts, workspace);
     const result = [
       [1, 500],
@@ -89,5 +89,20 @@ describe('Pipeline', () => {
       [6, 800],
     ];
     expect(JSON.stringify(output)).toBe(JSON.stringify(result));
-  }, 7000);
+  });
+
+  test('should handle errors thrown by functions in the pipeline', async () => {
+    const functionWithError = async () => {
+      throw new Error('Test error');
+    };
+
+    await expect(() =>
+      runPipeline(filesContainer, [functionWithError], opts, workspace)
+    ).rejects.toThrowError('Test error');
+  });
+
+  test('should handle an empty pipeline correctly', async () => {
+    const res = await runPipeline(filesContainer, [], opts, workspace);
+    expect(res).toBe(false);
+  });
 });
