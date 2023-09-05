@@ -613,10 +613,12 @@ export class Codebase {
    * @example
    * const codebase = new Codebase(opts);
    * // Assuming some files have been added or modified in the codebase
-   * codebase.save();
+   * await codebase.save();
    * // This will save all the extracted files to their respective paths on the file system.
    */
   save() {
-    this.extractFiles().map((file: FileContainerType) => file.save());
+    return Promise.all(
+      this.extractFiles().map((file: FileContainerType) => file.save())
+    );
   }
 }
