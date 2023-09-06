@@ -1,3 +1,4 @@
+import mockFs from 'mock-fs';
 import { describe, expect, test } from 'vitest';
 
 import { Workspace } from '.';
@@ -89,7 +90,7 @@ describe('Workspace base', () => {
       [6, 800],
     ];
     expect(JSON.stringify(output)).toBe(JSON.stringify(result));
-  }, 8000);
+  });
   test('Default options adds an empty array for files', async () => {
     const output: OutPutIteration[] = [];
     const opts: WorkspaceOpts = {
@@ -102,5 +103,31 @@ describe('Workspace base', () => {
 
     const workspace = new Workspace(opts);
     expect(JSON.stringify(workspace.opts.files)).toBe(JSON.stringify([]));
+  });
+
+  test('Should load package contents from packagePath if packageContents is not provided', () => {
+    const mockPackageContent = { name: 'test-package', version: '1.0.0' };
+
+    const opts: WorkspaceOpts = {
+      src: process.cwd(),
+      extensions: [],
+      ignoredFiles: [],
+      ignoredImports: [],
+      packageContents: undefined,
+      packagePath: './path/to/package.json',
+    };
+
+    mockFs({
+      './path/to': {
+        'package.json': JSON.stringify(mockPackageContent),
+      },
+    });
+
+    const workspace = new Workspace(opts);
+    workspace.defaultLoader(opts);
+
+    expect(opts.packageContents).toEqual(mockPackageContent);
+
+    mockFs.restore();
   });
 });

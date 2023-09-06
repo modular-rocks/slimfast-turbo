@@ -42,5 +42,5 @@ describe('Codebase', () => {
     expect(str(codebase.opts)).toBe(str(opts));
     expect(str(codebase.package)).toBe(str({}));
     expect(str(codebase.dependencyKeys())).toBe(str(dependencyKeys));
-  }, 7000);
+  });
 });
