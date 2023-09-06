@@ -71,6 +71,6 @@ export class FileContainer extends FileContainerBase {
   addImport(importStatement: Statement) {
     if (!this.ast || !this.ast.program.body) return false;
     this.ast.program.body.unshift(importStatement);
-    return false;
+    return true;
   }
 }
