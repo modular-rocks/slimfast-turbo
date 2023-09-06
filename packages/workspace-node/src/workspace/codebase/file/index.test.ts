@@ -54,7 +54,7 @@ describe('FileContainer', () => {
     expect(file.print()).toBe(
       'import myModule from "my-module";\nexport default x => x * x;'
     );
-  }, 7000);
+  });
 });
 
 describe('FileContainer - getDominantEOL', () => {
@@ -114,5 +114,92 @@ describe('FileContainer - getDominantEOL', () => {
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
     expect(fileContainer.getDominantEOL()).toBe('\n');
+  });
+});
+
+describe('FileContainer - addImport', () => {
+  const opts: CodebaseOpts = {
+    pipeline: [],
+    files: [],
+    src: '/home/projects/project/',
+    extensions: [],
+    ignoredFiles: [],
+    ignoredImports: [],
+    packageContents: {},
+  };
+
+  test('Should return true if import is added', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = `const msg = "HelloWorld";`;
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+
+    // this will also set the ast property, alternative we could use parse
+    // fileContainer.parse();
+    expect(fileContainer.print()).toBe(code);
+
+    const declaration = importDeclaration(
+      [importDefaultSpecifier(identifier('myModule'))],
+      stringLiteral('my-module')
+    );
+
+    const result = fileContainer.addImport(declaration);
+
+    expect(fileContainer.print()).toBe(
+      `import myModule from "my-module";\n${code}`
+    );
+
+    expect(result).toBe(true);
+  });
+
+  test('Should return false if AST is not defined', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = `const msg = "HelloWorld";`;
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+
+    // Ensure ast is not defined
+    fileContainer.ast = undefined;
+
+    const declaration = importDeclaration(
+      [importDefaultSpecifier(identifier('myModule'))],
+      stringLiteral('my-module')
+    );
+
+    const result = fileContainer.addImport(declaration);
+
+    expect(fileContainer.print()).toBe(code);
+    expect(result).toBe(false);
+  });
+
+  test('Should return false if ast.program.body is not available', () => {
+    const filePath = `/home/projects/project/file.js`;
+    const code = `const msg = "HelloWorld";`;
+    const codebase = new Codebase(opts);
+    const fileContainer = new FileContainer(filePath, code, codebase);
+
+    // Mock AST to not have program.body
+    fileContainer.ast = {
+      type: 'File',
+      start: 0,
+      end: 10,
+      loc: {}, // Dummy location
+      program: {
+        type: 'Program',
+        start: 0,
+        end: 10,
+        loc: {}, // Dummy location
+        body: undefined, // No body
+      },
+    } as any; // Cast to any to bypass type checking for this mock
+
+    const declaration = importDeclaration(
+      [importDefaultSpecifier(identifier('myModule'))],
+      stringLiteral('my-module')
+    );
+
+    const result = fileContainer.addImport(declaration);
+
+    expect(result).toBe(false);
   });
 });
