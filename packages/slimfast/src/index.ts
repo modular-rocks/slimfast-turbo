@@ -1,5 +1,11 @@
 import { Codebase, Workspace } from '@modular-rocks/workspace';
 
+import type { Codebase as CodebaseType } from '@modular-rocks/workspace';
+import type {
+  CodebaseOpts,
+  Options,
+} from '@modular-rocks/workspace/dist/types/types';
+
 export default class SlimFast extends Workspace {
   original: CodebaseType;
 
@@ -30,7 +36,7 @@ export default class SlimFast extends Workspace {
     await this.pipeline(files, opts.pipeline, opts);
   }
 
-  save() {
-    this.refactored.save();
+  async save() {
+    await this.refactored.save();
   }
 }
