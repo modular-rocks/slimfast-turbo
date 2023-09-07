@@ -1,5 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
+import { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
+
 import Slimfast from '.';
 
 type OutPutIteration = [number, number];
