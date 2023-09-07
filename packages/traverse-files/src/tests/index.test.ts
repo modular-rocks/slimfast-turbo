@@ -1,7 +1,6 @@
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
-import { normalizePathToPosix, resolve } from '../convenience';
 import {
   collect,
   readDirectory,
@@ -16,7 +15,7 @@ import type { Directory, Options, RandomObject } from '../types';
 
 beforeEach(() => {
   mockFs({
-    './src/tests/test-directory': {
+    '/path/to/test-directory/src': {
       nested: {
         'one.js': '',
         'three.js': '',
@@ -28,7 +27,10 @@ beforeEach(() => {
       'three.js': '',
       'two.js': '',
     },
-    './src/tests/test-package.json': JSON.stringify({}),
+    '/path/to/test-directory/test-package.json': JSON.stringify({
+      name: 'test-package',
+      version: '1.0.0',
+    }),
   });
 });
 
@@ -36,17 +38,15 @@ afterEach(() => {
   mockFs.restore();
 });
 
-describe('removeExtensions works as intended', () => {
-  test('', () => {
+describe('"traverse-files" index', () => {
+  test('removeExtensions works as intended', () => {
     const extensions = ['js', 'ts'];
     expect(removeExtensions(extensions)('hello-world.js')).toEqual(true);
     expect(removeExtensions(extensions)('hello-world.gs')).toEqual(false);
     expect(removeExtensions(extensions)('hello-world.ts')).toEqual(true);
   });
-});
 
-describe('removeIgnoredExtensions works as intended', () => {
-  test('', () => {
+  test('removeIgnoredExtensions works as intended', () => {
     const ignoredExtensions = ['.d.ts', '.d.tsx'];
     expect(
       removeIgnoredExtensions(ignoredExtensions)('hello-world.d.ts')
@@ -58,70 +58,58 @@ describe('removeIgnoredExtensions works as intended', () => {
       removeIgnoredExtensions(ignoredExtensions)('hello-world.ts')
     ).toEqual(true);
   });
-});
 
-describe('removeTests works as intended', () => {
-  test('', () => {
+  test('removeTests works as intended', () => {
     expect(removeTests('hello-world.test.ts')).toEqual(false);
     expect(removeTests('hello-world.ts')).toEqual(true);
   });
-});
 
-describe('collect works as intended', () => {
-  test('', () => {
-    const fullpath: string = resolve(__dirname, './test-directory');
+  test('collect works as intended', () => {
+    const fullpath: string = '/path/to/test-directory/src';
     const extensions = ['js', 'ts', 'tsx', 'jsx'];
     const ignoredExtensions = ['.d.ts', '.d.tsx'];
     const ignoreTests = true;
 
-    let collected: string[] = collect(
+    const collected: string[] = collect(
       fullpath,
       extensions,
       ignoredExtensions,
       ignoreTests
     );
-    const root = normalizePathToPosix(process.cwd());
-    collected = collected.map((path: string) => path.replace(root, ''));
 
     const expected = [
-      '/src/tests/test-directory/nested/one.js',
-      '/src/tests/test-directory/nested/three.js',
-      '/src/tests/test-directory/nested/two.js',
-      '/src/tests/test-directory/one.js',
-      '/src/tests/test-directory/three.js',
-      '/src/tests/test-directory/two.js',
+      '/path/to/test-directory/src/nested/one.js',
+      '/path/to/test-directory/src/nested/three.js',
+      '/path/to/test-directory/src/nested/two.js',
+      '/path/to/test-directory/src/one.js',
+      '/path/to/test-directory/src/three.js',
+      '/path/to/test-directory/src/two.js',
     ];
 
     expect(collected).toEqual(expected);
   });
-});
 
-describe('traverse works as intended', () => {
-  test('', () => {
-    const fullpath: string = resolve(__dirname, './test-directory');
+  test('traverse works as intended', () => {
+    const fullpath: string = '/path/to/test-directory/src';
 
-    let collected: string[] = traverse(fullpath, []);
-    const root = normalizePathToPosix(process.cwd());
-    collected = collected.map((path: string) => path.replace(root, ''));
+    const collected: string[] = traverse(fullpath, []);
 
     const expected = [
-      '/src/tests/test-directory/nested/one.js',
-      '/src/tests/test-directory/nested/three.js',
-      '/src/tests/test-directory/nested/two.js',
-      '/src/tests/test-directory/one-declaration.d.ts',
-      '/src/tests/test-directory/one-test.test.js',
-      '/src/tests/test-directory/one.js',
-      '/src/tests/test-directory/three.js',
-      '/src/tests/test-directory/two.js',
+      '/path/to/test-directory/src/nested/one.js',
+      '/path/to/test-directory/src/nested/three.js',
+      '/path/to/test-directory/src/nested/two.js',
+      '/path/to/test-directory/src/one-declaration.d.ts',
+      '/path/to/test-directory/src/one-test.test.js',
+      '/path/to/test-directory/src/one.js',
+      '/path/to/test-directory/src/three.js',
+      '/path/to/test-directory/src/two.js',
     ];
 
     expect(collected).toEqual(expected);
   });
-});
 
-describe('readDirectory works as intended', () => {
-  test('', () => {
-    const src: string = resolve(__dirname, './test-directory');
+  test('readDirectory works as intended', () => {
+    const src: string = '/path/to/test-directory/src';
     const extensions = ['js', 'ts', 'tsx', 'jsx'];
     const ignoredFiles = ['.d.ts', '.d.tsx'];
 
@@ -132,30 +120,27 @@ describe('readDirectory works as intended', () => {
     };
 
     const collected: Directory = readDirectory(opts);
-    const root = normalizePathToPosix(process.cwd());
-    collected.forEach((file) => {
-      file[0] = file[0].replace(root, '');
-    });
 
     const expected = [
-      ['/src/tests/test-directory/nested/one.js', ''],
-      ['/src/tests/test-directory/nested/three.js', ''],
-      ['/src/tests/test-directory/nested/two.js', ''],
-      ['/src/tests/test-directory/one.js', ''],
-      ['/src/tests/test-directory/three.js', ''],
-      ['/src/tests/test-directory/two.js', ''],
+      ['/path/to/test-directory/src/nested/one.js', ''],
+      ['/path/to/test-directory/src/nested/three.js', ''],
+      ['/path/to/test-directory/src/nested/two.js', ''],
+      ['/path/to/test-directory/src/one.js', ''],
+      ['/path/to/test-directory/src/three.js', ''],
+      ['/path/to/test-directory/src/two.js', ''],
     ];
 
     expect(collected).toEqual(expected);
   });
-});
 
-describe('readJSONFile works as intended', () => {
-  test('', () => {
-    const packagePath: string = resolve(__dirname, './test-package.json');
+  test('readJSONFile works as intended', () => {
+    const packagePath: string = '/path/to/test-directory/test-package.json';
     const contents: RandomObject = readJSONFile(packagePath);
 
-    const expected = {};
+    const expected = {
+      name: 'test-package',
+      version: '1.0.0',
+    };
 
     expect(expected).toEqual(contents);
   });
