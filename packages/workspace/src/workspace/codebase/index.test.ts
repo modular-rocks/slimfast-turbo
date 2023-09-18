@@ -4,10 +4,55 @@ import { normalize } from 'path';
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
-import { Codebase } from '.';
-import { FileContainer } from './file';
+import { FileContainer as FileContainerBase, FileHandler } from './file';
+
+import { Codebase as CodebaseBase } from '.';
 
 import type { CodebaseOpts } from '../../types';
+
+export class FileHandlerCustom implements FileHandler {
+  private fileContainer: FileContainerBase | null = null;
+
+  private codebase: CodebaseBase | null = null;
+
+  assignFileContainer(fileContainer: FileContainerBase): this {
+    this.fileContainer = fileContainer;
+    return this;
+  }
+
+  assignCodebase(codebase: CodebaseBase): this {
+    this.codebase = codebase;
+    return this;
+  }
+
+  tooSimple(): Boolean {
+    return false;
+  }
+
+  addImport(importStatement?: any) {
+    return false;
+  }
+
+  codeToAST() {
+    return {};
+  }
+
+  astToCode() {
+    return '';
+  }
+}
+
+class Codebase extends CodebaseBase<FileHandlerCustom> {
+  constructor(opts: CodebaseOpts) {
+    super(new FileHandlerCustom(), opts);
+  }
+}
+
+class FileContainer extends FileContainerBase<FileHandlerCustom> {
+  constructor(path: string, code: string, codebase: Codebase) {
+    super(new FileHandlerCustom(), path, code, codebase);
+  }
+}
 
 describe('Codebase', () => {
   const files: [string, string][] = [1, 2, 3].map((x: number) => [

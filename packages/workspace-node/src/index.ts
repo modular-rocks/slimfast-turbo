@@ -1,5 +1,5 @@
 import { Workspace } from './workspace';
 import { Codebase } from './workspace/codebase';
-import { FileContainer } from './workspace/codebase/file';
+import { FileContainer, FileHandler } from './workspace/codebase/file';
 
-export { Codebase, FileContainer, Workspace };
+export { Codebase, FileContainer, FileHandler, Workspace };

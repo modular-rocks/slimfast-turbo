@@ -1,7 +1,7 @@
 import { dirname } from 'path';
 
 import type { Codebase } from '..';
-import type { FileStore } from '../../../types';
+import type { FileStore, RandomObject } from '../../../types';
 
 export type ProvisionalFile = {
   pathname: string;
@@ -9,7 +9,81 @@ export type ProvisionalFile = {
   import: any;
 };
 
-export class FileContainer {
+export interface FileHandler {
+  /**
+   * Assigns a FileContainer to the filehandler.
+   * @returns The filehandler instance itself for method chaining.
+   */
+  assignFileContainer: (fileContainer: FileContainer) => this;
+
+  /**
+   *  Assigns a Codebase to the filehandler.
+   * @returns The filehandler instance itself for method chaining.
+   */
+  assignCodebase: (codebase: Codebase) => this;
+
+  /**
+   * Determines if the content of the file is too simple based on specific criteria.
+   *
+   * @returns Returns `true` if the file's content is considered too simple; otherwise, returns `false`.
+   *
+   * @example
+   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
+   * console.log(file.tooSimple()); // Outputs: false
+   */
+  tooSimple: (ast: RandomObject) => Boolean;
+
+  /**
+   * Converts the file's content (source code) into its Abstract Syntax Tree (AST) representation.
+   *
+   * This method acts as a placeholder and should be implemented to parse the file's content
+   * into a meaningful AST based on the language or structure of the file.
+   *
+   * @returns The AST representation of the file's content. In the current implementation, it returns an empty object.
+   *
+   * @example
+   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
+   * const ast = file.codeToAST();
+   * console.log(ast); // Outputs: {}
+   */
+  codeToAST: () => RandomObject;
+
+  /**
+   * Converts the provided Abstract Syntax Tree (AST) back into its string representation (source code).
+   *
+   * This method acts as a placeholder and should be implemented to generate source code
+   * from a given AST based on the language or structure of the file.
+   *
+   * @param ast - The AST representation of the file's content to be converted back to source code.
+   * If not provided, it should assume the file's current AST.
+   * @returns The string representation (source code) of the provided AST.
+   * In the current implementation, it always returns an empty string.
+   *
+   * @example
+   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
+   * const code = file.astToCode();
+   * console.log(code); // Outputs: ''
+   */
+  astToCode: (ast?: RandomObject) => string;
+
+  /**
+   * Should add an import statement to the file
+   *
+   * This method is currently a placeholder and always returns `false`, indicating that the import was not added.
+   * In a more complete implementation, it might modify the file's content to include the provided import statement.
+   *
+   * @param importStatement - The import statement or data to be added to the file.
+   * @returns Returns `true` if the import was successfully added; otherwise, returns `false`.
+   *
+   * @example
+   * const file = new FileContainer('/path/to/file.js', 'console.log("Hello");', codebase);
+   * const result = file.addImport('import { hello } from "./hello";');
+   * console.log(result); // Outputs: false
+   */
+  addImport: (importStatement?: any) => Boolean;
+}
+
+export class FileContainer<T extends FileHandler = FileHandler> {
   /**
    * The relative path of the file within the codebase, excluding the root directory.
    *
@@ -102,6 +176,11 @@ export class FileContainer {
   ast?: any;
 
   /**
+   * Represents the file handler for the file. The file handler is responsible for parsing the file's content
+   */
+  fileHandler: T;
+
+  /**
    * @param path - The absolute path of the file within the file system.
    * @param code - The content of the file represented as a string.
    * @param codebase - The codebase to which this file belongs.
@@ -110,67 +189,17 @@ export class FileContainer {
    * const codebase = new Codebase(opts);
    * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
    */
-  constructor(path: string, code: string, codebase: Codebase) {
+  constructor(fileHandler: T, path: string, code: string, codebase: Codebase) {
     this.codebase = codebase;
     this.pathname = codebase.replaceRoot(path);
     this.fullPath = path;
     this.code = code;
+    this.fileHandler = fileHandler.assignFileContainer(this);
     this.simple = false;
     this.store = {};
 
     const parentPath = dirname(this.pathname);
     this.hasParent = !['/', '.'].includes(parentPath);
-  }
-
-  /**
-   * Determines if the content of the file is too simple based on specific criteria.
-   * In the current implementation, this method always returns `false`.
-   *
-   * @returns Returns `true` if the file's content is considered too simple; otherwise, returns `false`.
-   *
-   * @example
-   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
-   * console.log(file.tooSimple()); // Outputs: false
-   */
-  tooSimple(): Boolean {
-    return false;
-  }
-
-  /**
-   * Converts the file's content (source code) into its Abstract Syntax Tree (AST) representation.
-   *
-   * This method acts as a placeholder and should be implemented to parse the file's content
-   * into a meaningful AST based on the language or structure of the file.
-   *
-   * @returns The AST representation of the file's content. In the current implementation, it returns an empty object.
-   *
-   * @example
-   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
-   * const ast = file.codeToAST();
-   * console.log(ast); // Outputs: {}
-   */
-  codeToAST() {
-    return {};
-  }
-
-  /**
-   * Converts the provided Abstract Syntax Tree (AST) back into its string representation (source code).
-   *
-   * This method acts as a placeholder and should be implemented to generate source code
-   * from a given AST based on the language or structure of the file.
-   *
-   * @param ast - The AST representation of the file's content to be converted back to source code.
-   * If not provided, it should assume the file's current AST.
-   * @returns The string representation (source code) of the provided AST.
-   * In the current implementation, it always returns an empty string.
-   *
-   * @example
-   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
-   * const code = file.astToCode();
-   * console.log(code); // Outputs: ''
-   */
-  astToCode(ast?: any) {
-    return '';
   }
 
   /**
@@ -188,8 +217,8 @@ export class FileContainer {
    */
   parse() {
     if (this.ast && this.simple) return;
-    this.ast = this.codeToAST();
-    this.simple = this.tooSimple();
+    this.ast = this.fileHandler.codeToAST();
+    this.simple = this.fileHandler.tooSimple(this.ast);
   }
 
   /**
@@ -211,10 +240,10 @@ export class FileContainer {
    */
   print(ast?: any) {
     if (ast) {
-      return this.astToCode(ast);
+      return this.fileHandler.astToCode(ast);
     }
     if (!this.ast) this.parse();
-    return this.astToCode(this.ast);
+    return this.fileHandler.astToCode(this.ast);
   }
 
   /**
@@ -235,28 +264,11 @@ export class FileContainer {
    */
   spawn(file: ProvisionalFile) {
     return new FileContainer(
+      this.fileHandler,
       file.pathname,
       this.print(file.ast),
       this.codebase
     );
-  }
-
-  /**
-   * Should add an import statement to the file
-   *
-   * This method is currently a placeholder and always returns `false`, indicating that the import was not added.
-   * In a more complete implementation, it might modify the file's content to include the provided import statement.
-   *
-   * @param importStatement - The import statement or data to be added to the file.
-   * @returns Returns `true` if the import was successfully added; otherwise, returns `false`.
-   *
-   * @example
-   * const file = new FileContainer('/path/to/file.js', 'console.log("Hello");', codebase);
-   * const result = file.addImport('import { hello } from "./hello";');
-   * console.log(result); // Outputs: false
-   */
-  addImport(importStatement?: any) {
-    return false;
   }
 
   /**

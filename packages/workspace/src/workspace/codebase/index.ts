@@ -1,7 +1,7 @@
 import { basename, dirname } from 'path';
 
 import { copy } from './copy';
-import type { FileContainer as FileContainerType } from './file';
+import type { FileContainer as FileContainerType, FileHandler } from './file';
 import { FileContainer } from './file';
 import { makeDirectory } from './make-directory';
 import { fromFile, saveFile, saveToJSON } from './save';
@@ -14,7 +14,7 @@ import type {
   RandomObject,
 } from '../../types';
 
-export class Codebase {
+export class Codebase<T extends FileHandler = FileHandler> {
   /**
    * Represents the root directory of the codebase, providing the absolute path to where the files are located.
    *
@@ -119,7 +119,7 @@ export class Codebase {
    * console.log(fileInstance);
    * // Outputs: Instance of FileContainer for 'path1.js'
    */
-  files: FilesContainer;
+  files: FilesContainer<T>;
 
   /**
    * The name of the root directory of the codebase.
@@ -236,6 +236,8 @@ export class Codebase {
    */
   opts: CodebaseOpts;
 
+  fileHandler: T;
+
   /**
    * The constructor initializes properties like `src`, `extensions`, `ignoredFiles`, `ignoredImports`, and others
    * using the values from the provided options. It also sets up the codebase's files, root directory name,
@@ -262,7 +264,8 @@ export class Codebase {
    * };
    * const codebase = new Codebase(opts);
    */
-  constructor(opts: CodebaseOpts) {
+  constructor(fileHandler: T, opts: CodebaseOpts) {
+    this.fileHandler = fileHandler.assignCodebase(this);
     this.src = opts.src;
     this.extensions = opts.extensions;
     this.ignoredFiles = opts.ignoredFiles;
@@ -347,7 +350,7 @@ export class Codebase {
    * console.log(allFiles[0]);
    * // Outputs the `FileContainer` instance for the first file.
    */
-  extractFiles(): FileContainerType[] {
+  extractFiles(): FileContainerType<T>[] {
     return Object.values(this.files);
   }
 
@@ -370,8 +373,8 @@ export class Codebase {
    * console.log(newFileInstance.code);
    * // Outputs: 'console.log("This is a new file.")'
    */
-  newFile(path: string, code: string): FileContainer {
-    return new FileContainer(path, code, this);
+  newFile(path: string, code: string): FileContainer<T> {
+    return new FileContainer(this.fileHandler, path, code, this);
   }
 
   /**
@@ -426,7 +429,7 @@ export class Codebase {
    * console.log(codebase.files === codebase2.files);
    * // Outputs: true
    */
-  copy(codebase: Codebase) {
+  copy(codebase: Codebase<T>) {
     copy(this, codebase);
   }
 
@@ -476,7 +479,7 @@ export class Codebase {
    * console.log(newPath);
    * // Outputs: '/project/path1/index.js'
    */
-  makeDirectory(file: FileContainer) {
+  makeDirectory(file: FileContainer<T>) {
     return makeDirectory(this, file);
   }
 
@@ -495,7 +498,7 @@ export class Codebase {
    * console.log(codebase.files['/project/newFile.js'].code);
    * // Outputs: 'console.log("New file content.")'
    */
-  addFile(file: FileContainer) {
+  addFile(file: FileContainer<T>) {
     this.files[file.pathname] = file;
   }
 
@@ -519,7 +522,7 @@ export class Codebase {
    * console.log(codebase.files['/project/file1.js'].code);
    * // Outputs: 'const hi = "hello";'
    */
-  updateFiles(files: FileContainer[]) {
+  updateFiles(files: FileContainer<T>[]) {
     files.forEach(this.addFile.bind(this));
   }
 
@@ -618,7 +621,7 @@ export class Codebase {
    */
   save() {
     return Promise.all(
-      this.extractFiles().map((file: FileContainerType) => file.save())
+      this.extractFiles().map((file: FileContainerType<T>) => file.save())
     );
   }
 }

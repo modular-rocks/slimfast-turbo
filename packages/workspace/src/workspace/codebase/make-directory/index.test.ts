@@ -2,9 +2,16 @@ import { normalize } from 'path';
 import { describe, expect, test } from 'vitest';
 
 import { makeDirectory } from '.';
-import { Codebase } from '..';
+import { Codebase as CodebaseBase } from '..';
 
 import type { CodebaseOpts } from '../../../types';
+import { FileHandlerCustom } from '../index.test';
+
+class Codebase extends CodebaseBase<FileHandlerCustom> {
+  constructor(opts: CodebaseOpts) {
+    super(new FileHandlerCustom(), opts);
+  }
+}
 
 describe('"makeDirectory" utility', () => {
   const opts: CodebaseOpts = {

@@ -3,16 +3,18 @@ import { readFileSync, writeFileSync } from 'fs';
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
-import { Codebase } from '..';
+import { Codebase as CodebaseBase } from '..';
+
+import { createDir, fromFile, saveFile, saveToJSON, toFile, toJson } from '.';
+
 import type { CodebaseOpts, RandomObject } from '../../../types';
-import {
-  createDir,
-  fromFile,
-  saveFile,
-  saveToJSON,
-  toFile,
-  toJson,
-} from './index';
+import { FileHandlerCustom } from '../index.test';
+
+class Codebase extends CodebaseBase<FileHandlerCustom> {
+  constructor(opts: CodebaseOpts) {
+    super(new FileHandlerCustom(), opts);
+  }
+}
 
 describe('Save utilities', () => {
   const mockData: RandomObject = {

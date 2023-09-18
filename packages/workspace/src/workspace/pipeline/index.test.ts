@@ -2,9 +2,16 @@ import { describe, expect, test } from 'vitest';
 
 import { pipeline as runPipeline } from '.';
 import { Workspace } from '..';
-import { Codebase } from '../codebase';
+import { Codebase as CodebaseBase } from '../codebase';
 
 import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../../types';
+import { FileHandlerCustom } from '../codebase/index.test';
+
+class Codebase extends CodebaseBase<FileHandlerCustom> {
+  constructor(opts: CodebaseOpts) {
+    super(new FileHandlerCustom(), opts);
+  }
+}
 
 const syncFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {

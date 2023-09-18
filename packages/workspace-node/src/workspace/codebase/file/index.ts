@@ -1,6 +1,9 @@
-import { FileContainer as FileContainerBase } from '@modular-rocks/workspace';
+import type { Statement } from '@babel/types';
+import type { Codebase as CodebaseBase } from '@modular-rocks/workspace';
+import type { RandomObject } from '@modular-rocks/workspace/dist/types/types';
+import type { FileHandler as FileHandlerBase } from '@modular-rocks/workspace/dist/types/workspace/codebase/file';
 
-import type { File, Statement } from '@babel/types';
+import { FileContainer as FileContainerBase } from '@modular-rocks/workspace';
 
 import { Codebase } from '..';
 import { parse } from './parse';
@@ -9,15 +12,35 @@ import { tooSimple } from './too-simple';
 
 type EndOfLine = '\r\n' | '\n' | '\r';
 
-export class FileContainer extends FileContainerBase {
-  ast?: File;
+export class FileHandler implements FileHandlerBase {
+  private fileContainer!: FileContainerBase;
 
-  constructor(path: string, code: string, codebase: Codebase) {
-    super(path, code, codebase);
+  private codebase!: CodebaseBase;
+
+  assignFileContainer(fileContainer: FileContainerBase): this {
+    this.fileContainer = fileContainer;
+    return this;
+  }
+
+  assignCodebase(codebase: CodebaseBase): this {
+    this.codebase = codebase;
+    return this;
   }
 
   tooSimple() {
-    return tooSimple({ ast: this.ast });
+    return tooSimple({ ast: this.fileContainer.ast });
+  }
+
+  addImport(importStatement: Statement) {
+    if (!this.fileContainer.ast || !this.fileContainer.ast.program.body) {
+      return false;
+    }
+    this.fileContainer.ast.program.body.unshift(importStatement);
+    return true;
+  }
+
+  codeToAST(): RandomObject {
+    return parse(this.fileContainer.code);
   }
 
   /**
@@ -33,7 +56,7 @@ export class FileContainer extends FileContainerBase {
    * @returns The dominant EOL sequence. Defaults to \n if there's a tie or no newlines.
    */
   getDominantEOL(defaultEOL: EndOfLine = '\n') {
-    const { code } = this;
+    const { code } = this.fileContainer;
 
     let crlfCount = 0;
     let lfCount = 0;
@@ -60,17 +83,17 @@ export class FileContainer extends FileContainerBase {
     return defaultEOL;
   }
 
-  codeToAST() {
-    return parse(this.code);
-  }
-
   astToCode(ast: any) {
-    return print(ast, { lineTerminator: this.getDominantEOL() }).code;
+    return print(ast, {
+      lineTerminator: this.getDominantEOL(),
+    }).code;
   }
+}
 
-  addImport(importStatement: Statement) {
-    if (!this.ast || !this.ast.program.body) return false;
-    this.ast.program.body.unshift(importStatement);
-    return true;
+export class FileContainer extends FileContainerBase<FileHandler> {
+  ast?: File;
+
+  constructor(path: string, code: string, codebase: Codebase) {
+    super(new FileHandler(), path, code, codebase);
   }
 }

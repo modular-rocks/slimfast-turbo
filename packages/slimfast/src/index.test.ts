@@ -2,9 +2,52 @@ import { describe, expect, test } from 'vitest';
 
 import { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
 
-import Slimfast from '.';
+import { Codebase as CodebaseBase } from '@modular-rocks/workspace';
+import { FileContainer as FileContainerBase } from '@modular-rocks/workspace/dist/types/workspace/codebase/file';
+
+import type { FileHandler as FileHandlerBase } from '@modular-rocks/workspace/dist/types/workspace/codebase/file';
+
+import SlimfastBase from '.';
 
 type OutPutIteration = [number, number];
+
+export class FileHandler implements FileHandlerBase {
+  private fileContainer: FileContainerBase | null = null;
+
+  private codebase: CodebaseBase | null = null;
+
+  assignFileContainer(fileContainer: FileContainerBase): this {
+    this.fileContainer = fileContainer;
+    return this;
+  }
+
+  assignCodebase(codebase: CodebaseBase): this {
+    this.codebase = codebase;
+    return this;
+  }
+
+  tooSimple(): Boolean {
+    return false;
+  }
+
+  addImport(importStatement?: any) {
+    return false;
+  }
+
+  codeToAST() {
+    return {};
+  }
+
+  astToCode() {
+    return '';
+  }
+}
+
+class Slimfast extends SlimfastBase<FileHandler> {
+  constructor(opts: CodebaseOpts) {
+    super(new FileHandler(), opts);
+  }
+}
 
 const normalFunction = (i: number, time: number, output: OutPutIteration[]) => {
   return () => {

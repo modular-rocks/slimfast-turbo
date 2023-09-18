@@ -46,6 +46,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off', // needed for the monorepo
     'import/prefer-default-export': 'off',
     '@typescript-eslint/no-floating-promises': 'error',
+    'max-classes-per-file': 'off',
   },
 
   ignorePatterns: ['.eslintrc.cjs', 'dist', 'turbo', 'coverage'],

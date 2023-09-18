@@ -3,11 +3,18 @@ import { readFileSync } from 'fs';
 import mockFs from 'mock-fs';
 import { describe, expect, test } from 'vitest';
 
-import { Codebase } from '..';
+import { Codebase as CodebaseBase } from '..';
 
 import type { CodebaseOpts } from '../../../types';
+import { FileHandlerCustom } from '../index.test';
 
 const str = JSON.stringify;
+
+class Codebase extends CodebaseBase<FileHandlerCustom> {
+  constructor(opts: CodebaseOpts) {
+    super(new FileHandlerCustom(), opts);
+  }
+}
 
 describe('FileContainer', () => {
   const files: [string, string][] = [1, 2, 3].map((x: number) => [
@@ -34,8 +41,8 @@ describe('FileContainer', () => {
     expect(file.fullPath).toBe('/home/projects/project/path1');
     file.parse();
     expect(file.simple).toBe(false);
-    expect(str(file.codeToAST())).toBe(str({}));
-    expect(file.astToCode()).toBe('');
+    expect(str(file.fileHandler.codeToAST())).toBe(str({}));
+    expect(file.fileHandler.astToCode()).toBe('');
     expect(file.print()).toBe('');
     file.updateCode();
     expect(file.code).toBe('');
@@ -53,7 +60,9 @@ describe('FileContainer', () => {
     const filesContainer = Object.values(codebase.files);
     const file = filesContainer[0];
 
-    const result = file.addImport('import { hello } from "./hello";');
+    const result = file.fileHandler.addImport(
+      'import { hello } from "./hello";'
+    );
     // As per the current implementation
     expect(result).toBe(false);
   });

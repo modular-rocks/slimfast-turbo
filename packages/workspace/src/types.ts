@@ -1,7 +1,10 @@
-import type { FileContainer } from './workspace/codebase/file';
+import type { FileContainer, FileHandler } from './workspace/codebase/file';
 
 export type RandomObject = Record<string, any>;
-export type FilesContainer = Record<string, FileContainer>;
+export type FilesContainer<T extends FileHandler> = Record<
+  string,
+  FileContainer<T>
+>;
 
 export type Options = {
   pipeline?: Function[];

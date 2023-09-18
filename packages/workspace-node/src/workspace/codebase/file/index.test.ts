@@ -38,10 +38,12 @@ describe('FileContainer', () => {
     expect(file.fullPath).toBe('/home/projects/project/path1');
     file.parse();
     expect(file.simple).toBe(true);
-    expect(str(file.codeToAST())).toBe(
+    expect(str(file.fileHandler.codeToAST())).toBe(
       '{"type":"File","start":0,"end":27,"loc":{"start":{"line":1,"column":0,"index":0},"end":{"line":1,"column":27,"index":27}},"errors":[],"program":{"type":"Program","start":0,"end":27,"loc":{"start":{"line":1,"column":0,"index":0},"end":{"line":1,"column":27,"index":27}},"sourceType":"module","interpreter":null,"body":[{"type":"ExportDefaultDeclaration","start":0,"end":27,"loc":{"start":{"line":1,"column":0,"index":0},"end":{"line":1,"column":27,"index":27}},"exportKind":"value","declaration":{"type":"ArrowFunctionExpression","start":15,"end":27,"loc":{"start":{"line":1,"column":15,"index":15},"end":{"line":1,"column":27,"index":27}},"id":null,"generator":false,"async":false,"params":[{"type":"Identifier","start":16,"end":17,"loc":{"start":{"line":1,"column":16,"index":16},"end":{"line":1,"column":17,"index":17},"identifierName":"x"},"name":"x"}],"body":{"type":"BinaryExpression","start":22,"end":27,"loc":{"start":{"line":1,"column":22,"index":22},"end":{"line":1,"column":27,"index":27}},"left":{"type":"Identifier","start":22,"end":23,"loc":{"start":{"line":1,"column":22,"index":22},"end":{"line":1,"column":23,"index":23},"identifierName":"x"},"name":"x"},"operator":"*","right":{"type":"Identifier","start":26,"end":27,"loc":{"start":{"line":1,"column":26,"index":26},"end":{"line":1,"column":27,"index":27},"identifierName":"x"},"name":"x"}}}}],"directives":[]},"comments":[]}'
     );
-    expect(file.astToCode(file.ast)).toBe('export default x => x * x;');
+    expect(file.fileHandler.astToCode(file.ast)).toBe(
+      'export default x => x * x;'
+    );
     expect(file.print()).toBe('export default x => x * x;');
 
     const declaration = importDeclaration(
@@ -49,7 +51,7 @@ describe('FileContainer', () => {
       stringLiteral('my-module')
     );
 
-    file.addImport(declaration);
+    file.fileHandler.addImport(declaration);
 
     expect(file.print()).toBe(
       'import myModule from "my-module";\nexport default x => x * x;'
@@ -73,7 +75,7 @@ describe('FileContainer - getDominantEOL', () => {
     const code = "'Hello\r\nWorld\r\n'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
-    expect(fileContainer.getDominantEOL()).toBe('\r\n');
+    expect(fileContainer.fileHandler.getDominantEOL()).toBe('\r\n');
   });
 
   test('Should identify Unix (LF) EOL', () => {
@@ -81,7 +83,7 @@ describe('FileContainer - getDominantEOL', () => {
     const code = "'Hello\nWorld\n'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
-    expect(fileContainer.getDominantEOL()).toBe('\n');
+    expect(fileContainer.fileHandler.getDominantEOL()).toBe('\n');
   });
 
   test('Should identify old Mac (CR) EOL', () => {
@@ -89,7 +91,7 @@ describe('FileContainer - getDominantEOL', () => {
     const code = "'Hello\rWorld\r'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
-    expect(fileContainer.getDominantEOL()).toBe('\r');
+    expect(fileContainer.fileHandler.getDominantEOL()).toBe('\r');
   });
 
   test('Should default to LF for mixed EOLs with a tie', () => {
@@ -97,7 +99,7 @@ describe('FileContainer - getDominantEOL', () => {
     const code = "'Hello\r\nWorld\n'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
-    expect(fileContainer.getDominantEOL()).toBe('\n');
+    expect(fileContainer.fileHandler.getDominantEOL()).toBe('\n');
   });
 
   test('Should default to given EOL for mixed EOLs with a tie', () => {
@@ -105,7 +107,7 @@ describe('FileContainer - getDominantEOL', () => {
     const code = "'Hello\r\nWorld\r'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
-    expect(fileContainer.getDominantEOL('\r')).toBe('\r');
+    expect(fileContainer.fileHandler.getDominantEOL('\r')).toBe('\r');
   });
 
   test('Should default to LF for no newlines', () => {
@@ -113,7 +115,7 @@ describe('FileContainer - getDominantEOL', () => {
     const code = "'HelloWorld'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
-    expect(fileContainer.getDominantEOL()).toBe('\n');
+    expect(fileContainer.fileHandler.getDominantEOL()).toBe('\n');
   });
 });
 
@@ -143,7 +145,7 @@ describe('FileContainer - addImport', () => {
       stringLiteral('my-module')
     );
 
-    const result = fileContainer.addImport(declaration);
+    const result = fileContainer.fileHandler.addImport(declaration);
 
     expect(fileContainer.print()).toBe(
       `import myModule from "my-module";\n${code}`
@@ -166,7 +168,7 @@ describe('FileContainer - addImport', () => {
       stringLiteral('my-module')
     );
 
-    const result = fileContainer.addImport(declaration);
+    const result = fileContainer.fileHandler.addImport(declaration);
 
     expect(fileContainer.print()).toBe(code);
     expect(result).toBe(false);
@@ -198,7 +200,7 @@ describe('FileContainer - addImport', () => {
       stringLiteral('my-module')
     );
 
-    const result = fileContainer.addImport(declaration);
+    const result = fileContainer.fileHandler.addImport(declaration);
 
     expect(result).toBe(false);
   });
