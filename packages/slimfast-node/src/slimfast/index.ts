@@ -1,5 +1,5 @@
 import { Codebase } from '@modular-rocks/workspace-node';
-import SlimFastBase from '@modular-rocks/slimfast';
+import { SlimFast as SlimFastBase } from '@modular-rocks/slimfast';
 
 import ExpressionVisitor from './visitors/expression';
 import functionNameGenerator from './pipeline/name/default-function-name-generator';

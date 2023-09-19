@@ -6,7 +6,7 @@ import type {
   Options,
 } from '@modular-rocks/workspace/dist/types/types';
 
-export default class SlimFast extends Workspace {
+export class SlimFast extends Workspace {
   original: CodebaseType;
 
   refactored: CodebaseType;
@@ -37,6 +37,6 @@ export default class SlimFast extends Workspace {
   }
 
   async save() {
-    await this.refactored.save();
+    this.refactored.save();
   }
 }

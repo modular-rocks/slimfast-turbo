@@ -1,8 +1,7 @@
+import { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
 import { describe, expect, test } from 'vitest';
 
-import { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
-
-import Slimfast from '.';
+import { SlimFast } from '.';
 
 type OutPutIteration = [number, number];
 
@@ -53,7 +52,7 @@ describe('Slimfast base', () => {
       packageContents: {},
     };
 
-    const slimFast = new Slimfast(opts);
+    const slimFast = new SlimFast(opts);
     await slimFast.run();
 
     const result = [
@@ -99,7 +98,7 @@ describe('Slimfast base', () => {
       packageContents: {},
     };
 
-    const slimFast = new Slimfast(opts);
+    const slimFast = new SlimFast(opts);
     await slimFast.run();
 
     expect(JSON.stringify(output)).toBe(JSON.stringify([]));
