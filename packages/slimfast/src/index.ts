@@ -37,6 +37,6 @@ export class SlimFast extends Workspace {
   }
 
   async save() {
-    this.refactored.save();
+    await this.refactored.save();
   }
 }
