@@ -14,6 +14,8 @@ import {
 } from '@babel/types';
 import unique from 'array-unique';
 
+import type { RandomObject } from '../../../../../types';
+
 interface Entry {
   default?: string | null;
   named: string[];

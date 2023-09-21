@@ -1,6 +1,8 @@
 import { NodePath, Node } from '@babel/traverse';
 import isAFunction from '../is-a-function';
 
+import type { RandomObject } from '../../../../../types';
+
 export default (
   path: NodePath,
   data: RandomObject,

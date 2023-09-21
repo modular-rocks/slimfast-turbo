@@ -8,6 +8,8 @@ import extract from './pipeline/extract';
 import build from './pipeline/build';
 import name from './pipeline/name';
 
+import type { SlimFastOpts } from '../types';
+
 export default class SlimFast extends SlimFastBase {
   constructor(opts: SlimFastOpts) {
     super(opts);

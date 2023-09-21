@@ -6,6 +6,8 @@ import wrap from '.';
 import parser from '../../../../visitors/utils/parser';
 import extractIdentifiers from '../../../../visitors/utils/extract-identifiers';
 
+import type { SlimFastOpts } from '../../../../../types';
+
 const files: [string, string][] = [[`/path`, '']];
 const opts: SlimFastOpts = {
   files,

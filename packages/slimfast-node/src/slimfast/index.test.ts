@@ -4,6 +4,8 @@ import Slimfast from '.';
 import before from '../../test-results/basic/before';
 import after from '../../test-results/basic/after';
 
+import type { SlimFastOpts } from '../types';
+
 const code = before;
 
 describe('Slimfast Node', () => {

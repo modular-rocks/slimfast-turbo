@@ -7,6 +7,8 @@ import {
   stringLiteral,
 } from '@babel/types';
 
+import type { RandomObject } from '../../../../../types';
+
 export default (
   name: string,
   pathname: string,

@@ -9,6 +9,8 @@ import importStatement from './import-statement';
 import replaceInOriginalFile from './replace';
 import wrap from './wrap';
 
+import type { RandomObject, SlimFastOpts } from '../../../../types';
+
 export default (
   path: NodePath,
   data: RandomObject,

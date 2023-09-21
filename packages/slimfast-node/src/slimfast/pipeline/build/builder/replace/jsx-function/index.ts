@@ -9,6 +9,8 @@ import {
   jsxClosingElement,
 } from '@babel/types';
 
+import type { RandomObject } from '../../../../../../types';
+
 export default (name: string, data: RandomObject) => {
   name = name.charAt(0).toUpperCase() + name.slice(1);
   // TODO: Refactor to use a more specific type than 'any' for the toInject array

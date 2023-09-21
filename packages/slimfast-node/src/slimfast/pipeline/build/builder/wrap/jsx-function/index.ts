@@ -14,6 +14,8 @@ import {
 } from '@babel/types';
 import hasAwait from '../has-await';
 
+import type { RandomObject } from '../../../../../../types';
+
 export default (path: NodePath, data: RandomObject) => {
   // TODO: Verify and ensure 'data.toInject' contains valid elements of type 'RandomObject[]'.
   const toInject = unique(data.toInject) as RandomObject[];

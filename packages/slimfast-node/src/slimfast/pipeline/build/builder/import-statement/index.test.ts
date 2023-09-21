@@ -7,6 +7,8 @@ import { describe, expect, test } from 'vitest';
 import importStatement from '.';
 import parser from '../../../../visitors/utils/parser';
 
+import type { SlimFastOpts } from '../../../../../types';
+
 const files: [string, string][] = [[`/path`, '']];
 const opts: SlimFastOpts = {
   files,

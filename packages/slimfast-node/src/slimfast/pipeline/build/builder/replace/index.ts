@@ -3,6 +3,8 @@ import { NodePath } from '@babel/traverse';
 import generateJSXFunction from './jsx-function';
 import generateCalleeFunction from './normal-function';
 
+import type { RandomObject, SlimFastOpts } from '../../../../../types';
+
 export default (
   name: string,
   path: NodePath,

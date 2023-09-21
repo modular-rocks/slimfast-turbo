@@ -4,18 +4,21 @@ import { describe, expect, test } from 'vitest';
 import extractIdentifiers from './index';
 import parser from '../parser';
 
+import type { RandomObject } from '../../../../types';
+
 const str = JSON.stringify;
 
 describe('Extract Identifiers', () => {
   test('', () => {
     const code = `let result = x * e * o;`;
     const ast = parser(code);
-    let rootPath: NodePath | null = ast;
-    const extracted: Map<NodePath, RandomObject> = new Map();
+    let rootPath: NodePath | null = null;
     traverse(ast, {
       VariableDeclaration(path) {
         const initNode = path.node.declarations[0].init;
-        rootPath = path.findParent((p) => p.node === initNode);
+        if (initNode) {
+          rootPath = path.findParent((p) => p.node === initNode);
+        }
       },
     });
     if (rootPath !== null) {
@@ -25,11 +28,11 @@ describe('Extract Identifiers', () => {
       expect(str(variables)).toBe(str(['x', 'e', 'o']));
     }
   });
+
   test('', () => {
     const code = `import x from 'x-module'; let result = x * e * o;`;
     const ast = parser(code);
-    let rootPath: NodePath | null = ast;
-    const extracted: Map<NodePath, RandomObject> = new Map();
+    let rootPath: NodePath | null = null;
     traverse(ast, {
       VariableDeclaration(path) {
         rootPath = path;

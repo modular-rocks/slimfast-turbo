@@ -1,13 +1,22 @@
 import { NodePath } from '@babel/traverse';
 
-type Extract = [NodePath, Data];
+import type { FileContainer } from '@modular-rocks/workspace-node';
+import type { SlimFast } from '@modular-rocks/slimfast';
+
+import type {
+  RandomObject,
+  SlimFastOpts,
+  ProvisionalFile,
+} from '../../../types';
+
+type Extract = [NodePath, RandomObject];
 
 export default (builder: Function) =>
   (
-    file: FileContainerType,
+    file: FileContainer,
     options: SlimFastOpts,
-    state: State,
-    workspace: SlimFastType
+    state: RandomObject,
+    workspace: SlimFast
   ) => {
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;

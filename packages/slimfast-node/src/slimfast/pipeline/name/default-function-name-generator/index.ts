@@ -1,5 +1,7 @@
 import { NodePath } from '@babel/traverse';
 
+import type { RandomObject } from '../../../../types';
+
 const testJSX = (path: NodePath) => {
   let hasJSX = false;
 

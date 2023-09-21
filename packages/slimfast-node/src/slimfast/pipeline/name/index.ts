@@ -1,6 +1,11 @@
 import t from '@babel/types';
 import { NodePath, Node } from '@babel/traverse';
 
+import type { FileContainer } from '@modular-rocks/workspace-node';
+import type { SlimFast } from '@modular-rocks/slimfast';
+
+import type { RandomObject, VisitorType } from '../../../types';
+
 interface ProvisionalFile {
   pathname: string;
   ast: Node;
@@ -17,7 +22,7 @@ type Namer = (path: NodePath, data: RandomObject, options: Option) => void;
 type Builder = (
   path: NodePath,
   data: RandomObject,
-  file: FileContainerType
+  file: FileContainer
 ) => ProvisionalFile;
 
 interface Option {
@@ -28,10 +33,10 @@ interface Option {
 
 export default (namer: Function) =>
   (
-    file: FileContainerType,
+    file: FileContainer,
     options: Option,
-    state: State,
-    workspace: SlimFastType
+    state: RandomObject,
+    workspace: SlimFast
   ) => {
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;

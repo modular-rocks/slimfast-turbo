@@ -1,5 +1,7 @@
 import { NodePath, Node } from '@babel/traverse';
 
+import type { RandomObject } from '../../../../../types';
+
 // This method will return false if the path is a VariableDeclarator
 // I can be followed by the isVariableDeclaration constraint that will test the full declaration
 // If the VariableDeclarator path is extracted then it will not take the type of declaration with it

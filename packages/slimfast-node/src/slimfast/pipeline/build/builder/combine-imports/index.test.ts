@@ -8,6 +8,8 @@ import combineImports from '.';
 import parser from '../../../../visitors/utils/parser';
 import extractIdentifiers from '../../../../visitors/utils/extract-identifiers';
 
+import type { RandomObject, SlimFastOpts } from '../../../../../types';
+
 const files: [string, string][] = [[`/path`, '']];
 const opts: SlimFastOpts = {
   files,

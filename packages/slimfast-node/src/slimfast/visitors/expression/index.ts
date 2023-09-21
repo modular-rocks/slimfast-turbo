@@ -10,6 +10,8 @@ import hasBlocklistedIdentifiers from '../utils/contraints/has-blocklisted-ident
 import shouldIgnore from '../utils/contraints/should-ignore';
 import removesTooMuch from '../utils/contraints/removes-too-much';
 
+import type { RandomObject } from '../../../types';
+
 export default class ExpressionVisitor extends Visitor {
   constraints(): Function[] {
     return [

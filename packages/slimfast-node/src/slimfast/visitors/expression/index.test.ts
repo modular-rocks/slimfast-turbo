@@ -4,6 +4,8 @@ import { describe, expect, test } from 'vitest';
 import Visitor from '.';
 import parser from '../utils/parser';
 
+import type { SlimFastOpts } from '../../../types';
+
 const str = JSON.stringify;
 
 const code = `
