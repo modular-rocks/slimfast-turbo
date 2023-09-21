@@ -1,5 +1,7 @@
 import Traverse, { NodePath, Node } from '@babel/traverse';
 
+import type { RandomObject } from '../../../../../types';
+
 export default function shouldIgnore(
   path: NodePath,
   data: RandomObject,

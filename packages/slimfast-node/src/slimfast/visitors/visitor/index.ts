@@ -3,9 +3,7 @@ import traverse, { NodePath, Node } from '@babel/traverse';
 import rejectParentsWithTypes from '../utils/reject-parents-with-types';
 import notInExtracted from '../utils/not-in-extracted';
 
-interface Data {
-  [property: string]: any;
-}
+import type { RandomObject } from '../../../types';
 
 export default class Visitor {
   extracted: Map<NodePath, any>;
@@ -14,12 +12,12 @@ export default class Visitor {
 
   opts: RandomObject;
 
-  state: State;
+  state: RandomObject;
 
   constructor(
     ast: Node | undefined,
     opts: RandomObject,
-    state: State,
+    state: RandomObject,
     extracted: Map<NodePath, any>
   ) {
     this.ast = ast;
@@ -68,7 +66,7 @@ export default class Visitor {
     let parent: NodePath | null = path;
 
     while (parent) {
-      const data: Data = {};
+      const data: RandomObject = {};
       if (this.passesContraints(parent, data)) {
         this.extracted.set(parent, data);
         return;

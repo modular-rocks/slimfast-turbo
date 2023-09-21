@@ -1,6 +1,8 @@
 import { NodePath, Node } from '@babel/traverse';
 import extractIdentifiers from '../../extract-identifiers';
 
+import type { RandomObject } from '../../../../../types';
+
 export default (min: number, max: number) =>
   (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
     extractIdentifiers(path, data, opts, ast);

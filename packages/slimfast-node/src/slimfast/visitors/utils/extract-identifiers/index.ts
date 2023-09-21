@@ -1,6 +1,8 @@
 import unique from 'array-unique';
 import { NodePath, Node, Binding } from '@babel/traverse';
 
+import type { RandomObject } from '../../../../types';
+
 const importTypes = ['ImportDefaultSpecifier', 'ImportSpecifier'];
 const isImportStatement = (x: Binding) =>
   importTypes.includes(x.path.type) || x.kind === 'module';

@@ -8,6 +8,8 @@ import {
 } from '@babel/types';
 import hasAwait from '../has-await';
 
+import type { RandomObject } from '../../../../../../types';
+
 const findBlockStatement = (path: NodePath | RandomObject) => {
   const { node } = path;
   // if (isBlockStatement(node)) {
