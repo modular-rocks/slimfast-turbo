@@ -1,5 +1,6 @@
 import { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
+import mockFs from 'mock-fs';
 
 import { SlimFast } from '.';
 
@@ -103,5 +104,35 @@ describe('Slimfast base', () => {
 
     expect(JSON.stringify(output)).toBe(JSON.stringify([]));
     expect(JSON.stringify(slimFast.opts.pipeline)).toBe(JSON.stringify([]));
+  });
+
+  test('save method calls refactored.save', async () => {
+    mockFs({
+      './path/to': {},
+    });
+
+    const files: [string, string][] = [1, 2, 3].map((x: number) => [
+      `./path/to/file-${x}.js`,
+      '',
+    ]);
+    const opts: CodebaseOpts = {
+      files,
+      src: '/',
+      extensions: [],
+      ignoredFiles: [],
+      ignoredImports: [],
+      packageContents: {},
+    };
+
+    const slimFast = new SlimFast(opts);
+
+    const saveSpy = vi.spyOn(slimFast.refactored, 'save').mockResolvedValue([]);
+
+    await slimFast.save();
+
+    expect(saveSpy).toHaveBeenCalled();
+
+    saveSpy.mockRestore();
+    mockFs.restore();
   });
 });
