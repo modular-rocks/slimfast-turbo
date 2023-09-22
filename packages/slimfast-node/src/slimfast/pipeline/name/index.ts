@@ -30,8 +30,8 @@ interface Option {
   builder: Builder;
   namer: Namer;
 }
-
-export default (namer: Function) =>
+export const name =
+  (namer: Function) =>
   (
     file: FileContainer,
     options: Option,

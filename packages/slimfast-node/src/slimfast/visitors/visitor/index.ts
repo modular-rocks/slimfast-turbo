@@ -1,11 +1,11 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 
-import rejectParentsWithTypes from '../utils/reject-parents-with-types';
-import notInExtracted from '../utils/not-in-extracted';
+import { rejectParentsWithTypes } from '../utils/reject-parents-with-types';
+import { notInExtracted } from '../utils/not-in-extracted';
 
 import type { RandomObject } from '../../../types';
 
-export default class Visitor {
+export class Visitor {
   extracted: Map<NodePath, any>;
 
   ast: Node | undefined;
@@ -76,6 +76,8 @@ export default class Visitor {
   }
 
   visit(): RandomObject {
+    // TODO: maybe use composition to fix this
+    // eslint-disable-next-line no-console
     console.warn('Override this method, this is just an example');
     return {};
     // const test = this.test

@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { shouldIgnore } from './index';
+import { parser } from '../../parser';
 
 describe('Should Ignore', () => {
   test('', () => {
@@ -23,7 +23,7 @@ describe('Should Ignore', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = shouldIgnore(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });
@@ -46,7 +46,7 @@ describe('Should Ignore', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = shouldIgnore(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });
@@ -65,7 +65,7 @@ describe('Should Ignore', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = shouldIgnore(rootPath, data, {}, ast);
       expect(result).toBe(false);
     }
   });

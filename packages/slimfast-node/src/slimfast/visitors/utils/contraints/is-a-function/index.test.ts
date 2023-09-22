@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { isAFunction } from './index';
+import { parser } from '../../parser';
 
 describe('Is a function', () => {
   test('', () => {
@@ -18,7 +18,7 @@ describe('Is a function', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = isAFunction(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });
@@ -35,7 +35,7 @@ describe('Is a function', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = isAFunction(rootPath, data, {}, ast);
       expect(result).toBe(false);
     }
   });

@@ -2,7 +2,7 @@ import { NodePath, Node } from '@babel/traverse';
 
 import type { RandomObject } from '../../../../../types';
 
-export default (
+export const isAFunction = (
   path: NodePath,
   data: RandomObject,
   opts: RandomObject,

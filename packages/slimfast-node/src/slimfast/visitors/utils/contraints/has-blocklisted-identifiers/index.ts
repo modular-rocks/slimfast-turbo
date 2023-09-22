@@ -3,17 +3,18 @@ import type { File } from '@babel/types';
 
 import type { RandomObject } from '../../../../../types';
 
-export default (blocklised: string[]) =>
+export const hasBlocklistedIdentifiers =
+  (blocklised: string[]) =>
   (path: NodePath, data: RandomObject, opts: RandomObject, ast: File) => {
-    let hasBlocklistedIdentifiers = false;
+    let itHasBlocklistedIdentifiers = false;
 
     path.traverse({
       Identifier(innerPath: RandomObject) {
         if (blocklised.includes(innerPath.node.name)) {
-          hasBlocklistedIdentifiers = true;
+          itHasBlocklistedIdentifiers = true;
         }
       },
     });
 
-    return hasBlocklistedIdentifiers;
+    return itHasBlocklistedIdentifiers;
   };

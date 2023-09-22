@@ -6,7 +6,7 @@ import {
   blockStatement,
   returnStatement,
 } from '@babel/types';
-import hasAwait from '../has-await';
+import { hasAwait } from '../has-await';
 
 import type { RandomObject } from '../../../../../../types';
 
@@ -22,7 +22,10 @@ const findBlockStatement = (path: NodePath | RandomObject) => {
   ]);
 };
 
-export default (path: NodePath, data: RandomObject) => {
+export const generateExportedFunction = (
+  path: NodePath,
+  data: RandomObject
+) => {
   // TODO: Verify and ensure 'data.toInject' contains valid elements of type 'RandomObject[]'.
   const toInject = unique(data.toInject) as RandomObject[];
   return exportDefaultDeclaration(

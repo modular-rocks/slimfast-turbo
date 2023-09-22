@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import rejectParents from './index';
-import parser from '../parser';
+import { rejectParentsWithTypes } from './index';
+import { parser } from '../parser';
 
 describe('Rejected Parents with types', () => {
   const code = `let result = ((2 + 3) * 4 - Math.sqrt(9)) / (6 % 2) + Math.pow(2, 5) - parseFloat('10.5') + parseInt('100', 2);`;
@@ -19,14 +19,14 @@ describe('Rejected Parents with types', () => {
   test('', () => {
     const blocklisted: string[] = ['VariableDeclarator'];
     if (rootPath !== null) {
-      const result = rejectParents(rootPath, blocklisted);
+      const result = rejectParentsWithTypes(rootPath, blocklisted);
       expect(result).toBe(false);
     }
   });
   test('', () => {
     const blocklisted: string[] = ['ArrayExpression'];
     if (rootPath !== null) {
-      const result = rejectParents(rootPath, blocklisted);
+      const result = rejectParentsWithTypes(rootPath, blocklisted);
       expect(result).toBe(true);
     }
   });

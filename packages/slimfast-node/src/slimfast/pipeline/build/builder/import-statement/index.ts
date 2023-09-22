@@ -9,7 +9,7 @@ import {
 
 import type { RandomObject } from '../../../../../types';
 
-export default (
+export const generateImportDeclaration = (
   name: string,
   pathname: string,
   parentPath: string,

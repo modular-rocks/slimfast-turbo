@@ -23,7 +23,7 @@ const buildBinding = (name: string, binding: Binding): Binding => {
   // }
 };
 
-export default (
+export const extractIdentifiers = (
   path: NodePath,
   data: RandomObject,
   opts?: RandomObject,

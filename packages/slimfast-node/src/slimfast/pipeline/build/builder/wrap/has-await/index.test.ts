@@ -4,8 +4,8 @@ import traverse, { NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import hasAwait from '.';
-import parser from '../../../../../visitors/utils/parser';
+import { hasAwait } from '.';
+import { parser } from '../../../../../visitors/utils/parser';
 
 import type { SlimFastOpts } from '../../../../../../types';
 

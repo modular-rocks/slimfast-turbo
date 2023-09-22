@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { hasBlocklistedIdentifiers } from './index';
+import { parser } from '../../parser';
 
 describe('Has blocklisted identifiers', () => {
   test('', () => {
@@ -18,7 +18,12 @@ describe('Has blocklisted identifiers', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(['x', 'y'])(rootPath, data, {}, ast);
+      const result = hasBlocklistedIdentifiers(['x', 'y'])(
+        rootPath,
+        data,
+        {},
+        ast
+      );
       expect(result).toBe(true);
     }
   });
@@ -36,7 +41,12 @@ describe('Has blocklisted identifiers', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(['x', 'y'])(rootPath, data, {}, ast);
+      const result = hasBlocklistedIdentifiers(['x', 'y'])(
+        rootPath,
+        data,
+        {},
+        ast
+      );
       expect(result).toBe(false);
     }
   });

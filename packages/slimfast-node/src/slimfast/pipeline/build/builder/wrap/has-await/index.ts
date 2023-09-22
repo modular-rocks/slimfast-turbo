@@ -1,15 +1,15 @@
 import traverse, { NodePath } from '@babel/traverse';
 
-export default (path: NodePath) => {
-  let hasAwait = false;
+export const hasAwait = (path: NodePath) => {
+  let itHasAwait = false;
 
   const visitor = {
     AwaitExpression() {
-      hasAwait = true;
+      itHasAwait = true;
     },
   };
 
   traverse(path.node, visitor, path.scope, path.parentPath);
 
-  return hasAwait;
+  return itHasAwait;
 };

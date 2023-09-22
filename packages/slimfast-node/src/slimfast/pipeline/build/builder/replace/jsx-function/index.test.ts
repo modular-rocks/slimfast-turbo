@@ -2,9 +2,9 @@ import traverse, { NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import generate from '.';
-import parser from '../../../../../visitors/utils/parser';
-import extractIdentifiers from '../../../../../visitors/utils/extract-identifiers';
+import { generateJSXElement } from '.';
+import { parser } from '../../../../../visitors/utils/parser';
+import { extractIdentifiers } from '../../../../../visitors/utils/extract-identifiers';
 
 import type { SlimFastOpts } from '../../../../../../types';
 
@@ -45,7 +45,7 @@ describe('Generate JSX', () => {
     if (rootPath !== null) {
       const data = {};
       extractIdentifiers(rootPath, data);
-      const el = generate('MyComponent', data);
+      const el = generateJSXElement('MyComponent', data);
       expect(file.astToCode(el)).toBe(`<MyComponent />`);
     }
   });
@@ -74,7 +74,7 @@ describe('Generate JSX', () => {
     if (rootPath !== null) {
       const data = {};
       extractIdentifiers(rootPath, data);
-      const el = generate('MyComponent', data);
+      const el = generateJSXElement('MyComponent', data);
       expect(file.astToCode(el)).toBe(`<MyComponent name={name} />`);
     }
   });

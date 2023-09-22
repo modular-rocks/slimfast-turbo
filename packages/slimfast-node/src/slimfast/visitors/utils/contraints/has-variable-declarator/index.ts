@@ -7,17 +7,17 @@ import type { RandomObject } from '../../../../../types';
 // If the VariableDeclarator path is extracted then it will not take the type of declaration with it
 // e.g. the path will be `hello = 'hello'` rather than `const hello = 'hello'`
 // In summary, if this constraint is followed by a VariableDeclarator constraint, then the VariableDeclarator constraint will test this type of path
-export default (
+export const hasVariableDeclarator = (
   path: NodePath | RandomObject,
   data: RandomObject,
   opts: RandomObject,
   ast: Node
 ) => {
-  let hasVariableDeclarator = false;
+  let itHasVariableDeclarator = false;
 
   if (path.isVariableDeclarator()) {
-    hasVariableDeclarator = true;
+    itHasVariableDeclarator = true;
   }
 
-  return hasVariableDeclarator;
+  return itHasVariableDeclarator;
 };

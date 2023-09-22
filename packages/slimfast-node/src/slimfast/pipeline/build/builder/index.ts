@@ -4,14 +4,14 @@ import { NodePath } from '@babel/traverse';
 import { program } from '@babel/types';
 import unique from 'array-unique';
 
-import combineImports from './combine-imports';
-import importStatement from './import-statement';
-import replaceInOriginalFile from './replace';
-import wrap from './wrap';
+import { combineImports } from './combine-imports';
+import { generateImportDeclaration } from './import-statement';
+import { replace as replaceInOriginalFile } from './replace';
+import { wrap } from './wrap';
 
 import type { RandomObject, SlimFastOpts } from '../../../../types';
 
-export default (
+export const builder = (
   path: NodePath,
   data: RandomObject,
   parentPath: string,
@@ -39,6 +39,6 @@ export default (
   return {
     pathname,
     ast: program(nodes),
-    import: importStatement(name, pathname, parentPath, path),
+    import: generateImportDeclaration(name, pathname, parentPath, path),
   };
 };

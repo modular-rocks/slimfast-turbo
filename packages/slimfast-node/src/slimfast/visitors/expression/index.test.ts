@@ -1,8 +1,8 @@
 import { NodePath } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import Visitor from '.';
-import parser from '../utils/parser';
+import { ExpressionVisitor } from '.';
+import { parser } from '../utils/parser';
 
 import type { SlimFastOpts } from '../../../types';
 
@@ -38,7 +38,7 @@ describe('Slimfast Node', () => {
 
     // TODO: fix ESLint error
     // eslint-disable-next-line no-new
-    new Visitor(ast, opts, {}, extracted);
+    new ExpressionVisitor(ast, opts, {}, extracted);
 
     expect(extracted.size).toBe(2);
   }, 5000);

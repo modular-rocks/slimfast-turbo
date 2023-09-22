@@ -4,8 +4,8 @@ import traverse, { NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import importStatement from '.';
-import parser from '../../../../visitors/utils/parser';
+import { generateImportDeclaration } from '.';
+import { parser } from '../../../../visitors/utils/parser';
 
 import type { SlimFastOpts } from '../../../../../types';
 
@@ -33,7 +33,7 @@ traverse(ast, {
 describe('Combine imports', () => {
   test('It modularises', async () => {
     if (nodePath) {
-      const statement = importStatement(
+      const statement = generateImportDeclaration(
         'module',
         '/path/to/folder',
         '/path/to',

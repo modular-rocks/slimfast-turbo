@@ -11,7 +11,8 @@ import type {
 
 type Extract = [NodePath, RandomObject];
 
-export default (builder: Function) =>
+export const build =
+  (builder: Function) =>
   (
     file: FileContainer,
     options: SlimFastOpts,

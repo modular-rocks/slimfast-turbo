@@ -12,11 +12,8 @@ const getSize = (node: Node): number => {
   return notANumber(start) || notANumber(end) ? 0 : end - start;
 };
 
-export default (
-    multiplier: number,
-    minLength: number,
-    measureIdentifiers?: Boolean
-  ) =>
+export const tooSmall =
+  (multiplier: number, minLength: number, measureIdentifiers?: Boolean) =>
   (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
     multiplier = multiplier || 1.5;
     minLength = minLength || 50;

@@ -35,7 +35,7 @@ const isUsedInPath = (
   return false;
 };
 
-export default (
+export const hasAssignmentExpression = (
   path: NodePath,
   data: RandomObject,
   opts: RandomObject,
