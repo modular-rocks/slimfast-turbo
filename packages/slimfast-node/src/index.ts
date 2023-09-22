@@ -1,3 +1,3 @@
-import SlimFast from './slimfast';
+import { SlimFast } from './slimfast';
 
-export default SlimFast;
+export { SlimFast };

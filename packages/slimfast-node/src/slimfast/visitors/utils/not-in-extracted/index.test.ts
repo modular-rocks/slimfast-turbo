@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import notInExtracted from './index';
-import parser from '../parser';
+import { notInExtracted } from './index';
+import { parser } from '../parser';
 
 import type { RandomObject } from '../../../../types';
 

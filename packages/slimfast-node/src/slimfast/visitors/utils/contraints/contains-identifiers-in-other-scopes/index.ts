@@ -15,7 +15,7 @@ function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
   return false;
 }
 
-export default (
+export const containsIdentifiersInOtherScopes = (
   path: NodePath,
   data: RandomObject,
   opts: RandomObject,

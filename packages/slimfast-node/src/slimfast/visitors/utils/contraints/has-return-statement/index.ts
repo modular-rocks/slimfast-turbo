@@ -1,9 +1,9 @@
 import { NodePath, Node } from '@babel/traverse';
-import isAFunction from '../is-a-function';
+import { isAFunction } from '../is-a-function';
 
 import type { RandomObject } from '../../../../../types';
 
-export default (
+export const hasReturnStatement = (
   path: NodePath,
   data: RandomObject,
   opts: RandomObject,

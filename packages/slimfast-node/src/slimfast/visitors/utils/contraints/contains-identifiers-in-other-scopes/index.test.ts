@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { containsIdentifiersInOtherScopes } from './index';
+import { parser } from '../../parser';
 
 describe('Contains variables in other scopes', () => {
   test('', () => {
@@ -22,7 +22,7 @@ describe('Contains variables in other scopes', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = containsIdentifiersInOtherScopes(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });
@@ -40,7 +40,7 @@ describe('Contains variables in other scopes', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = containsIdentifiersInOtherScopes(rootPath, data, {}, ast);
       expect(result).toBe(false);
     }
   });

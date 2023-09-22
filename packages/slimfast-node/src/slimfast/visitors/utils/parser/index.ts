@@ -1,4 +1,4 @@
-import parser from '@babel/parser';
+import babelParser from '@babel/parser';
 
 import type { RandomObject } from '../../../../types';
 
@@ -8,4 +8,4 @@ const babelConfig: RandomObject = {
   plugins: ['jsx', ['typescript', { isTSX: true }], 'babel-plugin-recast'],
 };
 
-export default (code: string) => parser.parse(code, babelConfig);
+export const parser = (code: string) => babelParser.parse(code, babelConfig);

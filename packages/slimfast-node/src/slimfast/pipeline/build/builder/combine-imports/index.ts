@@ -26,7 +26,7 @@ type ImportSpecifierType =
   | ImportNamespaceSpecifier
   | ImportSpecifier;
 
-export default function combineImports(
+export function combineImports(
   pathname: string,
   folder: string,
   imports: Binding[]

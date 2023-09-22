@@ -4,9 +4,9 @@ import traverse, { Binding, NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import combineImports from '.';
-import parser from '../../../../visitors/utils/parser';
-import extractIdentifiers from '../../../../visitors/utils/extract-identifiers';
+import { combineImports } from '.';
+import { parser } from '../../../../visitors/utils/parser';
+import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
 
 import type { RandomObject, SlimFastOpts } from '../../../../../types';
 

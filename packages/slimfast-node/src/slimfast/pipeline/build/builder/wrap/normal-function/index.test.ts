@@ -2,9 +2,9 @@ import traverse, { NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import generate from '.';
-import parser from '../../../../../visitors/utils/parser';
-import extractIdentifiers from '../../../../../visitors/utils/extract-identifiers';
+import { generateExportedFunction } from '.';
+import { parser } from '../../../../../visitors/utils/parser';
+import { extractIdentifiers } from '../../../../../visitors/utils/extract-identifiers';
 
 import type { SlimFastOpts } from '../../../../../../types';
 
@@ -41,7 +41,7 @@ describe('Generate JSX', () => {
     if (rootPath !== null) {
       const data = {};
       extractIdentifiers(rootPath, data);
-      const el = generate(rootPath, data);
+      const el = generateExportedFunction(rootPath, data);
       expect(file.astToCode(el)).toBe(`export default function() {
     return "Hello World!";
 }`);
@@ -72,7 +72,7 @@ describe('Generate JSX', () => {
     if (rootPath !== null) {
       const data = {};
       extractIdentifiers(rootPath, data);
-      const el = generate(rootPath, data);
+      const el = generateExportedFunction(rootPath, data);
       expect(file.astToCode(el)).toBe(`export default function(props) {
         const {
             name

@@ -14,9 +14,9 @@ const testJSX = (path: NodePath) => {
   return hasJSX;
 };
 
-export default function (num: number) {
+export const defaultFunctionNameGenerator = (num: number) => {
   let lastNumber = num;
-  return function (path: NodePath, data: RandomObject) {
+  return (path: NodePath, data: RandomObject) => {
     lastNumber += 1;
     const containsJSX = testJSX(path);
     const noun = containsJSX ? 'component' : 'function';
@@ -29,4 +29,4 @@ export default function (num: number) {
       folder,
     };
   };
-}
+};

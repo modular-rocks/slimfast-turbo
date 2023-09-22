@@ -1,18 +1,18 @@
 import { NodePath } from '@babel/traverse';
 
-import generateJSXFunction from './jsx-function';
-import generateCalleeFunction from './normal-function';
+import { generateJSXElement } from './jsx-function';
+import { generateFunction as generateCalleeFunction } from './normal-function';
 
 import type { RandomObject, SlimFastOpts } from '../../../../../types';
 
-export default (
+export const replace = (
   name: string,
   path: NodePath,
   data: RandomObject,
   options: SlimFastOpts
 ) => {
   const calleeFunction = path.isJSXElement()
-    ? (options.jsxReplacer || generateJSXFunction)(name, data)
+    ? (options.jsxReplacer || generateJSXElement)(name, data)
     : (options.functionReplacer || generateCalleeFunction)(name, data);
   path.replaceWith(calleeFunction);
   return calleeFunction;

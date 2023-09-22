@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { removesTooMuch } from './index';
+import { parser } from '../../parser';
 
 describe('Removes too much', () => {
   const code = `() => 3 * 7`;
@@ -18,7 +18,7 @@ describe('Removes too much', () => {
   });
   test('', () => {
     if (rootPath !== null) {
-      const result = constraint(3)(rootPath, data, {}, ast);
+      const result = removesTooMuch(3)(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });

@@ -3,7 +3,7 @@ import { identifier, callExpression } from '@babel/types';
 
 import type { RandomObject } from '../../../../../../types';
 
-export default (name: string, data: RandomObject) => {
+export const generateFunction = (name: string, data: RandomObject) => {
   // TODO: Verify and ensure 'data.toInject' contains valid elements of type 'RandomObject[]'.
   const toInject = unique(data.toInject) as RandomObject[];
   const calleeFunction = identifier(name);

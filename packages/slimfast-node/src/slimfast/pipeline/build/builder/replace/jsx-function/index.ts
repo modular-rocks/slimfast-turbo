@@ -11,7 +11,7 @@ import {
 
 import type { RandomObject } from '../../../../../../types';
 
-export default (name: string, data: RandomObject) => {
+export const generateJSXElement = (name: string, data: RandomObject) => {
   name = name.charAt(0).toUpperCase() + name.slice(1);
   // TODO: Refactor to use a more specific type than 'any' for the toInject array
   const toInject: any[] = unique(data.toInject);

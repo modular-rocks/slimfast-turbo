@@ -4,7 +4,7 @@ import t from '@babel/types';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
-import type Visitor from '../../visitors/visitor';
+import type { Visitor } from '../../visitors/visitor';
 import type { RandomObject } from '../../../types';
 
 type Namer = (path: NodePath, data: RandomObject, options: Option) => void;
@@ -27,7 +27,8 @@ interface ProvisionalFile {
   import: t.Statement;
 }
 
-export default (visitors: Visitor[]) =>
+export const extract =
+  (visitors: Visitor[]) =>
   (
     file: FileContainer,
     options: Option,

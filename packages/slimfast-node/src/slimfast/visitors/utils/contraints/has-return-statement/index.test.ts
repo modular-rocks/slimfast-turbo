@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { hasReturnStatement } from './index';
+import { parser } from '../../parser';
 
 describe('Has return statement', () => {
   test('', () => {
@@ -20,7 +20,7 @@ describe('Has return statement', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = hasReturnStatement(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });
@@ -38,7 +38,7 @@ describe('Has return statement', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = hasReturnStatement(rootPath, data, {}, ast);
       expect(result).toBe(false);
     }
   });

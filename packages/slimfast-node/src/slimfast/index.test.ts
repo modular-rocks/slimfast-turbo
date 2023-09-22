@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import Slimfast from '.';
+import { SlimFast } from '.';
 import before from '../../test-results/basic/before';
 import after from '../../test-results/basic/after';
 
@@ -20,7 +20,7 @@ describe('Slimfast Node', () => {
       packageContents: {},
     };
 
-    const slimFast = new Slimfast(opts);
+    const slimFast = new SlimFast(opts);
     await slimFast.run();
     const newFiles = slimFast.refactored.extractFiles();
     const file = newFiles[0];

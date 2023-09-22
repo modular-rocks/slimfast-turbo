@@ -12,7 +12,8 @@ const getSize = (node: Node): number => {
   return notANumber(start) || notANumber(end) ? 0 : end - start;
 };
 
-export default (multiplier: number) =>
+export const removesTooMuch =
+  (multiplier: number) =>
   (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
     const astSize = getSize(ast);
     const size = getSize(path.node);

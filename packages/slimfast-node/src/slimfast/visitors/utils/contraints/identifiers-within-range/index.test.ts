@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { identifiersWithinRange } from './index';
+import { parser } from '../../parser';
 
 describe('Identifiers within range', () => {
   test('', () => {
@@ -18,7 +18,7 @@ describe('Identifiers within range', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(2, 4)(rootPath, data, {}, ast);
+      const result = identifiersWithinRange(2, 4)(rootPath, data, {}, ast);
       expect(result).toBe(false);
     }
   });
@@ -36,7 +36,7 @@ describe('Identifiers within range', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(2, 4)(rootPath, data, {}, ast);
+      const result = identifiersWithinRange(2, 4)(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });

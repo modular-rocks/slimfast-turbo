@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { hasVariableDeclarator } from './index';
+import { parser } from '../../parser';
 
 describe('Has variable declarator', () => {
   test('', () => {
@@ -18,7 +18,7 @@ describe('Has variable declarator', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = hasVariableDeclarator(rootPath, data, {}, ast);
       expect(result).toBe(true);
     }
   });
@@ -36,7 +36,7 @@ describe('Has variable declarator', () => {
       },
     });
     if (rootPath !== null) {
-      const result = constraint(rootPath, data, {}, ast);
+      const result = hasVariableDeclarator(rootPath, data, {}, ast);
       expect(result).toBe(false);
     }
   });

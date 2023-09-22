@@ -1,8 +1,8 @@
 import traverse, { NodePath, Node } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import constraint from './index';
-import parser from '../../parser';
+import { isCallExpression } from './index';
+import { parser } from '../../parser';
 
 describe('Is call expression', () => {
   test('', () => {
@@ -20,7 +20,7 @@ describe('Is call expression', () => {
     });
 
     if (rootPath !== null) {
-      const result = constraint(rootPath, {}, {}, ast);
+      const result = isCallExpression(rootPath, {}, {}, ast);
       const expected = true;
       expect(result).toBe(expected);
     }
