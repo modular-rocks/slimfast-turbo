@@ -1,5 +1,23 @@
 # @modular-rocks/workspace-node
 
+## 0.1.5
+
+### Patch Changes
+
+- [#50](https://github.com/modular-rocks/slimfast-turbo/pull/50) [`f2cd92c`](https://github.com/modular-rocks/slimfast-turbo/commit/f2cd92cf2ac340615cde7d884c74ae3275372b43) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Added JSDocs to the `workspace-node` package for better code documentation.
+
+- [#51](https://github.com/modular-rocks/slimfast-turbo/pull/51) [`13f421f`](https://github.com/modular-rocks/slimfast-turbo/commit/13f421fd4ff5a942637bb874cd2b247471bba981) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Added multiple tests
+
+- [#62](https://github.com/modular-rocks/slimfast-turbo/pull/62) [`57cc945`](https://github.com/modular-rocks/slimfast-turbo/commit/57cc945aad834954af4626c45e0d039335617676) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- [#53](https://github.com/modular-rocks/slimfast-turbo/pull/53) [`597b024`](https://github.com/modular-rocks/slimfast-turbo/commit/597b02401d9f7c3fe595dc0aa2e6ccc498994ef7) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Fix to the `addImport` method's return
+
+- [#63](https://github.com/modular-rocks/slimfast-turbo/pull/63) [`c0e446c`](https://github.com/modular-rocks/slimfast-turbo/commit/c0e446cd0fb4f82439038a3c054bb9d94df85dc7) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated the minimum required Node version to 18 for all packages, aligning with the LTS status of Node.
+
+- Updated dependencies [[`57cc945`](https://github.com/modular-rocks/slimfast-turbo/commit/57cc945aad834954af4626c45e0d039335617676), [`c0e446c`](https://github.com/modular-rocks/slimfast-turbo/commit/c0e446cd0fb4f82439038a3c054bb9d94df85dc7)]:
+  - @modular-rocks/traverse-files@0.3.1
+  - @modular-rocks/workspace@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes
