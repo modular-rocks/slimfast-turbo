@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/workspace",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A workspace for working with virtual codebases",
   "main": "./dist/index.js",
   "exports": {
