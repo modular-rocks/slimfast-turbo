@@ -23,6 +23,32 @@ const buildBinding = (name: string, binding: Binding): Binding => {
   // }
 };
 
+/**
+ * Traverses a given Abstract Syntax Tree (AST) node path and extracts bindings associated with any `Identifier` nodes.
+ *
+ * The function categorizes the extracted bindings into two main groups:
+ * - `toImport`: Contains bindings that are related to import statements.
+ * - `toInject`: Contains bindings that are associated with variable declarations or function parameters.
+ *
+ * These categorized bindings are added to the provided `data` object under the respective keys.
+ *
+ * @param path - The starting AST node path to be traversed.
+ * @param data - An object to which the categorized bindings will be added.
+ * @param opts - Optional configuration options.
+ * @param ast - The entire AST, if available.
+ * @returns This function modifies the `data` object in-place and doesn't return a value.
+ *
+ * @example
+ * const code = `import React from 'react'; const greet = (name) => "Hello, " + name;`;
+ * const ast = parser(code);
+ * const data = {};
+ * traverse(ast, {
+ *   Program(path) {
+ *     extractIdentifiers(path, data);
+ *   }
+ * });
+ * // Now, `data.toImport` contains the binding related to `React` and `data.toInject` contains the binding related to `greet`.
+ */
 export const extractIdentifiers = (
   path: NodePath,
   data: RandomObject,
