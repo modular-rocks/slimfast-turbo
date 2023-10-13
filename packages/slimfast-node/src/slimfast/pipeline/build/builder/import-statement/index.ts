@@ -9,6 +9,24 @@ import {
 
 import type { RandomObject } from '../../../../../types';
 
+/**
+ * Generates an AST node representing an import declaration for a specified module.
+ *
+ * It creates an import declaration that can be utilized within the AST
+ * of another module. It modifies the name to be capitalized if the path is related
+ * to a JSX Element and computes the relative path to ensure accuracy within
+ * different directory structures.
+ *
+ * @param name - The name of the module or variable to be imported.
+ * @param pathname - The full path to the module to be imported.
+ * @param parentPath - The path to the parent or originating module.
+ * @param path - Object containing AST node path and related properties.
+ * @returns - AST node representing the import declaration.
+ *
+ * @example
+ * // Generates an import declaration AST node for a module named 'ModuleName' located at './path/to/ModuleName'.
+ * const importAst = generateImportDeclaration('ModuleName', './path/to/ModuleName.js', './parent/path', jsxPath);
+ */
 export const generateImportDeclaration = (
   name: string,
   pathname: string,
