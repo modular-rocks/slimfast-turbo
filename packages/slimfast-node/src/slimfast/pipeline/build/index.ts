@@ -11,8 +11,35 @@ import type {
 
 type Extract = [NodePath, RandomObject];
 
+/**
+ * Generates a function that processes and builds files based on extracted nodes from a given file's Abstract Syntax Tree (AST).
+ *
+ * @param builder - A function that produces a provisional file structure based on AST nodes.
+ * @returns A function that processes the file and incorporates new file structures into the workspace.
+ *
+ * @example
+ * const buildFunction = build(myBuilder);
+ * const updatedFile = buildFunction(file, buildOptions, state, workspace);
+ *
+ * // Alternatively, the function can be used directly:
+ * const updatedFile = build(myBuilder)(file, buildOptions, state, workspace);
+ */
 export const build =
   (builder: Function) =>
+  /**
+   * Processes a file to generate new file structures based on extracted nodes and incorporates these into the workspace.
+   *
+   * For each node extracted from the file's AST, the function generates provisional file structures and ensures that the original file imports any newly created files. The new files are then added to the workspace.
+   *
+   * @param file - The original file containing the extracted nodes.
+   * @param options - Build options that guide the process.
+   * @param state - Stateful information that might be used during the building process.
+   * @param workspace - The workspace instance associated with the build.
+   * @returns The updated file or `false` if no nodes were extracted.
+   *
+   * @example
+   * const updatedFile = buildFunction(file, buildOptions, state, workspace);
+   */
   (
     file: FileContainer,
     options: SlimFastOpts,

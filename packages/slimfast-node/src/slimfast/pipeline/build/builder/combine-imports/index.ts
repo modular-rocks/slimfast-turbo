@@ -26,6 +26,28 @@ type ImportSpecifierType =
   | ImportNamespaceSpecifier
   | ImportSpecifier;
 
+/**
+ * It aggregates separate import statements (default and named) from the same module,
+ * combining them into a single import.
+ *
+ * It takes an array of import bindings and processes them to generate an array of import
+ * declaration AST nodes. The imports are categorized by source, organized into single import
+ * declarations for each source, and ensure that named imports are unique.
+ *
+ * @param pathname - The path of the file being processed.
+ * @param folder - The folder path to resolve relative imports.
+ * @param imports - An array of Binding objects representing imports.
+ * @returns - An array of import declaration AST nodes.
+ *
+ * @example
+ * // Suppose you have multiple import statements in your code:
+ * import a from 'moduleA';
+ * import { b, c } from 'moduleA';
+ * // This function will consolidate them into a single import statement’s AST node:
+ * const importNodes = combineImports('path/to/file.js', 'path/to', bindings);
+ * //like so:
+ * import a, { b, c } from 'moduleA';
+ */
 export function combineImports(
   pathname: string,
   folder: string,
