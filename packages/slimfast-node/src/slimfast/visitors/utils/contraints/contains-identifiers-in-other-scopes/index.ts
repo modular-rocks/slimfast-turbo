@@ -15,6 +15,24 @@ function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
   return false;
 }
 
+/**
+ * Checks if variables declared in a given AST node path are referenced or manipulated outside of their original declaring scope.
+ *
+ * This function specifically focuses on nodes that declare variables (`let`, `const`, `var`). It examines whether these variables are either accessed or manipulated in a different scope than their original declaration.
+ * This can be particularly useful for understanding dependencies or potential side-effects associated with variables.
+ *
+ * @param path - The AST node path of the variable declaration to be examined.
+ * @param data - Additional information or context related to the node.
+ * @param opts - Configuration options influencing the check.
+ * @param ast - The complete Abstract Syntax Tree.
+ * @returns `true` if any of the declared variables within the node path are referenced or manipulated outside their declaring scope, otherwise `false`.
+ *
+ * @example
+ * const hasExternalReferences = containsIdentifiersInOtherScopes(nodePath, data, opts, ast);
+ * if (hasExternalReferences) {
+ *   // Handle or analyze the variables that are used externally.
+ * }
+ */
 export const containsIdentifiersInOtherScopes = (
   path: NodePath,
   data: RandomObject,
@@ -23,6 +41,7 @@ export const containsIdentifiersInOtherScopes = (
 ) => {
   let usedInOtherScopes = false;
 
+  // TODO: double check this condition
   if (path.isVariableDeclaration()) {
     // most likely used in other scopes
     usedInOtherScopes = true;

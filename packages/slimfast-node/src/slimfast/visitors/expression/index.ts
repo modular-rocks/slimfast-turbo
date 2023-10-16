@@ -12,7 +12,15 @@ import { removesTooMuch } from '../utils/contraints/removes-too-much';
 
 import type { RandomObject } from '../../../types';
 
+/**
+ * A `Visitor` that traverses AST expression nodes, evaluating them against specific constraints.
+ */
 export class ExpressionVisitor extends Visitor {
+  /**
+   * Provides a list of constraint functions for evaluating expressions during AST traversal.
+   *
+   * @returns An array of constraint functions specific to expressions.
+   */
   constraints(): Function[] {
     return [
       removesTooMuch(2),
@@ -27,6 +35,11 @@ export class ExpressionVisitor extends Visitor {
     ];
   }
 
+  /**
+   * This method is focused on AST nodes of type 'Expression'. For each node encountered during traversal, the method checks if it contains nested expressions. If not, it evaluates the node using the `test` method to determine if it meets the set criteria.
+   *
+   * @returns An object detailing how to process 'Expression' nodes during AST traversal.
+   */
   visit(): RandomObject {
     const test = this.test.bind(this);
     return {

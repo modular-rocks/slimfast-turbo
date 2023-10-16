@@ -35,6 +35,23 @@ const isUsedInPath = (
   return false;
 };
 
+/**
+ * Determines if a given AST node path contains an assignment expression, and if the variables involved in that assignment are used in other scopes.
+ *
+ * The node path is examined for direct representations of an assignment expression. Additionally, nested nodes are inspected for assignment patterns, to determine if the assigned variables are referenced outside their original context.
+ *
+ * @param path - The AST node path to be checked.
+ * @param data - Information or context related to the node.
+ * @param opts - Configuration options.
+ * @param ast - The complete Abstract Syntax Tree.
+ * @returns `true` if the node path contains an assignment expression and the assigned variables are used in other scopes, otherwise `false`.
+ *
+ * @example
+ * const containsAssignment = hasAssignmentExpression(nodePath, data, opts, ast);
+ * if (containsAssignment) {
+ *   // Handle or flag the assignment for further analysis.
+ * }
+ */
 export const hasAssignmentExpression = (
   path: NodePath,
   data: RandomObject,
