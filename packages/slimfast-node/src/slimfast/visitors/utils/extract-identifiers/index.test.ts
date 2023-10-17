@@ -1,10 +1,11 @@
-import traverse, { NodePath, Node, Binding } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
 import { extractIdentifiers } from './index';
 import { parser } from '../parser';
 
 import type { RandomObject } from '../../../../types';
+import type { NodePath, Binding } from '@babel/traverse';
 
 const str = JSON.stringify;
 

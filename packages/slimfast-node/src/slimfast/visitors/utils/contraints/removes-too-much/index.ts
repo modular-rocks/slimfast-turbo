@@ -1,6 +1,5 @@
-import { NodePath, Node } from '@babel/traverse';
-
 import type { RandomObject } from '../../../../../types';
+import type { NodePath, Node } from '@babel/traverse';
 
 const notANumber = (num: number | null | undefined): boolean =>
   num === null || num === undefined || Number.isNaN(num);

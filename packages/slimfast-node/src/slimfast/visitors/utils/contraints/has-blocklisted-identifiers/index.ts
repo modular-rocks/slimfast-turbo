@@ -1,7 +1,6 @@
+import type { RandomObject } from '../../../../../types';
 import type { NodePath } from '@babel/traverse';
 import type { File } from '@babel/types';
-
-import type { RandomObject } from '../../../../../types';
 
 /**
  * Generates a function to check if a given AST node path contains any identifiers that are part of a specified blocklist.

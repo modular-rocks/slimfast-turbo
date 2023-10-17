@@ -1,9 +1,10 @@
-import traverse, { NodePath, Node } from '@babel/traverse';
+import traverse from '@babel/traverse';
 
-import { rejectParentsWithTypes } from '../utils/reject-parents-with-types';
 import { notInExtracted } from '../utils/not-in-extracted';
+import { rejectParentsWithTypes } from '../utils/reject-parents-with-types';
 
 import type { RandomObject } from '../../../types';
+import type { NodePath, Node } from '@babel/traverse';
 
 /**
  * The Visitor class is responsible for traversing the AST and managing extraction based on

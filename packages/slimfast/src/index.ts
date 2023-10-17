@@ -1,5 +1,6 @@
-import type { Codebase as CodebaseType } from '@modular-rocks/workspace';
 import { Codebase, Workspace } from '@modular-rocks/workspace';
+
+import type { Codebase as CodebaseType } from '@modular-rocks/workspace';
 import type {
   CodebaseOpts,
   Options,

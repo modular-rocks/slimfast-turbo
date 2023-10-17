@@ -1,6 +1,5 @@
-import { NodePath, Node } from '@babel/traverse';
-
 import type { RandomObject } from '../../../../../types';
+import type { NodePath, Node } from '@babel/traverse';
 
 function isInsidePath(
   innerPath: NodePath,

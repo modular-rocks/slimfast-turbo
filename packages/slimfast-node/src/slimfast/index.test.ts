@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
 import { SlimFast } from '.';
-import before from '../../test-results/basic/before';
 import after from '../../test-results/basic/after';
+import before from '../../test-results/basic/before';
 
 import type { SlimFastOpts } from '../types';
 

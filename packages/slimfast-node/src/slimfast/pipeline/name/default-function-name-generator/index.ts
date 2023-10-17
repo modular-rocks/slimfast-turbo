@@ -1,6 +1,5 @@
-import { NodePath } from '@babel/traverse';
-
 import type { RandomObject } from '../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Checks if a given AST node path contains any JSX elements.

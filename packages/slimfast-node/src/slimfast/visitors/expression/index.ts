@@ -1,14 +1,13 @@
-import { Visitor } from '../visitor';
-
-import { tooSmall } from '../utils/contraints/too-small';
-import { identifiersNotWithinRange } from '../utils/contraints/identifiers-not-within-range';
-import { hasReturnStatement } from '../utils/contraints/has-return-statement';
-import { hasAssignmentExpression } from '../utils/contraints/has-assignment-expression';
 import { containsIdentifiersInOtherScopes } from '../utils/contraints/contains-identifiers-in-other-scopes';
-import { hasVariableDeclarator } from '../utils/contraints/has-variable-declarator';
+import { hasAssignmentExpression } from '../utils/contraints/has-assignment-expression';
 import { hasBlocklistedIdentifiers } from '../utils/contraints/has-blocklisted-identifiers';
-import { shouldIgnore } from '../utils/contraints/should-ignore';
+import { hasReturnStatement } from '../utils/contraints/has-return-statement';
+import { hasVariableDeclarator } from '../utils/contraints/has-variable-declarator';
+import { identifiersNotWithinRange } from '../utils/contraints/identifiers-not-within-range';
 import { removesTooMuch } from '../utils/contraints/removes-too-much';
+import { shouldIgnore } from '../utils/contraints/should-ignore';
+import { tooSmall } from '../utils/contraints/too-small';
+import { Visitor } from '../visitor';
 
 import type { RandomObject } from '../../../types';
 

@@ -1,14 +1,15 @@
-import unique from 'array-unique';
+import traverse from '@babel/traverse';
 import { program } from '@babel/types';
-import traverse, { Binding, NodePath } from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
+import unique from 'array-unique';
 import { describe, expect, test } from 'vitest';
 
 import { combineImports } from '.';
-import { parser } from '../../../../visitors/utils/parser';
 import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
+import { parser } from '../../../../visitors/utils/parser';
 
 import type { RandomObject, SlimFastOpts } from '../../../../../types';
+import type { Binding, NodePath } from '@babel/traverse';
 
 const files: [string, string][] = [[`/path`, '']];
 const opts: SlimFastOpts = {

@@ -1,12 +1,12 @@
 import { basename, dirname } from 'path';
 
 import { copy } from './copy';
-import type { FileContainer as FileContainerType } from './file';
 import { FileContainer } from './file';
 import { makeDirectory } from './make-directory';
 import { fromFile, saveFile, saveToJSON } from './save';
 import { storeDependencies } from './store-dependencies';
 
+import type { FileContainer as FileContainerType } from './file';
 import type {
   CodebaseOpts,
   FilesContainer,

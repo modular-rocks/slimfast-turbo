@@ -1,5 +1,6 @@
-import type { Options, types } from 'recast';
 import { print as recastPrinter } from 'recast';
+
+import type { Options, types } from 'recast';
 
 /**
  * Prints the given AST node using the provided options.

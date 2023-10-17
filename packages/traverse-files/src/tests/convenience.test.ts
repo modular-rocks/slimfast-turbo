@@ -1,7 +1,6 @@
 import { posix } from 'path';
 
 import mockFs from 'mock-fs';
-
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
 import {

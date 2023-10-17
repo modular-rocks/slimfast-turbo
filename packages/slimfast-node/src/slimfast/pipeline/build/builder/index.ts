@@ -1,6 +1,5 @@
 import { dirname, extname, resolve } from 'path/posix';
 
-import { NodePath } from '@babel/traverse';
 import { program } from '@babel/types';
 import unique from 'array-unique';
 
@@ -10,6 +9,7 @@ import { replace as replaceInOriginalFile } from './replace';
 import { wrap } from './wrap';
 
 import type { RandomObject, SlimFastOpts } from '../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Builds the AST for a module, manages its imports, and optionally replaces nodes in the original file.

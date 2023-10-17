@@ -3,8 +3,6 @@ import { readFileSync, writeFileSync } from 'fs';
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
-import { Codebase } from '..';
-import type { CodebaseOpts, RandomObject } from '../../../types';
 import {
   createDir,
   fromFile,
@@ -13,6 +11,9 @@ import {
   toFile,
   toJson,
 } from './index';
+import { Codebase } from '..';
+
+import type { CodebaseOpts, RandomObject } from '../../../types';
 
 describe('Save utilities', () => {
   const mockData: RandomObject = {

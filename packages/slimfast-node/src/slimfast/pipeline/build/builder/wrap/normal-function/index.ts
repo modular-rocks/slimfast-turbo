@@ -1,14 +1,15 @@
-import unique from 'array-unique';
-import { NodePath } from '@babel/traverse';
 import {
   exportDefaultDeclaration,
   functionDeclaration,
   blockStatement,
   returnStatement,
 } from '@babel/types';
+import unique from 'array-unique';
+
 import { hasAwait } from '../has-await';
 
 import type { RandomObject } from '../../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Extracts a block statement containing a return statement from the provided AST node path.

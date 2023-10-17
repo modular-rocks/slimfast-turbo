@@ -1,9 +1,8 @@
-import { NodePath } from '@babel/traverse';
-
 import { generateJSXElement } from './jsx-function';
 import { generateFunction as generateCalleeFunction } from './normal-function';
 
 import type { RandomObject, SlimFastOpts } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Replaces a `node path` with a newly generated AST node, which could be a JSX element

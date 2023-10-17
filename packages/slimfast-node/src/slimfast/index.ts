@@ -1,12 +1,12 @@
-import { Codebase } from '@modular-rocks/workspace-node';
 import { SlimFast as SlimFastBase } from '@modular-rocks/slimfast';
+import { Codebase } from '@modular-rocks/workspace-node';
 
-import { ExpressionVisitor } from './visitors/expression';
-import { defaultFunctionNameGenerator } from './pipeline/name/default-function-name-generator';
+import { build } from './pipeline/build';
 import { builder as pipelineBuilder } from './pipeline/build/builder';
 import { extract } from './pipeline/extract';
-import { build } from './pipeline/build';
 import { name } from './pipeline/name';
+import { defaultFunctionNameGenerator } from './pipeline/name/default-function-name-generator';
+import { ExpressionVisitor } from './visitors/expression';
 
 import type { SlimFastOpts } from '../types';
 

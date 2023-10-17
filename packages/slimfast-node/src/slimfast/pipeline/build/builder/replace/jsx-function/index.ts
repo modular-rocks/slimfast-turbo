@@ -1,4 +1,3 @@
-import unique from 'array-unique';
 import {
   jsxIdentifier,
   jsxOpeningElement,
@@ -8,6 +7,7 @@ import {
   identifier,
   jsxClosingElement,
 } from '@babel/types';
+import unique from 'array-unique';
 
 import type { RandomObject } from '../../../../../../types';
 

@@ -1,4 +1,5 @@
 import { normalize } from 'path';
+
 import { describe, expect, test } from 'vitest';
 
 import { makeDirectory } from '.';

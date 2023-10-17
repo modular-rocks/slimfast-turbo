@@ -1,6 +1,4 @@
-import unique from 'array-unique';
-import { program } from '@babel/types';
-import traverse, { NodePath } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
@@ -8,6 +6,7 @@ import { generateImportDeclaration } from '.';
 import { parser } from '../../../../visitors/utils/parser';
 
 import type { SlimFastOpts } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 const files: [string, string][] = [[`/path`, '']];
 const opts: SlimFastOpts = {

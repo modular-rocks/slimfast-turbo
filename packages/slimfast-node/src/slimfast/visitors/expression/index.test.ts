@@ -1,10 +1,10 @@
-import { NodePath } from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
 import { ExpressionVisitor } from '.';
 import { parser } from '../utils/parser';
 
 import type { SlimFastOpts } from '../../../types';
+import type { NodePath } from '@babel/traverse';
 
 const str = JSON.stringify;
 

@@ -1,9 +1,8 @@
-import { NodePath } from '@babel/traverse';
-
 import { generateExportedJSXComponent } from './jsx-function';
 import { generateExportedFunction } from './normal-function';
 
 import type { RandomObject, SlimFastOpts } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Wraps the provided AST node path into an exported default function or JSX component.

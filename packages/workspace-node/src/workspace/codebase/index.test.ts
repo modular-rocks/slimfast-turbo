@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { Codebase } from '.';
 
-import { CodebaseOpts } from '../../types';
+import type { CodebaseOpts } from '../../types';
 
 const str = JSON.stringify;
 

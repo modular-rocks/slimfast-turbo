@@ -1,8 +1,10 @@
-import traverse, { NodePath, Node } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
 import { hasReturnStatement } from './index';
 import { parser } from '../../parser';
+
+import type { NodePath } from '@babel/traverse';
 
 describe('Has return statement', () => {
   test('', () => {

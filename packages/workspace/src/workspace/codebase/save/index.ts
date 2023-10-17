@@ -23,6 +23,7 @@ export const createDir = async (pathname: string, contents: string) => {
     await mkdir(folder, { recursive: true });
     await writeFile(pathname, contents);
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 };
@@ -93,6 +94,7 @@ export const fromFile = async (pathname: string, codebase: Codebase) => {
     const jsonData: Record<string, unknown> = JSON.parse(data);
     codebase.fromJson(jsonData);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Could not parse data:', error);
   }
 };

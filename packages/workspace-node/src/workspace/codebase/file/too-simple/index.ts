@@ -1,9 +1,10 @@
-import { File } from '@babel/types';
 import {
   loc,
   maintainability,
   totalCyclomaticComplexity,
 } from '@modular-rocks/metrics-ts-js';
+
+import type { File } from '@babel/types';
 
 type MetricOpts = {
   code?: string;
