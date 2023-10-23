@@ -1,7 +1,7 @@
-import { NodePath, Node } from '@babel/traverse';
 import { extractIdentifiers } from '../../extract-identifiers';
 
 import type { RandomObject } from '../../../../../types';
+import type { NodePath, Node } from '@babel/traverse';
 
 /**
  * Generates a function to determine if the number of identifiers within an AST node path falls within a specified range.

@@ -1,13 +1,11 @@
-import { NodePath } from '@babel/traverse';
-
-import type { FileContainer } from '@modular-rocks/workspace-node';
-import type { SlimFast } from '@modular-rocks/slimfast';
-
 import type {
   RandomObject,
   SlimFastOpts,
   ProvisionalFile,
 } from '../../../types';
+import type { NodePath } from '@babel/traverse';
+import type { SlimFast } from '@modular-rocks/slimfast';
+import type { FileContainer } from '@modular-rocks/workspace-node';
 
 type Extract = [NodePath, RandomObject];
 

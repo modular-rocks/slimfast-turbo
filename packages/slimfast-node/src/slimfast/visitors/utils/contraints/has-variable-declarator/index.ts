@@ -1,6 +1,5 @@
-import { NodePath, Node } from '@babel/traverse';
-
 import type { RandomObject } from '../../../../../types';
+import type { NodePath, Node } from '@babel/traverse';
 
 /**
  * Determines if a given AST node path represents a variable declarator.

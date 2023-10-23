@@ -1,5 +1,5 @@
-import { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
 import type { Statement } from '@babel/types';
+import type { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
 
 export type RandomObject = Record<string, any>;
 

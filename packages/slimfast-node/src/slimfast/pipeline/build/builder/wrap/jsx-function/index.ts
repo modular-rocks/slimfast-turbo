@@ -1,5 +1,3 @@
-import unique from 'array-unique';
-import { NodePath } from '@babel/traverse';
 import {
   exportDefaultDeclaration,
   functionDeclaration,
@@ -10,11 +8,14 @@ import {
   variableDeclarator,
   objectProperty,
   objectPattern,
-  Statement,
 } from '@babel/types';
+import unique from 'array-unique';
+
 import { hasAwait } from '../has-await';
 
 import type { RandomObject } from '../../../../../../types';
+import type { NodePath } from '@babel/traverse';
+import type { Statement } from '@babel/types';
 
 /**
  * Generates an exported JSX component declaration from a given AST node path and associated data.

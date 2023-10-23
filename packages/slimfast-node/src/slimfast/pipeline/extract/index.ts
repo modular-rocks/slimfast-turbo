@@ -1,11 +1,9 @@
-import { NodePath } from '@babel/traverse';
-import t from '@babel/types';
-
+import type { RandomObject } from '../../../types';
+import type { Visitor } from '../../visitors/visitor';
+import type { NodePath } from '@babel/traverse';
+import type t from '@babel/types';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';
-
-import type { Visitor } from '../../visitors/visitor';
-import type { RandomObject } from '../../../types';
 
 type Namer = (path: NodePath, data: RandomObject, options: Option) => void;
 type Builder = (

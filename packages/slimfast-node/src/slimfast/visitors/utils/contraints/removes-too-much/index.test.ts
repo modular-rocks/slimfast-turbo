@@ -1,8 +1,10 @@
-import traverse, { NodePath, Node } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
 import { removesTooMuch } from './index';
 import { parser } from '../../parser';
+
+import type { NodePath } from '@babel/traverse';
 
 describe('Removes too much', () => {
   const code = `() => 3 * 7`;

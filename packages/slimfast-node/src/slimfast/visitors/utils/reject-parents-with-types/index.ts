@@ -1,4 +1,4 @@
-import { NodePath } from '@babel/traverse';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Checks if a given AST node or any of its parent nodes are of a type specified in the `blacklistedParents` array.

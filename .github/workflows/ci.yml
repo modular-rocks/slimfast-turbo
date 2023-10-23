@@ -43,3 +43,6 @@ jobs:
 
       - name: Linting
         run: pnpm lint
+
+      - name: Format
+        run: pnpm check:format

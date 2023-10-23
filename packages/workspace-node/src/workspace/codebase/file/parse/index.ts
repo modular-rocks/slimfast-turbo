@@ -1,5 +1,6 @@
-import type { ParserOptions } from '@babel/parser';
 import { parse as babelParser } from '@babel/parser';
+
+import type { ParserOptions } from '@babel/parser';
 
 const babelConfig: ParserOptions = {
   sourceType: 'module',

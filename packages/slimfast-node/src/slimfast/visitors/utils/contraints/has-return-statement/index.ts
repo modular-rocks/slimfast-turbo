@@ -1,7 +1,7 @@
-import { NodePath, Node } from '@babel/traverse';
 import { isAFunction } from '../is-a-function';
 
 import type { RandomObject } from '../../../../../types';
+import type { NodePath, Node } from '@babel/traverse';
 
 /**
  * Determines if a given AST node path represents a return statement or contains a return statement not within a nested function.

@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { measure, tooSimple } from '.';
 
 describe('"measure" utility function', () => {

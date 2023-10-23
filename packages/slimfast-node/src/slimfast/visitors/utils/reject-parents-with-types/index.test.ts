@@ -1,8 +1,10 @@
-import traverse, { NodePath, Node } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
 import { rejectParentsWithTypes } from './index';
 import { parser } from '../parser';
+
+import type { NodePath } from '@babel/traverse';
 
 describe('Rejected Parents with types', () => {
   const code = `let result = ((2 + 3) * 4 - Math.sqrt(9)) / (6 % 2) + Math.pow(2, 5) - parseFloat('10.5') + parseInt('100', 2);`;

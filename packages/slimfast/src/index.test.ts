@@ -1,8 +1,9 @@
-import { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
-import { describe, expect, test, vi } from 'vitest';
 import mockFs from 'mock-fs';
+import { describe, expect, test, vi } from 'vitest';
 
 import { SlimFast } from '.';
+
+import type { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
 
 type OutPutIteration = [number, number];
 

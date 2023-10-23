@@ -1,5 +1,5 @@
-import unique from 'array-unique';
 import { identifier, callExpression } from '@babel/types';
+import unique from 'array-unique';
 
 import type { RandomObject } from '../../../../../../types';
 

@@ -1,11 +1,11 @@
 import { FileContainer as FileContainerBase } from '@modular-rocks/workspace';
 
-import type { File, Statement } from '@babel/types';
-
-import { Codebase } from '..';
 import { parse } from './parse';
 import { print } from './print';
 import { tooSimple } from './too-simple';
+
+import type { Codebase } from '..';
+import type { File, Statement } from '@babel/types';
 
 type EndOfLine = '\r\n' | '\n' | '\r';
 

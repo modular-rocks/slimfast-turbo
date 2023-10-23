@@ -1,4 +1,4 @@
-import { NodePath, Node } from '@babel/traverse';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Determines if a given Abstract Syntax Tree (AST) node or any of its parent nodes is not present in the provided `extracted` map.

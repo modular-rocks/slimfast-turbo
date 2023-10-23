@@ -1,4 +1,6 @@
-import traverse, { NodePath } from '@babel/traverse';
+import traverse from '@babel/traverse';
+
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Checks if the provided AST node path contains an `await` expression.

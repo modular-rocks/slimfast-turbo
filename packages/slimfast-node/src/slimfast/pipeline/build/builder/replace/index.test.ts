@@ -1,10 +1,10 @@
-import traverse, { NodePath } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
 import { replace } from '.';
-import { parser } from '../../../../visitors/utils/parser';
 import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
+import { parser } from '../../../../visitors/utils/parser';
 
 import type { SlimFastOpts } from '../../../../../types';
 

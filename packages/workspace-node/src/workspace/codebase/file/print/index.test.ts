@@ -1,8 +1,9 @@
-import type { Options } from 'recast';
-
 import { describe, expect, test } from 'vitest';
+
 import { print } from '.';
 import { parse } from '../parse';
+
+import type { Options } from 'recast';
 
 describe('"print" utility function', () => {
   test('should return an object with the specified properties', () => {

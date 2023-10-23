@@ -1,10 +1,6 @@
 import { dirname, relative, resolve } from 'path/posix';
 
-import { Binding } from '@babel/traverse';
 import {
-  ImportDefaultSpecifier,
-  ImportNamespaceSpecifier,
-  ImportSpecifier,
   identifier,
   importDeclaration,
   importDefaultSpecifier,
@@ -15,6 +11,12 @@ import {
 import unique from 'array-unique';
 
 import type { RandomObject } from '../../../../../types';
+import type { Binding } from '@babel/traverse';
+import type {
+  ImportDefaultSpecifier,
+  ImportNamespaceSpecifier,
+  ImportSpecifier,
+} from '@babel/types';
 
 interface Entry {
   default?: string | null;

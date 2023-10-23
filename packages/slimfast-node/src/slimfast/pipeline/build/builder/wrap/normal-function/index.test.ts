@@ -1,12 +1,13 @@
-import traverse, { NodePath } from '@babel/traverse';
+import traverse from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
 import { generateExportedFunction } from '.';
-import { parser } from '../../../../../visitors/utils/parser';
 import { extractIdentifiers } from '../../../../../visitors/utils/extract-identifiers';
+import { parser } from '../../../../../visitors/utils/parser';
 
 import type { SlimFastOpts } from '../../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 const files: [string, string][] = [[`/path`, '']];
 const opts: SlimFastOpts = {

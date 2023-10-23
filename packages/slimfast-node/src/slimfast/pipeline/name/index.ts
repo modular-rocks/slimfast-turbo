@@ -1,10 +1,8 @@
-import t from '@babel/types';
-import { NodePath, Node } from '@babel/traverse';
-
-import type { FileContainer } from '@modular-rocks/workspace-node';
-import type { SlimFast } from '@modular-rocks/slimfast';
-
 import type { RandomObject, VisitorType } from '../../../types';
+import type { NodePath, Node } from '@babel/traverse';
+import type t from '@babel/types';
+import type { SlimFast } from '@modular-rocks/slimfast';
+import type { FileContainer } from '@modular-rocks/workspace-node';
 
 interface ProvisionalFile {
   pathname: string;
