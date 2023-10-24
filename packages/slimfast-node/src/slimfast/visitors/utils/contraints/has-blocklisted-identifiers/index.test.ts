@@ -11,7 +11,6 @@ describe('Has blocklisted identifiers', () => {
     const code = `x * y`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -20,12 +19,7 @@ describe('Has blocklisted identifiers', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasBlocklistedIdentifiers(['x', 'y'])(
-        rootPath,
-        data,
-        {},
-        ast
-      );
+      const result = hasBlocklistedIdentifiers(['x', 'y'])(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -34,7 +28,6 @@ describe('Has blocklisted identifiers', () => {
     const code = `true`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -43,12 +36,7 @@ describe('Has blocklisted identifiers', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasBlocklistedIdentifiers(['x', 'y'])(
-        rootPath,
-        data,
-        {},
-        ast
-      );
+      const result = hasBlocklistedIdentifiers(['x', 'y'])(rootPath);
       expect(result).toBe(false);
     }
   });

@@ -39,7 +39,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(false);
       const el = replace('myFunction', rootPath, data, opts);
@@ -65,7 +68,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(false);
       const el = replace('myFunction', rootPath, data, opts);
@@ -94,7 +100,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(true);
       const el = replace('MyComponent', rootPath, data, opts);
@@ -124,7 +133,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(true);
       const el = replace('MyComponent', rootPath, data, opts);

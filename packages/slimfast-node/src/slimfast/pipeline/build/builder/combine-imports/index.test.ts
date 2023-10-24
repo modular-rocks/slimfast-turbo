@@ -8,7 +8,7 @@ import { combineImports } from '.';
 import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
 import { parser } from '../../../../visitors/utils/parser';
 
-import type { RandomObject, SlimFastOpts } from '../../../../../types';
+import type { SlimFastOpts } from '../../../../../types';
 import type { Binding, NodePath } from '@babel/traverse';
 
 const files: [string, string][] = [[`/path`, '']];
@@ -42,7 +42,10 @@ describe('Combine imports', () => {
     });
 
     if (rootPath !== null) {
-      const data: RandomObject = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
       const imports = unique(data.toImport) as Binding[];
@@ -74,7 +77,10 @@ describe('Combine imports', () => {
     });
 
     if (rootPath !== null) {
-      const data: RandomObject = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
       const imports = unique(data.toImport) as Binding[];

@@ -1,5 +1,5 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { ConstraintWithData, RandomObject } from '../../../../../types';
+import type { Node } from '@babel/traverse';
 
 const notANumber = (num: number | null | undefined): boolean =>
   num === null || num === undefined || Number.isNaN(num);
@@ -23,8 +23,12 @@ const getSize = (node: Node): number => {
  * const small = isNodeTooSmall(nodePath, data, opts, ast);
  * // Returns true if node is too small.
  */
-export const tooSmall =
-  (multiplier: number, minLength: number, measureIdentifiers?: Boolean) =>
+export const tooSmall: (
+  multiplier: number,
+  minLength: number,
+  measureIdentifiers?: Boolean
+) => ConstraintWithData<'toInject'> =
+  (multiplier, minLength, measureIdentifiers) =>
   /**
    * Evaluates if an AST node path is "too small" based on its size and associated identifiers.
    *
@@ -34,7 +38,7 @@ export const tooSmall =
    * @param ast - The complete Abstract Syntax Tree.
    * @returns `true` if the node path is "too small", otherwise `false`.
    */
-  (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
+  (path, data) => {
     multiplier = multiplier || 1.5;
     minLength = minLength || 50;
     measureIdentifiers = measureIdentifiers || true;

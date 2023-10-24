@@ -1,5 +1,4 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint } from '../../../../../types';
 
 /**
  * Determines if a given AST node path represents any kind of function.
@@ -19,12 +18,7 @@ import type { NodePath, Node } from '@babel/traverse';
  *   // Handle the function node.
  * }
  */
-export const isAFunction = (
-  path: NodePath,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const isAFunction: Constraint = (path) => {
   return [
     'FunctionDeclaration',
     'FunctionExpression',

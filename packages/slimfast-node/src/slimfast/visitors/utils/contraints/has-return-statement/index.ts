@@ -1,7 +1,7 @@
 import { isAFunction } from '../is-a-function';
 
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 /**
  * Determines if a given AST node path represents a return statement or contains a return statement not within a nested function.
@@ -22,12 +22,7 @@ import type { NodePath, Node } from '@babel/traverse';
  *   // Handle the problematic return statement.
  * }
  */
-export const hasReturnStatement = (
-  path: NodePath,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const hasReturnStatement: Constraint = (path: NodePath) => {
   let problematic = false;
 
   if (path.isReturnStatement()) {
@@ -39,7 +34,7 @@ export const hasReturnStatement = (
       let parent: NodePath | null = innerPath;
       let isWrapped = false;
       while (!isWrapped && parent) {
-        if (isAFunction(path, data, opts, ast)) {
+        if (isAFunction(path)) {
           isWrapped = true;
         }
         parent = parent === path ? null : parent.parentPath;

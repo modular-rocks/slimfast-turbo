@@ -9,7 +9,7 @@ import { shouldIgnore } from '../utils/contraints/should-ignore';
 import { tooSmall } from '../utils/contraints/too-small';
 import { Visitor } from '../visitor';
 
-import type { RandomObject } from '../../../types';
+import type { Constraints, RandomObject } from '../../../types';
 
 /**
  * A `Visitor` that traverses AST expression nodes, evaluating them against specific constraints.
@@ -20,7 +20,7 @@ export class ExpressionVisitor extends Visitor {
    *
    * @returns An array of constraint functions specific to expressions.
    */
-  constraints(): Function[] {
+  constraints(): Constraints {
     return [
       removesTooMuch(2),
       shouldIgnore,

@@ -11,7 +11,6 @@ describe('Has variable declarator', () => {
     const code = `yes = 'no'`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       VariableDeclarator(path) {
@@ -20,7 +19,7 @@ describe('Has variable declarator', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasVariableDeclarator(rootPath, data, {}, ast);
+      const result = hasVariableDeclarator(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -29,7 +28,6 @@ describe('Has variable declarator', () => {
     const code = `yes`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       VariableDeclarator(path) {
@@ -38,7 +36,7 @@ describe('Has variable declarator', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasVariableDeclarator(rootPath, data, {}, ast);
+      const result = hasVariableDeclarator(rootPath);
       expect(result).toBe(false);
     }
   });

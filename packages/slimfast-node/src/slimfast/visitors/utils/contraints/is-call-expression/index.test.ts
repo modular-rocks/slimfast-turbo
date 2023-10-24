@@ -22,7 +22,7 @@ describe('Is call expression', () => {
     });
 
     if (rootPath !== null) {
-      const result = isCallExpression(rootPath, {}, {}, ast);
+      const result = isCallExpression(rootPath);
       const expected = true;
       expect(result).toBe(expected);
     }

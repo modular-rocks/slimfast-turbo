@@ -11,7 +11,10 @@ describe('Identifiers within range', () => {
     const code = `() => x * y * z * a * b * c`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
+    const data = {
+      toInject: [],
+      toImport: [],
+    };
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -20,7 +23,7 @@ describe('Identifiers within range', () => {
       },
     });
     if (rootPath !== null) {
-      const result = identifiersWithinRange(2, 4)(rootPath, data, {}, ast);
+      const result = identifiersWithinRange(2, 4)(rootPath, data);
       expect(result).toBe(false);
     }
   });
@@ -29,7 +32,10 @@ describe('Identifiers within range', () => {
     const code = `() => x * y`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
+    const data = {
+      toInject: [],
+      toImport: [],
+    };
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -38,7 +44,7 @@ describe('Identifiers within range', () => {
       },
     });
     if (rootPath !== null) {
-      const result = identifiersWithinRange(2, 4)(rootPath, data, {}, ast);
+      const result = identifiersWithinRange(2, 4)(rootPath, data);
       expect(result).toBe(true);
     }
   });

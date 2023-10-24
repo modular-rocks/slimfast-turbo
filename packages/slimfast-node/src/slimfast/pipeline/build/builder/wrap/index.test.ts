@@ -40,7 +40,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       const el = wrap(rootPath, data, opts);
       expect(file.astToCode(el)).toBe(`export default function() {
@@ -67,7 +70,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       const el = wrap(rootPath, data, opts);
       expect(file.astToCode(el)).toBe(`export default function(name) {
@@ -97,7 +103,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       const el = wrap(rootPath, data, opts);
       expect(file.astToCode(el)).toBe(`export default function(props) {
@@ -133,7 +142,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       const el = wrap(rootPath, data, opts);
       expect(file.astToCode(el)).toBe(`export default function(props) {

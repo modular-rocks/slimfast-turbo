@@ -1,7 +1,7 @@
 import unique from 'array-unique';
 
-import type { RandomObject } from '../../../../types';
-import type { NodePath, Node, Binding } from '@babel/traverse';
+import type { ConstraintData, RandomObject } from '../../../../types';
+import type { NodePath, Binding } from '@babel/traverse';
 
 const importTypes = ['ImportDefaultSpecifier', 'ImportSpecifier'];
 const isImportStatement = (x: Binding) =>
@@ -51,9 +51,7 @@ const buildBinding = (name: string, binding: Binding): Binding => {
  */
 export const extractIdentifiers = (
   path: NodePath,
-  data: RandomObject,
-  opts?: RandomObject,
-  ast?: Node
+  data: ConstraintData<'toImport' | 'toInject'>
 ) => {
   const identifiers: Binding[] = [];
 
@@ -70,6 +68,7 @@ export const extractIdentifiers = (
   const toImport: Binding[] = identifiers.filter(isImportStatement);
   const toInject: Binding[] = identifiers.filter(isVariableDeclaration);
 
+  // TODO: are these used?
   data.toImport = unique(toImport);
   data.toInject = unique(toInject);
 

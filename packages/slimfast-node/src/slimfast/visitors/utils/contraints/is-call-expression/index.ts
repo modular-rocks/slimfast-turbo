@@ -1,5 +1,4 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint } from '../../../../../types';
 
 /**
  * Determines if a given AST node path represents a call expression within an expression statement.
@@ -19,12 +18,7 @@ import type { NodePath, Node } from '@babel/traverse';
  *   // Handle the call expression.
  * }
  */
-export const isCallExpression = (
-  path: NodePath,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const isCallExpression: Constraint = (path) => {
   const { node } = path;
 
   return (

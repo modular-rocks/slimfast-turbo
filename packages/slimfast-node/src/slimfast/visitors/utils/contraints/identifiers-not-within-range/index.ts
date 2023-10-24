@@ -1,7 +1,6 @@
 import { identifiersWithinRange } from '../identifiers-within-range';
 
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { ConstraintWithData } from '../../../../../types';
 
 /**
  * Generates a function to determine if the number of identifiers within an AST node path does not fall within a specified range.
@@ -16,8 +15,11 @@ import type { NodePath, Node } from '@babel/traverse';
  * const result = isOutsideRange(nodePath, data, opts, ast);
  * // Returns true if nodePath contains less than 2 or more than 4 identifiers.
  */
-export const identifiersNotWithinRange =
-  (min: number, max: number) =>
+export const identifiersNotWithinRange: (
+  min: number,
+  max: number
+) => ConstraintWithData<'toImport' | 'toInject'> =
+  (min, max) =>
   /**
    * Determines if the number of identifiers within a given AST node path is outside the specified range.
    *
@@ -27,6 +29,6 @@ export const identifiersNotWithinRange =
    * @param ast - The complete Abstract Syntax Tree.
    * @returns `true` if the number of identifiers lies outside the specified range, otherwise `false`.
    */
-  (path: NodePath, data: RandomObject, opts: RandomObject, ast: Node) => {
-    return !identifiersWithinRange(min, max)(path, data, opts, ast);
+  (path, data) => {
+    return !identifiersWithinRange(min, max)(path, data);
   };

@@ -10,7 +10,6 @@ describe('Removes too much', () => {
   const code = `() => 3 * 7`;
   const ast = parser(code);
   let rootPath: NodePath | null = null;
-  const data = {};
 
   traverse(ast, {
     Expression(path) {
@@ -20,7 +19,7 @@ describe('Removes too much', () => {
   });
   test('', () => {
     if (rootPath !== null) {
-      const result = removesTooMuch(3)(rootPath, data, {}, ast);
+      const result = removesTooMuch(3)(rootPath, { ast });
       expect(result).toBe(true);
     }
   });

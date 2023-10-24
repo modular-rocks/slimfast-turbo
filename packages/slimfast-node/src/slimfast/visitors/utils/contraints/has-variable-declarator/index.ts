@@ -1,5 +1,4 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint } from '../../../../../types';
 
 /**
  * Determines if a given AST node path represents a variable declarator.
@@ -20,12 +19,7 @@ import type { NodePath, Node } from '@babel/traverse';
  *   // Handle the variable declarator node.
  * }
  */
-export const hasVariableDeclarator = (
-  path: NodePath | RandomObject,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const hasVariableDeclarator: Constraint = (path) => {
   let itHasVariableDeclarator = false;
 
   if (path.isVariableDeclarator()) {

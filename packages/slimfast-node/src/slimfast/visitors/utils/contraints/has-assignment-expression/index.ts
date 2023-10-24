@@ -1,5 +1,5 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint, RandomObject } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 function isInsidePath(
   innerPath: NodePath,
@@ -51,12 +51,7 @@ const isUsedInPath = (
  *   // Handle or flag the assignment for further analysis.
  * }
  */
-export const hasAssignmentExpression = (
-  path: NodePath,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const hasAssignmentExpression: Constraint = (path) => {
   let usedInOtherScopes = false;
 
   if (path.isAssignmentExpression()) {

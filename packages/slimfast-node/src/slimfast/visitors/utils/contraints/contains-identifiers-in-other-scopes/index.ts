@@ -1,5 +1,5 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint, RandomObject } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
   let currentPath: NodePath | null = innerPath;
@@ -32,12 +32,7 @@ function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
  *   // Handle or analyze the variables that are used externally.
  * }
  */
-export const containsIdentifiersInOtherScopes = (
-  path: NodePath,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const containsIdentifiersInOtherScopes: Constraint = (path) => {
   let usedInOtherScopes = false;
 
   // TODO: double check this condition
