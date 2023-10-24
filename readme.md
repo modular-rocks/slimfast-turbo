@@ -10,7 +10,7 @@ For detailed information and instructions on how to use our packages, please vis
 
 ## Requirements
 
-- Node.js version 16.x or later
+- Node.js version 18.x or later
 
 ## Contributing
 
