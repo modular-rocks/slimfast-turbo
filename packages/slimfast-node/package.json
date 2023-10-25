@@ -27,18 +27,17 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@babel/parser": "7.22.10",
-    "@babel/traverse": "7.22.10",
-    "@babel/types": "7.22.10",
+    "@babel/parser": "7.23.0",
+    "@babel/traverse": "7.23.2",
+    "@babel/types": "7.23.0",
     "@modular-rocks/slimfast": "workspace:*",
     "@modular-rocks/traverse-files": "workspace:*",
     "@modular-rocks/workspace-node": "workspace:*",
     "array-unique": "0.3.2"
   },
   "devDependencies": {
-    "@babel/types": "7.22.4",
-    "@types/array-unique": "0.3.0",
-    "@types/babel__traverse": "7.20.1",
+    "@types/array-unique": "0.3.1",
+    "@types/babel__traverse": "7.20.3",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   },
