@@ -18,7 +18,7 @@ We gladly accept contributions from individuals of all skill levels and any scal
 
 ## Requirements
 
-- Node.js version 16.x or later
+- Node.js version 18.x or later
 - pnpm version 8.6.6 or later
 
 To develop a package locally, follow the steps below:
@@ -52,6 +52,12 @@ Test the packages:
 pnpm test
 ```
 
+Run checks:
+
+```
+pnpm check
+```
+
 ## Using Codespaces
 
 To get started, create a codespace for this repository by clicking this:
@@ -77,6 +83,17 @@ pnpm test --filter <package-name> <optional-file-name>
 > **Note:** You can use other commands like `build` in the combination with `--filter` flag.
 
 ## Opening a pull request
+
+### Run checks
+
+Before opening a pull request, make sure to run the following commands:
+
+```
+pnpm check
+pnpm test
+```
+
+### Add a changeset
 
 We use [changesets](https://github.com/changesets/changesets) to manage our releases. A changeset is a file that describes the user-facing changes of a package. You need to add a changeset whenever you make a change to a package. It can be an empty changeset if you don't think the change is user-facing.
 
