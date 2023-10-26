@@ -12,7 +12,7 @@ import type { ConstraintWithData } from '../../../../../types';
  * @returns A function that evaluates if a node path contains identifiers within the specified range.
  * @example
  * const isWithinRange = identifiersWithinRange(2, 4);
- * const result = isWithinRange(nodePath, data, opts, ast);
+ * const result = isWithinRange(nodePath, data);
  * // Returns true if nodePath contains between 2 and 4 identifiers, inclusive.
  */
 export const identifiersWithinRange: (
@@ -24,9 +24,7 @@ export const identifiersWithinRange: (
    * Determines if the number of identifiers within a given AST node path is within the specified range.
    *
    * @param path - The AST node path to be examined.
-   * @param data - Information or context related to the node.
-   * @param opts - Configuration options influencing the check.
-   * @param ast - The complete Abstract Syntax Tree.
+   * @param data - Information or context related to the node. The data should contain keys 'toImport' and 'toInject'.
    * @returns `true` if the number of identifiers lies within the specified range, otherwise `false`.
    */
   (path, data) => {

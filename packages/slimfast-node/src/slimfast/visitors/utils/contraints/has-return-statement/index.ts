@@ -11,18 +11,15 @@ import type { NodePath } from '@babel/traverse';
  * 2. The path contains a return statement that isn't nested within any type of function.
  *
  * @param path - The AST node path to be checked.
- * @param data - Information or context related to the node.
- * @param opts - Configuration options.
- * @param ast - The complete Abstract Syntax Tree.
  * @returns `true` if either condition is met, otherwise `false`.
  *
  * @example
- * const hasReturn = hasReturnStatement(nodePath, data, opts, ast);
+ * const hasReturn = hasReturnStatement(nodePath);
  * if (hasReturn) {
  *   // Handle the problematic return statement.
  * }
  */
-export const hasReturnStatement: Constraint = (path: NodePath) => {
+export const hasReturnStatement: Constraint = (path) => {
   let problematic = false;
 
   if (path.isReturnStatement()) {

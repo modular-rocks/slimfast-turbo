@@ -7,13 +7,10 @@ import type { Constraint } from '../../../../../types';
  * of its contained expression is 'CallExpression'.
  *
  * @param path - The AST node path to be checked.
- * @param data - Information or context related to the node
- * @param opts - Configuration options
- * @param ast - The complete Abstract Syntax Tree
  * @returns `true` if the node represents a call expression within an expression statement, otherwise `false`.
  *
  * @example
- * const isItACallExpression = isCallExpression(nodePath, data, opts, ast);
+ * const isItACallExpression = isCallExpression(nodePath);
  * if (isItACallExpression) {
  *   // Handle the call expression.
  * }

@@ -9,7 +9,7 @@ import type { Constraint, RandomObject } from '../../../../../types';
  * @returns A function that evaluates if a node path contains any of the blocklisted identifiers.
  * @example
  * const isIdentifierBlocklisted = hasBlocklistedIdentifiers(['useEffect', 'useMemo']);
- * const isBlocklisted = isIdentifierBlocklisted(nodePath, data, opts, ast);
+ * const isBlocklisted = isIdentifierBlocklisted(nodePath);
  * if (isBlocklisted) {
  *   // Handle the blocklisted identifier.
  * }
@@ -20,9 +20,6 @@ export const hasBlocklistedIdentifiers: (blocklisted: string[]) => Constraint =
    * Determines if the provided AST node path contains any blocklisted identifiers.
    *
    * @param path - The AST node path to be examined.
-   * @param data - Information or context related to the node.
-   * @param opts - Configuration options.
-   * @param ast - The complete Abstract Syntax Tree.
    * @returns `true` if any of the identifiers within the node path are blocklisted, otherwise `false`.
    */
   (path) => {

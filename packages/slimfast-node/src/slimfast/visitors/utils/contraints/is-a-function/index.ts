@@ -7,13 +7,10 @@ import type { Constraint } from '../../../../../types';
  * standard JavaScript function types (e.g., regular functions, arrow functions, class methods).
  *
  * @param path - The AST node path to be checked.
- * @param data - Information or context related to the node.
- * @param opts - Configuration options.
- * @param ast - The complete Abstract Syntax Tree.
  * @returns `true` if the node represents any kind of function, otherwise `false`.
  *
  * @example
- * const isFunctionNode = isAFunction(nodePath, data, opts, ast);
+ * const isFunctionNode = isAFunction(nodePath);
  * if (isFunctionNode) {
  *   // Handle the function node.
  * }

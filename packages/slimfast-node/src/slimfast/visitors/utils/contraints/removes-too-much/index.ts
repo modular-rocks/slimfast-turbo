@@ -20,7 +20,7 @@ const getSize = (node: Node): number => {
  * @returns A function that checks if the removal of a node path would reduce the AST size too significantly.
  * @example
  * const wouldRemoveTooMuch = removesTooMuch(2);
- * const significantReduction = wouldRemoveTooMuch(nodePath, data, opts, ast);
+ * const significantReduction = wouldRemoveTooMuch(nodePath, data);
  * // Returns true if the removal would be too significant.
  */
 export const removesTooMuch: (
@@ -31,9 +31,7 @@ export const removesTooMuch: (
    * Determines if the removal of a specific AST node would lead to a disproportionate reduction in the overall size of the AST.
    *
    * @param path - The AST node path under evaluation.
-   * @param data - Information or context related to the node.
-   * @param opts - Configuration options influencing the check.
-   * @param ast - The complete Abstract Syntax Tree.
+   * @param data - Information or context related to the node. Specifically, contains the entire AST to which the node belongs in the `ast` key.
    * @returns `true` if the removal of the node would cause a significant reduction in the AST's size, otherwise `false`.
    */
   (path, data) => {

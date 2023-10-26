@@ -8,13 +8,10 @@ import type { Constraint } from '../../../../../types';
  * in the declaration `const hello = 'world';`, the variable declarator represents `hello = 'world'`.
  *
  * @param path - The AST node path to be checked. This can either be a proper NodePath or an object that behaves similarly.
- * @param data - Information or context related to the node.
- * @param opts - Configuration options influencing the check.
- * @param ast - The complete Abstract Syntax Tree.
  * @returns `true` if the node represents a variable declarator, otherwise `false`.
  *
  * @example
- * const isVarDeclarator = hasVariableDeclarator(nodePath, data, opts, ast);
+ * const isVarDeclarator = hasVariableDeclarator(nodePath);
  * if (isVarDeclarator) {
  *   // Handle the variable declarator node.
  * }

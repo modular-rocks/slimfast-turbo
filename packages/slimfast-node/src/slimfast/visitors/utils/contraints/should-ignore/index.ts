@@ -10,13 +10,10 @@ import type { Constraint } from '../../../../../types';
  * that the original node should be ignored in any subsequent operations or analyses.
  *
  * @param path - The AST node path to be examined.
- * @param data - Information or context related to the node.
- * @param opts - Configuration options influencing the check.
- * @param ast - The complete Abstract Syntax Tree.
  * @returns `true` if the node contains either a `Super` or `YieldExpression` node, otherwise `false`.
  *
  * @example
- * const nodeShouldBeIgnored = shouldIgnore(nodePath, data, opts, ast);
+ * const nodeShouldBeIgnored = shouldIgnore(nodePath);
  * if (nodeShouldBeIgnored) {
  *   // Skip processing or analysis for this node
  * }

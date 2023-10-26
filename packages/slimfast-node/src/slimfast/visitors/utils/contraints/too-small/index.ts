@@ -20,7 +20,7 @@ const getSize = (node: Node): number => {
  * @returns A function that evaluates if a node path is "too small".
  * @example
  * const isNodeTooSmall = tooSmall(1.5, 50, true);
- * const small = isNodeTooSmall(nodePath, data, opts, ast);
+ * const result = isNodeTooSmall(nodePath, data);
  * // Returns true if node is too small.
  */
 export const tooSmall: (
@@ -33,9 +33,7 @@ export const tooSmall: (
    * Evaluates if an AST node path is "too small" based on its size and associated identifiers.
    *
    * @param path - The AST node path under evaluation.
-   * @param data - Information about the node, especially `toInject` which lists associated identifiers.
-   * @param opts - Configuration options influencing the check.
-   * @param ast - The complete Abstract Syntax Tree.
+   * @param data - Information or context related to the node. Specifically, contains the identifiers to be injected in the `toInject` key.
    * @returns `true` if the node path is "too small", otherwise `false`.
    */
   (path, data) => {

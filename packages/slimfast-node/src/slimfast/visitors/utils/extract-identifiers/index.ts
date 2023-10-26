@@ -33,15 +33,16 @@ const buildBinding = (name: string, binding: Binding): Binding => {
  * These categorized bindings are added to the provided `data` object under the respective keys.
  *
  * @param path - The starting AST node path to be traversed.
- * @param data - An object to which the categorized bindings will be added.
- * @param opts - Optional configuration options.
- * @param ast - The entire AST, if available.
+ * @param data - An object to which the categorized bindings will be added. The data should contain keys 'toImport' and 'toInject'.
  * @returns This function modifies the `data` object in-place and doesn't return a value.
  *
  * @example
  * const code = `import React from 'react'; const greet = (name) => "Hello, " + name;`;
  * const ast = parser(code);
- * const data = {};
+ * const data = {
+ *  toImport: [],
+ *  toInject: [],
+ * };
  * traverse(ast, {
  *   Program(path) {
  *     extractIdentifiers(path, data);
