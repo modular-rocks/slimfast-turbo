@@ -11,7 +11,6 @@ describe('Has assignment expression', () => {
     const code = `yes = 'no'`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       AssignmentExpression(path) {
@@ -20,7 +19,7 @@ describe('Has assignment expression', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasAssignmentExpression(rootPath, data, {}, ast);
+      const result = hasAssignmentExpression(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -29,7 +28,6 @@ describe('Has assignment expression', () => {
     const code = `yes`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       AssignmentExpression(path) {
@@ -38,7 +36,7 @@ describe('Has assignment expression', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasAssignmentExpression(rootPath, data, {}, ast);
+      const result = hasAssignmentExpression(rootPath);
       expect(result).toBe(false);
     }
   });

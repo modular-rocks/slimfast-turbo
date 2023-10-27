@@ -13,7 +13,6 @@ describe('Has return statement', () => {
     }`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -22,7 +21,7 @@ describe('Has return statement', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasReturnStatement(rootPath, data, {}, ast);
+      const result = hasReturnStatement(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -31,7 +30,6 @@ describe('Has return statement', () => {
     const code = `true`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -40,7 +38,7 @@ describe('Has return statement', () => {
       },
     });
     if (rootPath !== null) {
-      const result = hasReturnStatement(rootPath, data, {}, ast);
+      const result = hasReturnStatement(rootPath);
       expect(result).toBe(false);
     }
   });

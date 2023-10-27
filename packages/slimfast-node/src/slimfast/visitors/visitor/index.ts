@@ -3,7 +3,7 @@ import traverse from '@babel/traverse';
 import { notInExtracted } from '../utils/not-in-extracted';
 import { rejectParentsWithTypes } from '../utils/reject-parents-with-types';
 
-import type { RandomObject } from '../../../types';
+import type { Constraints, ConstraintData, RandomObject } from '../../../types';
 import type { NodePath, Node } from '@babel/traverse';
 
 /**
@@ -19,7 +19,7 @@ export class Visitor {
   /**
    * The abstract syntax tree that the Visitor will traverse.
    */
-  ast: Node | undefined;
+  ast: Node;
 
   /**
    * Options passed to the Visitor.
@@ -44,7 +44,7 @@ export class Visitor {
    * const visitor = new Visitor(ast, options, state, extractedNodes);
    */
   constructor(
-    ast: Node | undefined,
+    ast: Node,
     opts: RandomObject,
     state: RandomObject,
     extracted: Map<NodePath, any>
@@ -78,7 +78,7 @@ export class Visitor {
    *   return [isIdentifier];
    * }
    */
-  constraints(): Function[] {
+  constraints(): Constraints {
     return [];
   }
 
@@ -110,10 +110,11 @@ export class Visitor {
    * @returns Returns `true` if the node passes all constraints, otherwise `false`.
    *
    */
-  passesContraints(path: NodePath, data: RandomObject): Boolean {
+  passesContraints(path: NodePath, data: ConstraintData): Boolean {
     if (
-      this.constraints().some((constraint: Function) =>
-        constraint(path, data, this.opts, this.ast)
+      this.constraints().some((constraint) =>
+        // constraint(path, data, this.opts, this.ast)
+        constraint(path, data)
       )
     ) {
       return false;
@@ -159,7 +160,11 @@ export class Visitor {
     let parent: NodePath | null = path;
 
     while (parent) {
-      const data: RandomObject = {};
+      const data: ConstraintData = {
+        toImport: this.opts.toImport,
+        toInject: this.opts.toInject,
+        ast: this.ast,
+      };
       if (this.passesContraints(parent, data)) {
         this.extracted.set(parent, data);
         return;

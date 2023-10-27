@@ -4,7 +4,6 @@ import { describe, expect, test } from 'vitest';
 import { extractIdentifiers } from './index';
 import { parser } from '../parser';
 
-import type { RandomObject } from '../../../../types';
 import type { NodePath, Binding } from '@babel/traverse';
 
 const str = JSON.stringify;
@@ -23,7 +22,10 @@ describe('Extract Identifiers', () => {
       },
     });
     if (rootPath !== null) {
-      const data: RandomObject = {};
+      const data = {
+        toInject: [],
+        toImport: [],
+      };
       extractIdentifiers(rootPath, data);
       const variables = data.toInject.map((x: Binding) => x.identifier.name);
       expect(str(variables)).toBe(str(['x', 'e', 'o']));
@@ -41,7 +43,10 @@ describe('Extract Identifiers', () => {
       },
     });
     if (rootPath !== null) {
-      const data: RandomObject = {};
+      const data = {
+        toInject: [],
+        toImport: [],
+      };
       extractIdentifiers(rootPath, data);
       const imports = data.toImport.map((x: Binding) => x.identifier.name);
       expect(str(imports)).toBe(str(['x']));

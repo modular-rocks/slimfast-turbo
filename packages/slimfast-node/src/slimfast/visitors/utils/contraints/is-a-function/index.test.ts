@@ -11,7 +11,6 @@ describe('Is a function', () => {
     const code = `() => 3 * 7`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -20,7 +19,7 @@ describe('Is a function', () => {
       },
     });
     if (rootPath !== null) {
-      const result = isAFunction(rootPath, data, {}, ast);
+      const result = isAFunction(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -28,7 +27,6 @@ describe('Is a function', () => {
     const code = `3 * 7`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       ArrayExpression(path) {
@@ -37,7 +35,7 @@ describe('Is a function', () => {
       },
     });
     if (rootPath !== null) {
-      const result = isAFunction(rootPath, data, {}, ast);
+      const result = isAFunction(rootPath);
       expect(result).toBe(false);
     }
   });

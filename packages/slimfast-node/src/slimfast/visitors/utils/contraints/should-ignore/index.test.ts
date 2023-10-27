@@ -16,7 +16,6 @@ describe('Should Ignore', () => {
     }`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       Program(path) {
@@ -25,7 +24,7 @@ describe('Should Ignore', () => {
       },
     });
     if (rootPath !== null) {
-      const result = shouldIgnore(rootPath, data, {}, ast);
+      const result = shouldIgnore(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -39,7 +38,6 @@ describe('Should Ignore', () => {
     }`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       Program(path) {
@@ -48,7 +46,7 @@ describe('Should Ignore', () => {
       },
     });
     if (rootPath !== null) {
-      const result = shouldIgnore(rootPath, data, {}, ast);
+      const result = shouldIgnore(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -58,7 +56,6 @@ describe('Should Ignore', () => {
     4 * 7`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       Program(path) {
@@ -67,7 +64,7 @@ describe('Should Ignore', () => {
       },
     });
     if (rootPath !== null) {
-      const result = shouldIgnore(rootPath, data, {}, ast);
+      const result = shouldIgnore(rootPath);
       expect(result).toBe(false);
     }
   });

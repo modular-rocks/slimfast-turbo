@@ -15,7 +15,6 @@ describe('Contains variables in other scopes', () => {
     }`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       VariableDeclaration(path) {
@@ -24,7 +23,7 @@ describe('Contains variables in other scopes', () => {
       },
     });
     if (rootPath !== null) {
-      const result = containsIdentifiersInOtherScopes(rootPath, data, {}, ast);
+      const result = containsIdentifiersInOtherScopes(rootPath);
       expect(result).toBe(true);
     }
   });
@@ -33,7 +32,6 @@ describe('Contains variables in other scopes', () => {
     const code = `let yes = 'yes'`;
     const ast = parser(code);
     let rootPath: NodePath | null = null;
-    const data = {};
 
     traverse(ast, {
       VariableDeclarator(path) {
@@ -42,7 +40,7 @@ describe('Contains variables in other scopes', () => {
       },
     });
     if (rootPath !== null) {
-      const result = containsIdentifiersInOtherScopes(rootPath, data, {}, ast);
+      const result = containsIdentifiersInOtherScopes(rootPath);
       expect(result).toBe(false);
     }
   });

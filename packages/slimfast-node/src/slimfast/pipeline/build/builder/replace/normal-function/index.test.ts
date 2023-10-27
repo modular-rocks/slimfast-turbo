@@ -40,7 +40,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       const el = generateFunction('myFunction', data);
       expect(file.astToCode(el)).toBe(`myFunction()`);
@@ -65,7 +68,10 @@ describe('Generate JSX', () => {
     });
 
     if (rootPath !== null) {
-      const data = {};
+      const data = {
+        toImport: [],
+        toInject: [],
+      };
       extractIdentifiers(rootPath, data);
       const el = generateFunction('myFunction', data);
       expect(file.astToCode(el)).toBe(`myFunction(name)`);

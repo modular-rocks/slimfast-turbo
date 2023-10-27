@@ -1,5 +1,5 @@
-import type { RandomObject } from '../../../../../types';
-import type { NodePath, Node } from '@babel/traverse';
+import type { Constraint, RandomObject } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
 
 function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
   let currentPath: NodePath | null = innerPath;
@@ -21,23 +21,15 @@ function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
  * This can be particularly useful for understanding dependencies or potential side-effects associated with variables.
  *
  * @param path - The AST node path of the variable declaration to be examined.
- * @param data - Additional information or context related to the node.
- * @param opts - Configuration options influencing the check.
- * @param ast - The complete Abstract Syntax Tree.
  * @returns `true` if any of the declared variables within the node path are referenced or manipulated outside their declaring scope, otherwise `false`.
  *
  * @example
- * const hasExternalReferences = containsIdentifiersInOtherScopes(nodePath, data, opts, ast);
+ * const hasExternalReferences = containsIdentifiersInOtherScopes(nodePath);
  * if (hasExternalReferences) {
  *   // Handle or analyze the variables that are used externally.
  * }
  */
-export const containsIdentifiersInOtherScopes = (
-  path: NodePath,
-  data: RandomObject,
-  opts: RandomObject,
-  ast: Node
-) => {
+export const containsIdentifiersInOtherScopes: Constraint = (path) => {
   let usedInOtherScopes = false;
 
   // TODO: double check this condition
