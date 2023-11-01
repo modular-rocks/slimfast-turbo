@@ -43,12 +43,14 @@ describe('Generate JSX', () => {
         toImport: [],
         toInject: [],
       };
+
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(false);
-      const el = replace('myFunction', rootPath, data, opts);
+      const el = replace('myFunction', rootPath, data);
       expect(file.astToCode(el)).toBe(`myFunction()`);
     }
   });
+
   test('', async () => {
     const code = `
       const name = 'Ronald Mcdonald';
@@ -72,9 +74,10 @@ describe('Generate JSX', () => {
         toImport: [],
         toInject: [],
       };
+
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(false);
-      const el = replace('myFunction', rootPath, data, opts);
+      const el = replace('myFunction', rootPath, data);
       expect(file.astToCode(el)).toBe(`myFunction(name)`);
     }
   });
@@ -104,9 +107,10 @@ describe('Generate JSX', () => {
         toImport: [],
         toInject: [],
       };
+
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(true);
-      const el = replace('MyComponent', rootPath, data, opts);
+      const el = replace('MyComponent', rootPath, data);
       expect(file.astToCode(el)).toBe(`<MyComponent />`);
     }
   });
@@ -137,9 +141,10 @@ describe('Generate JSX', () => {
         toImport: [],
         toInject: [],
       };
+
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(true);
-      const el = replace('MyComponent', rootPath, data, opts);
+      const el = replace('MyComponent', rootPath, data);
       expect(file.astToCode(el)).toBe(`<MyComponent name={name} />`);
     }
   });

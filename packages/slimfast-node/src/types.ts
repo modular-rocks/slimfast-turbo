@@ -1,3 +1,6 @@
+import type { Builder } from './slimfast/pipeline/build/builder';
+import type { NamerGenerator } from './slimfast/pipeline/name/default-function-name-generator';
+import type { ExpressionVisitor } from './slimfast/visitors/expression';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { Node, Statement } from '@babel/types';
 import type { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
@@ -94,22 +97,15 @@ export type ConstraintData<
 export type Constraints = (Constraint | ConstraintWithData)[];
 
 export type SlimFastOpts = CodebaseOpts & {
-  visitors?: any[];
-  namer?: Function;
-  builder?: Function;
-  jsxReplacer?: Function;
-  functionReplacer?: Function;
-  jsxGenerator?: Function;
-  functionGenerator?: Function;
-  wrap?: Function;
-  replace?: Function;
+  visitors?: ExpressionVisitor[];
+  namer?: NamerGenerator;
+  builder?: Builder;
 };
 
-export type VisitorType = {
-  ast: any;
-  extracted: Map<any, any>;
-  state: RandomObject;
-  opts: SlimFastOpts;
+export type VisitorOpts = {
+  blocklistedParents: string[];
+  toImport: Binding[];
+  toInject: Binding[];
 };
 
 export type ProvisionalFile = {

@@ -48,10 +48,11 @@ export class SlimFast extends SlimFastBase {
    */
   defaultOptions(opts: SlimFastOpts) {
     super.defaultOptions(opts);
+    // TODO: Use better types for visitors
     const visitors: any[] = opts.visitors || [ExpressionVisitor];
-    const namer: Function = opts.namer || defaultFunctionNameGenerator(0);
-    const builder: Function = opts.builder || pipelineBuilder;
-    const pipeline: Function[] = opts.pipeline?.length
+    const namer = opts.namer || defaultFunctionNameGenerator(0);
+    const builder = opts.builder || pipelineBuilder;
+    const pipeline = opts.pipeline?.length
       ? opts.pipeline
       : [extract(visitors), name(namer), build(builder)];
     return {

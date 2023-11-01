@@ -1,4 +1,4 @@
-import type { Constraint, RandomObject } from '../../../../../types';
+import type { Constraint } from '../../../../../types';
 
 /**
  * Generates a function to check if a given AST node path contains any identifiers that are part of a specified blocklist.
@@ -26,7 +26,7 @@ export const hasBlocklistedIdentifiers: (blocklisted: string[]) => Constraint =
     let itHasBlocklistedIdentifiers = false;
 
     path.traverse({
-      Identifier(innerPath: RandomObject) {
+      Identifier(innerPath) {
         if (blocklisted.includes(innerPath.node.name)) {
           itHasBlocklistedIdentifiers = true;
         }

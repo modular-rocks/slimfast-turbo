@@ -3,7 +3,12 @@ import traverse from '@babel/traverse';
 import { notInExtracted } from '../utils/not-in-extracted';
 import { rejectParentsWithTypes } from '../utils/reject-parents-with-types';
 
-import type { Constraints, ConstraintData, RandomObject } from '../../../types';
+import type {
+  Constraints,
+  ConstraintData,
+  RandomObject,
+  VisitorOpts,
+} from '../../../types';
 import type { NodePath, Node } from '@babel/traverse';
 
 /**
@@ -24,7 +29,7 @@ export class Visitor {
   /**
    * Options passed to the Visitor.
    */
-  opts: RandomObject;
+  opts: VisitorOpts;
 
   /**
    * Stateful information for the Visitor.
@@ -45,7 +50,8 @@ export class Visitor {
    */
   constructor(
     ast: Node,
-    opts: RandomObject,
+    opts: VisitorOpts,
+    // TODO: Remove this
     state: RandomObject,
     extracted: Map<NodePath, any>
   ) {
@@ -111,12 +117,7 @@ export class Visitor {
    *
    */
   passesContraints(path: NodePath, data: ConstraintData): Boolean {
-    if (
-      this.constraints().some((constraint) =>
-        // constraint(path, data, this.opts, this.ast)
-        constraint(path, data)
-      )
-    ) {
+    if (this.constraints().some((constraint) => constraint(path, data))) {
       return false;
     }
 

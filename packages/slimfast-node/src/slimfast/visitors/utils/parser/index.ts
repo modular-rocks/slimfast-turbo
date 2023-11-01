@@ -1,11 +1,11 @@
-import babelParser from '@babel/parser';
+import { parse } from '@babel/parser';
 
-import type { RandomObject } from '../../../../types';
+import type { ParserOptions } from '@babel/parser';
 
-const babelConfig: RandomObject = {
+const babelConfig: ParserOptions = {
   sourceType: 'module',
   createParenthesizedExpressions: true,
-  plugins: ['jsx', ['typescript', { isTSX: true }], 'babel-plugin-recast'],
+  plugins: ['jsx', ['typescript', {}]],
 };
 
 /**
@@ -23,4 +23,4 @@ const babelConfig: RandomObject = {
  * const ast = parser(code);
  * // `ast` now contains the AST representation of the given code string.
  */
-export const parser = (code: string) => babelParser.parse(code, babelConfig);
+export const parser = (code: string) => parse(code, babelConfig);

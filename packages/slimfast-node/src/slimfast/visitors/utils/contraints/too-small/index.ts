@@ -47,6 +47,7 @@ export const tooSmall: (
 
     if (!measureIdentifiers) return true;
 
+    // TODO: double that bindings have a name property
     const identifiers = data.toInject.map((x: RandomObject) => x.name);
     const min = identifiers.join('').length * multiplier;
 
