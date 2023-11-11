@@ -8,18 +8,49 @@ import { generateImportDeclaration } from './import-statement';
 import { replace as replaceInOriginalFile } from './replace';
 import { wrap } from './wrap';
 
-import type { RandomObject, SlimFastOpts } from '../../../../types';
-import type { NodePath } from '@babel/traverse';
+import type { Replace, ReplaceOpts } from './replace';
+import type { Wrap, WrapOpts } from './wrap';
+import type { Binding, NodePath } from '@babel/traverse';
+import type {
+  ExportDefaultDeclaration,
+  ImportDeclaration,
+  Program,
+} from '@babel/types';
+
+export type BuilderData = {
+  name: string;
+  folder: string;
+  toImport: Binding[];
+  toInject: Binding[];
+};
+
+export type BuilderOpts = WrapOpts &
+  ReplaceOpts & {
+    wrap?: Wrap;
+    replace?: Replace;
+  };
+
+export type Builder = (
+  path: NodePath,
+  data: BuilderData,
+  parentPath: string,
+  options: BuilderOpts
+) => {
+  pathname: string;
+  ast: Program;
+  import: ImportDeclaration;
+};
 
 /**
- * Builds the AST for a module, manages its imports, and optionally replaces nodes in the original file.
+ * Builds the Abstract Syntax Tree (AST) for a module, manages its imports,
+ * and optionally replaces nodes in the original file.
  *
- * It n generates the Abstract Syntax Tree (AST) for a module. It identifies the type
- * of node (JSX or function) and wraps it accordingly. The newly created module comprises necessary
- * import statements and the main AST. The function also generates an import declaration for the new module.
+ * It identifies the type of node (JSX or function) and wraps it accordingly.
+ * The newly created module comprises necessary import statements and the main AST.
+ * The function also generates an import declaration for the new module.
  *
  * @param path - The AST node path to be processed.
- * @param data - Details about the module, e.g., its name, folder, and imports.
+ * @param data - Details about the module, such as its name, folder, imports to be injected, and bindings.
  * @param parentPath - Path of the original module.
  * @param options - Options affecting generation, wrapping, and replacement processes.
  * @returns An object with:
@@ -29,15 +60,10 @@ import type { NodePath } from '@babel/traverse';
  *
  * @example
  * // For an AST node path: `() => <div>Hello</div>`
- * // And data: { name: 'MyComponent', folder: 'components', toImport: [] }
+ * // And data: { name: 'MyComponent', folder: 'components', toImport: [], toInject: [] }
  * // The function returns AST, module's path, and an import declaration.
  */
-export const builder = (
-  path: NodePath,
-  data: RandomObject,
-  parentPath: string,
-  options: SlimFastOpts
-) => {
+export const builder: Builder = (path, data, parentPath, options) => {
   const { name, folder, toImport } = data;
 
   path = path && path.isJSXOpeningElement() ? path.parentPath : path;
@@ -47,7 +73,9 @@ export const builder = (
     `./${folder}/${name + extname(parentPath)}`
   );
 
-  const nodes: any[] = combineImports(
+  type NodeType = (ImportDeclaration | ExportDefaultDeclaration)[];
+
+  const nodes: NodeType = combineImports(
     pathname,
     dirname(pathname),
     unique(toImport)

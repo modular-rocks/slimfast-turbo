@@ -1,29 +1,23 @@
-import type { RandomObject } from '../../../types';
+import type { ProvisionalFile, RandomObject } from '../../../types';
 import type { Visitor } from '../../visitors/visitor';
 import type { NodePath } from '@babel/traverse';
-import type t from '@babel/types';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
-type Namer = (path: NodePath, data: RandomObject, options: Option) => void;
 type Builder = (
   path: NodePath,
   data: RandomObject,
   file: FileContainer
 ) => ProvisionalFile;
 
-interface Option {
+type Options = {
   iterator: Function;
   visitors: Visitor[];
   builder: Builder;
   namer: Namer;
-}
+};
 
-interface ProvisionalFile {
-  pathname: string;
-  ast: Node;
-  import: t.Statement;
-}
+type Namer = (path: NodePath, data: RandomObject, options: Options) => void;
 
 /**
  * Generates a function that extracts relevant nodes from a provided file's Abstract Syntax Tree (AST) based on a set of visitor patterns.
@@ -59,7 +53,7 @@ export const extract =
    */
   (
     file: FileContainer,
-    options: Option,
+    options: Options,
     state: RandomObject,
     workspace: SlimFast
   ) => {
@@ -71,6 +65,7 @@ export const extract =
 
     const extracted: Map<NodePath, any> = new Map();
 
+    // TODO: Double check that this is correct
     visitors.forEach((Visitor: any) => {
       // TODO: fix ESLint error
       // eslint-disable-next-line no-new

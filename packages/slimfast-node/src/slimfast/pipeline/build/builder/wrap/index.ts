@@ -1,8 +1,21 @@
 import { generateExportedJSXComponent } from './jsx-function';
 import { generateExportedFunction } from './normal-function';
 
-import type { RandomObject, SlimFastOpts } from '../../../../../types';
-import type { NodePath } from '@babel/traverse';
+import type { GenerateExportedJSXComponent } from './jsx-function';
+import type { GenerateExportedFunction } from './normal-function';
+import type { Binding, NodePath } from '@babel/traverse';
+import type { ExportDefaultDeclaration } from '@babel/types';
+
+export type WrapOpts = {
+  jsxGenerator?: GenerateExportedJSXComponent;
+  functionGenerator?: GenerateExportedFunction;
+};
+
+export type Wrap = (
+  path: NodePath,
+  data: { toInject: Binding[] },
+  options?: WrapOpts
+) => ExportDefaultDeclaration;
 
 /**
  * Wraps the provided AST node path into an exported default function or JSX component.
@@ -15,8 +28,8 @@ import type { NodePath } from '@babel/traverse';
  * function.
  *
  * @param path - The AST node path to be wrapped.
- * @param data - Context or information related to the node, which can include details like properties to inject.
- * @param options - Options that guide the wrapping process. Can specify custom JSX and function generators.
+ * @param data - Context or information related to the node, which includes details like bindings to inject.
+ * @param options - (Optional) Options that guide the wrapping process. Can specify custom JSX and function generators.
  * @returns An exported default function or JSX component declaration based on the provided AST node path.
  *
  * @example
@@ -27,12 +40,14 @@ import type { NodePath } from '@babel/traverse';
  * // For an AST node path representing: `() => someFunction()`
  * // The wrap function would generate an exported function declaration.
  */
-export const wrap = (
-  path: NodePath,
-  data: RandomObject,
-  options: SlimFastOpts
-) => {
+export const wrap: Wrap = (path, data, options?) => {
   return path.isJSXElement()
-    ? (options.jsxGenerator || generateExportedJSXComponent)(path, data)
-    : (options.functionGenerator || generateExportedFunction)(path, data);
+    ? ((options && options.jsxGenerator) || generateExportedJSXComponent)(
+        path,
+        data
+      )
+    : ((options && options.functionGenerator) || generateExportedFunction)(
+        path,
+        data
+      );
 };

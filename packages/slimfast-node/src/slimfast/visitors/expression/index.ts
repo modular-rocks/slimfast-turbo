@@ -9,7 +9,7 @@ import { shouldIgnore } from '../utils/contraints/should-ignore';
 import { tooSmall } from '../utils/contraints/too-small';
 import { Visitor } from '../visitor';
 
-import type { Constraints, RandomObject } from '../../../types';
+import type { Constraints } from '../../../types';
 
 /**
  * A `Visitor` that traverses AST expression nodes, evaluating them against specific constraints.
@@ -39,7 +39,7 @@ export class ExpressionVisitor extends Visitor {
    *
    * @returns An object detailing how to process 'Expression' nodes during AST traversal.
    */
-  visit(): RandomObject {
+  visit() {
     const test = this.test.bind(this);
     return {
       Expression(path: any) {

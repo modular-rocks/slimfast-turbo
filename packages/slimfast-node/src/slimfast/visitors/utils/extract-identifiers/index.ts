@@ -1,6 +1,6 @@
 import unique from 'array-unique';
 
-import type { ConstraintData, RandomObject } from '../../../../types';
+import type { ConstraintData } from '../../../../types';
 import type { NodePath, Binding } from '@babel/traverse';
 
 const importTypes = ['ImportDefaultSpecifier', 'ImportSpecifier'];
@@ -57,8 +57,8 @@ export const extractIdentifiers = (
   const identifiers: Binding[] = [];
 
   path.traverse({
-    Identifier(innerPath: RandomObject) {
-      const binding: Binding = innerPath.scope.getBinding(innerPath.node.name);
+    Identifier(innerPath) {
+      const binding = innerPath.scope.getBinding(innerPath.node.name);
       if (binding) {
         identifiers.push(binding);
       }

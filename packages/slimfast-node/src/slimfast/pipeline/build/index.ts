@@ -1,13 +1,17 @@
-import type {
-  RandomObject,
-  SlimFastOpts,
-  ProvisionalFile,
-} from '../../../types';
+import type { BuilderData, BuilderOpts } from './builder';
+import type { ProvisionalFile } from '../../../types';
 import type { NodePath } from '@babel/traverse';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
-type Extract = [NodePath, RandomObject];
+type Extract = [NodePath, BuilderData];
+
+type Builder = (
+  path: NodePath,
+  data: BuilderData,
+  filepath: string,
+  options: BuilderOpts
+) => ProvisionalFile;
 
 /**
  * Generates a function that processes and builds files based on extracted nodes from a given file's Abstract Syntax Tree (AST).
@@ -23,7 +27,7 @@ type Extract = [NodePath, RandomObject];
  * const updatedFile = build(myBuilder)(file, buildOptions, state, workspace);
  */
 export const build =
-  (builder: Function) =>
+  (builder: Builder) =>
   /**
    * Processes a file to generate new file structures based on extracted nodes and incorporates these into the workspace.
    *
@@ -40,23 +44,20 @@ export const build =
    */
   (
     file: FileContainer,
-    options: SlimFastOpts,
-    state: RandomObject,
+    options: BuilderOpts,
+    // TODO: Remove this
+    state: any,
     workspace: SlimFast
   ) => {
+    // TODO: Double check this type
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 
     workspace.refactored.makeDirectory(file); // make sure that its not already in an index
 
-    extracted.forEach((extract: Extract) => {
+    extracted.forEach((extract) => {
       const [path, data] = extract;
-      const newFile: ProvisionalFile = builder(
-        path,
-        data,
-        file.pathname,
-        options
-      );
+      const newFile = builder(path, data, file.pathname, options);
       file.addImport(newFile.import);
       workspace.refactored.addFile(file.spawn(newFile));
     });

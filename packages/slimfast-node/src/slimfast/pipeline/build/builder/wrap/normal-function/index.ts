@@ -9,8 +9,10 @@ import unique from 'array-unique';
 import { hasAwait } from '../has-await';
 
 import type { RandomObject } from '../../../../../../types';
-import type { NodePath } from '@babel/traverse';
+import type { Binding, NodePath } from '@babel/traverse';
+import type { ExportDefaultDeclaration } from '@babel/types';
 
+// TODO: Refactor
 /**
  * Extracts a block statement containing a return statement from the provided AST node path.
  *
@@ -37,6 +39,11 @@ const findBlockStatement = (path: NodePath | RandomObject) => {
   ]);
 };
 
+export type GenerateExportedFunction = (
+  path: NodePath,
+  data: { toInject: Binding[] }
+) => ExportDefaultDeclaration;
+
 /**
  * Generates an exported default function or JSX component declaration based on a given AST node path and associated data.
  *
@@ -61,16 +68,15 @@ const findBlockStatement = (path: NodePath | RandomObject) => {
  * // This function would generate the equivalent of:
  * // `export default function(props) { const { name } = props; return <div><h1>{name}!</h1></div>; }`
  */
-export const generateExportedFunction = (
-  path: NodePath,
-  data: RandomObject
+export const generateExportedFunction: GenerateExportedFunction = (
+  path,
+  data
 ) => {
-  // TODO: Verify and ensure 'data.toInject' contains valid elements of type 'RandomObject[]'.
-  const toInject = unique(data.toInject) as RandomObject[];
+  const toInject = unique(data.toInject);
   return exportDefaultDeclaration(
     functionDeclaration(
       null, // can also be BabelTypes.identifier(name), null makes it anonymous
-      toInject.map((x: RandomObject) => x.identifier),
+      toInject.map((binding) => binding.identifier),
       findBlockStatement(path),
       false,
       hasAwait(path)

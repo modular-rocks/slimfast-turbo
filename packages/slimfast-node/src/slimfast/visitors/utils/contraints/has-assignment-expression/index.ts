@@ -1,10 +1,16 @@
 import type { Constraint, RandomObject } from '../../../../../types';
 import type { NodePath } from '@babel/traverse';
 
-function isInsidePath(
-  innerPath: NodePath,
-  outerPath: NodePath | RandomObject
-): boolean {
+/**
+ * Determines if a given AST node path `innerPath` is contained within another AST node path `outerPath`.
+ *
+ * This function traverses the ancestors of `innerPath` and checks if any of them are equal to `outerPath`.
+ *
+ * @param innerPath - The AST node path to check if it is inside `outerPath`.
+ * @param outerPath - The AST node path to check against.
+ * @returns `true` if `innerPath` is inside `outerPath`, otherwise `false`.
+ */
+function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
   let currentPath: NodePath | null = innerPath;
 
   while (currentPath !== null) {
@@ -17,11 +23,20 @@ function isInsidePath(
   return false;
 }
 
+/**
+ * Determines if a given variable is used within a specified AST node path.
+ *
+ * @param name - The name of the variable to check.
+ * @param type - The type of the AST node.
+ * @param variablePath - The AST node path of the variable.
+ * @param path - The AST node path to check against.
+ * @returns `true` if the variable is used within the `path`, otherwise `false`.
+ */
 const isUsedInPath = (
   name: string,
   type: string,
   variablePath: NodePath | RandomObject,
-  path: NodePath | RandomObject
+  path: NodePath
 ): boolean => {
   if (type === 'Identifier') {
     const binding = variablePath.scope.getBinding(name);

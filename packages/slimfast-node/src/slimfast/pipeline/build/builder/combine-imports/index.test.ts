@@ -8,11 +8,12 @@ import { combineImports } from '.';
 import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
 import { parser } from '../../../../visitors/utils/parser';
 
-import type { SlimFastOpts } from '../../../../../types';
-import type { Binding, NodePath } from '@babel/traverse';
+import type { ConstraintData } from '../../../../../types';
+import type { NodePath } from '@babel/traverse';
+import type { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
 
 const files: [string, string][] = [[`/path`, '']];
-const opts: SlimFastOpts = {
+const opts: CodebaseOpts = {
   files,
   src: '/',
   extensions: [],
@@ -42,13 +43,12 @@ describe('Combine imports', () => {
     });
 
     if (rootPath !== null) {
-      const data = {
+      const data: ConstraintData<'toImport' | 'toInject'> = {
         toImport: [],
         toInject: [],
       };
       extractIdentifiers(rootPath, data);
-      // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
-      const imports = unique(data.toImport) as Binding[];
+      const imports = unique(data.toImport);
       const combined = combineImports('/path/to', '/path/to/folder', imports);
       const combinedAst = program(combined);
       expect(file.print(combinedAst)).toBe(
@@ -77,13 +77,13 @@ describe('Combine imports', () => {
     });
 
     if (rootPath !== null) {
-      const data = {
+      const data: ConstraintData<'toImport' | 'toInject'> = {
         toImport: [],
         toInject: [],
       };
+
       extractIdentifiers(rootPath, data);
-      // TODO: Verify 'data.toImport' content and ensure it provides valid 'Binding[]' for 'combineImports'.
-      const imports = unique(data.toImport) as Binding[];
+      const imports = unique(data.toImport);
       const combined = combineImports(
         '/src/path/to',
         '/src/path/to/folder',

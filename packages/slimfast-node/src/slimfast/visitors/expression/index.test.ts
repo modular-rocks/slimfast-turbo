@@ -3,10 +3,8 @@ import { describe, expect, test } from 'vitest';
 import { ExpressionVisitor } from '.';
 import { parser } from '../utils/parser';
 
-import type { SlimFastOpts } from '../../../types';
+import type { VisitorOpts } from '../../../types';
 import type { NodePath } from '@babel/traverse';
-
-const str = JSON.stringify;
 
 const code = `
 import a from 'a-module'; 
@@ -24,13 +22,10 @@ describe('Slimfast Node', () => {
   test('It modularises', async () => {
     const files: [string, string][] = [[`/path`, code]];
 
-    const opts: SlimFastOpts = {
-      files,
-      src: '/',
-      extensions: [],
-      ignoredFiles: [],
-      ignoredImports: [],
-      packageContents: {},
+    const opts: VisitorOpts = {
+      blocklistedParents: [],
+      toImport: [],
+      toInject: [],
     };
 
     const ast = parser(code);

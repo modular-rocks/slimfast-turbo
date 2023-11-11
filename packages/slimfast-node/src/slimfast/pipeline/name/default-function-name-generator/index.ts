@@ -1,4 +1,3 @@
-import type { RandomObject } from '../../../../types';
 import type { NodePath } from '@babel/traverse';
 
 /**
@@ -24,11 +23,22 @@ const testJSX = (path: NodePath) => {
 
   return hasJSX;
 };
+
+export type NamerGenerator = (
+  path: NodePath,
+  data: NamerGeneratorData
+) => NamerGeneratorData;
+
+export type NamerGeneratorData = {
+  name: string;
+  folder: string;
+};
+
 /**
  * Generates a default naming function for JavaScript functions or JSX components based on their content and an initial number.
  *
  * @param num - The initial number to start naming from.
- * @returns A function that, when executed with a node path and data, generates and assigns names and folders based on the content of the path.
+ * @returns A {@link NamerGenerator} function that, when executed with a node path and data, generates and assigns names and folders based on the content of the path.
  *
  * @example
  * const generateName = defaultFunctionNameGenerator(5);
@@ -39,7 +49,9 @@ const testJSX = (path: NodePath) => {
  * // Alternatively, the function can be used directly:
  * const namingResult = defaultFunctionNameGenerator(num)(path, data);
  */
-export const defaultFunctionNameGenerator = (num: number) => {
+export const defaultFunctionNameGenerator: (num: number) => NamerGenerator = (
+  num
+) => {
   let lastNumber = num;
 
   /**
@@ -48,10 +60,10 @@ export const defaultFunctionNameGenerator = (num: number) => {
    * Folders are determined ("functions" or "components") based on whether the path contains JSX content.
    *
    * @param path - NodePath to determine naming and folder assignment.
-   * @param data - Object wherein the determined name and folder will be stored.
+   * @param data - {@link NamerGeneratorData} object wherein the determined name and folder will be stored.
    * @returns An object containing the generated name and folder.
    */
-  return (path: NodePath, data: RandomObject) => {
+  return (path, data) => {
     lastNumber += 1;
     const containsJSX = testJSX(path);
     const noun = containsJSX ? 'component' : 'function';
