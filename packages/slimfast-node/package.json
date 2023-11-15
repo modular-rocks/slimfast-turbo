@@ -32,11 +32,9 @@
     "@babel/types": "7.23.0",
     "@modular-rocks/slimfast": "workspace:*",
     "@modular-rocks/traverse-files": "workspace:*",
-    "@modular-rocks/workspace-node": "workspace:*",
-    "array-unique": "0.3.2"
+    "@modular-rocks/workspace-node": "workspace:*"
   },
   "devDependencies": {
-    "@types/array-unique": "0.3.1",
     "@types/babel__traverse": "7.20.3",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"

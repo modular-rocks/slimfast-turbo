@@ -1,12 +1,12 @@
 import { dirname, extname, resolve } from 'path/posix';
 
 import { program } from '@babel/types';
-import unique from 'array-unique';
 
 import { combineImports } from './combine-imports';
 import { generateImportDeclaration } from './import-statement';
 import { replace as replaceInOriginalFile } from './replace';
 import { wrap } from './wrap';
+import { unique } from '../../../../utils';
 
 import type { Replace, ReplaceOpts } from './replace';
 import type { Wrap, WrapOpts } from './wrap';

@@ -1,5 +1,6 @@
 import { identifier, callExpression } from '@babel/types';
-import unique from 'array-unique';
+
+import { unique } from '../../../../../../utils';
 
 import type { Binding } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';

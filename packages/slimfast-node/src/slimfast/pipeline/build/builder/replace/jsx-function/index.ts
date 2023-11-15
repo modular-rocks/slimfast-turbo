@@ -7,7 +7,8 @@ import {
   identifier,
   jsxClosingElement,
 } from '@babel/types';
-import unique from 'array-unique';
+
+import { unique } from '../../../../../../utils';
 
 import type { Binding } from '@babel/traverse';
 import type { JSXElement } from '@babel/types';
