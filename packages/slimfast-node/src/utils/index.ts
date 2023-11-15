@@ -13,7 +13,7 @@
  * unique(numbers);
  * console.log(numbers); // Output: [1, 2, 3, 4, 5]
  */
-export function unique(arr: any[]) {
+export function unique<T>(arr: T[]): T[] {
   if (!Array.isArray(arr)) {
     throw new TypeError('expected an array');
   }
@@ -47,7 +47,7 @@ export function unique(arr: any[]) {
  * console.log(uniqueNumbers); // Output: [1, 2, 3, 4, 5]
  * console.log(numbers); // Original array remains unchanged: [1, 2, 2, 3, 4, 4, 5]
  */
-export function uniqueImmutable(arr: any[]) {
+export function uniqueImmutable<T>(arr: T[]): T[] {
   if (!Array.isArray(arr)) {
     throw new TypeError('expected an array');
   }
