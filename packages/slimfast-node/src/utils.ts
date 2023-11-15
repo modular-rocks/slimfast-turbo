@@ -1,3 +1,18 @@
+/**
+ * Removes duplicate elements from an array, modifying the original array.
+ *
+ * This function iterates through the provided array and removes any duplicate
+ * elements it finds. The original array is modified in place. If the input is not an array,
+ * a TypeError is thrown.
+ *
+ * @param arr - The array to remove duplicates from.
+ * @returns The original array with duplicates removed.
+ *
+ * @example
+ * let numbers = [1, 2, 2, 3, 4, 4, 5];
+ * unique(numbers);
+ * console.log(numbers); // Output: [1, 2, 3, 4, 5]
+ */
 export function unique(arr: any[]) {
   if (!Array.isArray(arr)) {
     throw new TypeError('expected an array');
@@ -16,6 +31,22 @@ export function unique(arr: any[]) {
   return arr;
 }
 
+/**
+ * Creates a new array with duplicates removed from the provided array.
+ *
+ * This function creates a copy of the provided array and then applies the {@link unique} function
+ * to remove duplicates. The original array remains unmodified. If the input is not an array,
+ * a TypeError is thrown.
+ *
+ * @param arr - The array to remove duplicates from.
+ * @returns A new array with duplicates removed.
+ *
+ * @example
+ * let numbers = [1, 2, 2, 3, 4, 4, 5];
+ * let uniqueNumbers = uniqueImmutable(numbers);
+ * console.log(uniqueNumbers); // Output: [1, 2, 3, 4, 5]
+ * console.log(numbers); // Original array remains unchanged: [1, 2, 2, 3, 4, 4, 5]
+ */
 export function uniqueImmutable(arr: any[]) {
   if (!Array.isArray(arr)) {
     throw new TypeError('expected an array');
