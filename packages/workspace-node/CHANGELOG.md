@@ -1,5 +1,19 @@
 # @modular-rocks/workspace-node
 
+## 0.1.6
+
+### Patch Changes
+
+- [#72](https://github.com/modular-rocks/slimfast-turbo/pull/72) [`c9cceff`](https://github.com/modular-rocks/slimfast-turbo/commit/c9ccefff0cf1a593f1fce53b93ce897bf794f722) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Removed recast deprecation warning
+
+- [#67](https://github.com/modular-rocks/slimfast-turbo/pull/67) [`f71ecd7`](https://github.com/modular-rocks/slimfast-turbo/commit/f71ecd702553ba853e723efbe351ed1ae36a3ba4) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Refactored imports across all packages and modified eslint rules for better code consistency.
+
+- [#69](https://github.com/modular-rocks/slimfast-turbo/pull/69) [`d3c049a`](https://github.com/modular-rocks/slimfast-turbo/commit/d3c049a43f23a6b3198dea236a5549164e21a617) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- Updated dependencies [[`f71ecd7`](https://github.com/modular-rocks/slimfast-turbo/commit/f71ecd702553ba853e723efbe351ed1ae36a3ba4)]:
+  - @modular-rocks/traverse-files@0.3.2
+  - @modular-rocks/workspace@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

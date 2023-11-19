@@ -1,5 +1,14 @@
 # @modular-rocks/workspace
 
+## 0.1.6
+
+### Patch Changes
+
+- [#67](https://github.com/modular-rocks/slimfast-turbo/pull/67) [`f71ecd7`](https://github.com/modular-rocks/slimfast-turbo/commit/f71ecd702553ba853e723efbe351ed1ae36a3ba4) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Refactored imports across all packages and modified eslint rules for better code consistency.
+
+- Updated dependencies [[`f71ecd7`](https://github.com/modular-rocks/slimfast-turbo/commit/f71ecd702553ba853e723efbe351ed1ae36a3ba4)]:
+  - @modular-rocks/traverse-files@0.3.2
+
 ## 0.1.5
 
 ### Patch Changes
