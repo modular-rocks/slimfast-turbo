@@ -41,6 +41,6 @@ describe('"print" utility function', () => {
     const ast = parse(code);
     const printedResult = print(ast);
 
-    expect(printedResult.toString()).toBe(printedResult.code);
+    expect(printedResult.code).toBe(printedResult.code);
   });
 });
