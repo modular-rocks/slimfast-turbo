@@ -1,4 +1,4 @@
-import unique from 'array-unique';
+import { unique } from '../../../../utils';
 
 import type { ConstraintData } from '../../../../types';
 import type { NodePath, Binding } from '@babel/traverse';

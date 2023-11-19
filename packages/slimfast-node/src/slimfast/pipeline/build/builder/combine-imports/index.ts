@@ -8,7 +8,8 @@ import {
   isImportDefaultSpecifier,
   stringLiteral,
 } from '@babel/types';
-import unique from 'array-unique';
+
+import { unique } from '../../../../../utils';
 
 import type { RandomObject } from '../../../../../types';
 import type { Binding } from '@babel/traverse';

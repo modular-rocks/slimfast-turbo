@@ -1,10 +1,10 @@
 import traverse from '@babel/traverse';
 import { program } from '@babel/types';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
-import unique from 'array-unique';
 import { describe, expect, test } from 'vitest';
 
 import { combineImports } from '.';
+import { unique } from '../../../../../utils';
 import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
 import { parser } from '../../../../visitors/utils/parser';
 

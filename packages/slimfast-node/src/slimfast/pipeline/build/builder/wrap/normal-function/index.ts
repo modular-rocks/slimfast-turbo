@@ -4,8 +4,8 @@ import {
   blockStatement,
   returnStatement,
 } from '@babel/types';
-import unique from 'array-unique';
 
+import { unique } from '../../../../../../utils';
 import { hasAwait } from '../has-await';
 
 import type { RandomObject } from '../../../../../../types';

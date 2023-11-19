@@ -9,8 +9,8 @@ import {
   objectPattern,
   blockStatement,
 } from '@babel/types';
-import unique from 'array-unique';
 
+import { unique } from '../../../../../../utils';
 import { hasAwait } from '../has-await';
 
 import type { Binding, NodePath } from '@babel/traverse';
