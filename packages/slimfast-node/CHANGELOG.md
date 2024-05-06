@@ -1,5 +1,28 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.8
+
+### Patch Changes
+
+- [#64](https://github.com/modular-rocks/slimfast-turbo/pull/64) [`de48573`](https://github.com/modular-rocks/slimfast-turbo/commit/de48573558d5145e987889f61524c1680b25ad9d) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Added JSDocs to `slimfast-node`
+
+- [#73](https://github.com/modular-rocks/slimfast-turbo/pull/73) [`478f3d6`](https://github.com/modular-rocks/slimfast-turbo/commit/478f3d623d887aa33739003e07dde04072cc1743) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Removed `array-unique` dependency from `slimfast-node` to streamline the package dependencies.
+
+- [#71](https://github.com/modular-rocks/slimfast-turbo/pull/71) [`9600f46`](https://github.com/modular-rocks/slimfast-turbo/commit/9600f464bfb4fab0de4507a3d6924ac485467df4) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Expanded the type definitions in the `slimfast-node` package.
+
+- [#68](https://github.com/modular-rocks/slimfast-turbo/pull/68) [`90937a1`](https://github.com/modular-rocks/slimfast-turbo/commit/90937a1068469d1223d4d21ffc4b71d72f5ab803) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Added types for constraints
+
+- [#67](https://github.com/modular-rocks/slimfast-turbo/pull/67) [`f71ecd7`](https://github.com/modular-rocks/slimfast-turbo/commit/f71ecd702553ba853e723efbe351ed1ae36a3ba4) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Refactored imports across all packages and modified eslint rules for better code consistency.
+
+- [#69](https://github.com/modular-rocks/slimfast-turbo/pull/69) [`d3c049a`](https://github.com/modular-rocks/slimfast-turbo/commit/d3c049a43f23a6b3198dea236a5549164e21a617) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- [#65](https://github.com/modular-rocks/slimfast-turbo/pull/65) [`97e4b8d`](https://github.com/modular-rocks/slimfast-turbo/commit/97e4b8d35a8e40de843d41af50a84d2c383e76e0) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Completed JSDocs in `slimfast-node`
+
+- Updated dependencies [[`c9cceff`](https://github.com/modular-rocks/slimfast-turbo/commit/c9ccefff0cf1a593f1fce53b93ce897bf794f722), [`f71ecd7`](https://github.com/modular-rocks/slimfast-turbo/commit/f71ecd702553ba853e723efbe351ed1ae36a3ba4), [`d3c049a`](https://github.com/modular-rocks/slimfast-turbo/commit/d3c049a43f23a6b3198dea236a5549164e21a617)]:
+  - @modular-rocks/workspace-node@0.1.6
+  - @modular-rocks/traverse-files@0.3.2
+  - @modular-rocks/slimfast@0.1.6
+
 ## 0.1.7
 
 ### Patch Changes
