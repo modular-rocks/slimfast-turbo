@@ -30,7 +30,7 @@
     "@modular-rocks/workspace": "workspace:*"
   },
   "devDependencies": {
-    "@babel/types": "7.23.0",
+    "@babel/types": "7.24.5",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   },
