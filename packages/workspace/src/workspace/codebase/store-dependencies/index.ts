@@ -23,12 +23,12 @@ export const storeDependencies = (
   dependencyKeys: string[]
 ) => {
   const dependencies: Map<string, string> = new Map();
-  dependencyKeys.forEach((key: string) => {
+  for (const key of dependencyKeys) {
     if (codebase.package[key]) {
-      Object.keys(codebase.package[key]).forEach((name: string) =>
-        dependencies.set(name, name)
-      );
+      for (const name of Object.keys(codebase.package[key])) {
+        dependencies.set(name, name);
+      }
     }
-  });
+  }
   return [...dependencies.keys()];
 };

@@ -27,7 +27,7 @@ describe('Has return statement', () => {
   });
 
   test('', () => {
-    const code = `true`;
+    const code = 'true';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 

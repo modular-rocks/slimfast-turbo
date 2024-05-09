@@ -37,11 +37,8 @@ export type Replace = (
  */
 export const replace: Replace = (name, path, data, options?) => {
   const calleeFunction = path.isJSXElement()
-    ? ((options && options.jsxReplacer) || generateJSXElement)(name, data)
-    : ((options && options.functionReplacer) || generateCalleeFunction)(
-        name,
-        data
-      );
+    ? (options?.jsxReplacer || generateJSXElement)(name, data)
+    : (options?.functionReplacer || generateCalleeFunction)(name, data);
   path.replaceWith(calleeFunction);
   return calleeFunction;
 };

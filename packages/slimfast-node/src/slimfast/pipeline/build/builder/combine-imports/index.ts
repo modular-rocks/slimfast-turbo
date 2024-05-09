@@ -1,4 +1,4 @@
-import { dirname, relative, resolve } from 'path/posix';
+import { dirname, relative, resolve } from 'node:path/posix';
 
 import {
   identifier,
@@ -14,6 +14,7 @@ import { unique } from '../../../../../utils';
 import type { RandomObject } from '../../../../../types';
 import type { Binding } from '@babel/traverse';
 import type {
+  ImportDeclaration,
   ImportDefaultSpecifier,
   ImportNamespaceSpecifier,
   ImportSpecifier,
@@ -55,12 +56,12 @@ export function combineImports(
   pathname: string,
   folder: string,
   imports: Binding[]
-) {
+): ImportDeclaration[] {
   const importsBySource: Map<string, Entry> = new Map();
 
-  imports.forEach((binding: Binding) => {
+  for (const binding of imports) {
     const node: RandomObject | undefined = binding.path?.parentPath?.node;
-    if (!node) return;
+    if (!node) continue;
     const fullPath = resolve(dirname(pathname), node.source.value);
     const source = relative(folder, fullPath);
 
@@ -69,16 +70,16 @@ export function combineImports(
     }
     const entry = importsBySource.get(source);
 
-    node.specifiers.forEach((specifier: ImportSpecifier) => {
-      if (!entry) return;
+    for (const specifier of node.specifiers) {
+      if (!entry) continue;
       if (isImportDefaultSpecifier(specifier)) {
         const importDefaultSpec = specifier as ImportDefaultSpecifier;
         entry.default = importDefaultSpec.local.name;
-        return;
+        continue;
       }
       entry.named.push(specifier.local.name);
-    });
-  });
+    }
+  }
 
   const entries = Array.from(importsBySource.entries());
   return entries.map(([source, entry]) => {
@@ -88,13 +89,13 @@ export function combineImports(
       specifiers.push(importDefaultSpecifier(identifier(entry.default)));
     }
 
-    unique(entry.named).forEach((specifier: string) => {
+    for (const specifier of unique(entry.named)) {
       const node: ImportSpecifierType = importSpecifier(
         identifier(specifier),
         identifier(specifier)
       );
       specifiers.push(node);
-    });
+    }
 
     return importDeclaration(
       specifiers,

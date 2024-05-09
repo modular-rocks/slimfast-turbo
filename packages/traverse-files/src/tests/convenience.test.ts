@@ -1,4 +1,4 @@
-import { posix } from 'path';
+import { posix } from 'node:path';
 
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';

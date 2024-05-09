@@ -8,7 +8,7 @@ import { parser } from '../../../../visitors/utils/parser';
 import type { SlimFastOpts } from '../../../../../types';
 import type { NodePath } from '@babel/traverse';
 
-const files: [string, string][] = [[`/path`, '']];
+const files: [string, string][] = [['/path', '']];
 const opts: SlimFastOpts = {
   files,
   src: '/',
@@ -18,7 +18,7 @@ const opts: SlimFastOpts = {
   packageContents: {},
 };
 const codebase = new Codebase(opts);
-const file = new FileContainer(`/path`, '', codebase);
+const file = new FileContainer('/path', '', codebase);
 
 const ast = parser('4 * 5');
 let nodePath: NodePath | null = null;

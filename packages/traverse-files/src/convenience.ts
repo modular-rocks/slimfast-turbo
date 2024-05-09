@@ -1,5 +1,5 @@
-import { readFile, readdir, stat } from 'fs/promises';
-import { resolve as pathResolve, posix, sep } from 'path';
+import { readFile, readdir, stat } from 'node:fs/promises';
+import { resolve as pathResolve, posix, sep } from 'node:path';
 
 /**
  * Reads the content of a file and returns it as a string.

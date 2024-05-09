@@ -193,7 +193,6 @@ export class Visitor {
    */
   visit(): RandomObject {
     // TODO: maybe use composition to fix this
-    // eslint-disable-next-line no-console
     console.warn('Override this method, this is just an example');
     return {};
   }

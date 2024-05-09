@@ -8,7 +8,7 @@ import type { NodePath } from '@babel/traverse';
 
 describe('Is call expression', () => {
   test('', () => {
-    const code = `getCharacterProgressions(profileInfo, character.id)`;
+    const code = 'getCharacterProgressions(profileInfo, character.id)';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 

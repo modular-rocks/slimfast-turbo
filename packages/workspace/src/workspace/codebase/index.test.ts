@@ -1,5 +1,5 @@
-import { readFile } from 'fs/promises';
-import { normalize } from 'path';
+import { readFile } from 'node:fs/promises';
+import { normalize } from 'node:path';
 
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
@@ -170,7 +170,7 @@ describe('Codebase', () => {
 
   test('should default "package" to an empty object if "packageContents" is not provided', () => {
     const customOpts = { ...opts };
-    delete customOpts.packageContents; // Ensure packageContents is not provided
+    customOpts.packageContents = undefined; // Ensure packageContents is not provided
     const codebase = new Codebase(customOpts);
 
     expect(codebase.package).toEqual({});

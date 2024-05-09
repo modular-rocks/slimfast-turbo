@@ -8,7 +8,7 @@ import type { NodePath } from '@babel/traverse';
 
 describe('Is a function', () => {
   test('', () => {
-    const code = `() => 3 * 7`;
+    const code = '() => 3 * 7';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 
@@ -24,7 +24,7 @@ describe('Is a function', () => {
     }
   });
   test('', () => {
-    const code = `3 * 7`;
+    const code = '3 * 7';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 

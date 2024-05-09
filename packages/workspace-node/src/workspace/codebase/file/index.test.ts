@@ -69,7 +69,7 @@ describe('FileContainer - getDominantEOL', () => {
   };
 
   test('Should identify Windows (CRLF) EOL', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = "'Hello\r\nWorld\r\n'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -77,7 +77,7 @@ describe('FileContainer - getDominantEOL', () => {
   });
 
   test('Should identify Unix (LF) EOL', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = "'Hello\nWorld\n'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -85,7 +85,7 @@ describe('FileContainer - getDominantEOL', () => {
   });
 
   test('Should identify old Mac (CR) EOL', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = "'Hello\rWorld\r'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -93,7 +93,7 @@ describe('FileContainer - getDominantEOL', () => {
   });
 
   test('Should default to LF for mixed EOLs with a tie', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = "'Hello\r\nWorld\n'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -101,7 +101,7 @@ describe('FileContainer - getDominantEOL', () => {
   });
 
   test('Should default to given EOL for mixed EOLs with a tie', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = "'Hello\r\nWorld\r'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -109,7 +109,7 @@ describe('FileContainer - getDominantEOL', () => {
   });
 
   test('Should default to LF for no newlines', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = "'HelloWorld'";
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -129,7 +129,7 @@ describe('FileContainer - addImport', () => {
   };
 
   test('Should return true if import is added', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = `const msg = "HelloWorld";`;
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -153,7 +153,7 @@ describe('FileContainer - addImport', () => {
   });
 
   test('Should return false if AST is not defined', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = `const msg = "HelloWorld";`;
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);
@@ -173,7 +173,7 @@ describe('FileContainer - addImport', () => {
   });
 
   test('Should return false if ast.program.body is not available', () => {
-    const filePath = `/home/projects/project/file.js`;
+    const filePath = '/home/projects/project/file.js';
     const code = `const msg = "HelloWorld";`;
     const codebase = new Codebase(opts);
     const fileContainer = new FileContainer(filePath, code, codebase);

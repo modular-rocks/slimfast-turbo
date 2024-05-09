@@ -40,19 +40,18 @@ export const containsIdentifiersInOtherScopes: Constraint = (path) => {
 
   path.traverse({
     VariableDeclaration(variableDeclarationPath: NodePath | RandomObject) {
-      variableDeclarationPath.node.declarations.forEach((declarator: any) => {
+      for (const declarator of variableDeclarationPath.node.declarations) {
         const binding = variableDeclarationPath.scope.getBinding(
           declarator.id.name
         );
         if (
-          binding &&
-          binding.referencePaths.filter(
+          binding?.referencePaths.filter(
             (ref: NodePath) => !isInsidePath(ref, path)
           )[0]
         ) {
           usedInOtherScopes = true;
         }
-      });
+      }
     },
   });
 

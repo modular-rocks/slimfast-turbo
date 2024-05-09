@@ -42,12 +42,6 @@ export type Wrap = (
  */
 export const wrap: Wrap = (path, data, options?) => {
   return path.isJSXElement()
-    ? ((options && options.jsxGenerator) || generateExportedJSXComponent)(
-        path,
-        data
-      )
-    : ((options && options.functionGenerator) || generateExportedFunction)(
-        path,
-        data
-      );
+    ? (options?.jsxGenerator || generateExportedJSXComponent)(path, data)
+    : (options?.functionGenerator || generateExportedFunction)(path, data);
 };

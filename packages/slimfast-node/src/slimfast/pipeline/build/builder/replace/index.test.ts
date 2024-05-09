@@ -8,7 +8,7 @@ import { parser } from '../../../../visitors/utils/parser';
 
 import type { SlimFastOpts } from '../../../../../types';
 
-const files: [string, string][] = [[`/path`, '']];
+const files: [string, string][] = [['/path', '']];
 const opts: SlimFastOpts = {
   files,
   src: '/',
@@ -18,7 +18,7 @@ const opts: SlimFastOpts = {
   packageContents: {},
 };
 const codebase = new Codebase(opts);
-const file = new FileContainer(`/path`, '', codebase);
+const file = new FileContainer('/path', '', codebase);
 
 describe('Generate JSX', () => {
   test('', async () => {
@@ -47,7 +47,7 @@ describe('Generate JSX', () => {
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(false);
       const el = replace('myFunction', rootPath, data);
-      expect(file.astToCode(el)).toBe(`myFunction()`);
+      expect(file.astToCode(el)).toBe('myFunction()');
     }
   });
 
@@ -78,7 +78,7 @@ describe('Generate JSX', () => {
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(false);
       const el = replace('myFunction', rootPath, data);
-      expect(file.astToCode(el)).toBe(`myFunction(name)`);
+      expect(file.astToCode(el)).toBe('myFunction(name)');
     }
   });
 
@@ -111,7 +111,7 @@ describe('Generate JSX', () => {
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(true);
       const el = replace('MyComponent', rootPath, data);
-      expect(file.astToCode(el)).toBe(`<MyComponent />`);
+      expect(file.astToCode(el)).toBe('<MyComponent />');
     }
   });
   test('', async () => {
@@ -145,7 +145,7 @@ describe('Generate JSX', () => {
       extractIdentifiers(rootPath, data);
       expect(rootPath.isJSXElement()).toBe(true);
       const el = replace('MyComponent', rootPath, data);
-      expect(file.astToCode(el)).toBe(`<MyComponent name={name} />`);
+      expect(file.astToCode(el)).toBe('<MyComponent name={name} />');
     }
   });
   // bug!

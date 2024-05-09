@@ -12,7 +12,7 @@ import type { ConstraintData } from '../../../../../types';
 import type { NodePath } from '@babel/traverse';
 import type { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
 
-const files: [string, string][] = [[`/path`, '']];
+const files: [string, string][] = [['/path', '']];
 const opts: CodebaseOpts = {
   files,
   src: '/',
@@ -22,7 +22,7 @@ const opts: CodebaseOpts = {
   packageContents: {},
 };
 const codebase = new Codebase(opts);
-const file = new FileContainer(`/path`, '', codebase);
+const file = new FileContainer('/path', '', codebase);
 
 describe('Combine imports', () => {
   test('It modularises', async () => {

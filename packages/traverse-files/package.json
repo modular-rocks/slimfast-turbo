@@ -14,9 +14,7 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
@@ -24,12 +22,11 @@
     "test": "vitest run",
     "test:w": "vitest",
     "coverage": "vitest --coverage run",
-    "lint": "eslint ."
+    "lint": "biome lint ."
   },
   "peerDependencies": {},
   "dependencies": {},
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   },
   "author": "Alex Dollery (DolNpm/DolGit)",

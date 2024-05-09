@@ -1,4 +1,4 @@
-import { dirname } from 'path';
+import { dirname } from 'node:path';
 
 import type { Codebase } from '..';
 import type { FileStore } from '../../../types';

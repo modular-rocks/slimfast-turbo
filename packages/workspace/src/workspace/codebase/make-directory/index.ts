@@ -1,4 +1,4 @@
-import { basename, dirname, extname, join } from 'path';
+import { basename, dirname, extname, join } from 'node:path';
 
 import type { Codebase } from '..';
 import type { FileContainer } from '../file';

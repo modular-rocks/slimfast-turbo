@@ -1,4 +1,4 @@
-import { normalize } from 'path';
+import { normalize } from 'node:path';
 
 import { describe, expect, test } from 'vitest';
 

@@ -80,7 +80,8 @@ export const hasAssignmentExpression: Constraint = (path) => {
       }
 
       if (left.type === 'ObjectPattern') {
-        left.properties.forEach((property: any) => {
+        // left.properties.forEach((property: any) => {
+        for (const property of left.properties) {
           if (
             isUsedInPath(
               property.value.name,
@@ -91,7 +92,7 @@ export const hasAssignmentExpression: Constraint = (path) => {
           ) {
             usedInOtherScopes = true;
           }
-        });
+        }
       }
     },
   });
