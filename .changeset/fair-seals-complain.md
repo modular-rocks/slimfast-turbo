@@ -4,4 +4,4 @@
 "@modular-rocks/workspace": patch
 ---
 
-Refactor file reading and loading methods to use async/await
+Internal: Refactor file reading and loading methods to use async/await
