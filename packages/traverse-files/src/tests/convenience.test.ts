@@ -70,11 +70,13 @@ describe('convenience functions', () => {
       expect(files).toEqual(expect.arrayContaining(expectedFiles));
     });
 
-    test('should throw an error if the path is not a directory', async() => {
+    test('should throw an error if the path is not a directory', async () => {
       const nonDirectoryPath = './tests/test-directory/file.txt';
 
       // expect(() => readFilesInDirectory(nonDirectoryPath)).toThrowError();
-      await expect(() => readFilesInDirectory(nonDirectoryPath)).rejects.toThrowError();
+      await expect(() =>
+        readFilesInDirectory(nonDirectoryPath)
+      ).rejects.toThrowError();
     });
   });
 
@@ -87,7 +89,7 @@ describe('convenience functions', () => {
       expect(isDir).toBe(true);
     });
 
-    test('should return false if the path is not a directory', async() => {
+    test('should return false if the path is not a directory', async () => {
       const filePath = './tests/test-directory/file.txt';
 
       const isDir = await isDirectory(filePath);
