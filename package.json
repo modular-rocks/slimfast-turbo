@@ -14,7 +14,7 @@
     "test:w": "turbo run test:w",
     "coverage": "turbo run coverage",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
+    "lint": "biome lint .",
     "check:format": "biome format .",
     "check": "pnpm lint && pnpm check:format",
     "format": "biome format --write .",
