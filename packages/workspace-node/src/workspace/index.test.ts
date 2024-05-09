@@ -94,7 +94,7 @@ describe('Workspace base', () => {
   test('Default options adds an empty array for files', async () => {
     const output: OutPutIteration[] = [];
     const opts: WorkspaceOpts = {
-      src: __dirname,
+      src: process.cwd(),
       extensions: [],
       ignoredFiles: [],
       ignoredImports: [],
@@ -102,10 +102,11 @@ describe('Workspace base', () => {
     };
 
     const workspace = new Workspace(opts);
+    await workspace.defaultLoader(opts);
     expect(JSON.stringify(workspace.opts.files)).toBe(JSON.stringify([]));
   });
 
-  test('Should load package contents from packagePath if packageContents is not provided', () => {
+  test('Should load package contents from packagePath if packageContents is not provided', async () => {
     const mockPackageContent = { name: 'test-package', version: '1.0.0' };
 
     const opts: WorkspaceOpts = {
@@ -124,7 +125,7 @@ describe('Workspace base', () => {
     });
 
     const workspace = new Workspace(opts);
-    workspace.defaultLoader(opts);
+    await workspace.defaultLoader(opts);
 
     expect(opts.packageContents).toEqual(mockPackageContent);
 

@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFile, writeFile } from 'fs/promises';
 
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
@@ -48,7 +48,7 @@ describe('Save utilities', () => {
     const code = 'Hello, World!';
 
     await createDir(filePath, code);
-    const writtenData = readFileSync(filePath, 'utf-8');
+    const writtenData = await readFile(filePath, 'utf-8');
 
     expect(writtenData).toBe(code);
   });
@@ -76,7 +76,7 @@ describe('Save utilities', () => {
   test('"saveFile" writes data to a file', async () => {
     const filePath = './path/to/file.txt';
     await saveFile(filePath, 'sample data');
-    const writtenData = readFileSync(filePath, 'utf-8');
+    const writtenData = await readFile(filePath, 'utf-8');
 
     expect(writtenData).toBe('sample data');
   });
@@ -84,14 +84,14 @@ describe('Save utilities', () => {
   test('"saveToJSON" writes JSON data to a file', async () => {
     const filePath = './path/to/file.json';
     await saveToJSON(filePath, mockData);
-    const writtenData = readFileSync(filePath, 'utf-8');
+    const writtenData = await readFile(filePath, 'utf-8');
 
     expect(writtenData).toBe(JSON.stringify(mockData));
   });
 
   test('"fromFile" reads and parses JSON data from a file', async () => {
     const filePath = './path/to/file.json';
-    writeFileSync(filePath, JSON.stringify(mockData));
+    await writeFile(filePath, JSON.stringify(mockData));
 
     const codebase: Codebase & typeof mockData = new Codebase(opts);
     await fromFile(filePath, codebase);
@@ -128,7 +128,7 @@ describe('Save utilities', () => {
     const fileContainer = codebase.files[filePath];
 
     await toFile(fileContainer);
-    const writtenData = readFileSync(filePath, 'utf-8');
+    const writtenData = await readFile(filePath, 'utf-8');
     expect(writtenData).toBe(code);
   });
 });

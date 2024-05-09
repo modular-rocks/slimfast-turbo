@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFile } from 'fs/promises';
 
 import mockFs from 'mock-fs';
 import { describe, expect, test } from 'vitest';
@@ -75,7 +75,7 @@ describe('FileContainer', () => {
     const file = filesContainer[0];
 
     await file.save();
-    const writtenData = readFileSync(filePath, 'utf-8');
+    const writtenData = await readFile(filePath, 'utf-8');
 
     expect(writtenData).toBe(code);
 

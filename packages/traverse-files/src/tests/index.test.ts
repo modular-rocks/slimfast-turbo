@@ -64,13 +64,13 @@ describe('"traverse-files" index', () => {
     expect(removeTests('hello-world.ts')).toEqual(true);
   });
 
-  test('collect works as intended', () => {
+  test('collect works as intended', async () => {
     const fullpath: string = '/path/to/test-directory/src';
     const extensions = ['js', 'ts', 'tsx', 'jsx'];
     const ignoredExtensions = ['.d.ts', '.d.tsx'];
     const ignoreTests = true;
 
-    const collected: string[] = collect(
+    const collected: string[] = await collect(
       fullpath,
       extensions,
       ignoredExtensions,
@@ -89,10 +89,10 @@ describe('"traverse-files" index', () => {
     expect(collected).toEqual(expected);
   });
 
-  test('traverse works as intended', () => {
+  test('traverse works as intended', async () => {
     const fullpath: string = '/path/to/test-directory/src';
 
-    const collected: string[] = traverse(fullpath, []);
+    const collected: string[] = await traverse(fullpath, []);
 
     const expected = [
       '/path/to/test-directory/src/nested/one.js',
@@ -108,7 +108,7 @@ describe('"traverse-files" index', () => {
     expect(collected).toEqual(expected);
   });
 
-  test('readDirectory works as intended', () => {
+  test('readDirectory works as intended', async () => {
     const src: string = '/path/to/test-directory/src';
     const extensions = ['js', 'ts', 'tsx', 'jsx'];
     const ignoredFiles = ['.d.ts', '.d.tsx'];
@@ -119,7 +119,7 @@ describe('"traverse-files" index', () => {
       ignoredFiles,
     };
 
-    const collected: Directory = readDirectory(opts);
+    const collected: Directory = await readDirectory(opts);
 
     const expected = [
       ['/path/to/test-directory/src/nested/one.js', ''],
@@ -133,9 +133,9 @@ describe('"traverse-files" index', () => {
     expect(collected).toEqual(expected);
   });
 
-  test('readJSONFile works as intended', () => {
+  test('readJSONFile works as intended', async () => {
     const packagePath: string = '/path/to/test-directory/test-package.json';
-    const contents: RandomObject = readJSONFile(packagePath);
+    const contents: RandomObject = await readJSONFile(packagePath);
 
     const expected = {
       name: 'test-package',

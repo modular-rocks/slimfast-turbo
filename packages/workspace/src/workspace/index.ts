@@ -42,7 +42,6 @@ export class Workspace {
    * });
    */
   constructor(opts: WorkspaceOpts) {
-    this.defaultLoader(opts);
     this.opts = opts;
   }
 
@@ -56,9 +55,9 @@ export class Workspace {
    * // Assuming there are no files specified in opts,
    * // the defaultLoader would be triggered to populate them based on the 'src' directory.
    */
-  defaultLoader(opts: WorkspaceOpts) {
+  async defaultLoader(opts: WorkspaceOpts) {
     if (!opts.files) {
-      opts.files = readDirectory(opts);
+      opts.files = await readDirectory(opts);
     }
   }
 
