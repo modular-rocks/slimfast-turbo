@@ -18,7 +18,7 @@ We gladly accept contributions from individuals of all skill levels and any scal
 
 ## Requirements
 
-- Node.js version 18.x or later
+- Node.js version 20.x or later
 - pnpm version 8.6.6 or later
 
 To develop a package locally, follow the steps below:
