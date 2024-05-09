@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'fs';
+import { readFile, readdir, stat } from 'fs/promises';
 import { resolve as pathResolve, posix, sep } from 'path';
 
 /**
@@ -7,8 +7,9 @@ import { resolve as pathResolve, posix, sep } from 'path';
  * @returns The content of the file as a string.
  * @throws {Error} If the file does not exist or cannot be read.
  */
-export const read = (filePath: string): string =>
-  readFileSync(filePath).toString();
+export const read = async (filePath: string): Promise<string> => {
+  return (await readFile(filePath)).toString();
+};
 
 /**
  * Converts a directory path to a POSIX-style path by replacing backslashes with forward slashes.
@@ -40,9 +41,11 @@ export const resolve = (dirname: string, filename: string): string => {
  * @returns An array of strings representing the filenames in the directory.
  * @throws {Error} If the directory does not exist or cannot be read.
  */
-export const readFilesInDirectory = (directoryPath: string): string[] => {
+export const readFilesInDirectory = async (
+  directoryPath: string
+): Promise<string[]> => {
   const posixDirectoryPath = posix.normalize(directoryPath);
-  return readdirSync(posixDirectoryPath);
+  return readdir(posixDirectoryPath);
 };
 
 /**
@@ -51,5 +54,6 @@ export const readFilesInDirectory = (directoryPath: string): string[] => {
  * @returns `true` if the path is a directory, `false` otherwise.
  * @throws {Error} If the path does not exist or an error occurs during the check.
  */
-export const isDirectory = (absolutePath: string): boolean =>
-  statSync(absolutePath).isDirectory();
+export const isDirectory = async (absolutePath: string): Promise<boolean> => {
+  return (await stat(absolutePath)).isDirectory();
+};

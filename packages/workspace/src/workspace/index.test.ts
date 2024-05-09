@@ -100,6 +100,8 @@ describe('Workspace base', () => {
     };
 
     const workspace = new Workspace(opts);
+    await workspace.defaultLoader(opts);
+
     expect(JSON.stringify(workspace.opts.files)).toBe(JSON.stringify([]));
   });
 });

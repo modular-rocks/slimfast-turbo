@@ -51,17 +51,23 @@ export const removeTests = (fullpath: string) =>
  * @param files - Initial array of file paths (usually empty and used during recursion).
  * @returns An array of string representing all file paths.
  */
-export function traverse(directory: string, files: string[]): string[] {
+export async function traverse(
+  directory: string,
+  files: string[]
+): Promise<string[]> {
   const accumulatedFiles: string[] = [...files];
 
-  readFilesInDirectory(directory).forEach((filePath: string) => {
+  const filesInDirectory = await readFilesInDirectory(directory);
+
+  for (const filePath of filesInDirectory) {
     const absolutePath: string = posix.join(directory, filePath);
-    if (isDirectory(absolutePath)) {
-      accumulatedFiles.push(...traverse(absolutePath, []));
+    const isDir = await isDirectory(absolutePath);
+    if (isDir) {
+      accumulatedFiles.push(...(await traverse(absolutePath, [])));
     } else {
       accumulatedFiles.push(absolutePath);
     }
-  });
+  }
 
   return accumulatedFiles;
 }
@@ -74,13 +80,13 @@ export function traverse(directory: string, files: string[]): string[] {
  * @param ignoreTests - If true, exclude test files from the collection.
  * @returns An array of file paths.
  */
-export const collect = (
+export const collect = async (
   path: string,
   extensions: string[],
   ignoredExtensions: string[],
   ignoreTests: Boolean
-) => {
-  const files: string[] = traverse(path, []);
+): Promise<string[]> => {
+  const files: string[] = await traverse(path, []);
 
   let output = files
     .filter(removeExtensions(extensions))
@@ -98,15 +104,21 @@ export const collect = (
  * @param opts - The options specifying the directory and the type of files to read.
  * @returns An array of tuples with file paths and their content.
  */
-export const readDirectory = (opts: Options): Directory => {
+export const readDirectory = async (opts: Options): Promise<Directory> => {
   const { src, extensions, ignoredFiles } = opts;
 
-  const files: [string, string][] = [];
-  const readFiles: string[] = collect(src, extensions, ignoredFiles, true);
+  const files: Directory = [];
+  const readFiles: string[] = await collect(
+    src,
+    extensions,
+    ignoredFiles,
+    true
+  );
 
-  readFiles.forEach((path: string) => {
-    files.push([path, read(path)]);
-  });
+  for (const path of readFiles) {
+    const fileContent = await read(path);
+    files.push([path, fileContent]);
+  }
 
   return files;
 };
@@ -116,6 +128,8 @@ export const readDirectory = (opts: Options): Directory => {
  * @param packagePath - The path to the JSON file.
  * @returns The content of the JSON file as an object.
  */
-export const readJSONFile = (packagePath: string): RandomObject => {
-  return JSON.parse(read(packagePath));
+export const readJSONFile = async (
+  packagePath: string
+): Promise<RandomObject> => {
+  return JSON.parse(await read(packagePath));
 };

@@ -8,10 +8,10 @@ export class Workspace extends WorkspaceBase {
     super(opts);
   }
 
-  defaultLoader(opts: WorkspaceOpts) {
-    super.defaultLoader(opts);
+  async defaultLoader(opts: WorkspaceOpts) {
+    await super.defaultLoader(opts);
     if (!opts.packageContents && opts.packagePath) {
-      opts.packageContents = readJSONFile(opts.packagePath);
+      opts.packageContents = await readJSONFile(opts.packagePath);
     }
   }
 }

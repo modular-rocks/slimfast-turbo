@@ -28,18 +28,18 @@ describe('convenience functions', () => {
   });
 
   describe('read function', () => {
-    test('should read the content of a file and return as a string', () => {
+    test('should read the content of a file and return as a string', async () => {
       const filePath = './tests/test-directory/file.txt';
       const expectedContent = 'Hello, world!';
-      const content = read(filePath);
+      const content = await read(filePath);
 
       expect(content).toBe(expectedContent);
     });
 
-    test('should throw an error if the file does not exist', () => {
+    test('should throw an error if the file does not exist', async () => {
       const filePath = './tests/test-directory/nonexistentFile.txt';
 
-      expect(() => read(filePath)).toThrowError();
+      await expect(() => read(filePath)).rejects.toThrowError();
     });
   });
 
@@ -61,35 +61,38 @@ describe('convenience functions', () => {
   });
 
   describe('readFilesInDirectory function', () => {
-    test('should read all files in the directory', () => {
+    test('should read all files in the directory', async () => {
       const directoryPath = './tests/test-directory/directory';
       const expectedFiles = ['file1.txt', 'file2.txt'];
 
-      const files = readFilesInDirectory(directoryPath);
+      const files = await readFilesInDirectory(directoryPath);
 
       expect(files).toEqual(expect.arrayContaining(expectedFiles));
     });
 
-    test('should throw an error if the path is not a directory', () => {
+    test('should throw an error if the path is not a directory', async () => {
       const nonDirectoryPath = './tests/test-directory/file.txt';
 
-      expect(() => readFilesInDirectory(nonDirectoryPath)).toThrowError();
+      // expect(() => readFilesInDirectory(nonDirectoryPath)).toThrowError();
+      await expect(() =>
+        readFilesInDirectory(nonDirectoryPath)
+      ).rejects.toThrowError();
     });
   });
 
   describe('isDirectory function', () => {
-    test('should return true if the path is a directory', () => {
+    test('should return true if the path is a directory', async () => {
       const directoryPath = './tests/test-directory/directory';
 
-      const isDir = isDirectory(directoryPath);
+      const isDir = await isDirectory(directoryPath);
 
       expect(isDir).toBe(true);
     });
 
-    test('should return false if the path is not a directory', () => {
+    test('should return false if the path is not a directory', async () => {
       const filePath = './tests/test-directory/file.txt';
 
-      const isDir = isDirectory(filePath);
+      const isDir = await isDirectory(filePath);
 
       expect(isDir).toBe(false);
     });
