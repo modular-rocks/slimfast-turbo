@@ -1,5 +1,18 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.9
+
+### Patch Changes
+
+- [#78](https://github.com/modular-rocks/slimfast-turbo/pull/78) [`4ab9dbf`](https://github.com/modular-rocks/slimfast-turbo/commit/4ab9dbf21441121312b3eccca50dbcf2455b0195) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Migrate from Prettier and ESLint to Biome
+
+- [#74](https://github.com/modular-rocks/slimfast-turbo/pull/74) [`a969555`](https://github.com/modular-rocks/slimfast-turbo/commit/a96955513bcbe1957001357ce1e665b556080946) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- Updated dependencies [[`593fc6e`](https://github.com/modular-rocks/slimfast-turbo/commit/593fc6e2fb69d7123c88b6f9d035c14fe374c1a7), [`4ab9dbf`](https://github.com/modular-rocks/slimfast-turbo/commit/4ab9dbf21441121312b3eccca50dbcf2455b0195), [`a969555`](https://github.com/modular-rocks/slimfast-turbo/commit/a96955513bcbe1957001357ce1e665b556080946)]:
+  - @modular-rocks/traverse-files@0.3.3
+  - @modular-rocks/workspace-node@0.1.7
+  - @modular-rocks/slimfast@0.1.7
+
 ## 0.1.8
 
 ### Patch Changes

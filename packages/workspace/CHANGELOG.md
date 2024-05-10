@@ -1,5 +1,16 @@
 # @modular-rocks/workspace
 
+## 0.1.7
+
+### Patch Changes
+
+- [#76](https://github.com/modular-rocks/slimfast-turbo/pull/76) [`593fc6e`](https://github.com/modular-rocks/slimfast-turbo/commit/593fc6e2fb69d7123c88b6f9d035c14fe374c1a7) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Refactor file reading and loading methods to use async/await
+
+- [#78](https://github.com/modular-rocks/slimfast-turbo/pull/78) [`4ab9dbf`](https://github.com/modular-rocks/slimfast-turbo/commit/4ab9dbf21441121312b3eccca50dbcf2455b0195) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Migrate from Prettier and ESLint to Biome
+
+- Updated dependencies [[`593fc6e`](https://github.com/modular-rocks/slimfast-turbo/commit/593fc6e2fb69d7123c88b6f9d035c14fe374c1a7), [`4ab9dbf`](https://github.com/modular-rocks/slimfast-turbo/commit/4ab9dbf21441121312b3eccca50dbcf2455b0195)]:
+  - @modular-rocks/traverse-files@0.3.3
+
 ## 0.1.6
 
 ### Patch Changes
