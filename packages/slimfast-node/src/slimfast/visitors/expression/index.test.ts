@@ -20,7 +20,7 @@ function Multiply() {
 
 describe('Slimfast Node', () => {
   test('It modularises', async () => {
-    const files: [string, string][] = [[`/path`, code]];
+    const files: [string, string][] = [['/path', code]];
 
     const opts: VisitorOpts = {
       blocklistedParents: [],
@@ -31,8 +31,6 @@ describe('Slimfast Node', () => {
     const ast = parser(code);
     const extracted: Map<NodePath, any> = new Map();
 
-    // TODO: fix ESLint error
-    // eslint-disable-next-line no-new
     new ExpressionVisitor(ast, opts, {}, extracted);
 
     expect(extracted.size).toBe(2);

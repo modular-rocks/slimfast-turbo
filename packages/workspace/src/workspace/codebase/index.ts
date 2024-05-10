@@ -1,4 +1,4 @@
-import { basename, dirname } from 'path';
+import { basename, dirname } from 'node:path';
 
 import { copy } from './copy';
 import { FileContainer } from './file';

@@ -1,10 +1,10 @@
 {
-  // ESLint configuration for monorepo packages
-  "eslint.workingDirectories": [
-    "./packages/traverse-files",
-    "./packages/workspace",
-    "./packages/workspace-node",
-    "./packages/slimfast",
-    "./packages/slimfast-node"
-  ]
+  "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

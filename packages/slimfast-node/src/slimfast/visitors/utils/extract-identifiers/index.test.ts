@@ -10,7 +10,7 @@ const str = JSON.stringify;
 
 describe('Extract Identifiers', () => {
   test('', () => {
-    const code = `let result = x * e * o;`;
+    const code = 'let result = x * e * o;';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
     traverse(ast, {

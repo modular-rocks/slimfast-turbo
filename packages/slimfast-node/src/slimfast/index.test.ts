@@ -10,7 +10,7 @@ const code = before;
 
 describe('Slimfast Node', () => {
   test('It modularises', async () => {
-    const files: [string, string][] = [[`/path`, code]];
+    const files: [string, string][] = [['/path', code]];
     const opts: SlimFastOpts = {
       files,
       src: '/',

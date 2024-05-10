@@ -66,11 +66,11 @@ export const extract =
     const extracted: Map<NodePath, any> = new Map();
 
     // TODO: Double check that this is correct
-    visitors.forEach((Visitor: any) => {
-      // TODO: fix ESLint error
-      // eslint-disable-next-line no-new
+    for (const Visitor of visitors) {
+      // TODO: fix error
+      // @ts-ignore
       new Visitor(file.ast, options, state, extracted);
-    });
+    }
 
     file.store.extractions = Array.from(extracted);
     return false;

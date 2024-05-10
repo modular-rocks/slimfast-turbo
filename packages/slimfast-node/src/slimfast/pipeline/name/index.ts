@@ -38,9 +38,9 @@ export const name =
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 
-    extracted.forEach((extract) => {
+    for (const extract of extracted) {
       const [path, data] = extract;
       namer(path, data);
-    });
+    }
     return false;
   };

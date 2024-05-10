@@ -55,12 +55,12 @@ export const build =
 
     workspace.refactored.makeDirectory(file); // make sure that its not already in an index
 
-    extracted.forEach((extract) => {
+    for (const extract of extracted) {
       const [path, data] = extract;
       const newFile = builder(path, data, file.pathname, options);
       file.addImport(newFile.import);
       workspace.refactored.addFile(file.spawn(newFile));
-    });
+    }
     file.updateCode();
     return false;
   };

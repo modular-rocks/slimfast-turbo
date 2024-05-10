@@ -23,9 +23,7 @@ const getSize = (node: Node): number => {
  * const significantReduction = wouldRemoveTooMuch(nodePath, data);
  * // Returns true if the removal would be too significant.
  */
-export const removesTooMuch: (
-  multiplier: number
-) => ConstraintWithData<'ast'> =
+export const removesTooMuch: (multiplier: number) => ConstraintWithData<'ast'> =
   (multiplier) =>
   /**
    * Determines if the removal of a specific AST node would lead to a disproportionate reduction in the overall size of the AST.

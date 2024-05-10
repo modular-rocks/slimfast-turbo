@@ -1,4 +1,4 @@
-import { dirname, extname, resolve } from 'path/posix';
+import { dirname, extname, resolve } from 'node:path/posix';
 
 import { program } from '@babel/types';
 
@@ -66,7 +66,7 @@ export type Builder = (
 export const builder: Builder = (path, data, parentPath, options) => {
   const { name, folder, toImport } = data;
 
-  path = path && path.isJSXOpeningElement() ? path.parentPath : path;
+  path = path?.isJSXOpeningElement() ? path.parentPath : path;
 
   const pathname = resolve(
     dirname(parentPath),

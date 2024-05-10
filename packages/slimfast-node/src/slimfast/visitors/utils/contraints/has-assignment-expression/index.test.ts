@@ -25,7 +25,7 @@ describe('Has assignment expression', () => {
   });
 
   test('', () => {
-    const code = `yes`;
+    const code = 'yes';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 

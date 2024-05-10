@@ -7,7 +7,7 @@ import { parser } from '../../parser';
 import type { NodePath } from '@babel/traverse';
 
 describe('Removes too much', () => {
-  const code = `() => 3 * 7`;
+  const code = '() => 3 * 7';
   const ast = parser(code);
   let rootPath: NodePath | null = null;
 

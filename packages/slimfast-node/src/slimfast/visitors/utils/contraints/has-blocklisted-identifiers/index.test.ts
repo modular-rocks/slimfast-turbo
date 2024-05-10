@@ -8,7 +8,7 @@ import type { NodePath } from '@babel/traverse';
 
 describe('Has blocklisted identifiers', () => {
   test('', () => {
-    const code = `x * y`;
+    const code = 'x * y';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 
@@ -25,7 +25,7 @@ describe('Has blocklisted identifiers', () => {
   });
 
   test('', () => {
-    const code = `true`;
+    const code = 'true';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
 

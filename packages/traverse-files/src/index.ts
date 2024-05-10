@@ -1,4 +1,4 @@
-import { basename, extname, posix } from 'path';
+import { basename, extname, posix } from 'node:path';
 
 import { isDirectory, read, readFilesInDirectory } from './convenience';
 

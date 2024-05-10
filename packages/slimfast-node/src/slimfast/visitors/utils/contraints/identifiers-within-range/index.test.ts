@@ -8,7 +8,7 @@ import type { NodePath } from '@babel/traverse';
 
 describe('Identifiers within range', () => {
   test('', () => {
-    const code = `() => x * y * z * a * b * c`;
+    const code = '() => x * y * z * a * b * c';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
     const data = {
@@ -29,7 +29,7 @@ describe('Identifiers within range', () => {
   });
 
   test('', () => {
-    const code = `() => x * y`;
+    const code = '() => x * y';
     const ast = parser(code);
     let rootPath: NodePath | null = null;
     const data = {

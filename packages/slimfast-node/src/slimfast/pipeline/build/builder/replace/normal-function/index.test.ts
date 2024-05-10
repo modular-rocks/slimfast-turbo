@@ -9,7 +9,7 @@ import { parser } from '../../../../../visitors/utils/parser';
 import type { SlimFastOpts } from '../../../../../../types';
 import type { NodePath } from '@babel/traverse';
 
-const files: [string, string][] = [[`/path`, '']];
+const files: [string, string][] = [['/path', '']];
 const opts: SlimFastOpts = {
   files,
   src: '/',
@@ -19,7 +19,7 @@ const opts: SlimFastOpts = {
   packageContents: {},
 };
 const codebase = new Codebase(opts);
-const file = new FileContainer(`/path`, '', codebase);
+const file = new FileContainer('/path', '', codebase);
 
 describe('Generate JSX', () => {
   test('', async () => {
@@ -46,7 +46,7 @@ describe('Generate JSX', () => {
       };
       extractIdentifiers(rootPath, data);
       const el = generateFunction('myFunction', data);
-      expect(file.astToCode(el)).toBe(`myFunction()`);
+      expect(file.astToCode(el)).toBe('myFunction()');
     }
   });
   test('', async () => {
@@ -74,7 +74,7 @@ describe('Generate JSX', () => {
       };
       extractIdentifiers(rootPath, data);
       const el = generateFunction('myFunction', data);
-      expect(file.astToCode(el)).toBe(`myFunction(name)`);
+      expect(file.astToCode(el)).toBe('myFunction(name)');
     }
   });
   // bug!

@@ -14,13 +14,14 @@
     "test:w": "turbo run test:w",
     "coverage": "turbo run coverage",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "check:format": "prettier --check \"**/*.{ts,tsx,md}\"",
+    "lint": "biome lint .",
+    "check:format": "biome format .",
     "check": "pnpm lint && pnpm check:format",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "biome format --write .",
     "release": "changeset publish"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.7.3",
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.1",
     "@types/mock-fs": "4.13.4",

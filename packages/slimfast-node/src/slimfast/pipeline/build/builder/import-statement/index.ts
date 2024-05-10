@@ -1,4 +1,4 @@
-import { basename, dirname, join, relative } from 'path/posix';
+import { basename, dirname, join, relative } from 'node:path/posix';
 
 import {
   identifier,
