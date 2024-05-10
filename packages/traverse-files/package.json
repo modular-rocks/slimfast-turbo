@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/traverse-files",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Simply traversing files",
   "main": "./dist/index.js",
   "exports": {
@@ -14,7 +14,9 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
