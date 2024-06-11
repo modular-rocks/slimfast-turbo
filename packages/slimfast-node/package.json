@@ -6,7 +6,7 @@
   "exports": {
     ".": {
       "default": "./dist/index.js",
-      "types": "./dist/declarations.d.ts"
+      "types": "./dist/types/index.d.ts"
     },
     "./utils": {
       "default": "./dist/exports/utils/index.js",
@@ -34,7 +34,7 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/declarations.d.ts",
+  "types": "./dist/types/index.d.ts",
   "engines": {
     "node": ">=20.0.0"
   },
