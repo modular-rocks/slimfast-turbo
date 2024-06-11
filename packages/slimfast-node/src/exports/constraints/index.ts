@@ -1,0 +1,12 @@
+export { containsIdentifiersInOtherScopes } from '../../slimfast/visitors/utils/contraints/contains-identifiers-in-other-scopes';
+export { hasAssignmentExpression } from '../../slimfast/visitors/utils/contraints/has-assignment-expression';
+export { hasBlocklistedIdentifiers } from '../../slimfast/visitors/utils/contraints/has-blocklisted-identifiers';
+export { hasReturnStatement } from '../../slimfast/visitors/utils/contraints/has-return-statement';
+export { hasVariableDeclarator } from '../../slimfast/visitors/utils/contraints/has-variable-declarator';
+export { identifiersNotWithinRange } from '../../slimfast/visitors/utils/contraints/identifiers-not-within-range';
+export { identifiersWithinRange } from '../../slimfast/visitors/utils/contraints/identifiers-within-range';
+export { isAFunction } from '../../slimfast/visitors/utils/contraints/is-a-function';
+export { isCallExpression } from '../../slimfast/visitors/utils/contraints/is-call-expression';
+export { removesTooMuch } from '../../slimfast/visitors/utils/contraints/removes-too-much';
+export { shouldIgnore } from '../../slimfast/visitors/utils/contraints/should-ignore';
+export { tooSmall } from '../../slimfast/visitors/utils/contraints/too-small';
