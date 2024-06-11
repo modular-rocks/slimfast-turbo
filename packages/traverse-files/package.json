@@ -5,12 +5,16 @@
   "main": "./dist/index.js",
   "exports": {
     ".": {
-      "types": "./dist/types",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./convenience": {
+      "types": "./dist/types/convenience.d.ts",
+      "default": "./dist/convenience.js"
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/types",
+  "types": "./dist/types/index.d.ts",
   "engines": {
     "node": ">=20.0.0"
   },
