@@ -1,5 +1,18 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.10
+
+### Patch Changes
+
+- [#82](https://github.com/modular-rocks/slimfast-turbo/pull/82) [`2c6c5dc`](https://github.com/modular-rocks/slimfast-turbo/commit/2c6c5dcb6803e699afc35f3fe290ba82f9ee07fe) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Export utility functions and other modules.
+
+- [#81](https://github.com/modular-rocks/slimfast-turbo/pull/81) [`ddd1d68`](https://github.com/modular-rocks/slimfast-turbo/commit/ddd1d68b50f7cac96ba3ba91649c0f90e5d821b1) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Fix: Correctly export types
+
+- Updated dependencies [[`ddd1d68`](https://github.com/modular-rocks/slimfast-turbo/commit/ddd1d68b50f7cac96ba3ba91649c0f90e5d821b1)]:
+  - @modular-rocks/traverse-files@0.3.4
+  - @modular-rocks/workspace-node@0.1.8
+  - @modular-rocks/slimfast@0.1.8
+
 ## 0.1.9
 
 ### Patch Changes
