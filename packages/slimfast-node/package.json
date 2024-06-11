@@ -8,6 +8,30 @@
       "default": "./dist/index.js",
       "types": "./dist/declarations.d.ts"
     },
+    "./utils": {
+      "default": "./dist/exports/utils/index.js",
+      "types": "./dist/types/exports/utils/index.d.ts"
+    },
+    "./utils/pipeline": {
+      "default": "./dist/exports/pipeline/index.js",
+      "types": "./dist/types/exports/pipeline/index.d.ts"
+    },
+    "./utils/generator": {
+      "default": "./dist/exports/generator/index.js",
+      "types": "./dist/types/exports/generator/index.d.ts"
+    },
+    "./utils/constraints": {
+      "default": "./dist/exports/constraints/index.js",
+      "types": "./dist/types/exports/constraints/index.d.ts"
+    },
+    "./utils/visitors": {
+      "default": "./dist/exports/utils/visitors/index.js",
+      "types": "./dist/types/exports/utils/visitors/index.d.ts"
+    },
+    "./visitors": {
+      "default": "./dist/exports/visitors/index.js",
+      "types": "./dist/types/exports/visitors/index.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "types": "./dist/declarations.d.ts",
