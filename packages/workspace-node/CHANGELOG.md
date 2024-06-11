@@ -1,5 +1,15 @@
 # @modular-rocks/workspace-node
 
+## 0.1.8
+
+### Patch Changes
+
+- [#81](https://github.com/modular-rocks/slimfast-turbo/pull/81) [`ddd1d68`](https://github.com/modular-rocks/slimfast-turbo/commit/ddd1d68b50f7cac96ba3ba91649c0f90e5d821b1) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Fix: Correctly export types
+
+- Updated dependencies [[`ddd1d68`](https://github.com/modular-rocks/slimfast-turbo/commit/ddd1d68b50f7cac96ba3ba91649c0f90e5d821b1)]:
+  - @modular-rocks/traverse-files@0.3.4
+  - @modular-rocks/workspace@0.1.8
+
 ## 0.1.7
 
 ### Patch Changes
