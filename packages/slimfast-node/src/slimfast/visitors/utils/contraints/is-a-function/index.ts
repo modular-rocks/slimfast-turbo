@@ -15,13 +15,4 @@ import type { Constraint } from '../../../../../types';
  *   // Handle the function node.
  * }
  */
-export const isAFunction: Constraint = (path) => {
-  return [
-    'FunctionDeclaration',
-    'FunctionExpression',
-    'ArrowFunctionExpression',
-    'ObjectMethod',
-    'ClassMethod',
-    'PrivateMethod',
-  ].includes(path.type);
-};
+export const isAFunction: Constraint = (path) => path.isFunction();
