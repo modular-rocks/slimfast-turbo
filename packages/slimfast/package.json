@@ -28,7 +28,7 @@
     "@modular-rocks/workspace": "workspace:*"
   },
   "devDependencies": {
-    "@babel/types": "7.24.5",
+    "@babel/types": "7.24.7",
     "tsconfig": "workspace:*"
   },
   "author": "Alex Dollery (DolNpm/DolGit)",

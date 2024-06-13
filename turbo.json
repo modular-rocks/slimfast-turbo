@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -27,7 +27,7 @@
       "persistent": true
     },
     "coverage": {
-      "cache": false,
+      "cache": true,
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"]
     },
