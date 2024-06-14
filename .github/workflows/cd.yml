@@ -2,7 +2,7 @@ name: CD
 
 on:
   workflow_run:
-    workflows: ['CI']
+    workflows: ["CI"]
     branches:
       - main
     types:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.1.1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -48,7 +48,7 @@ jobs:
         uses: changesets/action@v1
         with:
           createGithubReleases: true
-          commit: '[cd] release'
+          commit: "[cd] release"
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
