@@ -38,7 +38,7 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": ["dist", "src/**/*.ts", "!dist/**/*.test.*", "!src/**/*.test.ts"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
