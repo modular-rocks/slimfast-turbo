@@ -1,5 +1,11 @@
 # @modular-rocks/traverse-files
 
+## 0.3.5
+
+### Patch Changes
+
+- [#87](https://github.com/modular-rocks/slimfast-turbo/pull/87) [`be3425f`](https://github.com/modular-rocks/slimfast-turbo/commit/be3425ff03c5a8d2fb3a04efc2879d73dfca4fee) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Chore: Updated export paths in `package.json` for better IntelliSense and modified `tsconfig.json`
+
 ## 0.3.4
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/workspace-node",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "This is the Workspace for Typescript/Javascript, extending @modular-rocks/workspace specifically for NodeJS.",
   "main": "./dist/index.js",
   "exports": {
@@ -18,7 +18,12 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist", "src/**/*.ts", "!dist/**/*.test.*", "!src/**/*.test.ts"],
+  "files": [
+    "dist",
+    "src/**/*.ts",
+    "!dist/**/*.test.*",
+    "!src/**/*.test.ts"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",

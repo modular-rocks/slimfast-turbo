@@ -1,5 +1,16 @@
 # @modular-rocks/slimfast
 
+## 0.1.9
+
+### Patch Changes
+
+- [#85](https://github.com/modular-rocks/slimfast-turbo/pull/85) [`276e92f`](https://github.com/modular-rocks/slimfast-turbo/commit/276e92f6d6cb05808ac8b81377fb71bfe6b39eed) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- [#87](https://github.com/modular-rocks/slimfast-turbo/pull/87) [`be3425f`](https://github.com/modular-rocks/slimfast-turbo/commit/be3425ff03c5a8d2fb3a04efc2879d73dfca4fee) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Chore: Updated export paths in `package.json` for better IntelliSense and modified `tsconfig.json`
+
+- Updated dependencies [[`be3425f`](https://github.com/modular-rocks/slimfast-turbo/commit/be3425ff03c5a8d2fb3a04efc2879d73dfca4fee)]:
+  - @modular-rocks/workspace@0.1.9
+
 ## 0.1.8
 
 ### Patch Changes
