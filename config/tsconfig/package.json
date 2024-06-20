@@ -2,8 +2,5 @@
   "name": "tsconfig",
   "version": "0.0.3",
   "private": true,
-  "files": [
-    "tsconfig.json",
-    "tsconfig.prod.json"
-  ]
+  "files": ["tsconfig.json", "tsconfig.prod.json"]
 }

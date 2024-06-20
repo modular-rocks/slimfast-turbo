@@ -51,6 +51,7 @@ jobs:
           pnpm biome format --write ./packages/workspace-node/package.json
           pnpm biome format --write ./packages/slimfast/package.json
           pnpm biome format --write ./packages/slimfast-node/package.json
+          pnpm biome format --write ./config/tsconfig/package.json
 
       - name: Check Format
         run: pnpm check:format
