@@ -81,8 +81,10 @@ export default function Developer() {
     return (<div className="dim-page">
         <h1>Developer Settings</h1>
         <p>To run DIM locally, you need to create and register your own personal app with both the
-                    Bungie.net and DIM APIs.</p>
-        {function11(apiKey, clientId, clientSecret, dimAppName) && dimApiKey && (<a href={prefillLink}>Open this link in another browser to clone these settings to DIM there</a>)}
+                    Bungie.net and DIM APIs.
+                  </p>
+        {function11(apiKey, clientId, clientSecret, dimAppName) && dimApiKey && (<a href={prefillLink}>Open this link in another browser to clone these settings to DIM there
+                    </a>)}
         {warning ? (<div>
             <h3>Configuration Error</h3>
             <span>{warning}</span>
@@ -96,8 +98,10 @@ export default function Developer() {
                 </li>
                 <li>Paste{" "}
                     <input name="redirectUrl" type="text" value={URLRet} readOnly={true} size={30} />into
-                                  the "Redirect URL" section under "App Authentication".</li>
-                <li>Paste<input name="originHeader" type="text" value={URL} readOnly={true} size={20} />{" "}into the "Origin Header" section under "Browser Based Apps".</li>
+                                  the "Redirect URL" section under "App Authentication".
+                                </li>
+                <li>Paste <input name="originHeader" type="text" value={URL} readOnly={true} size={20} />{" "}into the "Origin Header" section under "Browser Based Apps".
+                                </li>
                 <li>Select "Confidential" OAuth type.</li>
                 <Component12 apiKey={apiKey} onChange={onChange} setApiKey={setApiKey} />
                 <Component13 clientId={clientId} onChange={onChange} setClientId={setClientId} />
@@ -110,11 +114,13 @@ export default function Developer() {
             <ol>
                 <li>Choose a name for your DIM API app (only required to create or recover your API key).
                                   This should be in the form of "yourname-dev" and will show up in API audit logs. (min
-                                  length: 3, chars allowed [a-z0-9-])<br />
+                                  length: 3, chars allowed [a-z0-9-])
+                                  <br />
                     <Function15 dimAppName={dimAppName} onChange={onChange} setDimAppName={setDimAppName} />
                     <Function16 getDimApiKey={getDimApiKey} apiKey={apiKey} dimAppName={dimAppName} />
                 </li>
-                <li>DIM API key<br />
+                <li>DIM API key
+                                  <br />
                     <input
                         name="clientSecret"
                         type="dimApiKey"
@@ -126,7 +132,8 @@ export default function Developer() {
             <button
                 type="submit"
                 className="dim-button"
-                disabled={!(function19(apiKey, clientId, clientSecret, dimAppName) && dimApiKey)}>Save API Keys</button>
+                disabled={!(function19(apiKey, clientId, clientSecret, dimAppName) && dimApiKey)}>Save API Keys
+                          </button>
         </form>)}
     </div>);
 }`;

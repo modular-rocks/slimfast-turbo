@@ -13,7 +13,7 @@
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
-      "extensions": ["Gruntfuggly.todo-tree", "esbenp.prettier-vscode"]
+      "extensions": ["Gruntfuggly.todo-tree", "biomejs.biome"]
     }
   }
 

@@ -22,9 +22,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.1.1
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -44,5 +44,13 @@ jobs:
       - name: Linting
         run: pnpm lint
 
-      - name: Format
+      - name: Format package.json
+        run: |
+          pnpm biome format --write ./packages/traverse-files/package.json
+          pnpm biome format --write ./packages/workspace/package.json
+          pnpm biome format --write ./packages/workspace-node/package.json
+          pnpm biome format --write ./packages/slimfast/package.json
+          pnpm biome format --write ./packages/slimfast-node/package.json
+
+      - name: Check Format
         run: pnpm check:format
