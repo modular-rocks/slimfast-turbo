@@ -5,20 +5,24 @@
   "main": "./dist/index.js",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
     "./convenience": {
-      "types": "./dist/types/convenience.d.ts",
+      "types": "./dist/convenience.d.ts",
       "default": "./dist/convenience.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist"],
+  "files": ["dist", "!dist/tests/**/*", "src/**/*.ts", "!src/**/*.test.ts"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",

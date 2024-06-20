@@ -1,10 +1,7 @@
 import { Codebase, Workspace } from '@modular-rocks/workspace';
 
 import type { Codebase as CodebaseType } from '@modular-rocks/workspace';
-import type {
-  CodebaseOpts,
-  Options,
-} from '@modular-rocks/workspace/dist/types/types';
+import type { CodebaseOpts, Options } from '@modular-rocks/workspace/types';
 
 /**
  * The SlimFast class extends the Workspace class and represents a workspace that

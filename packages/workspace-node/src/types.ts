@@ -1,4 +1,4 @@
 export type {
   CodebaseOpts,
   WorkspaceOpts,
-} from '@modular-rocks/workspace/dist/types/types';
+} from '@modular-rocks/workspace/types';

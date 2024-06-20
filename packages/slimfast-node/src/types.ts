@@ -3,7 +3,7 @@ import type { NamerGenerator } from './slimfast/pipeline/name/default-function-n
 import type { ExpressionVisitor } from './slimfast/visitors/expression';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { Node, Statement } from '@babel/types';
-import type { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
+import type { CodebaseOpts } from '@modular-rocks/workspace-node/types';
 
 export type RandomObject = Record<string, any>;
 
