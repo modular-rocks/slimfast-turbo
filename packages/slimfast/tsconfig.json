@@ -2,8 +2,6 @@
   "include": ["src"],
   "extends": "tsconfig/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2018",
-    "outDir": "dist",
-    "declarationDir": "dist/types"
+    "outDir": "dist"
   }
 }

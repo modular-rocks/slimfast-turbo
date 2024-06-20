@@ -10,7 +10,8 @@ import type { File, Statement } from '@babel/types';
 type EndOfLine = '\r\n' | '\n' | '\r';
 
 export class FileContainer extends FileContainerBase {
-  ast?: File;
+  // TODO: Fix type on @modular-rocks/workspace
+  // ast?: File;
 
   constructor(path: string, code: string, codebase: Codebase) {
     super(path, code, codebase);

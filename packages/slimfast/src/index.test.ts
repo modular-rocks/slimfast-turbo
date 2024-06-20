@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from 'vitest';
 
 import { SlimFast } from '.';
 
-import type { CodebaseOpts } from '@modular-rocks/workspace/dist/types/types';
+import type { CodebaseOpts } from '@modular-rocks/workspace/types';
 
 type OutPutIteration = [number, number];
 

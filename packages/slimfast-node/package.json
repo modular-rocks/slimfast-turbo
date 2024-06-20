@@ -6,39 +6,39 @@
   "exports": {
     ".": {
       "default": "./dist/index.js",
-      "types": "./dist/types/index.d.ts"
+      "types": "./dist/index.d.ts"
     },
     "./utils": {
       "default": "./dist/exports/utils/index.js",
-      "types": "./dist/types/exports/utils/index.d.ts"
+      "types": "./dist/exports/utils/index.d.ts"
     },
-    "./utils/pipeline": {
+    "./pipeline": {
       "default": "./dist/exports/pipeline/index.js",
-      "types": "./dist/types/exports/pipeline/index.d.ts"
+      "types": "./dist/exports/pipeline/index.d.ts"
     },
-    "./utils/generator": {
+    "./generator": {
       "default": "./dist/exports/generator/index.js",
-      "types": "./dist/types/exports/generator/index.d.ts"
+      "types": "./dist/exports/generator/index.d.ts"
     },
-    "./utils/constraints": {
+    "./constraints": {
       "default": "./dist/exports/constraints/index.js",
-      "types": "./dist/types/exports/constraints/index.d.ts"
-    },
-    "./utils/visitors": {
-      "default": "./dist/exports/utils/visitors/index.js",
-      "types": "./dist/types/exports/utils/visitors/index.d.ts"
+      "types": "./dist/exports/constraints/index.d.ts"
     },
     "./visitors": {
       "default": "./dist/exports/visitors/index.js",
-      "types": "./dist/types/exports/visitors/index.d.ts"
+      "types": "./dist/exports/visitors/index.d.ts"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist"],
+  "files": ["dist", "src/**/*.ts", "!dist/**/*.test.*", "!src/**/*.test.ts"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",

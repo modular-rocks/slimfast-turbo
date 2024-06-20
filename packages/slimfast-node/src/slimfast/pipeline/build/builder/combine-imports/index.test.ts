@@ -10,7 +10,7 @@ import { parser } from '../../../../visitors/utils/parser';
 
 import type { ConstraintData } from '../../../../../types';
 import type { NodePath } from '@babel/traverse';
-import type { CodebaseOpts } from '@modular-rocks/workspace-node/dist/types/types';
+import type { CodebaseOpts } from '@modular-rocks/workspace-node/types';
 
 const files: [string, string][] = [['/path', '']];
 const opts: CodebaseOpts = {

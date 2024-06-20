@@ -2,7 +2,6 @@
   "include": ["src"],
   "extends": "tsconfig/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "declarationDir": "dist/types"
+    "outDir": "./dist"
   }
 }
