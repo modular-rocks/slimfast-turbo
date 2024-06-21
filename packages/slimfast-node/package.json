@@ -42,7 +42,6 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
-    "build:prod": "tsc -p tsconfig.prod.json",
     "test": "vitest run",
     "test:w": "vitest",
     "coverage": "vitest --coverage run",

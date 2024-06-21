@@ -7,11 +7,6 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "build:prod": {
-      "cache": true,
-      "dependsOn": ["^build:prod"],
-      "outputs": ["dist/**"]
-    },
     "build:w": {
       "cache": false,
       "dependsOn": ["^build"],
@@ -31,7 +26,6 @@
       "cache": true,
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"]
-    },
-    "dev": {}
+    }
   }
 }
