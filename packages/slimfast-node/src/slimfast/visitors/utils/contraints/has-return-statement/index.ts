@@ -20,6 +20,9 @@ import type { NodePath } from '@babel/traverse';
  * }
  */
 export const hasReturnStatement: Constraint = (path) => {
+  // Problematic when
+  // 1. The path directly represents a return statement.
+  // 2. The path contains a return statement that isn't nested within any type of function.
   let problematic = false;
 
   if (path.isReturnStatement()) {
@@ -31,11 +34,12 @@ export const hasReturnStatement: Constraint = (path) => {
       let parent: NodePath | null = innerPath;
       let isWrapped = false;
       while (!isWrapped && parent) {
-        if (isAFunction(path)) {
+        if (isAFunction(parent)) {
           isWrapped = true;
         }
         parent = parent === path ? null : parent.parentPath;
       }
+      // If the return statement is not wrapped in a function, it is problematic.
       if (!problematic && !isWrapped) {
         problematic = true;
       }
