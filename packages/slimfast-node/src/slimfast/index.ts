@@ -9,6 +9,7 @@ import { defaultFunctionNameGenerator } from './pipeline/name/default-function-n
 import { ExpressionVisitor } from './visitors/expression';
 
 import type { SlimFastOpts } from '../types';
+import type { Visitor } from './visitors/visitor';
 
 /**
  * It represents a workspace that contains both the original and refactored
@@ -48,8 +49,7 @@ export class SlimFast extends SlimFastBase {
    */
   defaultOptions(opts: SlimFastOpts) {
     super.defaultOptions(opts);
-    // TODO: Use better types for visitors
-    const visitors: any[] = opts.visitors || [ExpressionVisitor];
+    const visitors: (typeof Visitor)[] = opts.visitors || [ExpressionVisitor];
     const namer = opts.namer || defaultFunctionNameGenerator(0);
     const builder = opts.builder || pipelineBuilder;
     const pipeline = opts.pipeline?.length
