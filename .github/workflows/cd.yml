@@ -50,7 +50,7 @@ jobs:
           createGithubReleases: true
           commit: "[cd] release"
           version: pnpm version
-          publish: pnpm publish
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

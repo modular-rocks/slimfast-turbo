@@ -17,7 +17,7 @@
     "check": "pnpm lint && pnpm check:format",
     "format": "biome format --write .",
     "version": "changeset version && pnpm format",
-    "publish": "changeset publish"
+    "release": "changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.2",
