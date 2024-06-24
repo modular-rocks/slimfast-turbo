@@ -4,7 +4,7 @@ import type { Node } from '@babel/traverse';
 const notANumber = (num: number | null | undefined): boolean =>
   num === null || num === undefined || Number.isNaN(num);
 
-const getSize = (node: Node): number => {
+export const getSize = (node: Node): number => {
   const start = node.start as number;
   const end = node.end as number;
 
@@ -24,9 +24,9 @@ const getSize = (node: Node): number => {
  * // Returns true if node is too small.
  */
 export const tooSmall: (
-  multiplier: number,
-  minLength: number,
-  measureIdentifiers?: Boolean
+  multiplier?: number,
+  minLength?: number,
+  measureIdentifiers?: boolean
 ) => ConstraintWithData<'toInject'> =
   (multiplier, minLength, measureIdentifiers) =>
   /**
@@ -39,7 +39,8 @@ export const tooSmall: (
   (path, data) => {
     multiplier = multiplier || 1.5;
     minLength = minLength || 50;
-    measureIdentifiers = measureIdentifiers || true;
+    measureIdentifiers =
+      measureIdentifiers === undefined ? true : measureIdentifiers;
 
     const size = getSize(path.node);
 
@@ -50,6 +51,5 @@ export const tooSmall: (
     // TODO: double that bindings have a name property
     const identifiers = data.toInject.map((x: RandomObject) => x.name);
     const min = identifiers.join('').length * multiplier;
-
     return size < min;
   };
