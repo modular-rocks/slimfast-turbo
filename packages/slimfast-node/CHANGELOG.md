@@ -1,5 +1,20 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.12
+
+### Patch Changes
+
+- [#91](https://github.com/modular-rocks/slimfast-turbo/pull/91) [`bb67317`](https://github.com/modular-rocks/slimfast-turbo/commit/bb6731719a1504ead17bf5d3abe7a46b807f35e6) Thanks [@Thgear27](https://github.com/Thgear27)! - Fix: The `hasReturnStatement` constraint will now correctly check the path parent.
+
+- [#93](https://github.com/modular-rocks/slimfast-turbo/pull/93) [`ea6351b`](https://github.com/modular-rocks/slimfast-turbo/commit/ea6351bc357104b688c82ca26ae5a2748f775068) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Chore: Makes Visitor an abstract class
+
+- [#89](https://github.com/modular-rocks/slimfast-turbo/pull/89) [`62d3c5d`](https://github.com/modular-rocks/slimfast-turbo/commit/62d3c5dd048cd8cfcb0214572dafcbb5ed66cec5) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- Updated dependencies [[`62d3c5d`](https://github.com/modular-rocks/slimfast-turbo/commit/62d3c5dd048cd8cfcb0214572dafcbb5ed66cec5)]:
+  - @modular-rocks/traverse-files@0.3.6
+  - @modular-rocks/workspace-node@0.1.10
+  - @modular-rocks/slimfast@0.1.10
+
 ## 0.1.11
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/slimfast-node",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Slimfast puts your code base on a diet with automatic modularisation. This is Slimfast for NodeJS",
   "main": "./dist/index.js",
   "exports": {
@@ -38,7 +38,12 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist", "src/**/*.ts", "!dist/**/*.test.*", "!src/**/*.test.ts"],
+  "files": [
+    "dist",
+    "src/**/*.ts",
+    "!dist/**/*.test.*",
+    "!src/**/*.test.ts"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
