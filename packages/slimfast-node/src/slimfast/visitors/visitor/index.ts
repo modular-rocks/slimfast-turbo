@@ -15,7 +15,7 @@ import type { NodePath, Node } from '@babel/traverse';
  * The Visitor class is responsible for traversing the AST and managing extraction based on
  * provided constraints and blocklisted parent types.
  */
-export class Visitor {
+export abstract class Visitor {
   /**
    * A map storing extracted nodes from the AST.
    */
@@ -84,9 +84,7 @@ export class Visitor {
    *   return [isIdentifier];
    * }
    */
-  constraints(): Constraints {
-    return [];
-  }
+  abstract constraints(): Constraints;
 
   /**
    * Provides a list of blocklisted parent node types that should be avoided during AST traversal.
@@ -191,11 +189,7 @@ export class Visitor {
    *   };
    * }
    */
-  visit(): RandomObject {
-    // TODO: maybe use composition to fix this
-    console.warn('Override this method, this is just an example');
-    return {};
-  }
+  abstract visit(): RandomObject;
 
   /**
    * Initiates the traversal of the Abstract Syntax Tree (AST) using the provided visitor methods.

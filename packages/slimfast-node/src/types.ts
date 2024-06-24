@@ -1,6 +1,6 @@
 import type { Builder } from './slimfast/pipeline/build/builder';
 import type { NamerGenerator } from './slimfast/pipeline/name/default-function-name-generator';
-import type { ExpressionVisitor } from './slimfast/visitors/expression';
+import type { Visitor } from './slimfast/visitors/visitor';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { Node, Statement } from '@babel/types';
 import type { CodebaseOpts } from '@modular-rocks/workspace-node/types';
@@ -97,7 +97,7 @@ export type ConstraintData<
 export type Constraints = (Constraint | ConstraintWithData)[];
 
 export type SlimFastOpts = CodebaseOpts & {
-  visitors?: ExpressionVisitor[];
+  visitors?: (typeof Visitor)[];
   namer?: NamerGenerator;
   builder?: Builder;
 };
@@ -113,3 +113,9 @@ export type ProvisionalFile = {
   ast: RandomObject;
   import: Statement;
 };
+
+export type {
+  builder,
+  BuilderData,
+  BuilderOpts,
+} from './slimfast/pipeline/build/builder';

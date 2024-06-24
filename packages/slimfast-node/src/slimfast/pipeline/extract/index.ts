@@ -33,7 +33,7 @@ type Namer = (path: NodePath, data: RandomObject, options: Options) => void;
  * const processedFile = extract(myVisitors)(file, extractionOptions, state, workspace);
  */
 export const extract =
-  (visitors: Visitor[]) =>
+  (visitors: (typeof Visitor)[]) =>
   /**
    * Processes a file's Abstract Syntax Tree (AST) to extract nodes based on the provided visitor patterns.
    *
