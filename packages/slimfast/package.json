@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/slimfast",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Slimfast puts your code base on a diet with automatic modularisation. This is the Slimfast base that all language versions can extend from.",
   "main": "./dist/index.js",
   "exports": {
@@ -18,7 +18,12 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "files": ["dist", "src/**/*.ts", "!dist/**/*.test.*", "!src/**/*.test.ts"],
+  "files": [
+    "dist",
+    "src/**/*.ts",
+    "!dist/**/*.test.*",
+    "!src/**/*.test.ts"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",

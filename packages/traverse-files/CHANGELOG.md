@@ -1,5 +1,11 @@
 # @modular-rocks/traverse-files
 
+## 0.3.6
+
+### Patch Changes
+
+- [#89](https://github.com/modular-rocks/slimfast-turbo/pull/89) [`62d3c5d`](https://github.com/modular-rocks/slimfast-turbo/commit/62d3c5dd048cd8cfcb0214572dafcbb5ed66cec5) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
 ## 0.3.5
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @modular-rocks/slimfast
 
+## 0.1.10
+
+### Patch Changes
+
+- [#89](https://github.com/modular-rocks/slimfast-turbo/pull/89) [`62d3c5d`](https://github.com/modular-rocks/slimfast-turbo/commit/62d3c5dd048cd8cfcb0214572dafcbb5ed66cec5) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- Updated dependencies [[`62d3c5d`](https://github.com/modular-rocks/slimfast-turbo/commit/62d3c5dd048cd8cfcb0214572dafcbb5ed66cec5)]:
+  - @modular-rocks/workspace@0.1.10
+
 ## 0.1.9
 
 ### Patch Changes
