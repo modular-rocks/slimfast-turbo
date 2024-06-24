@@ -1,5 +1,11 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.14
+
+### Patch Changes
+
+- [#96](https://github.com/modular-rocks/slimfast-turbo/pull/96) [`ff339de`](https://github.com/modular-rocks/slimfast-turbo/commit/ff339dea4398e671b34e9e19aad0a1f620bba8fb) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Chore: Exported `Builder` type correctly
+
 ## 0.1.13
 
 ### Patch Changes
