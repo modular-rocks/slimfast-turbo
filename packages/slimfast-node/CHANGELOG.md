@@ -1,5 +1,11 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.13
+
+### Patch Changes
+
+- [#94](https://github.com/modular-rocks/slimfast-turbo/pull/94) [`44a0bb8`](https://github.com/modular-rocks/slimfast-turbo/commit/44a0bb894c2c5170d414f6dd8b6bc59e7fcd397c) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Chore: Fixed export paths
+
 ## 0.1.12
 
 ### Patch Changes
