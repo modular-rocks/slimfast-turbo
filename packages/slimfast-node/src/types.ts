@@ -115,7 +115,7 @@ export type ProvisionalFile = {
 };
 
 export type {
-  builder,
+  Builder,
   BuilderData,
   BuilderOpts,
 } from './slimfast/pipeline/build/builder';
