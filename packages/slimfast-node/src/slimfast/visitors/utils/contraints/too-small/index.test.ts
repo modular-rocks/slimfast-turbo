@@ -79,7 +79,7 @@ describe('Node with null or NaN properties', () => {
   test('Node size evaluation with start as null', () => {
     let result = 0;
     if (rootPath !== null) {
-      const node = { ...rootPath.node, start: null } as any;
+      const node = { ...rootPath.node, start: null };
       result = getSize(node);
     }
     expect(result).toBe(0);
