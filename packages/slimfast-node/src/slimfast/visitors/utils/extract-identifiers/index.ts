@@ -11,18 +11,6 @@ const variableTypes = ['VariableDeclarator'];
 const isVariableDeclaration = (x: Binding) =>
   variableTypes.includes(x.path.type) || x.kind === 'param';
 
-const buildBinding = (name: string, binding: Binding): Binding => {
-  // need to only return binding
-  return binding;
-  // return {
-  //   name,
-  //   kind: binding.kind,
-  //   identifier: binding.identifier,
-  //   parentType: binding.path.type,
-  //   parentPath: binding.path,
-  // }
-};
-
 /**
  * Traverses a given Abstract Syntax Tree (AST) node path and extracts bindings associated with any `Identifier` nodes.
  *
@@ -62,7 +50,6 @@ export const extractIdentifiers = (
       if (binding) {
         identifiers.push(binding);
       }
-      // binding && identifiers.push(buildBinding(path.node.name, binding))
     },
   });
 
