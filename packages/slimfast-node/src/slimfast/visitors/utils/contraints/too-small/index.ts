@@ -1,14 +1,16 @@
 import type { ConstraintWithData, RandomObject } from '../../../../../types';
 import type { Node } from '@babel/traverse';
 
-const notANumber = (num: number | null | undefined): boolean =>
-  num === null || num === undefined || Number.isNaN(num);
+const itIsANumber = (num: number | null | undefined): num is number =>
+  num !== null && num !== undefined && !Number.isNaN(num);
 
 export const getSize = (node: Node): number => {
-  const start = node.start as number;
-  const end = node.end as number;
+  const start = node.start;
+  const end = node.end;
 
-  return notANumber(start) || notANumber(end) ? 0 : end - start;
+  if (!itIsANumber(start) || !itIsANumber(end)) return 0;
+
+  return end - start;
 };
 
 /**
