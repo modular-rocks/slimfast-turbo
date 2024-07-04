@@ -1,3 +1,4 @@
+import type { AssignmentExpression, Identifier } from '@babel/types';
 import type { Constraint, RandomObject } from '../../../../../types';
 import type { NodePath } from '@babel/traverse';
 
@@ -27,24 +28,22 @@ function isInsidePath(innerPath: NodePath, outerPath: NodePath): boolean {
  * Determines if a given variable is used within a specified AST node path.
  *
  * @param name - The name of the variable to check.
- * @param type - The type of the AST node.
  * @param variablePath - The AST node path of the variable.
  * @param path - The AST node path to check against.
  * @returns `true` if the variable is used within the `path`, otherwise `false`.
  */
-const isUsedInPath = (
+export const isUsedInPath = (
   name: string,
-  type: string,
-  variablePath: NodePath | RandomObject,
+  variablePath: NodePath<AssignmentExpression>,
   path: NodePath
 ): boolean => {
-  if (type === 'Identifier') {
-    const binding = variablePath.scope.getBinding(name);
-    if (binding) {
-      return binding.referencePaths.filter(
-        (ref: NodePath) => !isInsidePath(ref, path)
-      )[0];
-    }
+  const binding = variablePath.scope.getBinding(name);
+  if (binding) {
+    return (
+      binding.referencePaths.filter((ref: NodePath) =>
+        isInsidePath(ref, path)
+      )[0] !== undefined
+    );
   }
   return false;
 };
@@ -72,23 +71,22 @@ export const hasAssignmentExpression: Constraint = (path) => {
   }
 
   path.traverse({
-    AssignmentExpression(variablePath: NodePath | RandomObject) {
+    AssignmentExpression(variablePath: NodePath<AssignmentExpression>) {
       const { left } = variablePath.node;
 
-      if (isUsedInPath(left.name, left.type, variablePath, path)) {
+      if (
+        left.type === 'Identifier' &&
+        isUsedInPath(left.name, variablePath, path)
+      ) {
         usedInOtherScopes = true;
       }
 
       if (left.type === 'ObjectPattern') {
-        // left.properties.forEach((property: any) => {
         for (const property of left.properties) {
           if (
-            isUsedInPath(
-              property.value.name,
-              property.value.type,
-              variablePath,
-              path
-            )
+            property.type === 'ObjectProperty' &&
+            property.value.type === 'Identifier' &&
+            isUsedInPath(property.value.name, variablePath, path)
           ) {
             usedInOtherScopes = true;
           }
