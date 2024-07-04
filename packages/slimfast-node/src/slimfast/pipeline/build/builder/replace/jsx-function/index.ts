@@ -8,7 +8,7 @@ import {
   jsxClosingElement,
 } from '@babel/types';
 
-import { unique } from '../../../../../../utils';
+import { unique } from '../../../../../../utils/index.js';
 
 import type { Binding } from '@babel/traverse';
 import type { JSXElement } from '@babel/types';

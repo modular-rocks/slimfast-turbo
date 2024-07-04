@@ -1,8 +1,8 @@
 import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import { shouldIgnore } from './index';
-import { parser } from '../../parser';
+import { shouldIgnore } from './index.js';
+import { parser } from '../../parser/index.js';
 
 import type { NodePath } from '@babel/traverse';
 

@@ -1,7 +1,7 @@
 import mockFs from 'mock-fs';
 import { describe, expect, test, vi } from 'vitest';
 
-import { SlimFast } from '.';
+import { SlimFast } from './index.js';
 
 import type { CodebaseOpts } from '@modular-rocks/workspace/types';
 

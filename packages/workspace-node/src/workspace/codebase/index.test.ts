@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
-import { Codebase } from '.';
+import { Codebase } from './index.js';
 
-import type { CodebaseOpts } from '../../types';
+import type { CodebaseOpts } from '../../types.js';
 
 const str = JSON.stringify;
 

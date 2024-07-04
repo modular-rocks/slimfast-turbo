@@ -3,12 +3,12 @@ import { program } from '@babel/types';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import { combineImports } from '.';
-import { unique } from '../../../../../utils';
-import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers';
-import { parser } from '../../../../visitors/utils/parser';
+import { combineImports } from './index.js';
+import { unique } from '../../../../../utils/index.js';
+import { extractIdentifiers } from '../../../../visitors/utils/extract-identifiers/index.js';
+import { parser } from '../../../../visitors/utils/parser/index.js';
 
-import type { ConstraintData } from '../../../../../types';
+import type { ConstraintData } from '../../../../../types.js';
 import type { NodePath } from '@babel/traverse';
 import type { CodebaseOpts } from '@modular-rocks/workspace-node/types';
 

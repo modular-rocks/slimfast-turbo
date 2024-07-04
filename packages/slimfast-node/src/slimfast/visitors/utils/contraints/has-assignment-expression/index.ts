@@ -1,4 +1,4 @@
-import type { Constraint, RandomObject } from '../../../../../types';
+import type { Constraint, RandomObject } from '../../../../../types.js';
 import type { NodePath } from '@babel/traverse';
 
 /**

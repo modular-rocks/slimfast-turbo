@@ -2,10 +2,10 @@ import { normalize } from 'node:path';
 
 import { describe, expect, test } from 'vitest';
 
-import { makeDirectory } from '.';
-import { Codebase } from '..';
+import { makeDirectory } from './index.js';
+import { Codebase } from '../index.js';
 
-import type { CodebaseOpts } from '../../../types';
+import type { CodebaseOpts } from '../../../types.js';
 
 describe('"makeDirectory" utility', () => {
   const opts: CodebaseOpts = {

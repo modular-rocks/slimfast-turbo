@@ -1,9 +1,9 @@
 import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import { tooSmall } from './index';
-import { extractIdentifiers } from '../../extract-identifiers';
-import { parser } from '../../parser';
+import { tooSmall } from './index.js';
+import { extractIdentifiers } from '../../extract-identifiers/index.js';
+import { parser } from '../../parser/index.js';
 
 import type { NodePath } from '@babel/traverse';
 

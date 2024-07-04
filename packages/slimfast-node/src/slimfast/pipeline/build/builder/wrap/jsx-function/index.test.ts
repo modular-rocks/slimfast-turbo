@@ -2,11 +2,11 @@ import traverse from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import { generateExportedJSXComponent } from '.';
-import { extractIdentifiers } from '../../../../../visitors/utils/extract-identifiers';
-import { parser } from '../../../../../visitors/utils/parser';
+import { generateExportedJSXComponent } from './index.js';
+import { extractIdentifiers } from '../../../../../visitors/utils/extract-identifiers/index.js';
+import { parser } from '../../../../../visitors/utils/parser/index.js';
 
-import type { SlimFastOpts } from '../../../../../../types';
+import type { SlimFastOpts } from '../../../../../../types.js';
 import type { NodePath } from '@babel/traverse';
 
 const files: [string, string][] = [['/path', '']];

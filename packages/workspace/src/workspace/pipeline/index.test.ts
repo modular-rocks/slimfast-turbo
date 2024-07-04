@@ -1,10 +1,14 @@
 import { describe, expect, test } from 'vitest';
 
-import { pipeline as runPipeline } from '.';
-import { Workspace } from '..';
-import { Codebase } from '../codebase';
+import { pipeline as runPipeline } from './index.js';
+import { Workspace } from '../index.js';
+import { Codebase } from '../codebase/index.js';
 
-import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../../types';
+import type {
+  CodebaseOpts,
+  OutputIteration,
+  WorkspaceOpts,
+} from '../../types.js';
 
 const syncFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {

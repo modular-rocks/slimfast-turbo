@@ -1,4 +1,4 @@
-import type { Codebase } from '..';
+import type { Codebase } from '../index.js';
 
 /**
  * Retrieves and stores the dependencies of a codebase based on the provided dependency keys.

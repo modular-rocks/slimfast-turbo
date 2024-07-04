@@ -1,7 +1,7 @@
 import type {
   NamerGenerator,
   NamerGeneratorData,
-} from './default-function-name-generator';
+} from './default-function-name-generator/index.js';
 import type { NodePath } from '@babel/traverse';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 

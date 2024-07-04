@@ -1,10 +1,10 @@
 import traverse from '@babel/traverse';
 import { describe, expect, test } from 'vitest';
 
-import { notInExtracted } from './index';
-import { parser } from '../parser';
+import { notInExtracted } from './index.js';
+import { parser } from '../parser/index.js';
 
-import type { RandomObject } from '../../../../types';
+import type { RandomObject } from '../../../../types.js';
 import type { NodePath } from '@babel/traverse';
 
 describe('Not in extracted', () => {

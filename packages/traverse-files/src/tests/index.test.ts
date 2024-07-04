@@ -9,9 +9,9 @@ import {
   removeIgnoredExtensions,
   removeTests,
   traverse,
-} from '../index';
+} from '../index.js';
 
-import type { Directory, Options, RandomObject } from '../types';
+import type { Directory, Options, RandomObject } from '../types.js';
 
 beforeEach(() => {
   mockFs({

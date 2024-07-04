@@ -2,14 +2,14 @@ import { dirname, extname, resolve } from 'node:path/posix';
 
 import { program } from '@babel/types';
 
-import { combineImports } from './combine-imports';
-import { generateImportDeclaration } from './import-statement';
-import { replace as replaceInOriginalFile } from './replace';
-import { wrap } from './wrap';
-import { unique } from '../../../../utils';
+import { combineImports } from './combine-imports/index.js';
+import { generateImportDeclaration } from './import-statement/index.js';
+import { replace as replaceInOriginalFile } from './replace/index.js';
+import { wrap } from './wrap/index.js';
+import { unique } from '../../../../utils/index.js';
 
-import type { Replace, ReplaceOpts } from './replace';
-import type { Wrap, WrapOpts } from './wrap';
+import type { Replace, ReplaceOpts } from './replace/index.js';
+import type { Wrap, WrapOpts } from './wrap/index.js';
 import type { Binding, NodePath } from '@babel/traverse';
 import type {
   ExportDefaultDeclaration,

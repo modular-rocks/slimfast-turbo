@@ -1,8 +1,8 @@
 import { basename, extname, posix } from 'node:path';
 
-import { isDirectory, read, readFilesInDirectory } from './convenience';
+import { isDirectory, read, readFilesInDirectory } from './convenience.js';
 
-import type { Directory, Options, RandomObject } from './types';
+import type { Directory, Options, RandomObject } from './types.js';
 
 /**
  * Returns a function that checks if a file extension is not in the provided list of extensions.

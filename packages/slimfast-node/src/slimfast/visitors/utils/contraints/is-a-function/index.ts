@@ -1,4 +1,4 @@
-import type { Constraint } from '../../../../../types';
+import type { Constraint } from '../../../../../types.js';
 
 /**
  * Determines if a given AST node path represents any kind of function.

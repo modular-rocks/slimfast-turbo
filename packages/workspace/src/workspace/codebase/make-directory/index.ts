@@ -1,7 +1,7 @@
 import { basename, dirname, extname, join } from 'node:path';
 
-import type { Codebase } from '..';
-import type { FileContainer } from '../file';
+import type { Codebase } from '../index.js';
+import type { FileContainer } from '../file/index.js';
 
 /**
  * Restructures a given file in the codebase.

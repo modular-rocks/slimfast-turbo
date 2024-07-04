@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
-import { print } from '.';
-import { parse } from '../parse';
+import { print } from './index.js';
+import { parse } from '../parse/index.js';
 
 import type { Options } from 'recast';
 

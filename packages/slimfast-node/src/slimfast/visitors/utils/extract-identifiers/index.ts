@@ -1,6 +1,6 @@
-import { unique } from '../../../../utils';
+import { unique } from '../../../../utils/index.js';
 
-import type { ConstraintData } from '../../../../types';
+import type { ConstraintData } from '../../../../types.js';
 import type { NodePath, Binding } from '@babel/traverse';
 
 const importTypes = ['ImportDefaultSpecifier', 'ImportSpecifier'];

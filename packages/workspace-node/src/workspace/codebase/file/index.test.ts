@@ -6,10 +6,10 @@ import {
 } from '@babel/types';
 import { describe, expect, test } from 'vitest';
 
-import { FileContainer } from '.';
-import { Codebase } from '..';
+import { FileContainer } from './index.js';
+import { Codebase } from '../index.js';
 
-import type { CodebaseOpts } from '../../../types';
+import type { CodebaseOpts } from '../../../types.js';
 
 const str = JSON.stringify;
 

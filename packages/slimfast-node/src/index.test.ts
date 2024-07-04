@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { isCallExpression } from '@babel/types';
 
-import { SlimFast, Visitor } from '.';
+import { SlimFast, Visitor } from './index.js';
 import {
   containsIdentifiersInOtherScopes,
   hasAssignmentExpression,
@@ -14,7 +14,7 @@ import {
   removesTooMuch,
   shouldIgnore,
   tooSmall,
-} from './exports/constraints';
+} from './exports/constraints/index.js';
 import {
   generateExportedFunction,
   generateExportedJSXComponent,
@@ -24,19 +24,19 @@ import {
   hasAwait,
   replace,
   wrap,
-} from './exports/generator';
+} from './exports/generator/index.js';
 import {
   build,
   builder,
   combineImports,
   extract,
   name,
-} from './exports/pipeline';
+} from './exports/pipeline/index.js';
 import {
   unique,
   defaultFunctionNameGenerator,
   uniqueImmutable,
-} from './exports/utils';
+} from './exports/utils/index.js';
 import {
   ExpressionVisitor as ExportedExpressionVisitor,
   Visitor as ExportedVisitor,
@@ -44,7 +44,7 @@ import {
   notInExtracted,
   parser,
   rejectParentsWithTypes,
-} from './exports/visitors';
+} from './exports/visitors/index.js';
 
 describe('Module exports', () => {
   test('should export SlimFast', () => {

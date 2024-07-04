@@ -1,5 +1,5 @@
-import type { ProvisionalFile, RandomObject } from '../../../types';
-import type { Visitor } from '../../visitors/visitor';
+import type { ProvisionalFile, RandomObject } from '../../../types.js';
+import type { Visitor } from '../../visitors/visitor/index.js';
 import type { NodePath } from '@babel/traverse';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';

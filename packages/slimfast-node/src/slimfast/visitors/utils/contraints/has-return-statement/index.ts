@@ -1,6 +1,6 @@
-import { isAFunction } from '../is-a-function';
+import { isAFunction } from '../is-a-function/index.js';
 
-import type { Constraint } from '../../../../../types';
+import type { Constraint } from '../../../../../types.js';
 import type { NodePath } from '@babel/traverse';
 
 /**

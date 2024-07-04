@@ -5,10 +5,10 @@ import {
   returnStatement,
 } from '@babel/types';
 
-import { unique } from '../../../../../../utils';
-import { hasAwait } from '../has-await';
+import { unique } from '../../../../../../utils/index.js';
+import { hasAwait } from '../has-await/index.js';
 
-import type { RandomObject } from '../../../../../../types';
+import type { RandomObject } from '../../../../../../types.js';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { ExportDefaultDeclaration } from '@babel/types';
 

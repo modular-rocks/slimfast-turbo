@@ -1,5 +1,5 @@
-import type { BuilderData, BuilderOpts } from './builder';
-import type { ProvisionalFile } from '../../../types';
+import type { BuilderData, BuilderOpts } from './builder/index.js';
+import type { ProvisionalFile } from '../../../types.js';
 import type { NodePath } from '@babel/traverse';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';

@@ -1,14 +1,14 @@
 import traverse from '@babel/traverse';
 
-import { notInExtracted } from '../utils/not-in-extracted';
-import { rejectParentsWithTypes } from '../utils/reject-parents-with-types';
+import { notInExtracted } from '../utils/not-in-extracted/index.js';
+import { rejectParentsWithTypes } from '../utils/reject-parents-with-types/index.js';
 
 import type {
   Constraints,
   ConstraintData,
   RandomObject,
   VisitorOpts,
-} from '../../../types';
+} from '../../../types.js';
 import type { NodePath, Node } from '@babel/traverse';
 
 /**

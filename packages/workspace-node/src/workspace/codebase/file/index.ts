@@ -1,10 +1,10 @@
 import { FileContainer as FileContainerBase } from '@modular-rocks/workspace';
 
-import { parse } from './parse';
-import { print } from './print';
-import { tooSimple } from './too-simple';
+import { parse } from './parse/index.js';
+import { print } from './print/index.js';
+import { tooSimple } from './too-simple/index.js';
 
-import type { Codebase } from '..';
+import type { Codebase } from '../index.js';
 import type { File, Statement } from '@babel/types';
 
 type EndOfLine = '\r\n' | '\n' | '\r';

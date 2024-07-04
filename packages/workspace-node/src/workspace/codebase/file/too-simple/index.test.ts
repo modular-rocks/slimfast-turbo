@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { measure, tooSimple } from '.';
+import { measure, tooSimple } from './index.js';
 
 describe('"measure" utility function', () => {
   test('should return loc metric when loc option is set', () => {

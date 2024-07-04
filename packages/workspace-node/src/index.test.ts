@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { Codebase, FileContainer, Workspace } from '.';
+import { Codebase, FileContainer, Workspace } from './index.js';
 
 describe('Module Exports', () => {
   test('should export Codebase', () => {
