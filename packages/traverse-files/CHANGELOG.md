@@ -1,5 +1,11 @@
 # @modular-rocks/traverse-files
 
+## 0.3.7
+
+### Patch Changes
+
+- [#99](https://github.com/modular-rocks/slimfast-turbo/pull/99) [`3026956`](https://github.com/modular-rocks/slimfast-turbo/commit/302695685288b65000dbb954f2e600f4179d5100) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Chore: Use explicit imports
+
 ## 0.3.6
 
 ### Patch Changes
