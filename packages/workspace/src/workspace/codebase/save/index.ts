@@ -1,9 +1,9 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 
-import type { Codebase } from '..';
-import type { RandomObject } from '../../../types';
-import type { FileContainer } from '../file';
+import type { Codebase } from '../index.js';
+import type { RandomObject } from '../../../types.js';
+import type { FileContainer } from '../file/index.js';
 
 /**
  * Creates a directory on the file system for the provided pathname and writes the contents to a file within that directory.

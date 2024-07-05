@@ -8,7 +8,7 @@ import {
   read,
   readFilesInDirectory,
   resolve,
-} from '../convenience';
+} from '../convenience.js';
 
 describe('convenience functions', () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
-import type { State, WorkspaceOpts, WorkspaceType } from '../../types';
-import type { FileContainer } from '../codebase/file';
+import type { State, WorkspaceOpts, WorkspaceType } from '../../types.js';
+import type { FileContainer } from '../codebase/file/index.js';
 
 // TODO: add examples to the jsdoc comments
 

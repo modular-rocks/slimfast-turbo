@@ -1,6 +1,6 @@
-import { identifiersWithinRange } from '../identifiers-within-range';
+import { identifiersWithinRange } from '../identifiers-within-range/index.js';
 
-import type { ConstraintWithData } from '../../../../../types';
+import type { ConstraintWithData } from '../../../../../types.js';
 
 /**
  * Generates a function to determine if the number of identifiers within an AST node path does not fall within a specified range.

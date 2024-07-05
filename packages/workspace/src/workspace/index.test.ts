@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'vitest';
 
-import { Workspace } from '.';
-import { Codebase } from './codebase';
+import { Workspace } from './index.js';
+import { Codebase } from './codebase/index.js';
 
-import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../types';
+import type { CodebaseOpts, OutputIteration, WorkspaceOpts } from '../types.js';
 
 const normalFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {

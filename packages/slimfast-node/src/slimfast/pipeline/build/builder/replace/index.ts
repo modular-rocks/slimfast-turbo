@@ -1,8 +1,8 @@
-import { generateJSXElement } from './jsx-function';
-import { generateFunction as generateCalleeFunction } from './normal-function';
+import { generateJSXElement } from './jsx-function/index.js';
+import { generateFunction as generateCalleeFunction } from './normal-function/index.js';
 
-import type { GenerateJSXElement } from './jsx-function';
-import type { GenerateFunction } from './normal-function';
+import type { GenerateJSXElement } from './jsx-function/index.js';
+import type { GenerateFunction } from './normal-function/index.js';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { CallExpression, JSXElement } from '@babel/types';
 

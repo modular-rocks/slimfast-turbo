@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { unique, uniqueImmutable } from '.';
+import { unique, uniqueImmutable } from './index.js';
 
 describe('"array-utils" tests', () => {
   describe('unique function', () => {

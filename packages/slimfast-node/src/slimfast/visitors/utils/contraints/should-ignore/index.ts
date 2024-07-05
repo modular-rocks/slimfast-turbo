@@ -1,6 +1,6 @@
 import Traverse from '@babel/traverse';
 
-import type { Constraint } from '../../../../../types';
+import type { Constraint } from '../../../../../types.js';
 
 /**
  * Determines if a given AST node path contains either a `Super` or a `YieldExpression` node.

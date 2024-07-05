@@ -1,8 +1,8 @@
-import { generateExportedJSXComponent } from './jsx-function';
-import { generateExportedFunction } from './normal-function';
+import { generateExportedJSXComponent } from './jsx-function/index.js';
+import { generateExportedFunction } from './normal-function/index.js';
 
-import type { GenerateExportedJSXComponent } from './jsx-function';
-import type { GenerateExportedFunction } from './normal-function';
+import type { GenerateExportedJSXComponent } from './jsx-function/index.js';
+import type { GenerateExportedFunction } from './normal-function/index.js';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { ExportDefaultDeclaration } from '@babel/types';
 

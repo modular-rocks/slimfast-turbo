@@ -1,4 +1,4 @@
-import type { ConstraintWithData } from '../../../../../types';
+import type { ConstraintWithData } from '../../../../../types.js';
 import type { Node } from '@babel/traverse';
 
 const notANumber = (num: number | null | undefined): boolean =>

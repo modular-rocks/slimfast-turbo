@@ -12,7 +12,8 @@
         "useExportType": "error",
         "useImportType": "error"
       },
-      "suspicious": { "noAsyncPromiseExecutor": "off", "noExplicitAny": "off" }
+      "suspicious": { "noAsyncPromiseExecutor": "off", "noExplicitAny": "off" },
+      "nursery": { "useImportExtensions": "error" }
     },
     "ignore": ["node_modules", "dist", "turbo", ".turbo", "coverage"]
   },

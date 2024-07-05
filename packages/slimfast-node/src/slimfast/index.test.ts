@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
 
-import { SlimFast } from '.';
-import after from '../../test-results/basic/after';
-import before from '../../test-results/basic/before';
+import { SlimFast } from './index.js';
+import after from '../../test-results/basic/after.js';
+import before from '../../test-results/basic/before.js';
 
-import type { SlimFastOpts } from '../types';
+import type { SlimFastOpts } from '../types.js';
 
 const code = before;
 

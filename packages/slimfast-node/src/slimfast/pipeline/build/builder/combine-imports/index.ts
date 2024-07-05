@@ -9,9 +9,9 @@ import {
   stringLiteral,
 } from '@babel/types';
 
-import { unique } from '../../../../../utils';
+import { unique } from '../../../../../utils/index.js';
 
-import type { RandomObject } from '../../../../../types';
+import type { RandomObject } from '../../../../../types.js';
 import type { Binding } from '@babel/traverse';
 import type {
   ImportDeclaration,

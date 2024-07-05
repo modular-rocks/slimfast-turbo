@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { parse } from '.';
+import { parse } from './index.js';
 
 describe('"parse" utility function', () => {
   test('should return an AST for valid code', () => {

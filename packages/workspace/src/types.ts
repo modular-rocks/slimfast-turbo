@@ -1,4 +1,4 @@
-import type { FileContainer } from './workspace/codebase/file';
+import type { FileContainer } from './workspace/codebase/file/index.js';
 
 export type RandomObject = Record<string, any>;
 export type FilesContainer = Record<string, FileContainer>;

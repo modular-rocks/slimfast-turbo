@@ -2,10 +2,10 @@ import traverse from '@babel/traverse';
 import { Codebase, FileContainer } from '@modular-rocks/workspace-node';
 import { describe, expect, test } from 'vitest';
 
-import { hasAwait } from '.';
-import { parser } from '../../../../../visitors/utils/parser';
+import { hasAwait } from './index.js';
+import { parser } from '../../../../../visitors/utils/parser/index.js';
 
-import type { SlimFastOpts } from '../../../../../../types';
+import type { SlimFastOpts } from '../../../../../../types.js';
 import type { NodePath } from '@babel/traverse';
 
 const files: [string, string][] = [['/path', '']];

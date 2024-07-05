@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { copy } from '.';
+import { copy } from './index.js';
 
 describe('"copy" utility', () => {
   test('Should copy properties to an empty object', async () => {

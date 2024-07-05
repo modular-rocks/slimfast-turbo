@@ -4,10 +4,10 @@ import { normalize } from 'node:path';
 import mockFs from 'mock-fs';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
-import { Codebase } from '.';
-import { FileContainer } from './file';
+import { Codebase } from './index.js';
+import { FileContainer } from './file/index.js';
 
-import type { CodebaseOpts } from '../../types';
+import type { CodebaseOpts } from '../../types.js';
 
 describe('Codebase', () => {
   const files: [string, string][] = [1, 2, 3].map((x: number) => [

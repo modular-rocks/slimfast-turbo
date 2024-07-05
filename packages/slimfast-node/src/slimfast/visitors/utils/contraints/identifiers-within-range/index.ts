@@ -1,6 +1,6 @@
-import { extractIdentifiers } from '../../extract-identifiers';
+import { extractIdentifiers } from '../../extract-identifiers/index.js';
 
-import type { ConstraintWithData } from '../../../../../types';
+import type { ConstraintWithData } from '../../../../../types.js';
 
 /**
  * Generates a function to determine if the number of identifiers within an AST node path falls within a specified range.

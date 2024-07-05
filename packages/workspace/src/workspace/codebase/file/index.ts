@@ -1,7 +1,7 @@
 import { dirname } from 'node:path';
 
-import type { Codebase } from '..';
-import type { FileStore } from '../../../types';
+import type { Codebase } from '../index.js';
+import type { FileStore } from '../../../types.js';
 
 export type ProvisionalFile = {
   pathname: string;

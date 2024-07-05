@@ -1,15 +1,15 @@
-import { containsIdentifiersInOtherScopes } from '../utils/contraints/contains-identifiers-in-other-scopes';
-import { hasAssignmentExpression } from '../utils/contraints/has-assignment-expression';
-import { hasBlocklistedIdentifiers } from '../utils/contraints/has-blocklisted-identifiers';
-import { hasReturnStatement } from '../utils/contraints/has-return-statement';
-import { hasVariableDeclarator } from '../utils/contraints/has-variable-declarator';
-import { identifiersNotWithinRange } from '../utils/contraints/identifiers-not-within-range';
-import { removesTooMuch } from '../utils/contraints/removes-too-much';
-import { shouldIgnore } from '../utils/contraints/should-ignore';
-import { tooSmall } from '../utils/contraints/too-small';
-import { Visitor } from '../visitor';
+import { containsIdentifiersInOtherScopes } from '../utils/contraints/contains-identifiers-in-other-scopes/index.js';
+import { hasAssignmentExpression } from '../utils/contraints/has-assignment-expression/index.js';
+import { hasBlocklistedIdentifiers } from '../utils/contraints/has-blocklisted-identifiers/index.js';
+import { hasReturnStatement } from '../utils/contraints/has-return-statement/index.js';
+import { hasVariableDeclarator } from '../utils/contraints/has-variable-declarator/index.js';
+import { identifiersNotWithinRange } from '../utils/contraints/identifiers-not-within-range/index.js';
+import { removesTooMuch } from '../utils/contraints/removes-too-much/index.js';
+import { shouldIgnore } from '../utils/contraints/should-ignore/index.js';
+import { tooSmall } from '../utils/contraints/too-small/index.js';
+import { Visitor } from '../visitor/index.js';
 
-import type { Constraints } from '../../../types';
+import type { Constraints } from '../../../types.js';
 
 /**
  * A `Visitor` that traverses AST expression nodes, evaluating them against specific constraints.

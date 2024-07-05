@@ -1,4 +1,4 @@
-import type { RandomObject } from '../../../types';
+import type { RandomObject } from '../../../types.js';
 
 /**
  * Merges properties from the `foreignObject` into the `localObject`.

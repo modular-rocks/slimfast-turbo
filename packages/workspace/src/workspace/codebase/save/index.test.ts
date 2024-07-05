@@ -10,10 +10,10 @@ import {
   saveToJSON,
   toFile,
   toJson,
-} from './index';
-import { Codebase } from '..';
+} from './index.js';
+import { Codebase } from '../index.js';
 
-import type { CodebaseOpts, RandomObject } from '../../../types';
+import type { CodebaseOpts, RandomObject } from '../../../types.js';
 
 describe('Save utilities', () => {
   const mockData: RandomObject = {

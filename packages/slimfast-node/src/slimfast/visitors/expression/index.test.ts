@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'vitest';
 
-import { ExpressionVisitor } from '.';
-import { parser } from '../utils/parser';
+import { ExpressionVisitor } from './index.js';
+import { parser } from '../utils/parser/index.js';
 
-import type { VisitorOpts } from '../../../types';
+import type { VisitorOpts } from '../../../types.js';
 import type { NodePath } from '@babel/traverse';
 
 const code = `

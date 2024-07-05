@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'vitest';
 
-import { storeDependencies } from '.';
-import { Codebase } from '..';
+import { storeDependencies } from './index.js';
+import { Codebase } from '../index.js';
 
-import type { CodebaseOpts } from '../../../types';
+import type { CodebaseOpts } from '../../../types.js';
 
 const str = JSON.stringify;
 

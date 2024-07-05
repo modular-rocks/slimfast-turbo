@@ -1,4 +1,4 @@
-import type { Constraint } from '../../../../../types';
+import type { Constraint } from '../../../../../types.js';
 
 /**
  * Generates a function to check if a given AST node path contains any identifiers that are part of a specified blocklist.

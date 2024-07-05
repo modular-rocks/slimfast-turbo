@@ -1,6 +1,6 @@
-import type { Builder } from './slimfast/pipeline/build/builder';
-import type { NamerGenerator } from './slimfast/pipeline/name/default-function-name-generator';
-import type { Visitor } from './slimfast/visitors/visitor';
+import type { Builder } from './slimfast/pipeline/build/builder/index.js';
+import type { NamerGenerator } from './slimfast/pipeline/name/default-function-name-generator/index.js';
+import type { Visitor } from './slimfast/visitors/visitor/index.js';
 import type { Binding, NodePath } from '@babel/traverse';
 import type { Node, Statement } from '@babel/types';
 import type { CodebaseOpts } from '@modular-rocks/workspace-node/types';
@@ -118,4 +118,4 @@ export type {
   Builder,
   BuilderData,
   BuilderOpts,
-} from './slimfast/pipeline/build/builder';
+} from './slimfast/pipeline/build/builder/index.js';

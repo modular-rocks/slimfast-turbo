@@ -1,15 +1,15 @@
 import { SlimFast as SlimFastBase } from '@modular-rocks/slimfast';
 import { Codebase } from '@modular-rocks/workspace-node';
 
-import { build } from './pipeline/build';
-import { builder as pipelineBuilder } from './pipeline/build/builder';
-import { extract } from './pipeline/extract';
-import { name } from './pipeline/name';
-import { defaultFunctionNameGenerator } from './pipeline/name/default-function-name-generator';
-import { ExpressionVisitor } from './visitors/expression';
+import { build } from './pipeline/build/index.js';
+import { builder as pipelineBuilder } from './pipeline/build/builder/index.js';
+import { extract } from './pipeline/extract/index.js';
+import { name } from './pipeline/name/index.js';
+import { defaultFunctionNameGenerator } from './pipeline/name/default-function-name-generator/index.js';
+import { ExpressionVisitor } from './visitors/expression/index.js';
 
-import type { SlimFastOpts } from '../types';
-import type { Visitor } from './visitors/visitor';
+import type { SlimFastOpts } from '../types.js';
+import type { Visitor } from './visitors/visitor/index.js';
 
 /**
  * It represents a workspace that contains both the original and refactored

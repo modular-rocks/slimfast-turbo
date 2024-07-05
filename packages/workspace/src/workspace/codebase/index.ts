@@ -1,18 +1,18 @@
 import { basename, dirname } from 'node:path';
 
-import { copy } from './copy';
-import { FileContainer } from './file';
-import { makeDirectory } from './make-directory';
-import { fromFile, saveFile, saveToJSON } from './save';
-import { storeDependencies } from './store-dependencies';
+import { copy } from './copy/index.js';
+import { FileContainer } from './file/index.js';
+import { makeDirectory } from './make-directory/index.js';
+import { fromFile, saveFile, saveToJSON } from './save/index.js';
+import { storeDependencies } from './store-dependencies/index.js';
 
-import type { FileContainer as FileContainerType } from './file';
+import type { FileContainer as FileContainerType } from './file/index.js';
 import type {
   CodebaseOpts,
   FilesContainer,
   PackageContents,
   RandomObject,
-} from '../../types';
+} from '../../types.js';
 
 export class Codebase {
   /**
