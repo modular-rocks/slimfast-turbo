@@ -27,7 +27,7 @@ const testJSX = (path: NodePath) => {
 export type NamerGenerator = (
   path: NodePath,
   data: NamerGeneratorData
-) => NamerGeneratorData;
+) => NamerGeneratorData | Promise<NamerGeneratorData>;
 
 export type NamerGeneratorData = {
   name: string;

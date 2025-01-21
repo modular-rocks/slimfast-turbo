@@ -34,13 +34,13 @@ export const name =
    * @param file - The file containing the extracted nodes.
    * @returns The processed file if any nodes were extracted and processed, otherwise `false`.
    */
-  (file: FileContainer) => {
+  async (file: FileContainer) => {
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 
     for (const extract of extracted) {
       const [path, data] = extract;
-      namer(path, data);
+      await namer(path, data);
     }
     return false;
   };
