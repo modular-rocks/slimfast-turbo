@@ -1,5 +1,11 @@
 # @modular-rocks/slimfast-node
 
+## 0.1.16
+
+### Patch Changes
+
+- [#101](https://github.com/modular-rocks/slimfast-turbo/pull/101) [`34f8224`](https://github.com/modular-rocks/slimfast-turbo/commit/34f822449c1ae0f20f10910d8165c0aa2dd037d0) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Feat: Update NamerGenerator to support async operations
+
 ## 0.1.15
 
 ### Patch Changes
