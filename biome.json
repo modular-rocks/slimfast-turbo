@@ -1,19 +1,21 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
     "rules": {
       "complexity": { "noUselessConstructor": "off", "noBannedTypes": "off" },
-      "correctness": { "noUnusedVariables": "off" },
+      "correctness": {
+        "noUnusedVariables": "off",
+        "useImportExtensions": "error"
+      },
       "style": {
         "noParameterAssign": "off",
         "useBlockStatements": "off",
         "useExportType": "error",
         "useImportType": "error"
       },
-      "suspicious": { "noAsyncPromiseExecutor": "off", "noExplicitAny": "off" },
-      "nursery": { "useImportExtensions": "error" }
+      "suspicious": { "noAsyncPromiseExecutor": "off", "noExplicitAny": "off" }
     },
     "ignore": ["node_modules", "dist", "turbo", ".turbo", "coverage"]
   },
