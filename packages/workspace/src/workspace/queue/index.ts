@@ -54,7 +54,7 @@ const promise = async (
  * @returns An object with methods to manage and execute the queue.
  */
 export const queue = async (
-  queuedFunctions: Function[] = [],
+  queuedFunctions: Function[],
   opts: Opts,
   ...args: any[]
 ) => {

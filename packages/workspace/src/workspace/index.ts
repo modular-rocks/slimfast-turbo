@@ -89,6 +89,7 @@ export class Workspace {
     pipeline: Function[] | undefined,
     opts: WorkspaceOpts
   ) {
-    return runPipeline(files, pipeline, opts, this);
+    const pipelineFunctions = pipeline || [];
+    return runPipeline(files, pipelineFunctions, opts, this);
   }
 }

@@ -48,7 +48,7 @@ function run(
  */
 export const pipeline = async (
   files: FileContainer[],
-  pipelineFunctions: Function[] = [], // Default to an empty array
+  pipelineFunctions: Function[],
   opts: WorkspaceOpts,
   workspace: WorkspaceType
 ) => {
