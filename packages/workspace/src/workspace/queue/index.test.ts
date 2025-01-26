@@ -37,10 +37,10 @@ describe('Queue Module', () => {
 
   test('should handle empty queues correctly', async () => {
     const opts = { delay: 0 };
-  
+
     const { run } = await queue([], opts);
     const result = await run();
-  
+
     expect(result).toBe(false); // Ensures undefined is returned for an empty queue
   });
 

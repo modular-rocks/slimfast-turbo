@@ -53,7 +53,12 @@ export const pipeline = async (
   workspace: WorkspaceType
 ) => {
   const funcs = pipelineFunctions.map((func: Function) => {
-    return async (files: FileContainer[], opts: WorkspaceOpts, workspace: WorkspaceType, state: State) => {
+    return async (
+      files: FileContainer[],
+      opts: WorkspaceOpts,
+      workspace: WorkspaceType,
+      state: State
+    ) => {
       const promises = files.map((file: FileContainer) =>
         run(func, file, state, opts, workspace)
       );
