@@ -46,6 +46,33 @@ const promise = async (
 };
 
 /**
+ * Represents the queue with methods to add functions to the queue
+ * and to run them sequentially.
+ */
+type Queue = {
+  /**
+   * The internal array of functions in the queue.
+   */
+  queue: Function[];
+
+  /**
+   * Adds a function to the queue.
+   *
+   * func - The asynchronous function to add.
+   *
+   * returns - The updated queue.
+   */
+  add: (func: Function) => Queue;
+
+  /**
+   * Executes the queued functions sequentially.
+   *
+   * returns - A promise that resolves to an object indicating whether the queue is running.
+   */
+  run: () => Promise<{ isRunning: boolean }>;
+};
+
+/**
  * Manages a queue of asynchronous functions, allowing dynamic additions and sequential execution.
  *
  * @param queuedFunctions Initial set of functions to include in the queue. Defaults to an empty array.
@@ -57,12 +84,12 @@ export const queue = async (
   queuedFunctions: Function[],
   opts: Opts,
   ...args: any[]
-) => {
-  let running = false;
+): Promise<Queue> => {
+  let isRunning = false;
 
   const add = (func: Function) => {
     queuedFunctions.push(func);
-    return queue;
+    return { queue: queuedFunctions, add, run };
   };
 
   const remove = (index: number) => {
@@ -71,10 +98,13 @@ export const queue = async (
   };
 
   const run = async () => {
-    if (running) return false; // Prevent simultaneous runs
-    if (queuedFunctions.length === 0) return false; // Handle empty queue
+    // Prevent simultaneous runs
+    if (isRunning) return { isRunning: false };
 
-    running = true;
+    // Handle empty queue
+    if (queuedFunctions.length === 0) return { isRunning: false };
+
+    isRunning = true;
     try {
       await new Promise(async (resolve, reject) => {
         try {
@@ -84,9 +114,11 @@ export const queue = async (
         }
       });
     } finally {
-      running = false;
+      isRunning = false;
     }
-    return running;
+    return {
+      isRunning,
+    };
   };
 
   return {

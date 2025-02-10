@@ -51,7 +51,7 @@ export const pipeline = async (
   pipelineFunctions: Function[],
   opts: WorkspaceOpts,
   workspace: WorkspaceType
-) => {
+): Promise<{ isRunning: boolean }> => {
   const funcs = pipelineFunctions.map((func: Function) => {
     return async (
       files: FileContainer[],
@@ -69,8 +69,8 @@ export const pipeline = async (
   return new Promise(async (resolve, reject) => {
     try {
       const { run } = await queue(funcs, {}, files, opts, workspace);
-      const runPipeline = await run();
-      resolve(runPipeline);
+      const { isRunning } = await run();
+      resolve({ isRunning });
     } catch (error) {
       reject(error);
     }

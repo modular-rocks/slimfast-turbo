@@ -106,7 +106,12 @@ describe('Pipeline', () => {
   });
 
   test('should handle an empty pipeline correctly', async () => {
-    const res = await runPipeline(filesContainer, [], opts, workspace);
-    expect(res).toBe(false);
+    const { isRunning } = await runPipeline(
+      filesContainer,
+      [],
+      opts,
+      workspace
+    );
+    expect(isRunning).toBe(false);
   });
 });

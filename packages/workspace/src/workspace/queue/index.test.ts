@@ -39,9 +39,9 @@ describe('Queue Module', () => {
     const opts = { delay: 0 };
 
     const { run } = await queue([], opts);
-    const result = await run();
+    const { isRunning } = await run();
 
-    expect(result).toBe(false); // Ensures undefined is returned for an empty queue
+    expect(isRunning).toBe(false); // Ensures undefined is returned for an empty queue
   });
 
   test('should remove functions from the queue after execution', async () => {
@@ -86,10 +86,10 @@ describe('Queue Module', () => {
     const runPromise2 = run();
 
     const result1 = await runPromise1;
-    const result2 = await runPromise2;
+    const { isRunning } = await runPromise2;
 
     expect(num).toBe(400); // First run should execute
-    expect(result2).toBe(false); // Second run should be blocked
+    expect(isRunning).toBe(false); // Second run should be blocked
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 
@@ -118,8 +118,8 @@ describe('Queue Module', () => {
     add(mockFn1);
     add(mockFn2);
 
-    const result = await run();
-    expect(result).toBe(false); // Ensure resolve is true after execution
+    const { isRunning } = await run();
+    expect(isRunning).toBe(false); // Ensure resolve is true after execution
     expect(mockFn1).toHaveBeenCalledTimes(1);
     expect(mockFn2).toHaveBeenCalledTimes(1);
   });
