@@ -12,6 +12,8 @@ export type Options = {
   packagePath?: string;
   ignoredImports: string[];
   custom?: Custom;
+  delay?: number;
+  queued?: Boolean;
 };
 
 export type WorkspaceOpts = Options & {

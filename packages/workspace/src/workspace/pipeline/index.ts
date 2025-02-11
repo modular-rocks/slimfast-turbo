@@ -1,5 +1,6 @@
 import type { State, WorkspaceOpts, WorkspaceType } from '../../types.js';
 import type { FileContainer } from '../codebase/file/index.js';
+import { queue } from '../queue/index.js';
 
 // TODO: add examples to the jsdoc comments
 
@@ -15,7 +16,7 @@ import type { FileContainer } from '../codebase/file/index.js';
  * @param workspace The current workspace context.
  * @returns A promise that resolves with the result of the function or rejects with an error.
  */
-function wait(
+function run(
   func: Function,
   file: FileContainer,
   state: State,
@@ -33,60 +34,6 @@ function wait(
 }
 
 /**
- * Executes the provided asynchronous function concurrently for each file in the list.
- * It waits for all invocations to complete and returns their combined results.
- *
- * @param func The function to execute asynchronously on each file.
- * @param files Array of file containers to be processed.
- * @param state The current state during processing.
- * @param opts The options provided for the workspace.
- * @param workspace The current workspace context.
- * @returns A promise that resolves with an array of results from each function invocation.
- */
-const invoke = async (
-  func: Function,
-  files: FileContainer[],
-  state: State,
-  opts: WorkspaceOpts,
-  workspace: WorkspaceType
-) => {
-  const promises = files.map((file: FileContainer) =>
-    wait(func, file, state, opts, workspace)
-  );
-  return Promise.all(promises);
-};
-
-/**
- * Sequentially processes each function in the pipeline for all the provided files.
- * This function iterates over each function in the pipeline and invokes it on the
- * provided files, accumulating results into the state object. The pipeline processing
- * completes when all functions have been invoked for all files.
- *
- * @param files Array of file containers to be processed.
- * @param pipeline Array of functions that form the processing pipeline.
- * @param opts The options provided for the workspace.
- * @param workspace The current workspace context.
- * @param resolve Callback function to signal the completion of processing.
- */
-const promise = async (
-  files: FileContainer[],
-  pipeline: Function[],
-  opts: WorkspaceOpts,
-  workspace: WorkspaceType,
-  resolve: Function
-) => {
-  const state: State = {};
-
-  for (const func of pipeline) {
-    const isFunction = typeof func === 'function';
-    if (isFunction) {
-      await invoke(func, files, state, opts, workspace);
-    }
-  }
-  resolve();
-};
-
-/**
  * Initiates the processing of a given set of files through a defined pipeline of functions.
  * If the pipeline functions are not provided, the function returns false immediately.
  * Otherwise, it processes the files through the pipeline, ensuring all pipeline functions
@@ -101,15 +48,29 @@ const promise = async (
  */
 export const pipeline = async (
   files: FileContainer[],
-  pipelineFunctions: Function[] | undefined,
+  pipelineFunctions: Function[],
   opts: WorkspaceOpts,
   workspace: WorkspaceType
-) => {
-  if (!pipelineFunctions || pipelineFunctions.length === 0) return false;
+): Promise<{ isRunning: boolean }> => {
+  const funcs = pipelineFunctions.map((func: Function) => {
+    return async (
+      files: FileContainer[],
+      opts: WorkspaceOpts,
+      workspace: WorkspaceType,
+      state: State
+    ) => {
+      const promises = files.map((file: FileContainer) =>
+        run(func, file, state, opts, workspace)
+      );
+      return Promise.all(promises);
+    };
+  });
 
   return new Promise(async (resolve, reject) => {
     try {
-      await promise(files, pipelineFunctions, opts, workspace, resolve);
+      const { run } = await queue(funcs, {}, files, opts, workspace);
+      const { isRunning } = await run();
+      resolve({ isRunning });
     } catch (error) {
       reject(error);
     }
