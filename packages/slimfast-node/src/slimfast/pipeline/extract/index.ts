@@ -58,10 +58,6 @@ export const extract =
     workspace: SlimFast
   ) => {
     file.parse();
-    if (file.simple) {
-      file.store.extractions = [];
-      return file;
-    }
 
     const extracted: Map<NodePath, any> = new Map();
 

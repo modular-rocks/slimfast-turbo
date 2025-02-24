@@ -2,7 +2,6 @@ import { FileContainer as FileContainerBase } from '@modular-rocks/workspace';
 
 import { parse } from './parse/index.js';
 import { print } from './print/index.js';
-import { tooSimple } from './too-simple/index.js';
 
 import type { Codebase } from '../index.js';
 import type { File, Statement } from '@babel/types';
@@ -15,10 +14,6 @@ export class FileContainer extends FileContainerBase {
 
   constructor(path: string, code: string, codebase: Codebase) {
     super(path, code, codebase);
-  }
-
-  tooSimple() {
-    return tooSimple({ ast: this.ast });
   }
 
   /**

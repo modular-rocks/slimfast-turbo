@@ -31,7 +31,6 @@
     "@babel/parser": "7.24.7",
     "@babel/traverse": "7.24.7",
     "@babel/types": "7.24.7",
-    "@modular-rocks/metrics-ts-js": "0.2.3-development",
     "@modular-rocks/traverse-files": "workspace:*",
     "@modular-rocks/workspace": "workspace:*",
     "recast": "0.23.9"

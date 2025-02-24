@@ -10,6 +10,7 @@ import { tooSmall } from '../utils/contraints/too-small/index.js';
 import { Visitor } from '../visitor/index.js';
 
 import type { Constraints } from '../../../types.js';
+import { tooSimple } from '../utils/contraints/too-simple/index.js';
 
 /**
  * A `Visitor` that traverses AST expression nodes, evaluating them against specific constraints.
@@ -27,6 +28,7 @@ export class ExpressionVisitor extends Visitor {
       hasBlocklistedIdentifiers([]),
       identifiersNotWithinRange(2, 4),
       tooSmall(50, 1.5, true),
+      // tooSimple,
       hasReturnStatement,
       hasVariableDeclarator,
       containsIdentifiersInOtherScopes,
