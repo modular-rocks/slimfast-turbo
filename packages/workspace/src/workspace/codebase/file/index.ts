@@ -47,16 +47,6 @@ export class FileContainer {
   code: string;
 
   /**
-   * Stores information about the simplicity of the AST in the file. Using another function, the quality of the AST can be measured using metrics and determined to be a simple piece of code or a complex piece of code.
-   *
-   * @example
-   * const file = new FileContainer('/home/projects/project/path1', '', codebase);
-   * console.log(file.simple);
-   * // Outputs: true of false
-   */
-  simple: Boolean;
-
-  /**
    * Indicates whether the file has a parent directory other than the root or current directory.
    * If the parent directory is either root or current, the property is `false`. Otherwise, it's `true`.
    *
@@ -115,25 +105,10 @@ export class FileContainer {
     this.pathname = codebase.replaceRoot(path);
     this.fullPath = path;
     this.code = code;
-    this.simple = false;
     this.store = {};
 
     const parentPath = dirname(this.pathname);
     this.hasParent = !['/', '.'].includes(parentPath);
-  }
-
-  /**
-   * Determines if the content of the file is too simple based on specific criteria.
-   * In the current implementation, this method always returns `false`.
-   *
-   * @returns Returns `true` if the file's content is considered too simple; otherwise, returns `false`.
-   *
-   * @example
-   * const file = new FileContainer('/home/projects/project/file1.js', 'console.log("hello world")', codebase);
-   * console.log(file.tooSimple()); // Outputs: false
-   */
-  tooSimple(): Boolean {
-    return false;
   }
 
   /**
@@ -187,9 +162,8 @@ export class FileContainer {
    * console.log(file.ast); // Outputs: AST representation of 'const a = 1;'
    */
   parse() {
-    if (this.ast && this.simple) return;
+    if (this.ast) return;
     this.ast = this.codeToAST();
-    this.simple = this.tooSimple();
   }
 
   /**

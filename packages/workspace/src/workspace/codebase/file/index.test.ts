@@ -33,7 +33,6 @@ describe('FileContainer', () => {
     expect(file.pathname).toBe('/project/path1');
     expect(file.fullPath).toBe('/home/projects/project/path1');
     file.parse();
-    expect(file.simple).toBe(false);
     expect(str(file.codeToAST())).toBe(str({}));
     expect(file.astToCode()).toBe('');
     expect(file.print()).toBe('');
@@ -98,13 +97,11 @@ describe('FileContainer', () => {
 
     // Set a pre-existing AST and mark the file as 'simple'
     file.ast = mockAST;
-    file.simple = true;
 
     // Parse the file again (now with a pre-existing AST and 'simple' flag set)
     file.parse();
 
     // Check that the 'simple' flag remains true and the AST remains unchanged
-    expect(file.simple).toBe(true);
     expect(file.ast).toEqual(mockAST);
   });
 
