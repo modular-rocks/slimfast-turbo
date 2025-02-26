@@ -1,5 +1,13 @@
 # tsconfig
 
+## 0.0.5
+
+### Patch Changes
+
+- [#103](https://github.com/modular-rocks/slimfast-turbo/pull/103) [`7cbae67`](https://github.com/modular-rocks/slimfast-turbo/commit/7cbae67b6d0e108f67271de2ac2774559cfaed6b) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
+- [#107](https://github.com/modular-rocks/slimfast-turbo/pull/107) [`28ba76b`](https://github.com/modular-rocks/slimfast-turbo/commit/28ba76ba0e81b7b7b0c9df0ae24da2ff1cec72a5) Thanks [@antonyfaris](https://github.com/antonyfaris)! - Internal: Updated Dependencies
+
 ## 0.0.4
 
 ### Patch Changes
