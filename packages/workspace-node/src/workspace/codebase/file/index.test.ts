@@ -18,10 +18,9 @@ describe('FileContainer', () => {
     const files: [string, string][] = [1, 2, 3].map((x: number) => {
       return [`/home/projects/project/path${x}`, 'export default (x) => x * x'];
     });
-    const pipeline: Function[] = [];
 
     const opts: CodebaseOpts = {
-      pipeline,
+      pipeline: [],
       files,
       src: '/home/projects/project/',
       extensions: [],

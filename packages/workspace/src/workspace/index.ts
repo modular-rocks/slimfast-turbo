@@ -3,7 +3,7 @@ import { readDirectory } from '@modular-rocks/traverse-files';
 import { pipeline as runPipeline } from './pipeline/index.js';
 
 import type { FileContainer } from './codebase/file/index.js';
-import type { WorkspaceOpts } from '../types.js';
+import type { PossiblyAsyncFunc, WorkspaceOpts } from '../types.js';
 
 export class Workspace {
   /**
@@ -86,7 +86,7 @@ export class Workspace {
    */
   async pipeline(
     files: FileContainer[],
-    pipeline: Function[] | undefined,
+    pipeline: PossiblyAsyncFunc<unknown>[] | undefined,
     opts: WorkspaceOpts
   ) {
     const pipelineFunctions = pipeline || [];

@@ -14,10 +14,9 @@ describe('Store dependencie', () => {
       `/home/projects/project/path${x}`,
       '',
     ]);
-    const pipeline: Function[] = [];
 
     const opts: CodebaseOpts = {
-      pipeline,
+      pipeline: [],
       files,
       src: '/home/projects/project/',
       extensions: [],

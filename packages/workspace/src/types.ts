@@ -4,7 +4,7 @@ export type RandomObject = Record<string, any>;
 export type FilesContainer = Record<string, FileContainer>;
 
 export type Options = {
-  pipeline?: Function[];
+  pipeline?: PossiblyAsyncFunc<unknown>[];
   src: string;
   extensions: string[];
   ignoredFiles: string[];
@@ -49,3 +49,10 @@ export type PackageContents = {
 };
 
 export type OutputIteration = [number, number];
+
+export type PossiblyAsyncFunc<T> = (
+  file: FileContainer,
+  state: State,
+  opts: WorkspaceOpts,
+  workspace: WorkspaceType
+) => Promise<T> | T;

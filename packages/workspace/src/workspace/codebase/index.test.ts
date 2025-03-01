@@ -14,10 +14,9 @@ describe('Codebase', () => {
     `/home/projects/project/file-${x}.js`,
     '',
   ]);
-  const pipeline: Function[] = [];
 
   const opts: CodebaseOpts = {
-    pipeline,
+    pipeline: [],
     files,
     src: '/home/projects/project/',
     extensions: [],

@@ -71,6 +71,9 @@ importers:
       '@modular-rocks/traverse-files':
         specifier: workspace:*
         version: link:../traverse-files
+      '@modular-rocks/workspace':
+        specifier: workspace:*
+        version: link:../workspace
       '@modular-rocks/workspace-node':
         specifier: workspace:*
         version: link:../workspace-node

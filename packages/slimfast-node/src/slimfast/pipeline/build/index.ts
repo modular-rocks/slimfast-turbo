@@ -4,6 +4,8 @@ import type { NodePath } from '@babel/traverse';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
+import type { PossiblyAsyncFunc } from '@modular-rocks/workspace/types';
+
 type Extract = [NodePath, BuilderData];
 
 type Builder = (
@@ -27,7 +29,7 @@ type Builder = (
  * const updatedFile = build(myBuilder)(file, buildOptions, state, workspace);
  */
 export const build =
-  (builder: Builder) =>
+  (builder: Builder): PossiblyAsyncFunc<unknown> =>
   /**
    * Processes a file to generate new file structures based on extracted nodes and incorporates these into the workspace.
    *
@@ -42,24 +44,19 @@ export const build =
    * @example
    * const updatedFile = buildFunction(file, buildOptions, state, workspace);
    */
-  (
-    file: FileContainer,
-    options: BuilderOpts,
-    // TODO: Remove this
-    state: any,
-    workspace: SlimFast
-  ) => {
+  (file, options, state, workspace) => {
     // TODO: Double check this type
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 
-    workspace.refactored.makeDirectory(file); // make sure that its not already in an index
+    // TODO: Fix this type
+    (workspace as SlimFast).refactored.makeDirectory(file); // make sure that its not already in an index
 
     for (const extract of extracted) {
       const [path, data] = extract;
       const newFile = builder(path, data, file.pathname, options);
       file.addImport(newFile.import);
-      workspace.refactored.addFile(file.spawn(newFile));
+      (workspace as SlimFast).refactored.addFile(file.spawn(newFile));
     }
     file.updateCode();
     return false;

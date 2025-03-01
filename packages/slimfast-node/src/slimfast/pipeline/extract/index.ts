@@ -4,6 +4,8 @@ import type { NodePath } from '@babel/traverse';
 import type { SlimFast } from '@modular-rocks/slimfast';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
+import type { PossiblyAsyncFunc } from '@modular-rocks/workspace/types';
+
 type Builder = (
   path: NodePath,
   data: RandomObject,
@@ -33,7 +35,7 @@ type Namer = (path: NodePath, data: RandomObject, options: Options) => void;
  * const processedFile = extract(myVisitors)(file, extractionOptions, state, workspace);
  */
 export const extract =
-  (visitors: (typeof Visitor)[]) =>
+  (visitors: (typeof Visitor)[]): PossiblyAsyncFunc<unknown> =>
   /**
    * Processes a file's Abstract Syntax Tree (AST) to extract nodes based on the provided visitor patterns.
    *
@@ -51,12 +53,7 @@ export const extract =
    * @example
    * const processedFile = extractionFunction(file, extractionOptions, state, workspace);
    */
-  (
-    file: FileContainer,
-    options: Options,
-    state: RandomObject,
-    workspace: SlimFast
-  ) => {
+  (file, options, state, workspace) => {
     file.parse();
 
     const extracted: Map<NodePath, any> = new Map();

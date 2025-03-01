@@ -54,7 +54,8 @@
     "@modular-rocks/slimfast": "workspace:*",
     "@modular-rocks/metrics-ts-js": "0.2.3-development",
     "@modular-rocks/traverse-files": "workspace:*",
-    "@modular-rocks/workspace-node": "workspace:*"
+    "@modular-rocks/workspace-node": "workspace:*",
+    "@modular-rocks/workspace": "workspace:*"
   },
   "devDependencies": {
     "@types/babel__traverse": "7.20.6",

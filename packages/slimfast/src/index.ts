@@ -1,7 +1,11 @@
 import { Codebase, Workspace } from '@modular-rocks/workspace';
 
 import type { Codebase as CodebaseType } from '@modular-rocks/workspace';
-import type { CodebaseOpts, Options } from '@modular-rocks/workspace/types';
+import type {
+  CodebaseOpts,
+  Options,
+  PossiblyAsyncFunc,
+} from '@modular-rocks/workspace/types';
 
 /**
  * The SlimFast class extends the Workspace class and represents a workspace that
@@ -67,7 +71,7 @@ export class SlimFast extends Workspace {
    * const updatedOpts = slimFastInstance.defaultOptions(newOpts);
    */
   defaultOptions(opts: Options) {
-    const pipeline: Function[] = opts.pipeline || [];
+    const pipeline = opts.pipeline || [];
     this.opts = { ...opts, pipeline };
     return this.opts;
   }

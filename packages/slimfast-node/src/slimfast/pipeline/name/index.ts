@@ -5,6 +5,8 @@ import type {
 import type { NodePath } from '@babel/traverse';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
+import type { PossiblyAsyncFunc } from '@modular-rocks/workspace/types';
+
 type Extract = [NodePath, NamerGeneratorData];
 
 /**
@@ -25,7 +27,7 @@ type Extract = [NodePath, NamerGeneratorData];
  * }
  */
 export const name =
-  (namer: NamerGenerator) =>
+  (namer: NamerGenerator): PossiblyAsyncFunc<unknown> =>
   /**
    * Processes each extracted node in the provided file using the `namer` function.
    *
@@ -34,7 +36,7 @@ export const name =
    * @param file - The file containing the extracted nodes.
    * @returns The processed file if any nodes were extracted and processed, otherwise `false`.
    */
-  async (file: FileContainer) => {
+  async (file) => {
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 

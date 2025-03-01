@@ -1,4 +1,9 @@
-import type { State, WorkspaceOpts, WorkspaceType } from '../../types.js';
+import type {
+  PossiblyAsyncFunc,
+  State,
+  WorkspaceOpts,
+  WorkspaceType,
+} from '../../types.js';
 import type { FileContainer } from '../codebase/file/index.js';
 import { queue } from '../queue/index.js';
 
@@ -16,21 +21,14 @@ import { queue } from '../queue/index.js';
  * @param workspace The current workspace context.
  * @returns A promise that resolves with the result of the function or rejects with an error.
  */
-function run(
-  func: Function,
+async function callAsyncFunction<T>(
+  func: PossiblyAsyncFunc<T>,
   file: FileContainer,
   state: State,
   opts: WorkspaceOpts,
   workspace: WorkspaceType
-) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const result = await func(file, state, opts, workspace);
-      resolve(result);
-    } catch (error) {
-      reject(error);
-    }
-  });
+): Promise<T> {
+  return func(file, state, opts, workspace);
 }
 
 /**
@@ -48,21 +46,22 @@ function run(
  */
 export const pipeline = async (
   files: FileContainer[],
-  pipelineFunctions: Function[],
+  pipelineFunctions: PossiblyAsyncFunc<unknown>[],
   opts: WorkspaceOpts,
   workspace: WorkspaceType
 ): Promise<{ isRunning: boolean }> => {
-  const funcs = pipelineFunctions.map((func: Function) => {
+  const funcs = pipelineFunctions.map((func: PossiblyAsyncFunc<unknown>) => {
     return async (
       files: FileContainer[],
       opts: WorkspaceOpts,
       workspace: WorkspaceType,
       state: State
     ) => {
-      const promises = files.map((file: FileContainer) =>
-        run(func, file, state, opts, workspace)
+      return Promise.all(
+        files.map((file) =>
+          callAsyncFunction(func, file, state, opts, workspace)
+        )
       );
-      return Promise.all(promises);
     };
   });
 
