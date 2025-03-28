@@ -1,7 +1,7 @@
 import type { BuilderData, BuilderOpts } from './builder/index.js';
 import type { ProvisionalFile } from '../../../types.js';
 import type { NodePath } from '@babel/traverse';
-import type { SlimFast } from '@modular-rocks/slimfast';
+import type { SlimFast } from '../../index.js';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
 import type { PossiblyAsyncFunc } from '@modular-rocks/workspace/types';
@@ -29,7 +29,7 @@ type Builder = (
  * const updatedFile = build(myBuilder)(file, buildOptions, state, workspace);
  */
 export const build =
-  (builder: Builder): PossiblyAsyncFunc<unknown> =>
+  (builder: Builder): PossiblyAsyncFunc<unknown, SlimFast> =>
   /**
    * Processes a file to generate new file structures based on extracted nodes and incorporates these into the workspace.
    *
@@ -49,14 +49,13 @@ export const build =
     const extracted: Extract[] = file.store.extractions;
     if (!extracted.length) return file;
 
-    // TODO: Fix this type
-    (workspace as SlimFast).refactored.makeDirectory(file); // make sure that its not already in an index
+    workspace.refactored.makeDirectory(file); // make sure that its not already in an index
 
     for (const extract of extracted) {
       const [path, data] = extract;
       const newFile = builder(path, data, file.pathname, options);
       file.addImport(newFile.import);
-      (workspace as SlimFast).refactored.addFile(file.spawn(newFile));
+      workspace.refactored.addFile(file.spawn(newFile));
     }
     file.updateCode();
     return false;

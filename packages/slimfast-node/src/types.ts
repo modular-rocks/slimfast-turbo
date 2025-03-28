@@ -1,3 +1,5 @@
+import type { Workspace } from '@modular-rocks/workspace-node';
+import type { SlimFast } from './slimfast/index.js';
 import type { Builder } from './slimfast/pipeline/build/builder/index.js';
 import type { NamerGenerator } from './slimfast/pipeline/name/default-function-name-generator/index.js';
 import type { Visitor } from './slimfast/visitors/visitor/index.js';
@@ -96,7 +98,7 @@ export type ConstraintData<
  */
 export type Constraints = (Constraint | ConstraintWithData)[];
 
-export type SlimFastOpts = CodebaseOpts & {
+export type SlimFastOpts<T = unknown, W = SlimFast> = CodebaseOpts<T, W> & {
   visitors?: (typeof Visitor)[];
   namer?: NamerGenerator;
   builder?: Builder;

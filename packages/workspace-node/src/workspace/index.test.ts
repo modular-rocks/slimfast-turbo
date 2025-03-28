@@ -6,31 +6,30 @@ import { Codebase } from './codebase/index.js';
 
 import type { CodebaseOpts, WorkspaceOpts } from '../types.js';
 
-type OutPutIteration = [number, number];
+type OutputIteration = [number, number];
 
-const normalFunction = (i: number, time: number, output: OutPutIteration[]) => {
+const normalFunction = (i: number, time: number, output: OutputIteration[]) => {
   return () => {
-    const result: OutPutIteration = [i, time];
+    const result: OutputIteration = [i, time];
     output.push(result);
     return result;
   };
 };
 
-const asyncFunction = (i: number, time: number, output: OutPutIteration[]) => {
-  return async () => {
-    await new Promise((resolve) => {
+const asyncFunction = (i: number, time: number, output: OutputIteration[]) => {
+  return async () =>
+    await new Promise<OutputIteration>((resolve) => {
       setTimeout(() => {
-        const result: OutPutIteration = [i, time];
+        const result: OutputIteration = [i, time];
         output.push(result);
         resolve(result);
       }, time);
     });
-  };
 };
 
 describe('Workspace base', () => {
   test('Is invoked in order', async () => {
-    const output: OutPutIteration[] = [];
+    const output: OutputIteration[] = [];
 
     const pipeline = [
       asyncFunction(1, 500, output),
@@ -92,7 +91,7 @@ describe('Workspace base', () => {
     expect(JSON.stringify(output)).toBe(JSON.stringify(result));
   });
   test('Default options adds an empty array for files', async () => {
-    const output: OutPutIteration[] = [];
+    const output: OutputIteration[] = [];
     const opts: WorkspaceOpts = {
       src: process.cwd(),
       extensions: [],

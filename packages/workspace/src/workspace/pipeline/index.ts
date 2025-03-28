@@ -5,14 +5,12 @@ import type {
   WorkspaceType,
 } from '../../types.js';
 import type { FileContainer } from '../codebase/file/index.js';
+import type { Workspace } from '../index.js';
 import { queue } from '../queue/index.js';
-
-// TODO: add examples to the jsdoc comments
 
 /**
  * Wraps a provided asynchronous function in a promise, ensuring that the function's
- * execution can be awaited. If the function throws an error during its execution,
- * the error is passed to the promise's rejection handler.
+ * execution can be awaited.
  *
  * @param func The function to execute asynchronously.
  * @param file The file container being processed.
@@ -21,40 +19,36 @@ import { queue } from '../queue/index.js';
  * @param workspace The current workspace context.
  * @returns A promise that resolves with the result of the function or rejects with an error.
  */
-async function callAsyncFunction<T>(
-  func: PossiblyAsyncFunc<T>,
+async function callAsyncFunction<T, W = Workspace>(
+  func: PossiblyAsyncFunc<T, W>,
   file: FileContainer,
   state: State,
-  opts: WorkspaceOpts,
-  workspace: WorkspaceType
+  opts: WorkspaceOpts<T, W>,
+  workspace: W
 ): Promise<T> {
   return func(file, state, opts, workspace);
 }
 
 /**
  * Initiates the processing of a given set of files through a defined pipeline of functions.
- * If the pipeline functions are not provided, the function returns false immediately.
- * Otherwise, it processes the files through the pipeline, ensuring all pipeline functions
- * are executed for each file. The function returns a promise which resolves once all the
- * pipeline functions have been executed for all the files.
  *
  * @param files Array of file containers to be processed.
- * @param pipelineFunctions Array of functions that form the processing pipeline. If undefined, the function returns false.
+ * @param pipelineFunctions Array of functions that form the processing pipeline.
  * @param opts Configuration options for the workspace.
  * @param workspace The current workspace context in which the files are being processed.
- * @returns A promise that resolves once the files have been processed or false if pipelineFunctions is undefined.
+ * @returns A promise that resolves once the files have been processed.
  */
-export const pipeline = async (
+export const pipeline = async <T, W = Workspace>(
   files: FileContainer[],
-  pipelineFunctions: PossiblyAsyncFunc<unknown>[],
-  opts: WorkspaceOpts,
-  workspace: WorkspaceType
+  pipelineFunctions: PossiblyAsyncFunc<T, W>[],
+  opts: WorkspaceOpts<T, W>,
+  workspace: W
 ): Promise<{ isRunning: boolean }> => {
-  const funcs = pipelineFunctions.map((func: PossiblyAsyncFunc<unknown>) => {
+  const funcs = pipelineFunctions.map((func: PossiblyAsyncFunc<T, W>) => {
     return async (
       files: FileContainer[],
-      opts: WorkspaceOpts,
-      workspace: WorkspaceType,
+      opts: WorkspaceOpts<T, W>,
+      workspace: W,
       state: State
     ) => {
       return Promise.all(

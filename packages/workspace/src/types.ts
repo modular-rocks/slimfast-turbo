@@ -1,10 +1,11 @@
 import type { FileContainer } from './workspace/codebase/file/index.js';
+import type { Workspace } from './workspace/index.js';
 
 export type RandomObject = Record<string, any>;
 export type FilesContainer = Record<string, FileContainer>;
 
-export type Options = {
-  pipeline?: PossiblyAsyncFunc<unknown>[];
+export type Options<T = unknown, W = Workspace> = {
+  pipeline?: PossiblyAsyncFunc<T, W>[];
   src: string;
   extensions: string[];
   ignoredFiles: string[];
@@ -16,16 +17,16 @@ export type Options = {
   queued?: Boolean;
 };
 
-export type WorkspaceOpts = Options & {
+export type WorkspaceOpts<T = unknown, W = Workspace> = Options<T, W> & {
   files?: [string, string][];
 };
 
-export type CodebaseOpts = Options & {
+export type CodebaseOpts<T = unknown, W = Workspace> = Options<T, W> & {
   files: [string, string][];
 };
 
-export type WorkspaceType = {
-  opts: WorkspaceOpts;
+export type WorkspaceType<T = unknown, W = Workspace> = {
+  opts: WorkspaceOpts<T, W>;
 };
 
 export type Custom = {
@@ -50,9 +51,9 @@ export type PackageContents = {
 
 export type OutputIteration = [number, number];
 
-export type PossiblyAsyncFunc<T> = (
+export type PossiblyAsyncFunc<T, W = Workspace> = (
   file: FileContainer,
   state: State,
-  opts: WorkspaceOpts,
-  workspace: WorkspaceType
+  opts: WorkspaceOpts<T, W>,
+  workspace: W
 ) => Promise<T> | T;

@@ -19,15 +19,14 @@ const syncFunction = (i: number, time: number, output: OutputIteration[]) => {
 };
 
 const asyncFunction = (i: number, time: number, output: OutputIteration[]) => {
-  return async () => {
-    await new Promise((resolve) => {
+  return async () =>
+    await new Promise<OutputIteration>((resolve) => {
       setTimeout(() => {
         const result: OutputIteration = [i, time];
         output.push(result);
         resolve(result);
       }, time);
     });
-  };
 };
 
 describe('Pipeline', () => {

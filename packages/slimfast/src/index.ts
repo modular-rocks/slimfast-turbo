@@ -1,10 +1,14 @@
 import { Codebase, Workspace } from '@modular-rocks/workspace';
 
-import type { Codebase as CodebaseType } from '@modular-rocks/workspace';
+import type {
+  Codebase as CodebaseType,
+  FileContainer,
+} from '@modular-rocks/workspace';
 import type {
   CodebaseOpts,
   Options,
   PossiblyAsyncFunc,
+  WorkspaceOpts,
 } from '@modular-rocks/workspace/types';
 
 /**

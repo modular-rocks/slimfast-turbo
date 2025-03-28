@@ -1,7 +1,7 @@
 import type { ProvisionalFile, RandomObject } from '../../../types.js';
 import type { Visitor } from '../../visitors/visitor/index.js';
 import type { NodePath } from '@babel/traverse';
-import type { SlimFast } from '@modular-rocks/slimfast';
+import type { SlimFast } from '../../index.js';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
 import type { PossiblyAsyncFunc } from '@modular-rocks/workspace/types';
@@ -35,7 +35,7 @@ type Namer = (path: NodePath, data: RandomObject, options: Options) => void;
  * const processedFile = extract(myVisitors)(file, extractionOptions, state, workspace);
  */
 export const extract =
-  (visitors: (typeof Visitor)[]): PossiblyAsyncFunc<unknown> =>
+  (visitors: (typeof Visitor)[]): PossiblyAsyncFunc<unknown, SlimFast> =>
   /**
    * Processes a file's Abstract Syntax Tree (AST) to extract nodes based on the provided visitor patterns.
    *

@@ -3,6 +3,7 @@ import type {
   NamerGeneratorData,
 } from './default-function-name-generator/index.js';
 import type { NodePath } from '@babel/traverse';
+import type { SlimFast } from '../../index.js';
 import type { FileContainer } from '@modular-rocks/workspace-node';
 
 import type { PossiblyAsyncFunc } from '@modular-rocks/workspace/types';
@@ -27,7 +28,7 @@ type Extract = [NodePath, NamerGeneratorData];
  * }
  */
 export const name =
-  (namer: NamerGenerator): PossiblyAsyncFunc<unknown> =>
+  (namer: NamerGenerator): PossiblyAsyncFunc<unknown, SlimFast> =>
   /**
    * Processes each extracted node in the provided file using the `namer` function.
    *
